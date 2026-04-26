@@ -188,6 +188,12 @@ export function bevestigingEmail({ naam, formulier, brand }: ConfirmationData): 
                     <a href="tel:+31302072388" style="font-size:13px;letter-spacing:2px;color:${c.accent};text-decoration:none;font-family:Arial,Helvetica,sans-serif;text-transform:uppercase;">Bel +31 30 207 23 88</a>
                   </td>
                 </tr>
+                <tr><td style="height:12px;line-height:12px;font-size:0;">&nbsp;</td></tr>
+                <tr>
+                  <td style="border-radius:2px;background-color:${c.accent};padding:12px 32px;">
+                    <a href="https://${website}" style="font-size:13px;letter-spacing:2px;color:${c.primary};text-decoration:none;font-family:Arial,Helvetica,sans-serif;text-transform:uppercase;">Bezoek ${website}</a>
+                  </td>
+                </tr>
               </table>
             </td>
           </tr>
@@ -303,6 +309,12 @@ export function customEmail({ bericht, brand, heroImageUrl, showLogo = true }: C
                 <tr>
                   <td style="border-radius:2px;border:1px solid ${c.accent};padding:12px 32px;">
                     <a href="tel:+31302072388" style="font-size:13px;letter-spacing:2px;color:${c.accent};text-decoration:none;font-family:Arial,Helvetica,sans-serif;text-transform:uppercase;">Bel +31 30 207 23 88</a>
+                  </td>
+                </tr>
+                <tr><td style="height:12px;line-height:12px;font-size:0;">&nbsp;</td></tr>
+                <tr>
+                  <td style="border-radius:2px;background-color:${c.accent};padding:12px 32px;">
+                    <a href="https://${website}" style="font-size:13px;letter-spacing:2px;color:${c.primary};text-decoration:none;font-family:Arial,Helvetica,sans-serif;text-transform:uppercase;">Bezoek ${website}</a>
                   </td>
                 </tr>
               </table>
