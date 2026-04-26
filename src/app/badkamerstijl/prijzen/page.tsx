@@ -2,7 +2,7 @@ import type { Metadata } from 'next';
 import PrijzenPage from '@/components/badkamerstijl/PrijzenPage';
 
 const SITE_URL = 'https://badkamerstijl.nl';
-const PAGE_URL = `${SITE_URL}/badkamerstijl/prijzen`;
+const PAGE_URL = `${SITE_URL}/prijzen`;
 
 const TITLE = 'Wat kost een badkamer renovatie? | Prijzen | Badkamerstijl';
 const DESCRIPTION =

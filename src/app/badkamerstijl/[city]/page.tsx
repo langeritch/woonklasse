@@ -19,9 +19,9 @@ export async function generateMetadata(
     return { title: 'Niet gevonden | Badkamerstijl' };
   }
 
-  const title = `Badkamer Renovatie ${city.name} | Badkamerstijl`;
-  const description = `Luxe badkamer renovatie in ${city.name} door Badkamerstijl. Volledig ontwerp, eigen vakmensen en transparante prijzen. Plan een gratis adviesgesprek.`;
-  const url = `${SITE_URL}/badkamerstijl/${city.slug}`;
+  const title = `Badkamer renovatie ${city.name} — Luxe op maat | Badkamerstijl`;
+  const description = `Badkamer renovatie in ${city.name} door Badkamerstijl. 3D-ontwerp, eigen vakmensen en vaste aanneemsom. Plan een gratis adviesgesprek voor jouw droombadkamer in ${city.name}.`;
+  const url = `${SITE_URL}/${city.slug}`;
 
   return {
     title,
@@ -54,7 +54,7 @@ export default async function Page(
     .map((s) => getCityBySlug(s))
     .filter((c): c is NonNullable<typeof c> => Boolean(c));
 
-  const pageUrl = `${SITE_URL}/badkamerstijl/${city.slug}`;
+  const pageUrl = `${SITE_URL}/${city.slug}`;
 
   const localBusinessJsonLd = {
     '@context': 'https://schema.org',

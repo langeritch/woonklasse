@@ -2,7 +2,7 @@ import type { Metadata } from 'next';
 import DienstenPage from '@/components/badkamerstijl/DienstenPage';
 
 const SITE_URL = 'https://badkamerstijl.nl';
-const PAGE_URL = `${SITE_URL}/badkamerstijl/diensten`;
+const PAGE_URL = `${SITE_URL}/diensten`;
 
 const TITLE = 'Diensten — Ontwerp, renovatie en montage | Badkamerstijl';
 const DESCRIPTION =

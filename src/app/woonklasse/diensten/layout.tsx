@@ -1,11 +1,37 @@
 import type { Metadata } from 'next';
 
+const SITE_URL = 'https://woonklasse.nl';
+const PAGE_URL = `${SITE_URL}/woonklasse/diensten`;
+
+const TITLE = 'Diensten — Verbouwingen, aanbouwen en veranda\'s | Woonklasse';
+const DESCRIPTION =
+  'Ontdek onze diensten: totaalverbouwing, aanbouw, veranda, dakkapel, badkamer en keuken renovatie. Woonklasse levert vakmanschap op maat door heel Nederland.';
+
 export const metadata: Metadata = {
-  title: 'Diensten | Woonklasse',
-  description: 'Ontdek onze diensten: complete verbouwingen, aanbouwen, veranda\'s, dakkapellen en meer. Woonklasse levert vakmanschap op maat.',
+  title: TITLE,
+  description: DESCRIPTION,
+  keywords: [
+    'verbouwing aannemer',
+    'aanbouw',
+    'veranda bouwen',
+    'dakkapel plaatsen',
+    'totaalverbouwing',
+    'badkamer renovatie',
+    'keuken plaatsen',
+  ],
+  alternates: { canonical: PAGE_URL },
   openGraph: {
-    title: 'Diensten | Woonklasse',
-    description: 'Complete verbouwingen, aanbouwen, veranda\'s en dakkapellen met vakmanschap op maat.',
+    title: TITLE,
+    description: DESCRIPTION,
+    url: PAGE_URL,
+    type: 'website',
+    locale: 'nl_NL',
+    siteName: 'Woonklasse',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: TITLE,
+    description: DESCRIPTION,
   },
 };
 

@@ -487,6 +487,67 @@ export default function CityPage({
         </div>
       </section>
 
+      {/* ═══════════════ INTERNAL LINKS — RELATED PAGES ═══════════════ */}
+      <section className="py-20 md:py-28 px-6 md:px-12 lg:px-20 bg-white border-t border-bsv2-charcoal/[0.06]">
+        <div className="max-w-[1400px] mx-auto">
+          <span className="text-bsv2-grey text-[11px] tracking-[0.15em] lowercase mb-4 block">
+            (Volgende stappen)
+          </span>
+          <h2 className="font-cormorant text-3xl md:text-4xl lg:text-5xl font-light leading-[1.15] mb-12 max-w-3xl">
+            Ontdek meer over een badkamer
+            <br />
+            <span className="italic">renovatie in {city.name}</span>
+          </h2>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-5 md:gap-6">
+            <Link
+              href="/kosten"
+              className="group block p-7 md:p-8 bg-bsv2-cream rounded-2xl border border-bsv2-charcoal/[0.08] hover:bg-bsv2-charcoal hover:text-white transition-colors"
+            >
+              <span className="text-[10px] tracking-[0.2em] uppercase text-bsv2-grey group-hover:text-white/50 mb-3 block">
+                Kosten
+              </span>
+              <h3 className="font-cormorant text-2xl md:text-[1.75rem] font-light leading-tight mb-3">
+                Wat kost een badkamer renovatie?
+              </h3>
+              <p className="text-sm text-bsv2-grey group-hover:text-white/70 leading-relaxed">
+                Van € 5.000 tot € 60.000+ — bekijk de drie prijsklassen en alle factoren die de prijs bepalen.
+              </p>
+            </Link>
+
+            <Link
+              href="/prijzen"
+              className="group block p-7 md:p-8 bg-bsv2-cream rounded-2xl border border-bsv2-charcoal/[0.08] hover:bg-bsv2-charcoal hover:text-white transition-colors"
+            >
+              <span className="text-[10px] tracking-[0.2em] uppercase text-bsv2-grey group-hover:text-white/50 mb-3 block">
+                Pakketten
+              </span>
+              <h3 className="font-cormorant text-2xl md:text-[1.75rem] font-light leading-tight mb-3">
+                Vier pakketten met inclusief-lijst
+              </h3>
+              <p className="text-sm text-bsv2-grey group-hover:text-white/70 leading-relaxed">
+                Basis tot Luxe op maat, met interactieve calculator om jouw badkamer in {city.name} door te rekenen.
+              </p>
+            </Link>
+
+            <Link
+              href="/stijlen"
+              className="group block p-7 md:p-8 bg-bsv2-cream rounded-2xl border border-bsv2-charcoal/[0.08] hover:bg-bsv2-charcoal hover:text-white transition-colors"
+            >
+              <span className="text-[10px] tracking-[0.2em] uppercase text-bsv2-grey group-hover:text-white/50 mb-3 block">
+                Stijlen
+              </span>
+              <h3 className="font-cormorant text-2xl md:text-[1.75rem] font-light leading-tight mb-3">
+                Welke stijl past bij jou?
+              </h3>
+              <p className="text-sm text-bsv2-grey group-hover:text-white/70 leading-relaxed">
+                Modern, klassiek, warm natuurlijk of boutique hotel — vind de stijl die bij jouw woning in {city.name} past.
+              </p>
+            </Link>
+          </div>
+        </div>
+      </section>
+
       {/* ═══════════════ NEARBY CITIES ═══════════════ */}
       {nearbyCities.length > 0 && (
         <section className="py-24 md:py-32 px-6 md:px-12 lg:px-20 bg-white border-t border-bsv2-charcoal/[0.06]">
@@ -504,7 +565,7 @@ export default function CityPage({
               {nearbyCities.map((nc) => (
                 <Link
                   key={nc.slug}
-                  href={`/badkamerstijl/${nc.slug}`}
+                  href={`/${nc.slug}`}
                   className="group relative aspect-[4/5] overflow-hidden block bg-bsv2-charcoal"
                 >
                   <Image
