@@ -52,7 +52,7 @@ export async function middleware(request: NextRequest) {
 
   // Clean badkamer paths → actual page routes
   // /prijzen is shared: only rewrites to badkamerstijl when NOT on the woonklasse domain
-  const CLEAN_BADKAMER_PATHS = ['/stijlen', '/portfolio', '/diensten', '/adviesgesprek', '/prijzen'];
+  const CLEAN_BADKAMER_PATHS = ['/stijlen', '/portfolio', '/diensten', '/adviesgesprek', '/prijzen', '/kosten'];
   if (CLEAN_BADKAMER_PATHS.includes(pathname) && !isWoonklasseDomain) {
     return NextResponse.rewrite(new URL(`/badkamerstijl${pathname}`, request.url));
   }

@@ -335,6 +335,9 @@ export default function PrijzenPage() {
             <p className="text-base md:text-lg text-bsv2-grey leading-relaxed">
               De vier pakketten op deze pagina zijn richtprijzen, gebaseerd op honderden gerealiseerde projecten. Tijdens het gratis adviesgesprek vertalen we jouw wensen naar een vaste aanneemsom — geen nacalculatie, geen verborgen kosten.
             </p>
+            <p className="text-base md:text-lg text-bsv2-grey leading-relaxed">
+              Wil je eerst een uitleg over wat een badkamer renovatie kost en welke factoren de prijs bepalen? Lees onze <Link href="/kosten" className="text-bsv2-charcoal underline underline-offset-2 hover:text-bsv2-teal transition-colors">kostengids voor 2026</Link>.
+            </p>
           </motion.div>
         </div>
       </section>
