@@ -5,6 +5,7 @@ import fs from 'fs';
 import net from 'net';
 import dns from 'dns';
 import nodemailer from 'nodemailer';
+import type SMTPTransport from 'nodemailer/lib/smtp-transport';
 import { customEmail, HERO_IMAGE_PATHS } from '@/lib/email-templates';
 
 // Use Google/Cloudflare DNS to bypass Vercel's broken getaddrinfo
@@ -41,7 +42,7 @@ type FromConfig = {
   enabled: boolean;
   label: string;
   brandLabel: string;
-  buildTransport: () => Parameters<typeof nodemailer.createTransport>[0];
+  buildTransport: () => SMTPTransport.Options;
   resolveHost?: string; // hostname to resolve via custom DNS
 };
 

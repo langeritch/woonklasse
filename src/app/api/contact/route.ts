@@ -65,6 +65,18 @@ const SMTP_CONFIGURED =
   process.env.SMTP_PASS &&
   process.env.CONTACT_EMAIL;
 
+/** Per-brand recipient routing. Falls back to CONTACT_EMAIL when a brand-specific
+ *  variable is not set, so legacy/preview deployments keep working. */
+function recipientFor(brand: 'woonklasse' | 'badkamerstijl'): string | undefined {
+  if (brand === 'badkamerstijl') {
+    return (
+      process.env.CONTACT_EMAIL_BADKAMERSTIJL ||
+      'info@badkamerstijl.nl'
+    );
+  }
+  return process.env.CONTACT_EMAIL_WOONKLASSE || process.env.CONTACT_EMAIL;
+}
+
 async function createTransporter() {
   if (!SMTP_CONFIGURED) return null;
   const host = process.env.SMTP_HOST!.trim();
@@ -149,10 +161,11 @@ export async function POST(request: Request) {
 
     const transporter = await createTransporter();
     if (transporter) {
+      const notificationTo = recipientFor(brand);
       // 1. Notificatie naar het bedrijf (HTML)
       await transporter.sendMail({
         from: `"${brandNaam} Website" <${fromEmail}>`,
-        to: process.env.CONTACT_EMAIL,
+        to: notificationTo,
         replyTo: data.email,
         subject: `${FORMULIER_LABELS[data.formulier] || data.formulier} - ${data.naam}`,
         html: notificatieEmail({

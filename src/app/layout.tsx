@@ -1,45 +1,15 @@
 import type { Metadata } from 'next';
-import { Inter, Outfit, Playfair_Display, Cormorant_Garamond, Fraunces, DM_Sans } from 'next/font/google';
+import { Poppins } from 'next/font/google';
 import Navigation from '@/components/Navigation';
 import Footer from '@/components/Footer';
 import SmoothScroll from '@/components/SmoothScroll';
 import { CONTACT } from '@/data/contact';
 import './globals.css';
 
-const inter = Inter({
-  variable: '--font-inter',
+const poppins = Poppins({
+  variable: '--font-poppins',
   subsets: ['latin'],
-});
-
-const outfit = Outfit({
-  variable: '--font-outfit',
-  subsets: ['latin'],
-});
-
-const playfair = Playfair_Display({
-  variable: '--font-playfair',
-  subsets: ['latin'],
-  style: ['normal', 'italic'],
-});
-
-const cormorant = Cormorant_Garamond({
-  variable: '--font-cormorant-garamond',
-  subsets: ['latin'],
-  weight: ['300', '400', '500', '600', '700'],
-  style: ['normal', 'italic'],
-});
-
-const fraunces = Fraunces({
-  variable: '--font-fraunces',
-  subsets: ['latin'],
-  weight: ['300', '400', '500'],
-  style: ['normal', 'italic'],
-});
-
-const dmSans = DM_Sans({
-  variable: '--font-dm-sans',
-  subsets: ['latin'],
-  weight: ['300', '400', '500', '600', '700'],
+  weight: ['700'],
   style: ['normal', 'italic'],
 });
 
@@ -105,7 +75,7 @@ export default function RootLayout({
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
         />
       </head>
-      <body className={`${inter.variable} ${outfit.variable} ${playfair.variable} ${cormorant.variable} ${fraunces.variable} ${dmSans.variable} antialiased flex flex-col min-h-screen`}>
+      <body className={`${poppins.variable} antialiased flex flex-col min-h-screen`}>
         <a href="#main-content" className="sr-only focus:not-sr-only focus:absolute focus:z-[9999] focus:top-4 focus:left-4 focus:px-4 focus:py-2 focus:bg-white focus:text-black focus:text-sm focus:font-semibold focus:rounded">
           Ga naar inhoud
         </a>

@@ -1,10 +1,12 @@
 @import "tailwindcss";
 
 @theme {
-  --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
-  --font-heading: var(--font-outfit), ui-sans-serif, system-ui, sans-serif;
-  --font-serif: var(--font-playfair), "Playfair Display", Georgia, serif;
-  --font-cormorant: var(--font-cormorant-garamond), "Cormorant Garamond", Georgia, serif;
+  --font-sans: var(--font-poppins), ui-sans-serif, system-ui, sans-serif;
+  --font-heading: var(--font-poppins), ui-sans-serif, system-ui, sans-serif;
+  --font-serif: var(--font-poppins), ui-sans-serif, system-ui, sans-serif;
+  --font-cormorant: var(--font-poppins), ui-sans-serif, system-ui, sans-serif;
+  --font-fraunces: var(--font-poppins), ui-sans-serif, system-ui, sans-serif;
+  --font-dm-sans: var(--font-poppins), ui-sans-serif, system-ui, sans-serif;
 
   --color-background: var(--background);
   --color-foreground: var(--foreground);
@@ -109,29 +111,31 @@
 body {
   color: var(--foreground);
   background: var(--background);
-  font-family: var(--font-inter), sans-serif;
+  font-family: var(--font-poppins), sans-serif;
+  font-weight: 700;
   scroll-behavior: smooth;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
 h1, h2, h3, h4, h5, h6 {
-  font-family: var(--font-heading), sans-serif;
+  font-family: var(--font-poppins), sans-serif;
+  font-weight: 700;
 }
 
-/* Badkamerstijl pages: all headings use Playfair Display serif */
 .badkamer-page h1,
 .badkamer-page h2,
 .badkamer-page h3,
 .badkamer-page h4,
 .badkamer-page h5,
 .badkamer-page h6 {
-  font-family: var(--font-playfair), "Playfair Display", Georgia, serif;
+  font-family: var(--font-poppins), sans-serif;
+  font-weight: 700;
 }
 
-/* Elegant serif for display text */
 .font-display {
-  font-family: var(--font-serif), Georgia, serif;
+  font-family: var(--font-poppins), sans-serif;
+  font-weight: 700;
 }
 
 /* Glassmorphism helpers */
@@ -230,15 +234,11 @@ a:focus-visible {
   opacity: 0.4;
 }
 
-/* ─── Badkamerstijl V2 (neva17 style) ─── */
-/* All typography inside the badkamer pages uses DM Sans. The only exception
-   is <BadkamerstijlTransition />, which is a SIBLING of .bsv2-page (not a
-   descendant) so its .font-cormorant utility class on the swipe-transition
-   label is unaffected by the rules below. */
 .bsv2-page {
   background: var(--color-bsv2-cream);
   color: var(--color-bsv2-charcoal);
-  font-family: var(--font-dm-sans), ui-sans-serif, system-ui, sans-serif;
+  font-family: var(--font-poppins), ui-sans-serif, system-ui, sans-serif;
+  font-weight: 700;
 }
 .bsv2-page h1,
 .bsv2-page h2,
@@ -249,7 +249,8 @@ a:focus-visible {
 .bsv2-page .font-cormorant,
 .bsv2-page .font-serif,
 .bsv2-page .font-fraunces {
-  font-family: var(--font-dm-sans), ui-sans-serif, system-ui, sans-serif;
+  font-family: var(--font-poppins), ui-sans-serif, system-ui, sans-serif;
+  font-weight: 700;
 }
 .bsv2-page ::selection {
   background: rgba(234, 191, 196, 0.3);

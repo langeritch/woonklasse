@@ -4,11 +4,11 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "build": "sh scripts/build.sh",
+    "build": "next build --debug-prerender",
     "start": "next start",
     "lint": "eslint",
     "test": "vitest run",
-    "analyze": "ANALYZE=true sh scripts/build.sh"
+    "analyze": "ANALYZE=true next build --debug-prerender"
   },
   "dependencies": {
     "@vercel/blob": "^2.3.3",
