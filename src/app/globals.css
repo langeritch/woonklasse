@@ -1,0 +1,256 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+  --font-heading: var(--font-outfit), ui-sans-serif, system-ui, sans-serif;
+  --font-serif: var(--font-playfair), "Playfair Display", Georgia, serif;
+  --font-cormorant: var(--font-cormorant-garamond), "Cormorant Garamond", Georgia, serif;
+
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+
+  /* Woonklasse Palette — BAMO-inspired warm luxury */
+  --color-woon-primary: #2D2926;
+  --color-woon-secondary: #8F827A;
+  --color-woon-accent: #D4AF37;
+  --color-woon-light: #FFFAF2;
+  --color-woon-dark: #1A1716;
+  --color-woon-cream: #F8F1E6;
+  --color-woon-warm: #4A3E3D;
+
+  /* Badkamerstijl V2 — neva17 style with badkamerstijl palette */
+  --color-bsv2-cream: #F5F0E8;
+  --color-bsv2-charcoal: #332C27;
+  --color-bsv2-accent: #374543;
+  --color-bsv2-accent-soft: #EABFC4;
+  --color-bsv2-grey: #9B9590;
+  --color-bsv2-teal: #374543;
+  --color-bsv2-pink: #EABFC4;
+  --color-bsv2-warm: #E8DFD3;
+
+  /* Badkamerstijl Palette — Merise-inspired warm luxury */
+  --color-badkamer-primary: #332C27;
+  --color-badkamer-secondary: #DFC3C2;
+  --color-badkamer-accent: #EABFC4;
+  --color-badkamer-light: #EFD3D7;
+  --color-badkamer-dark: #0E0C0B;
+  --color-badkamer-teal: #374543;
+  --color-badkamer-pink: #EABFC4;
+
+  /* ExclusiveDecks Palette — Warm wood + amber LED glow */
+  --color-deck-primary: #1A120B;
+  --color-deck-secondary: #3E2A18;
+  --color-deck-accent: #E8A857;
+  --color-deck-glow: #FFB859;
+  --color-deck-warm: #8B5A2B;
+  --color-deck-light: #F5E6D3;
+  --color-deck-dark: #0A0806;
+
+  --animate-fade-in-up: fadeInUp 0.6s ease-out forwards;
+  --animate-pulse-slow: pulse-slow 4s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+  --animate-float: float 6s ease-in-out infinite;
+  --animate-reveal: reveal 1s ease-out forwards;
+  --animate-slide-up: slideUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+
+  @keyframes fadeInUp {
+    0% {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    100% {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @keyframes pulse-slow {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.7; }
+  }
+
+  @keyframes float {
+    0%, 100% { transform: translateY(0px); }
+    50% { transform: translateY(-10px); }
+  }
+
+  @keyframes reveal {
+    0% {
+      clip-path: inset(0 100% 0 0);
+    }
+    100% {
+      clip-path: inset(0 0 0 0);
+    }
+  }
+
+  @keyframes slideUp {
+    0% {
+      opacity: 0;
+      transform: translateY(60px);
+    }
+    100% {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+}
+
+:root {
+  --background: #ffffff;
+  --foreground: #0A0A0B;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #0f0f11;
+    --foreground: #f3f4f6;
+  }
+}
+
+body {
+  color: var(--foreground);
+  background: var(--background);
+  font-family: var(--font-inter), sans-serif;
+  scroll-behavior: smooth;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-heading), sans-serif;
+}
+
+/* Badkamerstijl pages: all headings use Playfair Display serif */
+.badkamer-page h1,
+.badkamer-page h2,
+.badkamer-page h3,
+.badkamer-page h4,
+.badkamer-page h5,
+.badkamer-page h6 {
+  font-family: var(--font-playfair), "Playfair Display", Georgia, serif;
+}
+
+/* Elegant serif for display text */
+.font-display {
+  font-family: var(--font-serif), Georgia, serif;
+}
+
+/* Glassmorphism helpers */
+@utility glass {
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+@utility glass-dark {
+  background: rgba(0, 0, 0, 0.2);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+/* Sidebar theme transitions — 700ms smooth */
+.sidebar-themed {
+  transition: background-color 700ms ease, color 700ms ease, border-left-color 700ms ease;
+}
+.sidebar-themed[data-theme="dark"] {
+  background-color: #332C27;
+  color: #EFD3D7;
+  border-left: 1px solid transparent;
+}
+.sidebar-themed[data-theme="pink"] {
+  background-color: #EABFC4;
+  color: #332C27;
+  border-left: 1px solid #332C27;
+}
+
+@utility glass-light {
+  background: rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+/* Text outline for watermark / overlay text */
+@utility text-outline {
+  -webkit-text-stroke: 1.5px currentColor;
+  -webkit-text-fill-color: transparent;
+}
+
+/* Smooth image reveal */
+@utility img-reveal {
+  animation: reveal 1.2s cubic-bezier(0.77, 0, 0.175, 1) forwards;
+}
+
+/* Hide scrollbar utility */
+@utility no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+/* Focus-visible ring for keyboard accessibility */
+input:focus-visible,
+textarea:focus-visible,
+select:focus-visible {
+  outline: 2px solid currentColor;
+  outline-offset: 2px;
+  border-radius: 2px;
+}
+
+button:focus-visible,
+a:focus-visible {
+  outline: 2px solid currentColor;
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+
+/* Smooth selection color matching brand palettes */
+::selection {
+  background: rgba(212, 175, 55, 0.25);
+}
+.badkamer-page ::selection {
+  background: rgba(234, 191, 196, 0.35);
+}
+
+/* Line decoration */
+@utility line-accent {
+  position: relative;
+}
+.line-accent::after {
+  content: '';
+  position: absolute;
+  bottom: -4px;
+  left: 0;
+  width: 60px;
+  height: 2px;
+  background: currentColor;
+  opacity: 0.4;
+}
+
+/* ─── Badkamerstijl V2 (neva17 style) ─── */
+/* All typography inside the badkamer pages uses DM Sans. The only exception
+   is <BadkamerstijlTransition />, which is a SIBLING of .bsv2-page (not a
+   descendant) so its .font-cormorant utility class on the swipe-transition
+   label is unaffected by the rules below. */
+.bsv2-page {
+  background: var(--color-bsv2-cream);
+  color: var(--color-bsv2-charcoal);
+  font-family: var(--font-dm-sans), ui-sans-serif, system-ui, sans-serif;
+}
+.bsv2-page h1,
+.bsv2-page h2,
+.bsv2-page h3,
+.bsv2-page h4,
+.bsv2-page h5,
+.bsv2-page h6,
+.bsv2-page .font-cormorant,
+.bsv2-page .font-serif,
+.bsv2-page .font-fraunces {
+  font-family: var(--font-dm-sans), ui-sans-serif, system-ui, sans-serif;
+}
+.bsv2-page ::selection {
+  background: rgba(234, 191, 196, 0.3);
+}

@@ -1,0 +1,11 @@
+# Reference files (capital W)
+/Woonklasse
+rounds/
+.agent-loop/
+LOG.md
+LIVE_OUTPUT.md
+AUDIT.md
+CLI_OUTPUT.log
+STATUS.md
+costs.json
+notifications.json

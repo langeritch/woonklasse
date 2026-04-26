@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
+  <rect width="32" height="32" rx="6" fill="#0a0a0a"/>
+  <!-- Woonklasse house mark -->
+  <g transform="translate(4,5) scale(0.75)" fill="none" stroke="#c9a96e" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+    <!-- Main roof -->
+    <polyline points="2,16 16,4 30,16"/>
+    <!-- Inner roof -->
+    <polyline points="8,14 16,7 24,14"/>
+    <!-- Left pillar -->
+    <line x1="9" y1="14" x2="9" y2="24"/>
+    <line x1="12" y1="12" x2="12" y2="24"/>
+    <!-- Right pillar -->
+    <line x1="20" y1="12" x2="20" y2="24"/>
+    <line x1="23" y1="14" x2="23" y2="24"/>
+    <!-- Center peak -->
+    <polyline points="13,24 16,18 19,24"/>
+    <!-- Chimney -->
+    <line x1="10" y1="5" x2="10" y2="10"/>
+    <line x1="10" y1="5" x2="13" y2="5"/>
+  </g>
+</svg>

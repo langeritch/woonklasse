@@ -1,0 +1,25 @@
+{
+  "name": "Woonklasse Admin",
+  "short_name": "WK Admin",
+  "description": "Woonklasse & Badkamerstijl Admin Portal",
+  "start_url": "/admin/email",
+  "scope": "/admin/",
+  "display": "standalone",
+  "background_color": "#1a1716",
+  "theme_color": "#1a1716",
+  "orientation": "portrait",
+  "icons": [
+    {
+      "src": "/logos/icon-only/png/woonklasse-icon-gold-256.png",
+      "sizes": "256x256",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/logos/icon-only/png/woonklasse-icon-gold-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ]
+}
