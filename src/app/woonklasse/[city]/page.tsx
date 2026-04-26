@@ -21,8 +21,8 @@ export async function generateMetadata(
     return { title: 'Niet gevonden | Woonklasse' };
   }
 
-  const title = `Verbouwing & Onderhoud ${city.name} | Woonklasse`;
-  const description = `Verbouwingen, woningonderhoud, aanbouw, dakwerk en installaties in ${city.name}. Eigen vakmensen, vaste prijs vooraf, één projectleider. Vraag een vrijblijvende offerte aan.`;
+  const title = `Aannemer ${city.name} — Verbouwing, renovatie & onderhoud | Woonklasse`;
+  const description = `Aannemer in ${city.name} voor verbouwingen, renovaties, aanbouw, dakwerk en woningonderhoud. Eigen vakmensen, vaste prijs vooraf en één projectleider. Vraag een vrijblijvende offerte aan.`;
   const url = `${SITE_URL}/woonklasse/${city.slug}`;
 
   return {
@@ -63,8 +63,24 @@ export default async function Page(
     '@context': 'https://schema.org',
     '@type': 'GeneralContractor',
     '@id': `${pageUrl}#localbusiness`,
-    name: `Woonklasse — Verbouwing & Onderhoud ${city.name}`,
-    description: `Aannemer voor verbouwingen, aanbouwen, dakwerk en woningonderhoud in ${city.name} en omgeving. Eigen vakmensen, vaste prijs vooraf.`,
+    name: `Woonklasse — Aannemer ${city.name}`,
+    alternateName: [
+      `Woonklasse Verbouwing ${city.name}`,
+      `Woonklasse Renovatie ${city.name}`,
+      `Aannemer ${city.name}`,
+    ],
+    description: `Aannemer in ${city.name} en omgeving voor verbouwingen, renovaties, aanbouwen, dakwerk en woningonderhoud. Eigen vakmensen, vaste prijs vooraf en één projectleider.`,
+    knowsAbout: [
+      'Verbouwing',
+      'Renovatie',
+      'Aanbouw',
+      'Dakwerk',
+      'Woningonderhoud',
+      'Keukenrenovatie',
+      'Schilderwerk',
+      'Vloeren',
+      'Loodgieterwerk',
+    ],
     url: pageUrl,
     telephone: CONTACT.telefoon,
     email: CONTACT.email,
@@ -144,6 +160,14 @@ export default async function Page(
     '@context': 'https://schema.org',
     '@type': 'FAQPage',
     mainEntity: [
+      {
+        '@type': 'Question',
+        name: `Wat doet een aannemer in ${city.name}?`,
+        acceptedAnswer: {
+          '@type': 'Answer',
+          text: `Als aannemer in ${city.name} verzorgt Woonklasse complete verbouwingen, renovaties, aanbouwen, dakwerk en woningonderhoud. Wij coördineren alle vakdisciplines (timmerwerk, loodgieter, elektra, schilderwerk) en leveren één aanspreekpunt en één vaste prijs.`,
+        },
+      },
       {
         '@type': 'Question',
         name: `Hoe lang duurt een verbouwing in ${city.name}?`,
