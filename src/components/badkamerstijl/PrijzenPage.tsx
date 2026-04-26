@@ -6,7 +6,6 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { ArrowRight, ArrowUpRight, Check, Plus, Minus } from 'lucide-react';
 import BadkamerstijlFloatingNav from '@/components/BadkamerstijlFloatingNav';
-import AdPlacement from '@/components/badkamerstijl/AdPlacement';
 
 type Tier = {
   id: string;
@@ -761,11 +760,6 @@ export default function PrijzenPage() {
             </Link>
           </div>
         </div>
-      </section>
-
-      {/* AD — FOOTER */}
-      <section className="px-6 md:px-12 lg:px-20 py-12 md:py-16 bg-bsv2-cream border-t border-bsv2-charcoal/[0.06]">
-        <AdPlacement slot="badkamerstijl-prijzen-footer" variant="footer" />
       </section>
 
       {/* FOOTER */}

@@ -6,7 +6,6 @@ import Image from 'next/image';
 import { ArrowRight, ArrowUpRight, Plus, Minus } from 'lucide-react';
 import { useState } from 'react';
 import BadkamerstijlFloatingNav from '@/components/BadkamerstijlFloatingNav';
-import AdPlacement from '@/components/badkamerstijl/AdPlacement';
 import type { City } from '@/data/cities';
 
 const SERVICES = [
@@ -436,11 +435,6 @@ export default function CityPage({
             </div>
           </div>
         </div>
-      </section>
-
-      {/* ═══════════════ AD — BANNER ═══════════════ */}
-      <section className="px-6 md:px-12 lg:px-20 py-10 md:py-14 bg-white">
-        <AdPlacement slot={`badkamerstijl-city-${city.slug}-banner`} variant="banner" />
       </section>
 
       {/* ═══════════════ FAQ ═══════════════ */}

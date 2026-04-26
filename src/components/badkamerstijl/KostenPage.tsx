@@ -6,7 +6,6 @@ import Image from 'next/image';
 import { motion } from 'framer-motion';
 import { ArrowRight, ArrowUpRight, Check, Plus, Minus } from 'lucide-react';
 import BadkamerstijlFloatingNav from '@/components/BadkamerstijlFloatingNav';
-import AdPlacement from '@/components/badkamerstijl/AdPlacement';
 
 type Tier = {
   id: string;
@@ -497,11 +496,6 @@ export default function KostenPage() {
             ))}
           </div>
         </div>
-      </section>
-
-      {/* AD MID-CONTENT */}
-      <section className="px-6 md:px-12 lg:px-20 py-12 md:py-16 bg-bsv2-cream border-t border-bsv2-charcoal/[0.06]">
-        <AdPlacement slot="badkamerstijl-kosten-mid" variant="banner" />
       </section>
 
       {/* FAQ */}

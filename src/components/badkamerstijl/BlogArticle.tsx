@@ -5,7 +5,6 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { ArrowRight, ArrowLeft, Clock, Calendar } from 'lucide-react';
 import BadkamerstijlFloatingNav from '@/components/BadkamerstijlFloatingNav';
-import AdPlacement from './AdPlacement';
 import BlogContent from './BlogContent';
 import {
   CATEGORY_LABEL,
@@ -127,11 +126,6 @@ export default function BlogArticle({
                 </ul>
               </nav>
             )}
-            <AdPlacement
-              slot={`badkamerstijl-blog-${post.slug}-sidebar`}
-              variant="sidebar"
-              className="hidden lg:flex"
-            />
           </aside>
 
           {/* ARTICLE */}
