@@ -4,7 +4,8 @@ import { useRef } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { motion, useScroll, useTransform } from 'framer-motion';
-import { ArrowRight } from 'lucide-react';
+import { ArrowRight, ArrowUpRight } from 'lucide-react';
+import { WOONKLASSE_SERVICES } from '@/data/woonklasse-services';
 
 const principles = [
   {
@@ -22,29 +23,6 @@ const principles = [
   {
     title: 'Ambacht',
     desc: 'Van de eerste steen tot de laatste afwerking. Ons team werkt met de precisie en toewijding die uw project verdient.',
-  },
-];
-
-const diensten = [
-  {
-    title: 'Complete Verbouwing',
-    desc: 'Van eerste ontwerp tot sleutelklare oplevering. Wij strippen, bouwen op en leveren af met oog voor elk detail. Uw woning volledig vernieuwd.',
-    features: ['Bouwkundig advies', 'Interieurontwerp', 'Alle vakdisciplines in-house', 'Sleutelklare oplevering'],
-  },
-  {
-    title: 'Aanbouw & Uitbreiding',
-    desc: 'Creëer meer leefruimte met een naadloze aanbouw die perfect aansluit bij de bestaande architectuur.',
-    features: ['Vergunningsaanvraag', 'Constructieberekening', 'Naadloze aansluiting', 'Fundament tot dak'],
-  },
-  {
-    title: 'Luxe Veranda\'s',
-    desc: 'Geniet het hele jaar van het buitenleven. Onze veranda\'s combineren robuuste constructie met stijlvol design.',
-    features: ['Maatwerk ontwerp', 'Aluminium of hout', 'Geïntegreerde verlichting', 'Windbestendig glas'],
-  },
-  {
-    title: 'Dakkapellen & Dakwerk',
-    desc: 'Vergroot je leefruimte naar boven. Van dakkapel tot complete dakvernieuwing, altijd waterdicht en energiezuinig.',
-    features: ['Dakkapellen op maat', 'Isolatie & ventilatie', 'Zink- en leienwerk', 'Energiebesparing'],
   },
 ];
 
@@ -125,33 +103,44 @@ export default function DienstenPage() {
         </div>
       </section>
 
-      {/* Services — alternating layout */}
-      <section className="py-20 md:py-28">
-        {diensten.map((dienst, idx) => (
-          <FadeIn key={idx}>
-            <div className={`grid lg:grid-cols-2 gap-0 ${idx > 0 ? 'border-t border-woon-primary/10' : ''}`}>
-              <div className={`px-6 md:px-12 lg:px-20 py-16 flex items-center ${idx % 2 === 1 ? 'lg:order-2' : ''}`}>
-                <div className="max-w-lg">
-                  <h3 className="font-heading text-2xl md:text-3xl font-bold mb-4">{dienst.title}</h3>
-                  <p className="text-woon-secondary leading-relaxed mb-8">{dienst.desc}</p>
-                  <ul className="space-y-3">
-                    {dienst.features.map((f, i) => (
-                      <li key={i} className="flex items-center gap-3 text-sm">
-                        <span className="w-1.5 h-1.5 bg-woon-accent rounded-full shrink-0" />
-                        <span className="text-woon-primary/70">{f}</span>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-              </div>
-              <div className={`bg-woon-cream h-[400px] lg:h-auto flex items-center justify-center ${idx % 2 === 1 ? 'lg:order-1' : ''}`}>
-                <span className="font-heading text-[8rem] md:text-[10rem] font-bold text-woon-primary/[0.04] select-none">
-                  0{idx + 1}
-                </span>
-              </div>
-            </div>
+      {/* Services — card grid linking to dedicated pages */}
+      <section className="py-20 md:py-28 px-6 md:px-12 lg:px-20 bg-white">
+        <div className="max-w-[1400px] mx-auto">
+          <FadeIn>
+            <p className="text-woon-accent text-xs tracking-[0.3em] uppercase mb-4">Specialismen</p>
+            <h2 className="font-heading text-3xl md:text-[2.5rem] font-bold leading-[1.2] mb-14 max-w-2xl">
+              Alle diensten op een rij
+            </h2>
           </FadeIn>
-        ))}
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8">
+            {WOONKLASSE_SERVICES.map((service, i) => (
+              <FadeIn key={service.slug} delay={i * 0.04}>
+                <Link href={`/woonklasse/diensten/${service.slug}`} className="group block h-full">
+                  <div className="aspect-[4/5] relative overflow-hidden rounded-xl mb-5 bg-woon-cream">
+                    <Image
+                      src={service.image}
+                      alt={service.name}
+                      fill
+                      className="object-cover group-hover:scale-105 transition-transform duration-700"
+                      sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent" />
+                  </div>
+                  <div className="flex items-start justify-between gap-3 mb-2">
+                    <h3 className="font-heading text-lg md:text-xl font-bold group-hover:text-woon-accent transition-colors">
+                      {service.name}
+                    </h3>
+                    <ArrowUpRight className="w-4 h-4 mt-1 text-woon-accent opacity-0 group-hover:opacity-100 transition-opacity flex-shrink-0" />
+                  </div>
+                  <p className="text-woon-secondary text-sm leading-relaxed mb-3">{service.intro}</p>
+                  <p className="text-[11px] tracking-[0.2em] uppercase text-woon-accent/80 font-medium">
+                    Vanaf {service.averagePrice.split('—')[0].trim()}
+                  </p>
+                </Link>
+              </FadeIn>
+            ))}
+          </div>
+        </div>
       </section>
 
       {/* CTA */}
