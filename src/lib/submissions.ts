@@ -1,6 +1,13 @@
 import fs from 'fs';
 import path from 'path';
 
+export interface AdviesRoom {
+  type: string;
+  meters?: string;
+  notes?: string;
+  photos: { url: string; filename: string }[];
+}
+
 export interface Submission {
   id: string;
   timestamp: string;
@@ -9,10 +16,19 @@ export interface Submission {
   naam: string;
   email: string;
   telefoon: string;
+  stad?: string;
   bedrijf?: string;
   type?: string;
   bericht?: string;
   gelezen: boolean;
+  /** Per-room data from the hero "Persoonlijk advies" tool */
+  advies?: {
+    projectType?: string;
+    tijdpad?: string;
+    budget?: string;
+    stijl?: string;
+    rooms: AdviesRoom[];
+  };
 }
 
 // Use Vercel Blob if token is available, otherwise fall back to filesystem

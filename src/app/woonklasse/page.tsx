@@ -7,6 +7,7 @@ import Image from 'next/image';
 import { ArrowRight } from 'lucide-react';
 import { projects } from '@/data/projects';
 import { CollageGrid } from '@/components/woonklasse/CollageGrid';
+import HeroAdviesTool from '@/components/HeroAdviesTool';
 
 const services = [
   {
@@ -60,8 +61,8 @@ export default function WoonklassePage() {
   return (
     <main className="min-h-screen bg-woon-light text-woon-dark">
 
-      {/* ===== HERO — shorter, softer ===== */}
-      <section ref={heroRef} className="relative h-[62vh] min-h-[460px] md:h-[65vh] flex items-center justify-center overflow-hidden">
+      {/* ===== HERO — softer, with embedded advies tool ===== */}
+      <section ref={heroRef} className="relative min-h-[640px] md:min-h-[720px] flex items-center overflow-hidden py-24 md:py-28">
         <motion.div
           style={{ scale: 1.05 }}
           className="absolute inset-0"
@@ -76,63 +77,54 @@ export default function WoonklassePage() {
           />
         </motion.div>
 
-        {/* Softer overlay — was bg-black/50 + heavy gradient */}
-        <div className="absolute inset-0 bg-black/30 z-10" />
-        <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-black/5 z-10" />
+        <div className="absolute inset-0 bg-black/40 z-10" />
+        <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-black/5 z-10" />
 
-        <motion.div
-          style={{ y: heroTextY, opacity: heroOpacity }}
-          className="relative z-20 text-center px-6 max-w-3xl"
-        >
-          <motion.p
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.3, duration: 0.8 }}
-            className="text-xs tracking-[0.35em] uppercase text-woon-accent mb-5 font-medium"
+        <div className="relative z-20 w-full max-w-7xl mx-auto px-6 lg:px-12 grid lg:grid-cols-[1.1fr_1fr] gap-10 lg:gap-16 items-center">
+          {/* Left — hero copy */}
+          <motion.div
+            style={{ y: heroTextY, opacity: heroOpacity }}
+            className="text-left lg:text-left"
           >
-            Vakmanschap &middot; Kwaliteit &middot; Ontzorging
-          </motion.p>
+            <motion.p
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.3, duration: 0.8 }}
+              className="text-xs tracking-[0.35em] uppercase text-woon-accent mb-5 font-medium"
+            >
+              Vakmanschap &middot; Kwaliteit &middot; Ontzorging
+            </motion.p>
 
-          <motion.h1
+            <motion.h1
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.5, duration: 1, ease: [0.16, 1, 0.3, 1] }}
+              className="font-display text-4xl sm:text-5xl md:text-6xl font-light italic text-white leading-[1.05] tracking-tight mb-6"
+            >
+              Wij bouwen{' '}
+              <span className="not-italic font-medium text-woon-accent">uw droomwoning</span>
+            </motion.h1>
+
+            <motion.p
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ delay: 0.85, duration: 0.8 }}
+              className="text-white/75 text-base md:text-lg max-w-lg font-light"
+            >
+              Van complete renovaties en nieuwbouw tot een nieuwe badkamer. Met een vast team, een vaste prijs en oog voor het detail.
+            </motion.p>
+          </motion.div>
+
+          {/* Right — advies tool */}
+          <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.5, duration: 1, ease: [0.16, 1, 0.3, 1] }}
-            className="font-display text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-light italic text-white leading-[1.05] tracking-tight mb-6"
+            transition={{ delay: 0.6, duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+            className="w-full max-w-xl lg:ml-auto"
           >
-            Wij bouwen{' '}
-            <span className="not-italic font-medium text-woon-accent">uw droomwoning</span>
-          </motion.h1>
-
-          <motion.p
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 0.85, duration: 0.8 }}
-            className="text-white/75 text-base md:text-lg max-w-xl mx-auto mb-9 font-light"
-          >
-            Van complete renovaties en nieuwbouw tot een nieuwe badkamer. Met een vast team, een vaste prijs en oog voor het detail.
-          </motion.p>
-
-          <motion.div
-            initial={{ opacity: 0, y: 16 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 1.05, duration: 0.8 }}
-            className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center"
-          >
-            <Link
-              href="/woonklasse/offerte"
-              className="inline-flex items-center justify-center gap-2 bg-woon-accent text-woon-dark font-medium px-9 py-3.5 rounded-full transition-all hover:scale-105 hover:shadow-lg hover:shadow-woon-accent/20 text-sm tracking-wide"
-            >
-              Vraag vrijblijvend offerte aan
-              <ArrowRight className="w-4 h-4" />
-            </Link>
-            <a
-              href="#projecten"
-              className="inline-flex items-center justify-center border border-white/25 text-white/85 hover:text-white hover:border-white/50 px-9 py-3.5 rounded-full transition-all text-sm tracking-wide"
-            >
-              Bekijk onze projecten
-            </a>
+            <HeroAdviesTool brand="woonklasse" />
           </motion.div>
-        </motion.div>
+        </div>
       </section>
 
       {/* ===== INTRO TEXT ===== */}

@@ -6,6 +6,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { ArrowRight, ArrowUpRight } from 'lucide-react';
 import BadkamerstijlFloatingNav from '@/components/BadkamerstijlFloatingNav';
+import HeroAdviesTool from '@/components/HeroAdviesTool';
 
 /* ──────────────────────────── DATA ──────────────────────────── */
 
@@ -367,13 +368,13 @@ export default function BadkamerstijlHome() {
             transition={{ delay: 1.1, duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
             className="mt-10 md:mt-14 flex flex-col sm:flex-row items-center justify-center gap-5"
           >
-            <Link
-              href="/adviesgesprek"
+            <a
+              href="#advies"
               className="group inline-flex items-center gap-3 bg-white text-bsv2-charcoal text-sm font-medium px-8 py-4 rounded-full hover:bg-bsv2-teal hover:text-white transition-all duration-300"
             >
-              Plan je adviesgesprek
+              Krijg persoonlijk advies
               <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform duration-300" />
-            </Link>
+            </a>
             <Link
               href="/portfolio"
               className="text-white/80 text-sm font-medium tracking-wide hover:text-white transition-colors underline underline-offset-[6px] decoration-white/30 hover:decoration-white"
@@ -397,6 +398,29 @@ export default function BadkamerstijlHome() {
           </p>
         </motion.div>
 
+      </section>
+
+      {/* ═══════════════ 1B. PERSOONLIJK ADVIES (FORM) ═══════════════ */}
+      <section
+        id="advies"
+        className="relative py-20 md:py-24 px-6 md:px-12 lg:px-20 bg-bsv2-cream"
+      >
+        <div className="max-w-5xl mx-auto grid lg:grid-cols-[1fr_1.05fr] gap-10 lg:gap-16 items-center">
+          <div>
+            <span className="text-bsv2-grey text-[11px] tracking-[0.15em] lowercase mb-6 block">
+              (Persoonlijk advies)
+            </span>
+            <h2 className="font-cormorant text-3xl md:text-5xl font-light leading-[1.15] mb-5">
+              Vertel ons over jouw <span className="italic text-bsv2-teal">droombadkamer</span>
+            </h2>
+            <p className="text-bsv2-grey text-base leading-relaxed max-w-md">
+              In 3 stappen krijg je persoonlijk advies van ons team — upload eventueel foto&apos;s van je huidige situatie, dan denken wij gericht met je mee.
+            </p>
+          </div>
+          <div className="w-full">
+            <HeroAdviesTool brand="badkamerstijl" />
+          </div>
+        </div>
       </section>
 
       {/* ═══════════════════ 2. OVER ONS ═══════════════════ */}

@@ -353,6 +353,7 @@ interface NotificatieData {
   telefoon: string;
   formulier: 'offerte' | 'adviesgesprek' | 'contact';
   brand: Brand;
+  stad?: string;
   type?: string;
   bericht?: string;
   bedrijf?: string;
@@ -367,6 +368,7 @@ export function notificatieEmail(data: NotificatieData): string {
     { label: 'Naam', value: data.naam },
     { label: 'E-mail', value: data.email },
     { label: 'Telefoon', value: data.telefoon },
+    data.stad ? { label: 'Stad', value: data.stad } : null,
     data.bedrijf ? { label: 'Bedrijf', value: data.bedrijf } : null,
     data.type ? { label: 'Type', value: data.type } : null,
   ].filter(Boolean) as { label: string; value: string }[];
@@ -413,6 +415,167 @@ export function notificatieEmail(data: NotificatieData): string {
           </tr>
 
           <!-- Footer -->
+          <tr>
+            <td style="background-color:#fafafa;padding:16px 40px;text-align:center;border-top:1px solid #eee;">
+              <p style="margin:0;font-size:11px;color:#bbb;font-family:Arial,Helvetica,sans-serif;">${brandNaam} &middot; ${new Date().toLocaleDateString('nl-NL', { day: 'numeric', month: 'long', year: 'numeric' })}</p>
+            </td>
+          </tr>
+
+        </table>
+      </td>
+    </tr>
+  </table>
+</body>
+</html>`;
+}
+
+export interface AdviesRoomData {
+  type: string;
+  meters?: string;
+  notes?: string;
+  photos: { url: string; filename: string }[];
+}
+
+export interface AdviesEmailData {
+  brand: Brand;
+  naam: string;
+  email: string;
+  telefoon: string;
+  projectType?: string;
+  tijdpad?: string;
+  budget?: string;
+  stijl?: string;
+  bericht?: string;
+  rooms: AdviesRoomData[];
+}
+
+export function adviesNotificatieEmail(data: AdviesEmailData): string {
+  const c = BRAND_COLORS[data.brand];
+  const brandNaam = BRAND_NAMEN[data.brand];
+
+  const contactRows = [
+    { label: 'Naam', value: data.naam },
+    { label: 'E-mail', value: data.email },
+    { label: 'Telefoon', value: data.telefoon },
+  ];
+  const projectRows = [
+    data.projectType ? { label: 'Type project', value: data.projectType } : null,
+    data.tijdpad ? { label: 'Tijdpad', value: data.tijdpad } : null,
+    data.budget ? { label: 'Budget', value: data.budget } : null,
+    data.stijl ? { label: 'Stijl', value: data.stijl } : null,
+  ].filter(Boolean) as { label: string; value: string }[];
+
+  const roomsHtml = data.rooms
+    .map((room, idx) => {
+      const photosHtml = room.photos.length
+        ? `
+          <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="margin-top:12px;">
+            <tr>
+              ${room.photos
+                .map(
+                  (p) => `
+                <td style="padding:4px;width:33%;vertical-align:top;">
+                  <a href="${p.url}" style="text-decoration:none;">
+                    <img src="${p.url}" alt="${p.filename}" width="170" style="display:block;width:100%;max-width:170px;height:auto;border:1px solid #eee;border-radius:4px;" />
+                  </a>
+                </td>`,
+                )
+                .join('')}
+              ${room.photos.length === 1 ? '<td style="width:33%;"></td><td style="width:33%;"></td>' : ''}
+              ${room.photos.length === 2 ? '<td style="width:33%;"></td>' : ''}
+            </tr>
+          </table>`
+        : `<p style="margin:8px 0 0;font-size:13px;color:#aaa;font-style:italic;font-family:Arial,Helvetica,sans-serif;">(Geen foto&apos;s geupload)</p>`;
+
+      const linksHtml = room.photos.length
+        ? `<p style="margin:8px 0 0;font-size:11px;color:#999;font-family:Arial,Helvetica,sans-serif;">${room.photos.map((p, i) => `<a href="${p.url}" style="color:${c.accent};text-decoration:underline;">foto ${i + 1}</a>`).join(' &middot; ')}</p>`
+        : '';
+
+      return `
+      <div style="margin-top:20px;padding:18px;background-color:#fafafa;border-left:3px solid ${c.accent};">
+        <p style="margin:0 0 4px;font-size:11px;letter-spacing:1px;color:#999;text-transform:uppercase;font-family:Arial,Helvetica,sans-serif;">Kamer ${idx + 1}</p>
+        <p style="margin:0;font-size:16px;color:#222;font-family:Arial,Helvetica,sans-serif;font-weight:600;">
+          ${room.type}${room.meters ? ` &middot; ${room.meters} m²` : ''}
+        </p>
+        ${room.notes ? `<p style="margin:8px 0 0;font-size:13px;line-height:1.6;color:#555;white-space:pre-wrap;font-family:Arial,Helvetica,sans-serif;">${room.notes}</p>` : ''}
+        ${photosHtml}
+        ${linksHtml}
+      </div>`;
+    })
+    .join('');
+
+  const projectBlock = projectRows.length
+    ? `
+        <div style="margin-top:24px;padding-top:24px;border-top:1px solid #eee;">
+          <p style="margin:0 0 12px;font-size:11px;letter-spacing:1px;color:#999;text-transform:uppercase;font-family:Arial,Helvetica,sans-serif;">Project</p>
+          <table role="presentation" width="100%" cellpadding="0" cellspacing="0">
+            ${projectRows
+              .map(
+                (v) => `
+            <tr>
+              <td style="padding:6px 0;font-size:11px;letter-spacing:1px;color:#999;text-transform:uppercase;width:100px;vertical-align:top;font-family:Arial,Helvetica,sans-serif;">${v.label}</td>
+              <td style="padding:6px 0;font-size:14px;color:#333;font-family:Arial,Helvetica,sans-serif;">${v.value}</td>
+            </tr>`,
+              )
+              .join('')}
+          </table>
+        </div>`
+    : '';
+
+  const berichtBlock = data.bericht
+    ? `
+        <div style="margin-top:24px;padding-top:24px;border-top:1px solid #eee;">
+          <p style="margin:0 0 10px;font-size:11px;letter-spacing:1px;color:#999;text-transform:uppercase;font-family:Arial,Helvetica,sans-serif;">Bericht</p>
+          <p style="margin:0;font-size:14px;line-height:1.8;color:#555;white-space:pre-wrap;font-family:Arial,Helvetica,sans-serif;">${data.bericht}</p>
+        </div>`
+    : '';
+
+  return `<!DOCTYPE html>
+<html lang="nl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Nieuwe aanvraag persoonlijk advies</title>
+</head>
+<body style="margin:0;padding:0;background-color:#f4f4f4;font-family:Arial,Helvetica,sans-serif;">
+  <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="background-color:#f4f4f4;padding:40px 20px;">
+    <tr>
+      <td align="center">
+        <table role="presentation" width="640" cellpadding="0" cellspacing="0" style="max-width:640px;width:100%;">
+
+          <tr>
+            <td style="background-color:${c.primary};padding:24px 40px;text-align:center;">
+              <h1 style="margin:0;font-size:13px;letter-spacing:3px;color:${c.accent};font-family:Arial,Helvetica,sans-serif;font-weight:400;text-transform:uppercase;">
+                Nieuwe aanvraag &middot; Persoonlijk advies
+              </h1>
+              <p style="margin:6px 0 0;font-size:11px;color:#bbb;font-family:Arial,Helvetica,sans-serif;">${brandNaam} hero formulier &middot; ${data.rooms.length} kamer${data.rooms.length === 1 ? '' : 's'}</p>
+            </td>
+          </tr>
+
+          <tr>
+            <td style="background-color:#ffffff;padding:30px 40px;">
+              <p style="margin:0 0 12px;font-size:11px;letter-spacing:1px;color:#999;text-transform:uppercase;font-family:Arial,Helvetica,sans-serif;">Contact</p>
+              <table role="presentation" width="100%" cellpadding="0" cellspacing="0">
+                ${contactRows
+                  .map(
+                    (v) => `
+                <tr>
+                  <td style="padding:6px 0;font-size:11px;letter-spacing:1px;color:#999;text-transform:uppercase;width:100px;vertical-align:top;font-family:Arial,Helvetica,sans-serif;">${v.label}</td>
+                  <td style="padding:6px 0;font-size:14px;color:#333;font-family:Arial,Helvetica,sans-serif;">${v.value}</td>
+                </tr>`,
+                  )
+                  .join('')}
+              </table>
+              ${projectBlock}
+              ${berichtBlock}
+
+              <div style="margin-top:28px;padding-top:24px;border-top:1px solid #eee;">
+                <p style="margin:0 0 4px;font-size:11px;letter-spacing:1px;color:#999;text-transform:uppercase;font-family:Arial,Helvetica,sans-serif;">Kamers</p>
+                ${roomsHtml}
+              </div>
+            </td>
+          </tr>
+
           <tr>
             <td style="background-color:#fafafa;padding:16px 40px;text-align:center;border-top:1px solid #eee;">
               <p style="margin:0;font-size:11px;color:#bbb;font-family:Arial,Helvetica,sans-serif;">${brandNaam} &middot; ${new Date().toLocaleDateString('nl-NL', { day: 'numeric', month: 'long', year: 'numeric' })}</p>
