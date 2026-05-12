@@ -3,6 +3,7 @@ import { Poppins } from 'next/font/google';
 import Navigation from '@/components/Navigation';
 import Footer from '@/components/Footer';
 import SmoothScroll from '@/components/SmoothScroll';
+import WhatsAppFab from '@/components/WhatsAppFab';
 import { CONTACT } from '@/data/contact';
 import './globals.css';
 
@@ -76,6 +77,13 @@ export default function RootLayout({
         />
       </head>
       <body className={`${poppins.variable} antialiased flex flex-col min-h-screen`}>
+        <script dangerouslySetInnerHTML={{ __html: `
+          window.addEventListener('message', (e) => {
+            if (e.data.type === 'studio-scroll') {
+              window.scrollTo({ top: e.data.y, behavior: 'smooth' });
+            }
+          });
+        `}} />
         <a href="#main-content" className="sr-only focus:not-sr-only focus:absolute focus:z-[9999] focus:top-4 focus:left-4 focus:px-4 focus:py-2 focus:bg-white focus:text-black focus:text-sm focus:font-semibold focus:rounded">
           Ga naar inhoud
         </a>
@@ -83,6 +91,7 @@ export default function RootLayout({
           <Navigation />
           <main id="main-content">{children}</main>
           <Footer />
+          <WhatsAppFab />
         </SmoothScroll>
         {/* Amaso Dashboard Alt+Click inspector bridge — dev-only, self-contained. */}
         {process.env.NODE_ENV !== "production" && (

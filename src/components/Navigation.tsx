@@ -107,31 +107,15 @@ export default function Navigation() {
               />
             </Link>
 
-            {/* Right — WhatsApp + CTA word */}
-            <div className="relative z-10 flex items-center gap-3 sm:gap-5">
-              <a
-                href={WHATSAPP_URL}
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label="Stuur ons een WhatsApp bericht"
-                title="WhatsApp"
-                className={`flex items-center justify-center w-9 h-9 rounded-full transition-colors ${
-                  scrolled
-                    ? 'text-gray-900 hover:bg-gray-900/5'
-                    : 'text-white hover:bg-white/10'
-                }`}
-              >
-                <WhatsAppIcon className="w-[18px] h-[18px]" />
-              </a>
-              <Link
-                href={ctaPath}
-                className={`text-xs tracking-[0.2em] uppercase font-medium transition-colors ${
-                  scrolled ? 'text-gray-900' : 'text-white'
-                } hover:opacity-70 hidden xs:inline-block sm:inline-block`}
-              >
-                {ctaLabel}
-              </Link>
-            </div>
+            {/* Right — CTA word */}
+            <Link
+              href={ctaPath}
+              className={`relative z-10 text-xs tracking-[0.2em] uppercase font-medium transition-colors ${
+                scrolled ? 'text-gray-900' : 'text-white'
+              } hover:opacity-70`}
+            >
+              {ctaLabel}
+            </Link>
           </div>
         </div>
       </nav>
