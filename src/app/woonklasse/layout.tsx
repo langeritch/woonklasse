@@ -3,9 +3,9 @@ import { CONTACT } from '@/data/contact';
 
 const SITE_URL = 'https://woonklasse.nl';
 
-const TITLE = 'Woonklasse — Verbouwingen, aanbouwen en veranda\'s';
+const TITLE = 'Woonklasse — Totaal renovatie, nieuwbouw en sanitair';
 const DESCRIPTION =
-  'Woonklasse realiseert complete verbouwingen, aanbouwen, veranda\'s en dakkapellen. Eigen vakmensen, vaste aanneemsom en oog voor detail. Plan een gratis adviesgesprek.';
+  'Woonklasse realiseert complete renovaties, nieuwbouw en badkamers. Eigen vakmensen, eigen kozijnen leverancier, vaste aanneemsom en oog voor detail. Plan een gratis adviesgesprek.';
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
@@ -15,11 +15,11 @@ export const metadata: Metadata = {
   },
   description: DESCRIPTION,
   keywords: [
-    'verbouwing',
-    'aanbouw',
-    'veranda',
+    'totaal renovatie',
+    'nieuwbouw',
+    'sanitair specialist',
+    'badkamer renovatie',
     'dakkapel',
-    'totaalverbouwing',
     'aannemer Nederland',
     'huis verbouwen',
   ],
@@ -36,7 +36,7 @@ export const metadata: Metadata = {
         url: `${SITE_URL}/og-image.png`,
         width: 1200,
         height: 630,
-        alt: 'Woonklasse — verbouwingen en veranda\'s',
+        alt: 'Woonklasse — totaal renovatie en nieuwbouw',
       },
     ],
   },
@@ -57,7 +57,7 @@ const localBusinessJsonLd = {
   url: SITE_URL,
   logo: { '@type': 'ImageObject', url: `${SITE_URL}/icon.svg` },
   description:
-    'Woonklasse realiseert complete verbouwingen, aanbouwen, veranda\'s en dakkapellen. Vakmanschap en kwaliteit voor jouw droomwoning.',
+    'Woonklasse realiseert complete renovaties, nieuwbouw en sanitair op maat. Vakmanschap en kwaliteit voor jouw droomwoning.',
   email: CONTACT.email,
   telephone: CONTACT.telefoon,
   priceRange: '€€€',
@@ -85,10 +85,10 @@ const serviceJsonLd = {
   '@context': 'https://schema.org',
   '@type': 'Service',
   '@id': `${SITE_URL}#service-verbouwen`,
-  serviceType: 'Verbouwingen, aanbouwen en veranda\'s',
-  name: 'Complete verbouwing op maat',
+  serviceType: 'Totaal renovatie, nieuwbouw en sanitair',
+  name: 'Complete renovatie en nieuwbouw op maat',
   description:
-    'Complete verbouwing, aanbouw, veranda of dakkapel door eigen vakmensen. Vaste aanneemsom van ontwerp tot oplevering, met uitgebreide garantie.',
+    'Totaal renovatie, nieuwbouw en sanitair specialisme door eigen vakmensen. Vaste aanneemsom van ontwerp tot oplevering, met uitgebreide garantie.',
   provider: {
     '@type': 'LocalBusiness',
     '@id': `${SITE_URL}#localbusiness`,

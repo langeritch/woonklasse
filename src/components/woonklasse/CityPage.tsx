@@ -6,13 +6,19 @@ import Image from 'next/image';
 import { ArrowRight, ArrowUpRight, Plus, Minus, Phone } from 'lucide-react';
 import { useState } from 'react';
 import type { WoonklasseCity } from '@/data/woonklasse-cities';
+import type { BlogPost } from '@/data/blog/index';
 import { CONTACT } from '@/data/contact';
 
 const SERVICES = [
   {
-    title: 'Verbouwingen',
-    desc: 'Complete verbouwingen van sloop tot oplevering — één aanspreekpunt, één planning, één eindverantwoordelijke.',
+    title: 'Totaal renovatie & nieuwbouw',
+    desc: 'Complete renovaties en nieuwbouw van casco tot oplevering — één aanspreekpunt, één planning, één eindverantwoordelijke.',
     image: '/woonklasse/canal-residence-1.jpg',
+  },
+  {
+    title: 'Sanitair specialist',
+    desc: 'Eigen sanitair specialisten — complete badkamers, leidingwerk en design afwerking uit één hand.',
+    image: '/woonklasse/apartment-amsterdam-2.jpg',
   },
   {
     title: 'Woningonderhoud',
@@ -22,11 +28,6 @@ const SERVICES = [
   {
     title: 'Keukens',
     desc: 'Maatwerk keukens met sloop, leidingwerk, tegelwerk en montage — alles uit één hand zonder gedoe.',
-    image: '/woonklasse/apartment-amsterdam-2.jpg',
-  },
-  {
-    title: 'Aanbouw & uitbouw',
-    desc: 'Extra woonruimte met aanbouwen, opbouwen en serres die architectonisch aansluiten op het bestaande casco.',
     image: '/woonklasse/penthouse-amsterdam-3.jpg',
   },
   {
@@ -150,9 +151,11 @@ function buildFaqs(city: WoonklasseCity) {
 export default function WoonklasseCityPage({
   city,
   nearbyCities,
+  relatedPosts = [],
 }: {
   city: WoonklasseCity;
   nearbyCities: WoonklasseCity[];
+  relatedPosts?: BlogPost[];
 }) {
   const faqs = buildFaqs(city);
   const [openFaq, setOpenFaq] = useState<number | null>(0);
@@ -583,10 +586,65 @@ export default function WoonklasseCityPage({
         </section>
       )}
 
+      {/* ═══════════════ RELATED GUIDES (BLOG) ═══════════════ */}
+      {relatedPosts.length > 0 && (
+        <section className="py-24 md:py-32 px-6 md:px-12 lg:px-20 bg-woon-light border-t border-woon-dark/[0.06]">
+          <div className="max-w-[1400px] mx-auto">
+            <span className="text-woon-secondary text-[11px] tracking-[0.3em] uppercase mb-6 block">
+              Lees verder
+            </span>
+            <div className="flex flex-col md:flex-row md:items-end md:justify-between mb-12 gap-6">
+              <h2 className="font-display text-3xl md:text-4xl lg:text-5xl font-light italic leading-[1.15] max-w-3xl">
+                Praktische gidsen
+                <br />
+                <span className="not-italic font-medium text-woon-accent">
+                  voor uw verbouwing in {city.name}
+                </span>
+              </h2>
+              <Link
+                href="/blog"
+                className="inline-flex items-center gap-2 text-woon-dark text-sm font-medium hover:text-woon-accent transition-colors whitespace-nowrap"
+              >
+                Bekijk alle artikelen <ArrowUpRight className="w-4 h-4" />
+              </Link>
+            </div>
+
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+              {relatedPosts.map((post) => (
+                <Link
+                  key={post.slug}
+                  href={`/blog/${post.slug}`}
+                  className="group block"
+                >
+                  <div className="relative aspect-[4/3] overflow-hidden mb-5 bg-woon-cream rounded-sm">
+                    <Image
+                      src={post.heroImage}
+                      alt={post.title}
+                      fill
+                      className="object-cover group-hover:scale-[1.04] transition-transform duration-700"
+                      sizes="(max-width: 768px) 100vw, 33vw"
+                    />
+                  </div>
+                  <span className="text-[10px] tracking-[0.2em] uppercase text-woon-accent mb-2 block">
+                    {post.category}
+                  </span>
+                  <h3 className="font-display text-xl md:text-2xl font-light italic leading-[1.2] mb-3 group-hover:text-woon-accent transition-colors">
+                    {post.title}
+                  </h3>
+                  <p className="text-woon-secondary text-sm leading-relaxed line-clamp-2">
+                    {post.excerpt}
+                  </p>
+                </Link>
+              ))}
+            </div>
+          </div>
+        </section>
+      )}
+
       {/* ═══════════════ FOOTER ═══════════════ */}
       <section className="py-16 md:py-20 px-6 md:px-12 lg:px-20 bg-woon-cream border-t border-woon-dark/[0.06]">
         <div className="max-w-[1400px] mx-auto">
-          <div className="grid grid-cols-2 gap-x-16 gap-y-3 md:grid-cols-6 text-sm text-woon-secondary mb-10">
+          <div className="grid grid-cols-2 gap-x-16 gap-y-3 md:grid-cols-4 lg:grid-cols-7 text-sm text-woon-secondary mb-10">
             <Link href="/" className="hover:text-woon-dark transition-colors">
               Home
             </Link>
@@ -598,6 +656,9 @@ export default function WoonklasseCityPage({
             </Link>
             <Link href="/woonklasse/projecten" className="hover:text-woon-dark transition-colors">
               Projecten
+            </Link>
+            <Link href="/blog" className="hover:text-woon-dark transition-colors">
+              Blog
             </Link>
             <Link href="/woonklasse/over-ons" className="hover:text-woon-dark transition-colors">
               Over ons

@@ -66,8 +66,9 @@ export default function Footer() {
               <li>{CONTACT.adres.postcode} {CONTACT.adres.plaats}</li>
             </ul>
             <div className="mt-8 pt-6 border-t border-white/10">
+              <p className="text-[10px] tracking-[0.2em] uppercase text-white/35 mb-2">Zusterbedrijf</p>
               <Link href="/badkamerstijl" className="text-xs tracking-[0.2em] uppercase text-woon-accent hover:opacity-70 transition-opacity">
-                Naar Badkamerstijl &rarr;
+                Badkamerstijl &mdash; luxe badkamers &rarr;
               </Link>
             </div>
           </div>

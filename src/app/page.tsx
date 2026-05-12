@@ -40,7 +40,7 @@ export default function Home() {
           </h2>
 
           <p className="text-sm md:text-base text-white/50 max-w-xs mb-8 tracking-wide uppercase font-light">
-            Verbouwingen &middot; Aanbouw &middot; Veranda&apos;s
+            Renovatie &middot; Nieuwbouw &middot; Sanitair
           </p>
 
           {/* Minimal CTA — pill outline like Markovskaia */}

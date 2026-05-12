@@ -1,10 +1,21 @@
 'use client';
 
 import { useRef, useState } from 'react';
+import { useRouter } from 'next/navigation';
 import Image from 'next/image';
 import { motion, useScroll, useTransform } from 'framer-motion';
 import { ArrowRight } from 'lucide-react';
 import { CONTACT } from '@/data/contact';
+
+const PROJECT_TYPES = [
+  { id: 'totaal-renovatie', label: 'Totaal renovatie / nieuwbouw' },
+  { id: 'complete', label: 'Complete renovatie' },
+  { id: 'sanitair', label: 'Sanitair / badkamer specialist' },
+  { id: 'keuken', label: 'Keuken renovatie' },
+  { id: 'dakkapel', label: 'Dakkapel / dakwerk' },
+  { id: 'onderhoud', label: 'Onderhoud / herstelwerk' },
+  { id: 'orientatie', label: 'Nog oriënteren' },
+];
 
 function FadeIn({ children, className = '', delay = 0 }: { children: React.ReactNode; className?: string; delay?: number }) {
   return (
@@ -21,12 +32,22 @@ function FadeIn({ children, className = '', delay = 0 }: { children: React.React
 }
 
 export default function OffertePage() {
+  const router = useRouter();
   const heroRef = useRef(null);
   const { scrollYProgress } = useScroll({ target: heroRef, offset: ['start start', 'end start'] });
   const heroY = useTransform(scrollYProgress, [0, 1], ['0%', '20%']);
 
-  const [formData, setFormData] = useState({ naam: '', bedrijf: '', email: '', telefoon: '', type: '', bericht: '', website: '' });
-  const [status, setStatus] = useState<'idle' | 'loading' | 'success' | 'error'>('idle');
+  const [formData, setFormData] = useState({
+    naam: '',
+    bedrijf: '',
+    email: '',
+    telefoon: '',
+    stad: '',
+    type: '',
+    bericht: '',
+    website: '',
+  });
+  const [status, setStatus] = useState<'idle' | 'loading' | 'error'>('idle');
   const [errorMsg, setErrorMsg] = useState('');
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
@@ -38,15 +59,40 @@ export default function OffertePage() {
     setStatus('loading');
     setErrorMsg('');
     try {
+      // Capture UTMs + landing context from the browser at submit time.
+      // Reading window.location avoids the Suspense requirement of useSearchParams.
+      const params = typeof window !== 'undefined'
+        ? new URLSearchParams(window.location.search)
+        : new URLSearchParams();
+      const utm = {
+        utm_source: params.get('utm_source') || undefined,
+        utm_medium: params.get('utm_medium') || undefined,
+        utm_campaign: params.get('utm_campaign') || undefined,
+        utm_content: params.get('utm_content') || undefined,
+        utm_term: params.get('utm_term') || undefined,
+      };
+      const landing_page = typeof window !== 'undefined'
+        ? `${window.location.origin}${window.location.pathname}${window.location.search}`
+        : undefined;
+      const referrer = typeof document !== 'undefined' && document.referrer
+        ? document.referrer
+        : undefined;
+
       const res = await fetch('/api/contact', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ ...formData, formulier: 'offerte', brand: 'woonklasse' }),
+        body: JSON.stringify({
+          ...formData,
+          formulier: 'offerte',
+          brand: 'woonklasse',
+          ...utm,
+          landing_page,
+          referrer,
+        }),
       });
       const data = await res.json();
       if (!res.ok) throw new Error(data.errors?.join(', ') || data.message || 'Verzenden mislukt');
-      setStatus('success');
-      setFormData({ naam: '', bedrijf: '', email: '', telefoon: '', type: '', bericht: '', website: '' });
+      router.push('/bedankt');
     } catch (err) {
       setStatus('error');
       setErrorMsg(err instanceof Error ? err.message : 'Er is iets misgegaan');
@@ -124,13 +170,6 @@ export default function OffertePage() {
           <FadeIn delay={0.2}>
             <div className="bg-woon-cream p-8 md:p-12">
               <h3 className="font-heading text-xl font-bold mb-8">Projectaanvraag</h3>
-              {status === 'success' ? (
-                <div className="bg-green-50 border border-green-200 rounded-lg p-8 text-center">
-                  <p className="text-green-800 font-heading font-bold text-lg mb-2">Bedankt voor je aanvraag!</p>
-                  <p className="text-green-700 text-sm">We nemen zo snel mogelijk contact met je op.</p>
-                  <button onClick={() => setStatus('idle')} className="mt-4 text-sm text-woon-accent underline">Nog een aanvraag versturen</button>
-                </div>
-              ) : (
               <form className="space-y-6" onSubmit={handleSubmit}>
                 {/* Honeypot — hidden from humans, bots fill this */}
                 <div aria-hidden="true" className="absolute opacity-0 h-0 overflow-hidden">
@@ -138,21 +177,25 @@ export default function OffertePage() {
                 </div>
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
                   <div>
-                    <label className="text-[10px] tracking-[0.2em] uppercase text-woon-secondary mb-2 block">Naam *</label>
+                    <label htmlFor="naam" className="text-[10px] tracking-[0.2em] uppercase text-woon-secondary mb-2 block">Naam *</label>
                     <input
+                      id="naam"
                       type="text"
                       name="naam"
                       required
+                      autoComplete="name"
                       value={formData.naam}
                       onChange={handleChange}
                       className="w-full bg-transparent border-b border-woon-primary/20 focus:border-woon-accent pb-2 pt-1 text-woon-primary outline-none transition-colors text-sm"
                     />
                   </div>
                   <div>
-                    <label className="text-[10px] tracking-[0.2em] uppercase text-woon-secondary mb-2 block">Bedrijf</label>
+                    <label htmlFor="bedrijf" className="text-[10px] tracking-[0.2em] uppercase text-woon-secondary mb-2 block">Bedrijf</label>
                     <input
+                      id="bedrijf"
                       type="text"
                       name="bedrijf"
+                      autoComplete="organization"
                       value={formData.bedrijf}
                       onChange={handleChange}
                       className="w-full bg-transparent border-b border-woon-primary/20 focus:border-woon-accent pb-2 pt-1 text-woon-primary outline-none transition-colors text-sm"
@@ -161,47 +204,66 @@ export default function OffertePage() {
                 </div>
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
                   <div>
-                    <label className="text-[10px] tracking-[0.2em] uppercase text-woon-secondary mb-2 block">E-mail *</label>
+                    <label htmlFor="email" className="text-[10px] tracking-[0.2em] uppercase text-woon-secondary mb-2 block">E-mail *</label>
                     <input
+                      id="email"
                       type="email"
                       name="email"
                       required
+                      autoComplete="email"
                       value={formData.email}
                       onChange={handleChange}
                       className="w-full bg-transparent border-b border-woon-primary/20 focus:border-woon-accent pb-2 pt-1 text-woon-primary outline-none transition-colors text-sm"
                     />
                   </div>
                   <div>
-                    <label className="text-[10px] tracking-[0.2em] uppercase text-woon-secondary mb-2 block">Telefoon *</label>
+                    <label htmlFor="telefoon" className="text-[10px] tracking-[0.2em] uppercase text-woon-secondary mb-2 block">Telefoon *</label>
                     <input
+                      id="telefoon"
                       type="tel"
                       name="telefoon"
                       required
+                      autoComplete="tel"
                       value={formData.telefoon}
                       onChange={handleChange}
                       className="w-full bg-transparent border-b border-woon-primary/20 focus:border-woon-accent pb-2 pt-1 text-woon-primary outline-none transition-colors text-sm"
                     />
                   </div>
                 </div>
-                <div>
-                  <label className="text-[10px] tracking-[0.2em] uppercase text-woon-secondary mb-2 block">Type project *</label>
-                  <select
-                    name="type"
-                    value={formData.type}
-                    onChange={handleChange}
-                    className="w-full bg-transparent border-b border-woon-primary/20 focus:border-woon-accent pb-2 pt-1 text-woon-primary outline-none transition-colors text-sm appearance-none cursor-pointer"
-                  >
-                    <option value="" disabled>Selecteer...</option>
-                    <option value="verbouwing">Complete verbouwing</option>
-                    <option value="aanbouw">Aanbouw & uitbreiding</option>
-                    <option value="veranda">Veranda</option>
-                    <option value="dakkapel">Dakkapel & dakwerk</option>
-                    <option value="anders">Anders</option>
-                  </select>
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                  <div>
+                    <label htmlFor="stad" className="text-[10px] tracking-[0.2em] uppercase text-woon-secondary mb-2 block">Plaats / stad</label>
+                    <input
+                      id="stad"
+                      type="text"
+                      name="stad"
+                      autoComplete="address-level2"
+                      value={formData.stad}
+                      onChange={handleChange}
+                      className="w-full bg-transparent border-b border-woon-primary/20 focus:border-woon-accent pb-2 pt-1 text-woon-primary outline-none transition-colors text-sm"
+                    />
+                  </div>
+                  <div>
+                    <label htmlFor="type" className="text-[10px] tracking-[0.2em] uppercase text-woon-secondary mb-2 block">Type project</label>
+                    <select
+                      id="type"
+                      name="type"
+                      value={formData.type}
+                      onChange={handleChange}
+                      aria-label="Type project"
+                      className="w-full bg-transparent border-b border-woon-primary/20 focus:border-woon-accent pb-2 pt-1 text-woon-primary outline-none transition-colors text-sm appearance-none cursor-pointer"
+                    >
+                      <option value="">Selecteer...</option>
+                      {PROJECT_TYPES.map((t) => (
+                        <option key={t.id} value={t.label}>{t.label}</option>
+                      ))}
+                    </select>
+                  </div>
                 </div>
                 <div>
-                  <label className="text-[10px] tracking-[0.2em] uppercase text-woon-secondary mb-2 block">Projectdetails</label>
+                  <label htmlFor="bericht" className="text-[10px] tracking-[0.2em] uppercase text-woon-secondary mb-2 block">Projectdetails</label>
                   <textarea
+                    id="bericht"
                     name="bericht"
                     rows={4}
                     value={formData.bericht}
@@ -221,7 +283,6 @@ export default function OffertePage() {
                   {status !== 'loading' && <ArrowRight className="w-4 h-4" />}
                 </button>
               </form>
-              )}
             </div>
           </FadeIn>
         </div>
