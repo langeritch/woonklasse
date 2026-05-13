@@ -1,6 +1,11 @@
 import { NextResponse } from 'next/server';
 import { handleUpload, type HandleUploadBody } from '@vercel/blob/client';
 
+// Fluid Compute, not Edge — @vercel/blob/client uses Node APIs and we want
+// generous timeouts since clients can upload large phone photos.
+export const runtime = 'nodejs';
+export const maxDuration = 60;
+
 /**
  * Mints short-lived signed URLs so the browser can upload images
  * directly to Vercel Blob, bypassing the 4.5 MB Vercel Function body limit.
@@ -71,7 +76,13 @@ export async function POST(request: Request): Promise<NextResponse> {
     return NextResponse.json(jsonResponse);
   } catch (err) {
     const msg = err instanceof Error ? err.message : String(err);
-    console.error('[advies/upload-url] handleUpload error:', msg);
+    const stack = err instanceof Error ? err.stack : undefined;
+    console.error('[advies/upload-url] handleUpload error', {
+      msg,
+      ip,
+      hasToken: Boolean(process.env.BLOB_READ_WRITE_TOKEN),
+      stack,
+    });
     return NextResponse.json({ error: msg }, { status: 400 });
   }
 }

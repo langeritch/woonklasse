@@ -6,9 +6,10 @@ import Image from 'next/image';
 import { usePathname } from 'next/navigation';
 import { motion, AnimatePresence } from 'framer-motion';
 
-// Both brands share the same business phone (+31 30 207 23 88).
+// WhatsApp goes to the mobile line (+31 6 50 42 46 83); the business
+// landline (+31 30 207 23 88) is for calls only.
 // wa.me requires no plus sign and no spaces.
-const WHATSAPP_NUMBER = '31302072388';
+const WHATSAPP_NUMBER = '31650424683';
 const WHATSAPP_URL = `https://wa.me/${WHATSAPP_NUMBER}`;
 
 function WhatsAppIcon({ className = 'w-4 h-4' }: { className?: string }) {

@@ -2,8 +2,10 @@
 
 import { usePathname } from 'next/navigation';
 
-// Both brands share the same business phone (+31 30 207 23 88).
-const WHATSAPP_URL = 'https://wa.me/31302072388';
+// WhatsApp goes to the mobile line (+31 6 50 42 46 83); the business
+// landline (+31 30 207 23 88) is for calls only — wa.me requires a mobile
+// number registered with WhatsApp.
+const WHATSAPP_URL = 'https://wa.me/31650424683';
 
 export default function WhatsAppFab() {
   const pathname = usePathname();
