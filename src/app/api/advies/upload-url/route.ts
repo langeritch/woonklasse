@@ -7,17 +7,21 @@ import { handleUpload, type HandleUploadBody } from '@vercel/blob/client';
  *
  * Used by the hero "Persoonlijk advies" tool. Never trust the client —
  * we constrain content type + max size here.
+ *
+ * Note: we DO NOT register an `onUploadCompleted` callback. Doing so makes
+ * Vercel Blob attach a callbackUrl to the token; when the upload finishes,
+ * the Blob service POSTs to that URL and the client's `upload()` promise
+ * waits for that POST to succeed. If anything between Blob's infra and the
+ * Vercel function takes long (cold start, network) the browser sees the
+ * upload "hang". We don't need server-side bookkeeping here — the final
+ * blob URLs are POSTed by the browser to /api/advies on form submit — so
+ * skipping the callback is both simpler and more reliable.
  */
-const ALLOWED_TYPES = [
-  'image/jpeg',
-  'image/jpg',
-  'image/png',
-  'image/webp',
-  'image/heic',
-  'image/heif',
-];
+// Allow any image/* — covers JPEG/PNG/HEIC/HEIF/WebP/AVIF and any future
+// types phones produce. Wildcards are supported by Vercel Blob.
+const ALLOWED_TYPES = ['image/*'];
 
-const MAX_BYTES = 10 * 1024 * 1024; // 10 MB
+const MAX_BYTES = 25 * 1024 * 1024; // 25 MB — modern phones easily exceed 10 MB
 
 // Simple per-IP rate limit — same in-memory pattern used elsewhere.
 const rateMap = new Map<string, { count: number; resetAt: number }>();
@@ -62,13 +66,12 @@ export async function POST(request: Request): Promise<NextResponse> {
           tokenPayload: JSON.stringify({ ip }),
         };
       },
-      onUploadCompleted: async () => {
-        // We just need the URL on the client; no server-side bookkeeping here.
-      },
+      // No onUploadCompleted on purpose — see top-of-file note.
     });
     return NextResponse.json(jsonResponse);
   } catch (err) {
     const msg = err instanceof Error ? err.message : String(err);
+    console.error('[advies/upload-url] handleUpload error:', msg);
     return NextResponse.json({ error: msg }, { status: 400 });
   }
 }
