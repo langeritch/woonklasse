@@ -95,50 +95,81 @@ export default function HeroAdviesTool({ brand, className = '' }: Props) {
   const uploadFiles = useCallback(
     async (roomId: string, files: FileList | File[]) => {
       const accepted = Array.from(files);
-      const room = rooms.find((r) => r.id === roomId);
-      if (!room || !accepted.length) return;
+      if (!accepted.length) return;
       setError(null);
 
-      for (const file of accepted) {
-        // mark uploading
-        setRooms((curr) =>
-          curr.map((r) =>
-            r.id === roomId ? { ...r, uploading: { ...r.uploading, [file.name]: 0 } } : r,
-          ),
-        );
-
-        try {
-          const blob = await upload(`advies/${brand}/${Date.now()}-${file.name}`, file, {
-            access: 'public',
-            handleUploadUrl: '/api/advies/upload-url',
-            contentType: file.type || undefined,
-          });
-
-          setRooms((curr) =>
-            curr.map((r) => {
-              if (r.id !== roomId) return r;
-              const { [file.name]: _done, ...rest } = r.uploading;
-              return {
-                ...r,
-                uploading: rest,
-                photos: [...r.photos, { url: blob.url, filename: file.name }],
-              };
-            }),
-          );
-        } catch (e) {
-          console.error('upload failed', e);
-          setRooms((curr) =>
-            curr.map((r) => {
-              if (r.id !== roomId) return r;
-              const { [file.name]: _done, ...rest } = r.uploading;
-              return { ...r, uploading: rest };
-            }),
-          );
-          setError(`Upload van "${file.name}" mislukt. Probeer een kleiner bestand.`);
-        }
+      // Pre-flight: client-side size & type check so the user gets feedback
+      // instantly instead of a stuck spinner if Blob rejects.
+      const MAX_CLIENT_BYTES = 12 * 1024 * 1024; // matches server cap with buffer
+      const oversize = accepted.find((f) => f.size > MAX_CLIENT_BYTES);
+      if (oversize) {
+        setError(`"${oversize.name}" is groter dan 12 MB. Kies een kleiner bestand.`);
+        return;
       }
+
+      // Upload in parallel — each file gets its own state slot.
+      await Promise.all(
+        accepted.map(async (file) => {
+          const uploadKey = `${file.name}-${Date.now()}-${Math.random()}`;
+
+          setRooms((curr) =>
+            curr.map((r) =>
+              r.id === roomId ? { ...r, uploading: { ...r.uploading, [uploadKey]: 0 } } : r,
+            ),
+          );
+
+          const cleanupUploading = () => {
+            setRooms((curr) =>
+              curr.map((r) => {
+                if (r.id !== roomId) return r;
+                const { [uploadKey]: _gone, ...rest } = r.uploading;
+                return { ...r, uploading: rest };
+              }),
+            );
+          };
+
+          try {
+            // Fail fast if Blob hangs for any reason (CORS, network, etc).
+            const controller = new AbortController();
+            const timeoutId = setTimeout(() => controller.abort(), 90_000);
+
+            console.log('[advies] uploading', file.name, file.type, `${(file.size / 1024).toFixed(0)}KB`);
+
+            const blob = await upload(
+              `advies/${brand}/${Date.now()}-${file.name.replace(/[^a-zA-Z0-9._-]/g, '_')}`,
+              file,
+              {
+                access: 'public',
+                handleUploadUrl: '/api/advies/upload-url',
+                contentType: file.type || 'application/octet-stream',
+                abortSignal: controller.signal,
+              },
+            );
+
+            clearTimeout(timeoutId);
+            console.log('[advies] upload done', blob.url);
+
+            setRooms((curr) =>
+              curr.map((r) => {
+                if (r.id !== roomId) return r;
+                const { [uploadKey]: _gone, ...rest } = r.uploading;
+                return {
+                  ...r,
+                  uploading: rest,
+                  photos: [...r.photos, { url: blob.url, filename: file.name }],
+                };
+              }),
+            );
+          } catch (e) {
+            cleanupUploading();
+            const msg = e instanceof Error ? e.message : String(e);
+            console.error('[advies] upload failed', file.name, msg, e);
+            setError(`Upload van "${file.name}" mislukt: ${msg.slice(0, 140)}`);
+          }
+        }),
+      );
     },
-    [rooms, totalPhotos, brand],
+    [brand],
   );
 
   const removePhoto = (roomId: string, photoUrl: string) => {
