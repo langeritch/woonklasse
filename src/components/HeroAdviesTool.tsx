@@ -37,9 +37,8 @@ const STIJL = ['Modern', 'Klassiek', 'Industrieel', 'Natuurlijk / warm', 'Strak 
 const BUDGET_WOON = ['< €25.000', '€25.000 — €75.000', '€75.000 — €150.000', '€150.000+', 'Onbekend'];
 const BUDGET_BADK = ['< €10.000', '€10.000 — €25.000', '€25.000 — €50.000', '€50.000+', 'Onbekend'];
 
-const MAX_ROOMS = 5;
-const MAX_PHOTOS_PER_ROOM = 3;
-const MAX_TOTAL_PHOTOS = 15;
+// No hard caps — users can upload as many photos and add as many rooms as
+// they want. Sanity caps live server-side in /api/advies.
 
 function uid(): string {
   return Math.random().toString(36).slice(2, 10);
@@ -95,19 +94,9 @@ export default function HeroAdviesTool({ brand, className = '' }: Props) {
   // ------------------------------------------------------------
   const uploadFiles = useCallback(
     async (roomId: string, files: FileList | File[]) => {
-      const fileArr = Array.from(files);
+      const accepted = Array.from(files);
       const room = rooms.find((r) => r.id === roomId);
-      if (!room) return;
-
-      // Per-room and total caps
-      const slotsForRoom = MAX_PHOTOS_PER_ROOM - room.photos.length;
-      const slotsTotal = MAX_TOTAL_PHOTOS - totalPhotos;
-      const slots = Math.max(0, Math.min(slotsForRoom, slotsTotal));
-      const accepted = fileArr.slice(0, slots);
-      if (!accepted.length) {
-        setError(`Max ${MAX_PHOTOS_PER_ROOM} foto's per kamer en ${MAX_TOTAL_PHOTOS} totaal.`);
-        return;
-      }
+      if (!room || !accepted.length) return;
       setError(null);
 
       for (const file of accepted) {
@@ -321,11 +310,11 @@ export default function HeroAdviesTool({ brand, className = '' }: Props) {
                   Per kamer
                 </p>
                 <p className="text-[10px] text-gray-400">
-                  {totalPhotos}/{MAX_TOTAL_PHOTOS} foto&apos;s
+                  {rooms.length} kamer{rooms.length === 1 ? '' : 's'} &middot; {totalPhotos} foto{totalPhotos === 1 ? '' : "'s"}
                 </p>
               </div>
 
-              <div className="space-y-4 max-h-[420px] overflow-y-auto pr-1 -mr-1">
+              <div className="space-y-4 max-h-[480px] overflow-y-auto pr-1 -mr-1">
                 {rooms.map((room, idx) => (
                   <RoomCard
                     key={room.id}
@@ -337,11 +326,20 @@ export default function HeroAdviesTool({ brand, className = '' }: Props) {
                     accentBorder={accentBorder}
                     accentText={accentText}
                     onAccentText={onAccentText}
+                    canRemove={rooms.length > 1}
                     onChange={(k, v) => updateRoom(room.id, k, v)}
                     onUploadFiles={(files) => uploadFiles(room.id, files)}
                     onRemovePhoto={(url) => removePhoto(room.id, url)}
+                    onRemoveRoom={() => setRooms((curr) => curr.filter((r) => r.id !== room.id))}
                   />
                 ))}
+                <button
+                  type="button"
+                  onClick={() => setRooms((curr) => [...curr, emptyRoom()])}
+                  className={`w-full py-3 rounded-lg border-2 border-dashed border-gray-300 hover:${accentBorder} text-gray-500 hover:${accentText} text-sm font-medium transition-colors`}
+                >
+                  + Voeg kamer toe
+                </button>
               </div>
 
               {error && <p className="text-xs text-red-600">{error}</p>}
@@ -477,9 +475,11 @@ interface RoomCardProps {
   accentBorder: string;
   accentText: string;
   onAccentText: string;
+  canRemove: boolean;
   onChange: <K extends keyof RoomState>(key: K, value: RoomState[K]) => void;
   onUploadFiles: (files: FileList | File[]) => void;
   onRemovePhoto: (url: string) => void;
+  onRemoveRoom: () => void;
 }
 
 function RoomCard({
@@ -490,19 +490,32 @@ function RoomCard({
   accentBorder,
   accentText,
   onAccentText,
+  canRemove,
   onChange,
   onUploadFiles,
   onRemovePhoto,
+  onRemoveRoom,
 }: RoomCardProps) {
   const inputRef = useRef<HTMLInputElement>(null);
-  const slotsLeft = Math.max(0, 3 - room.photos.length);
   const uploadingCount = Object.keys(room.uploading).length;
 
   return (
     <div className={`border ${room.type ? accentBorder : 'border-gray-200'} rounded-lg p-4 transition-colors`}>
-      <p className="text-[10px] tracking-[0.2em] uppercase text-gray-400 mb-2">
-        Kamer {index + 1}
-      </p>
+      <div className="flex items-center justify-between mb-2">
+        <p className="text-[10px] tracking-[0.2em] uppercase text-gray-400">
+          Kamer {index + 1}
+        </p>
+        {canRemove && (
+          <button
+            type="button"
+            onClick={onRemoveRoom}
+            className="text-[10px] text-gray-400 hover:text-red-500 transition-colors"
+            aria-label={`Verwijder kamer ${index + 1}`}
+          >
+            verwijder
+          </button>
+        )}
+      </div>
 
       <div className="flex flex-wrap gap-1.5 mb-3">
         {roomTypes.map((t) => (
@@ -545,7 +558,7 @@ function RoomCard({
       <div>
         <div className="flex items-center justify-between mb-2">
           <p className="text-[10px] tracking-[0.15em] uppercase text-gray-500">
-            Foto&apos;s huidige situatie (optioneel, max 3)
+            Foto&apos;s huidige situatie (optioneel) &middot; {room.photos.length}
           </p>
           {uploadingCount > 0 && (
             <p className={`text-[10px] ${accentText} animate-pulse`}>{uploadingCount} uploaden…</p>
@@ -567,16 +580,14 @@ function RoomCard({
               </button>
             </div>
           ))}
-          {slotsLeft > 0 && (
-            <button
-              type="button"
-              onClick={() => inputRef.current?.click()}
-              className={`aspect-square rounded-lg border-2 border-dashed border-gray-300 hover:${accentBorder} text-gray-400 hover:${accentText} flex flex-col items-center justify-center text-xs transition-colors`}
-            >
-              <span className="text-2xl leading-none mb-1">+</span>
-              <span>Foto</span>
-            </button>
-          )}
+          <button
+            type="button"
+            onClick={() => inputRef.current?.click()}
+            className={`aspect-square rounded-lg border-2 border-dashed border-gray-300 hover:${accentBorder} text-gray-400 hover:${accentText} flex flex-col items-center justify-center text-xs transition-colors`}
+          >
+            <span className="text-2xl leading-none mb-1">+</span>
+            <span>Foto</span>
+          </button>
         </div>
 
         <input

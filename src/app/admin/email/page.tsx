@@ -7,6 +7,13 @@ type Brand = 'woonklasse' | 'badkamerstijl';
 type Tab = 'inbox' | 'verstuur';
 type InboxFilter = 'aanvragen' | 'emails';
 
+interface AdviesRoom {
+  type: string;
+  meters?: string;
+  notes?: string;
+  photos: { url: string; filename: string }[];
+}
+
 interface Submission {
   id: string;
   timestamp: string;
@@ -19,6 +26,13 @@ interface Submission {
   type?: string;
   bericht?: string;
   gelezen: boolean;
+  advies?: {
+    projectType?: string;
+    tijdpad?: string;
+    budget?: string;
+    stijl?: string;
+    rooms: AdviesRoom[];
+  };
 }
 
 interface EmailMessage {
@@ -63,6 +77,7 @@ const FORMULIER_LABELS: Record<string, string> = {
   offerte: 'Offerte',
   adviesgesprek: 'Adviesgesprek',
   contact: 'Contact',
+  advies: 'Persoonlijk advies',
 };
 
 function timeAgo(timestamp: string): string {
@@ -534,6 +549,88 @@ export default function EmailPortal() {
                     )}
                   </div>
                 ))}
+                {selectedSub.advies && (
+                  <div className="mt-4 pt-4 border-t border-white/10 space-y-4">
+                    {(selectedSub.advies.projectType || selectedSub.advies.tijdpad || selectedSub.advies.budget || selectedSub.advies.stijl) && (
+                      <div className="space-y-2">
+                        <span className="text-white/30 text-xs tracking-wider uppercase block">Project</span>
+                        <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 text-sm">
+                          {selectedSub.advies.projectType && (
+                            <div className="flex flex-col">
+                              <span className="text-white/30 text-[10px] tracking-wider uppercase">Type</span>
+                              <span className="text-white/70">{selectedSub.advies.projectType}</span>
+                            </div>
+                          )}
+                          {selectedSub.advies.tijdpad && (
+                            <div className="flex flex-col">
+                              <span className="text-white/30 text-[10px] tracking-wider uppercase">Tijdpad</span>
+                              <span className="text-white/70">{selectedSub.advies.tijdpad}</span>
+                            </div>
+                          )}
+                          {selectedSub.advies.budget && (
+                            <div className="flex flex-col">
+                              <span className="text-white/30 text-[10px] tracking-wider uppercase">Budget</span>
+                              <span className="text-white/70">{selectedSub.advies.budget}</span>
+                            </div>
+                          )}
+                          {selectedSub.advies.stijl && (
+                            <div className="flex flex-col">
+                              <span className="text-white/30 text-[10px] tracking-wider uppercase">Stijl</span>
+                              <span className="text-white/70">{selectedSub.advies.stijl}</span>
+                            </div>
+                          )}
+                        </div>
+                      </div>
+                    )}
+
+                    <div>
+                      <span className="text-white/30 text-xs tracking-wider uppercase block mb-3">
+                        Kamers ({selectedSub.advies.rooms.length})
+                      </span>
+                      <div className="space-y-3">
+                        {selectedSub.advies.rooms.map((room, idx) => (
+                          <div key={idx} className="border border-white/10 rounded-lg p-3 bg-white/[0.02]">
+                            <div className="flex items-baseline gap-2 mb-2">
+                              <span className="text-[10px] tracking-wider uppercase text-white/30">Kamer {idx + 1}</span>
+                              <span className="text-sm text-white/85">{room.type || 'Niet gespecificeerd'}</span>
+                              {room.meters && (
+                                <span className="text-xs text-white/40">&middot; {room.meters} m²</span>
+                              )}
+                            </div>
+                            {room.notes && (
+                              <p className="text-xs text-white/50 mb-2 whitespace-pre-wrap">{room.notes}</p>
+                            )}
+                            {room.photos.length > 0 && (
+                              <div className="grid grid-cols-3 sm:grid-cols-4 gap-2 mt-2">
+                                {room.photos.map((p) => (
+                                  <a
+                                    key={p.url}
+                                    href={p.url}
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    className="block aspect-square overflow-hidden rounded bg-black/30 group relative"
+                                    title={p.filename}
+                                  >
+                                    {/* eslint-disable-next-line @next/next/no-img-element */}
+                                    <img
+                                      src={p.url}
+                                      alt={p.filename}
+                                      className="w-full h-full object-cover group-hover:scale-105 transition-transform"
+                                      loading="lazy"
+                                    />
+                                  </a>
+                                ))}
+                              </div>
+                            )}
+                            {room.photos.length === 0 && (
+                              <p className="text-[11px] text-white/20 italic">Geen foto&apos;s</p>
+                            )}
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+                  </div>
+                )}
                 {selectedSub.bericht && (
                   <div className="mt-4 pt-4 border-t border-white/10">
                     <span className="text-white/30 text-xs tracking-wider uppercase block mb-2">Bericht</span>

@@ -90,7 +90,9 @@ const roomSchema = z.object({
   type: z.string().min(1).max(80),
   meters: z.string().max(40).optional(),
   notes: z.string().max(1000).optional(),
-  photos: z.array(photoSchema).max(3),
+  // No per-room photo cap — users can upload as many as they want per room.
+  // Loose upper bound just to keep payloads sane against a runaway client.
+  photos: z.array(photoSchema).max(200),
 });
 
 const adviesSchema = z.object({
@@ -103,7 +105,9 @@ const adviesSchema = z.object({
   tijdpad: z.string().max(80).optional(),
   budget: z.string().max(80).optional(),
   stijl: z.string().max(80).optional(),
-  rooms: z.array(roomSchema).min(1, 'Selecteer minimaal 1 kamer').max(5, 'Maximaal 5 kamers'),
+  // No hard ceiling on rooms either — users can describe whole houses.
+  // Loose upper bound for sanity.
+  rooms: z.array(roomSchema).min(1, 'Selecteer minimaal 1 kamer').max(50),
   website: z.string().optional(), // honeypot
 });
 
@@ -125,15 +129,7 @@ export async function POST(request: Request) {
 
     const data = adviesSchema.parse(body);
 
-    // Cap total photos at 15 — defence-in-depth on top of the per-room max(3).
     const totalPhotos = data.rooms.reduce((n, r) => n + r.photos.length, 0);
-    if (totalPhotos > 15) {
-      return NextResponse.json(
-        { success: false, errors: ['Maximaal 15 foto\'s in totaal'] },
-        { status: 400 },
-      );
-    }
-
     const brandNaam = data.brand === 'badkamerstijl' ? 'Badkamerstijl' : 'Woonklasse';
 
     // Persist
