@@ -182,7 +182,7 @@ export default function WoonklassePage() {
                 viewport={{ once: true }}
                 className="font-display text-4xl md:text-5xl font-light italic mb-12"
               >
-                Wat wij <span className="text-woon-accent not-italic font-medium">doen</span>
+                Wat doen <span className="text-woon-accent not-italic font-medium">wij?</span>
               </motion.h2>
 
               <div className="space-y-10">
