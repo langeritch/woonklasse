@@ -46,8 +46,9 @@ function ParallaxImage({ src, alt, className }: { src: string; alt: string; clas
   );
 }
 
-// Slimmer curated set of projects on the homepage (was: all 5 + many extra images)
-const HOMEPAGE_PROJECTS = projects.slice(0, 3);
+// Homepage shows a single curated project (Luxe afwerking) so the page
+// has one strong photo block + the services parallax — no overload.
+const HOMEPAGE_PROJECTS = projects.filter((p) => p.slug === 'luxe-afwerking');
 
 export default function WoonklassePage() {
   const heroRef = useRef(null);
