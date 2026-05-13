@@ -29,9 +29,10 @@ const nextConfig: NextConfig = {
               `script-src 'self' 'unsafe-inline'${process.env.NODE_ENV === 'development' ? " 'unsafe-eval'" : ''}`,
               "style-src 'self' 'unsafe-inline' https://fonts.googleapis.com",
               "font-src 'self' https://fonts.gstatic.com",
-              // Vercel Blob hosts must be allowed for client uploads + preview <img>.
+              // Vercel Blob: browser PUTs uploads to vercel.com/api/blob/* and
+              // reads the resulting blob from *.public.blob.vercel-storage.com.
               "img-src 'self' data: blob: https://*.public.blob.vercel-storage.com",
-              "connect-src 'self' https://*.public.blob.vercel-storage.com https://blob.vercel-storage.com",
+              "connect-src 'self' https://vercel.com https://*.public.blob.vercel-storage.com",
               "frame-ancestors 'self' https://*.amaso.nl http://localhost:5713 http://localhost:3005",
               "base-uri 'self'",
               "form-action 'self'",
