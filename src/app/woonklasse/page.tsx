@@ -5,8 +5,6 @@ import { useRef } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import { ArrowRight } from 'lucide-react';
-import { projects } from '@/data/projects';
-import { CollageGrid } from '@/components/woonklasse/CollageGrid';
 import HeroAdviesTool from '@/components/HeroAdviesTool';
 
 const services = [
@@ -28,27 +26,6 @@ const services = [
     desc: 'Eigen sanitair specialisten in vaste dienst. Van complete badkamer tot losse aanpassingen — alles strak afgewerkt.',
   },
 ];
-
-function ParallaxImage({ src, alt, className }: { src: string; alt: string; className?: string }) {
-  const ref = useRef(null);
-  const { scrollYProgress } = useScroll({
-    target: ref,
-    offset: ['start end', 'end start'],
-  });
-  const y = useTransform(scrollYProgress, [0, 1], ['-5%', '5%']);
-
-  return (
-    <div ref={ref} className={`overflow-hidden ${className || ''}`}>
-      <motion.div style={{ y }} className="w-full h-[120%] relative -top-[10%]">
-        <Image src={src} alt={alt} fill className="object-cover" sizes="(max-width: 768px) 100vw, 50vw" />
-      </motion.div>
-    </div>
-  );
-}
-
-// Homepage shows a single curated project (Luxe afwerking) so the page
-// has one strong photo block + the services parallax — no overload.
-const HOMEPAGE_PROJECTS = projects.filter((p) => p.slug === 'luxe-afwerking');
 
 export default function WoonklassePage() {
   const heroRef = useRef(null);
@@ -155,12 +132,39 @@ export default function WoonklassePage() {
       <section className="py-20 md:py-24 bg-white">
         <div className="max-w-7xl mx-auto px-6 lg:px-20">
           <div className="grid lg:grid-cols-2 gap-16 lg:gap-24 items-start">
-            {/* Left — Image */}
-            <ParallaxImage
-              src="/woonklasse/canal-residence-2.jpg"
-              alt="Woonklasse vakmanschap"
-              className="aspect-[3/4] rounded-2xl relative"
-            />
+            {/* Left — Asymmetric photo grid: big grachtenhuis keuken + stacked moderne keuken / luxe badkamer */}
+            <div
+              className="grid gap-3 md:gap-4 aspect-[3/4]"
+              style={{ gridTemplateColumns: '2fr 1fr', gridTemplateRows: '1fr 1fr' }}
+            >
+              <div className="row-span-2 relative overflow-hidden rounded-2xl">
+                <Image
+                  src="/woonklasse/canal-residence-2.jpg"
+                  alt="Amsterdams grachtenhuis keuken — Woonklasse vakmanschap"
+                  fill
+                  className="object-cover"
+                  sizes="(max-width: 1024px) 66vw, 33vw"
+                />
+              </div>
+              <div className="relative overflow-hidden rounded-2xl">
+                <Image
+                  src="/woonklasse/projecten/luxe-afwerking/1.jpg"
+                  alt="Moderne keuken in penthouse"
+                  fill
+                  className="object-cover"
+                  sizes="(max-width: 1024px) 34vw, 17vw"
+                />
+              </div>
+              <div className="relative overflow-hidden rounded-2xl">
+                <Image
+                  src="/woonklasse/projecten/luxe-afwerking/3.jpg"
+                  alt="Luxe badkamer met natuursteen"
+                  fill
+                  className="object-cover"
+                  sizes="(max-width: 1024px) 34vw, 17vw"
+                />
+              </div>
+            </div>
 
             {/* Right — Services list */}
             <div className="lg:pt-12">
@@ -220,50 +224,15 @@ export default function WoonklassePage() {
         </div>
       </section>
 
-      {/* ===== PROJECTS — slimmer curated set ===== */}
-      <section id="projecten" className="py-24 md:py-28 bg-woon-light text-woon-dark overflow-hidden">
-        <div className="space-y-20 md:space-y-28">
-          {HOMEPAGE_PROJECTS.map((project, idx) => {
-            const isEven = idx % 2 === 1;
-            const imgs = [
-              `/woonklasse/projecten/${project.slug}/1.jpg`,
-              `/woonklasse/projecten/${project.slug}/3.jpg`,
-              `/woonklasse/projecten/${project.slug}/5.jpg`,
-            ];
-
-            return (
-              <motion.div
-                key={project.slug}
-                initial={{ opacity: 0, y: 40 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, margin: '-100px' }}
-                transition={{ duration: 0.8 }}
-                className={`w-[90%] md:w-[65%] ${isEven ? 'ml-auto mr-[1.6rem]' : 'mr-auto ml-[1.6rem]'}`}
-              >
-                <Link
-                  href={`/woonklasse/projecten/${project.slug}`}
-                  className="group mb-6 block"
-                >
-                  <h3 className={`font-display text-base md:text-xl lg:text-2xl font-extralight leading-[1.1] tracking-tight group-hover:text-woon-accent transition-colors ${isEven ? 'text-right' : 'text-left'}`}>
-                    {project.subtitle}
-                  </h3>
-                </Link>
-
-                <CollageGrid slug={project.slug} imgs={imgs} isEven={isEven} />
-              </motion.div>
-            );
-          })}
-        </div>
-
-        <div className="text-center mt-16">
-          <Link
-            href="/woonklasse/projecten"
-            className="inline-flex items-center gap-2 text-sm tracking-[0.2em] uppercase text-woon-secondary hover:text-woon-accent transition-colors"
-          >
-            Alle projecten bekijken
-            <ArrowRight className="w-4 h-4" />
-          </Link>
-        </div>
+      {/* ===== PROJECTS LINK — minimal, no collage on homepage ===== */}
+      <section id="projecten" className="py-12 md:py-16 bg-woon-light text-center">
+        <Link
+          href="/woonklasse/projecten"
+          className="inline-flex items-center gap-2 text-sm tracking-[0.2em] uppercase text-woon-secondary hover:text-woon-accent transition-colors"
+        >
+          Alle projecten bekijken
+          <ArrowRight className="w-4 h-4" />
+        </Link>
       </section>
 
       {/* ===== CTA SECTION ===== */}
