@@ -39,7 +39,7 @@ export default async function ServicePage({
         <div className="absolute inset-0">
           <Image
             src={service.image}
-            alt={`${service.name} — Woonklasse specialist`}
+            alt={`${service.name} door Woonklasse`}
             fill
             priority
             className="object-cover"
@@ -182,7 +182,7 @@ export default async function ServicePage({
               <span className="not-italic font-medium text-woon-accent">één hand</span>
             </h2>
             <p className="text-woon-secondary text-base md:text-lg leading-relaxed max-w-md">
-              Van eerste opname tot oplevering — wat hieronder staat zit standaard in onze offerte. Geen meerwerk-verrassingen.
+              Van eerste opname tot oplevering, wat hieronder staat zit standaard in onze offerte. Geen verrassingen op het gebied van meerwerk.
             </p>
           </div>
           <ul className="space-y-4">

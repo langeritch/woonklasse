@@ -23,7 +23,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: 'Wat kost een verbouwing? Prijzen & calculator | Woonklasse',
     description:
-      'Vier prijscategorieën, een interactieve calculator en alle factoren die uw verbouwingsbudget bepalen — transparant en zonder verrassingen achteraf.',
+      'Vier prijscategorieën, een interactieve calculator en alle factoren die uw verbouwingsbudget bepalen, transparant en zonder verrassingen achteraf.',
     url: PAGE_URL,
     type: 'website',
     locale: 'nl_NL',
@@ -43,7 +43,7 @@ export default function Page() {
     '@context': 'https://schema.org',
     '@type': 'Service',
     serviceType: 'Verbouwing en woningonderhoud',
-    name: 'Woonklasse — Verbouwing en woningonderhoud',
+    name: 'Woonklasse, verbouwing en woningonderhoud',
     description:
       'Verbouwingen, woningonderhoud, aanbouwen, dakwerk en installaties met vaste prijs vooraf. Eigen vakmensen, één projectleider, garantie tot 10 jaar.',
     url: PAGE_URL,
@@ -68,7 +68,7 @@ export default function Page() {
     offers: [
       {
         '@type': 'Offer',
-        name: 'Basis — onderhoud en kleine reparaties',
+        name: 'Basis: onderhoud en kleine reparaties',
         priceCurrency: 'EUR',
         price: '500',
         priceSpecification: {
@@ -81,7 +81,7 @@ export default function Page() {
       },
       {
         '@type': 'Offer',
-        name: 'Standaard — renovatie van één ruimte',
+        name: 'Standaard: renovatie van één ruimte',
         priceCurrency: 'EUR',
         price: '5000',
         priceSpecification: {
@@ -94,7 +94,7 @@ export default function Page() {
       },
       {
         '@type': 'Offer',
-        name: 'Uitgebreid — meerdere ruimtes of aanbouw',
+        name: 'Uitgebreid: meerdere ruimtes of aanbouw',
         priceCurrency: 'EUR',
         price: '15000',
         priceSpecification: {
@@ -107,7 +107,7 @@ export default function Page() {
       },
       {
         '@type': 'Offer',
-        name: 'Maatwerk — sleutelklare totaalrenovatie',
+        name: 'Maatwerk: sleutelklare totaalrenovatie',
         priceCurrency: 'EUR',
         price: '50000',
         priceSpecification: {
@@ -115,7 +115,7 @@ export default function Page() {
           minPrice: 50000,
           priceCurrency: 'EUR',
         },
-        description: 'Sleutelklare totaalrenovatie of nieuwbouw op maat — van fundering tot oplevering.',
+        description: 'Sleutelklare totaalrenovatie of nieuwbouw op maat, van fundering tot oplevering.',
       },
     ],
   };
@@ -139,7 +139,7 @@ export default function Page() {
         name: 'Wat kost een complete verbouwing in Nederland gemiddeld?',
         acceptedAnswer: {
           '@type': 'Answer',
-          text: 'Een complete verbouwing van een rij- of hoekwoning ligt doorgaans tussen €60.000 en €150.000, exclusief BTW. Bij een vrijstaande woning of een sleutelklare oplevering loopt dit op tot €250.000 of meer. De m²-prijs varieert van ongeveer €750 voor onderhoudswerk tot €2.500 voor luxe maatwerk.',
+          text: 'Een complete verbouwing van een rijwoning of hoekwoning ligt doorgaans tussen €60.000 en €150.000, exclusief BTW. Bij een vrijstaande woning of een sleutelklare oplevering loopt dit op tot €250.000 of meer. De prijs per m² varieert van ongeveer €750 voor onderhoudswerk tot €2.500 voor luxe maatwerk.',
         },
       },
       {
@@ -147,7 +147,7 @@ export default function Page() {
         name: 'Geven jullie een vaste prijs of werken jullie op nacalculatie?',
         acceptedAnswer: {
           '@type': 'Answer',
-          text: 'Standaard werken wij met een vaste aanneemsom. Na de gratis opname en het ontwerp ontvangt u een complete offerte met alle materialen, arbeid en bouwkundige posten. Wijzigingen tijdens het project worden vooraf schriftelijk afgestemd — geen verrassingen achteraf.',
+          text: 'Standaard werken wij met een vaste aanneemsom. Na de gratis opname en het ontwerp ontvangt u een complete offerte met alle materialen, arbeid en bouwkundige posten. Wijzigingen tijdens het project worden vooraf schriftelijk afgestemd, zo zijn er geen verrassingen achteraf.',
         },
       },
       {
@@ -163,7 +163,7 @@ export default function Page() {
         name: 'Wat kost een aanbouw of dakopbouw per m²?',
         acceptedAnswer: {
           '@type': 'Answer',
-          text: 'Een eenvoudige aanbouw start rond €2.000 per m², een aanbouw met grote glaspuien en hoogwaardige afwerking zit op €3.000 — €4.000 per m². Een dakopbouw ligt doorgaans tussen €2.500 en €3.500 per m².',
+          text: 'Een eenvoudige aanbouw start rond €2.000 per m², een aanbouw met grote glaspuien en hoogwaardige afwerking zit tussen €3.000 en €4.000 per m². Een dakopbouw ligt doorgaans tussen €2.500 en €3.500 per m².',
         },
       },
       {
@@ -171,7 +171,7 @@ export default function Page() {
         name: 'Hoeveel BTW betaal ik over een verbouwing?',
         acceptedAnswer: {
           '@type': 'Answer',
-          text: 'Op arbeid bij woningen ouder dan 2 jaar geldt het lage BTW-tarief van 9% — een aanzienlijk voordeel ten opzichte van het 21%-tarief op materialen. Wij splitsen dit duidelijk op in de offerte zodat u precies ziet waar het voordeel zit.',
+          text: 'Op arbeid bij woningen ouder dan 2 jaar geldt het lage tarief voor de BTW van 9%, een aanzienlijk voordeel ten opzichte van het tarief van 21% op materialen. Wij splitsen dit duidelijk op in de offerte zodat u precies ziet waar het voordeel zit.',
         },
       },
       {
@@ -179,7 +179,7 @@ export default function Page() {
         name: 'Kan ik subsidie krijgen voor mijn verbouwing?',
         acceptedAnswer: {
           '@type': 'Answer',
-          text: 'Voor energiebesparende maatregelen — isolatie, warmtepomp, zonnepanelen, HR++ glas — geldt de Investeringssubsidie Duurzame Energie (ISDE) en gemeentelijke regelingen. Wij wijzen u tijdens de offerte op de toepasselijke subsidies.',
+          text: 'Voor energiebesparende maatregelen zoals isolatie, warmtepomp, zonnepanelen en HR++ glas geldt de Investeringssubsidie Duurzame Energie (ISDE) en gemeentelijke regelingen. Wij wijzen u tijdens de offerte op de toepasselijke subsidies.',
         },
       },
       {
@@ -195,7 +195,7 @@ export default function Page() {
         name: 'Hoe lang duurt het voordat jullie kunnen starten?',
         acceptedAnswer: {
           '@type': 'Answer',
-          text: 'Voor kleinere klussen kunnen we doorgaans binnen 2 — 4 weken starten. Bij grotere verbouwingen zit er gemiddeld 6 — 12 weken tussen opdrachtbevestiging en bouwstart, afhankelijk van vergunning, ontwerp en materiaallevertijden.',
+          text: 'Voor kleinere klussen kunnen we doorgaans binnen 2 tot 4 weken starten. Bij grotere verbouwingen zit er gemiddeld 6 tot 12 weken tussen opdrachtbevestiging en bouwstart, afhankelijk van vergunning, ontwerp en materiaallevertijden.',
         },
       },
       {

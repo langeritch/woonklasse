@@ -17,13 +17,13 @@ const services = [
     number: '02',
     title: 'Totaal renovatie & nieuwbouw',
     // TODO: copy nog finetunen samen met Ilias
-    desc: 'Casco-renovaties en nieuwbouw op maat. Eén aannemer, vaste aanneemsom en een vast team van eerste schets tot oplevering.',
+    desc: 'Cascorenovaties en nieuwbouw op maat. Eén aannemer, vaste aanneemsom en een vast team van eerste schets tot oplevering.',
   },
   {
     number: '03',
     title: 'Sanitair specialist',
     // TODO: copy nog finetunen samen met Ilias
-    desc: 'Eigen sanitair specialisten in vaste dienst. Van complete badkamer tot losse aanpassingen — alles strak afgewerkt.',
+    desc: 'Eigen sanitair specialisten in vaste dienst. Van complete badkamer tot losse aanpassingen, alles strak afgewerkt.',
   },
 ];
 
@@ -39,7 +39,7 @@ export default function WoonklassePage() {
   return (
     <main className="min-h-screen bg-woon-light text-woon-dark">
 
-      {/* ===== HERO — softer, with embedded advies tool ===== */}
+      {/* ===== HERO - softer, with embedded advies tool ===== */}
       <section ref={heroRef} className="relative min-h-[640px] md:min-h-[720px] flex items-center overflow-hidden py-24 md:py-28">
         <motion.div
           style={{ scale: 1.05 }}
@@ -59,7 +59,7 @@ export default function WoonklassePage() {
         <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-black/5 z-10" />
 
         <div className="relative z-20 w-full max-w-7xl mx-auto px-6 lg:px-12 grid lg:grid-cols-[1.1fr_1fr] gap-10 lg:gap-16 items-center">
-          {/* Left — hero copy */}
+          {/* Left - hero copy */}
           <motion.div
             style={{ y: heroTextY, opacity: heroOpacity }}
             className="text-left lg:text-left"
@@ -93,7 +93,7 @@ export default function WoonklassePage() {
             </motion.p>
           </motion.div>
 
-          {/* Right — advies tool */}
+          {/* Right - advies tool */}
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
@@ -132,7 +132,7 @@ export default function WoonklassePage() {
       <section className="py-20 md:py-24 bg-white">
         <div className="max-w-7xl mx-auto px-6 lg:px-20">
           <div className="grid lg:grid-cols-2 gap-16 lg:gap-24 items-start">
-            {/* Left — Asymmetric photo grid: big grachtenhuis keuken + stacked moderne keuken / luxe badkamer */}
+            {/* Left - Asymmetric photo grid: big grachtenhuis keuken + stacked moderne keuken / luxe badkamer */}
             <div
               className="grid gap-3 md:gap-4 aspect-[3/4]"
               style={{ gridTemplateColumns: '2fr 1fr', gridTemplateRows: '1fr 1fr' }}
@@ -140,7 +140,7 @@ export default function WoonklassePage() {
               <div className="row-span-2 relative overflow-hidden rounded-2xl">
                 <Image
                   src="/woonklasse/canal-residence-2.jpg"
-                  alt="Amsterdams grachtenhuis keuken — Woonklasse vakmanschap"
+                  alt="Amsterdams grachtenhuis keuken door Woonklasse"
                   fill
                   className="object-cover"
                   sizes="(max-width: 1024px) 66vw, 33vw"
@@ -166,7 +166,7 @@ export default function WoonklassePage() {
               </div>
             </div>
 
-            {/* Right — Services list */}
+            {/* Right - Services list */}
             <div className="lg:pt-12">
               <motion.p
                 initial={{ opacity: 0 }}
@@ -209,7 +209,7 @@ export default function WoonklassePage() {
                 ))}
               </div>
 
-              {/* Eigen kozijnen leverancier — small trust line */}
+              {/* Eigen kozijnen leverancier - small trust line */}
               <motion.p
                 initial={{ opacity: 0, y: 16 }}
                 whileInView={{ opacity: 1, y: 0 }}
@@ -217,14 +217,14 @@ export default function WoonklassePage() {
                 className="mt-10 inline-flex items-center gap-3 text-sm text-woon-secondary"
               >
                 <span className="w-8 h-px bg-woon-accent" />
-                Met een eigen kozijnen leverancier — kortere lijnen, scherpere prijzen.
+                Met een eigen kozijnen leverancier voor kortere lijnen en scherpere prijzen.
               </motion.p>
             </div>
           </div>
         </div>
       </section>
 
-      {/* ===== PROJECTS LINK — minimal, no collage on homepage ===== */}
+      {/* ===== PROJECTS LINK - minimal, no collage on homepage ===== */}
       <section id="projecten" className="py-12 md:py-16 bg-woon-light text-center">
         <Link
           href="/woonklasse/projecten"

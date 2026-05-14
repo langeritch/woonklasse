@@ -3,7 +3,7 @@ import { CONTACT } from '@/data/contact';
 
 const SITE_URL = 'https://woonklasse.nl';
 
-const TITLE = 'Woonklasse — Totaal renovatie, nieuwbouw en sanitair';
+const TITLE = 'Woonklasse: totaal renovatie, nieuwbouw en sanitair';
 const DESCRIPTION =
   'Woonklasse realiseert complete renovaties, nieuwbouw en badkamers. Eigen vakmensen, eigen kozijnen leverancier, vaste aanneemsom en oog voor detail. Plan een gratis adviesgesprek.';
 
@@ -36,7 +36,7 @@ export const metadata: Metadata = {
         url: `${SITE_URL}/og-image.png`,
         width: 1200,
         height: 630,
-        alt: 'Woonklasse — totaal renovatie en nieuwbouw',
+        alt: 'Woonklasse, totaal renovatie en nieuwbouw',
       },
     ],
   },

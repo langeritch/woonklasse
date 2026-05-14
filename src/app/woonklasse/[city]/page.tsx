@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import { WOONKLASSE_CITIES, getWoonklasseCityBySlug } from '@/data/woonklasse-cities';
 import { CONTACT } from '@/data/contact';
+import { WOONKLASSE_POSTS } from '@/data/blog/index';
 import WoonklasseCityPage from '@/components/woonklasse/CityPage';
 
 const SITE_URL = 'https://woonklasse.nl';
@@ -21,9 +22,9 @@ export async function generateMetadata(
     return { title: 'Niet gevonden | Woonklasse' };
   }
 
-  const title = `Aannemer ${city.name} — Verbouwing, renovatie & onderhoud | Woonklasse`;
+  const title = `Aannemer ${city.name} voor verbouwing, renovatie & onderhoud | Woonklasse`;
   const description = `Aannemer in ${city.name} voor verbouwingen, renovaties, aanbouw, dakwerk en woningonderhoud. Eigen vakmensen, vaste prijs vooraf en één projectleider. Vraag een vrijblijvende offerte aan.`;
-  const url = `${SITE_URL}/woonklasse/${city.slug}`;
+  const url = `${SITE_URL}/${city.slug}`;
 
   return {
     title,
@@ -57,13 +58,25 @@ export default async function Page(
     .map((s) => getWoonklasseCityBySlug(s))
     .filter((c): c is NonNullable<typeof c> => Boolean(c));
 
-  const pageUrl = `${SITE_URL}/woonklasse/${city.slug}`;
+  // Pick three foundational guides to surface on every city page -
+  // budget, vergunning, aannemer-keuze - these are the searches that
+  // drive most traffic to a renovation contractor.
+  const RELATED_GUIDE_SLUGS = [
+    'huis-verbouwen-kosten-2026',
+    'verbouwing-vergunning-nodig',
+    'aannemer-kiezen-tips',
+  ];
+  const relatedPosts = RELATED_GUIDE_SLUGS
+    .map((s) => WOONKLASSE_POSTS.find((p) => p.slug === s))
+    .filter((p): p is NonNullable<typeof p> => Boolean(p));
+
+  const pageUrl = `${SITE_URL}/${city.slug}`;
 
   const localBusinessJsonLd = {
     '@context': 'https://schema.org',
     '@type': 'GeneralContractor',
     '@id': `${pageUrl}#localbusiness`,
-    name: `Woonklasse — Aannemer ${city.name}`,
+    name: `Woonklasse, aannemer in ${city.name}`,
     alternateName: [
       `Woonklasse Verbouwing ${city.name}`,
       `Woonklasse Renovatie ${city.name}`,
@@ -106,12 +119,12 @@ export default async function Page(
   };
 
   const services = [
-    { name: 'Verbouwingen', description: `Complete verbouwingen in ${city.name} — van sloop tot oplevering.` },
+    { name: 'Verbouwingen', description: `Complete verbouwingen in ${city.name}, van sloop tot oplevering.` },
     { name: 'Woningonderhoud', description: `Periodiek onderhoud en herstelwerk in ${city.name}.` },
     { name: 'Keukens', description: `Keukenrenovatie en -installatie in ${city.name}.` },
     { name: 'Aanbouw & uitbouw', description: `Aanbouwen, opbouwen en serres in ${city.name}.` },
     { name: 'Dakwerk', description: `Dakvernieuwing, dakkapellen en dakisolatie in ${city.name}.` },
-    { name: 'Schilderwerk', description: `Binnen- en buitenschilderwerk in ${city.name}.` },
+    { name: 'Schilderwerk', description: `Schilderwerk binnen en buiten in ${city.name}.` },
     { name: 'Loodgieterwerk', description: `Sanitair, leidingwerk en lekkages in ${city.name}.` },
     { name: 'Elektra', description: `Groepenkasten, bedrading en verlichting in ${city.name}.` },
   ];
@@ -229,7 +242,7 @@ export default async function Page(
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }}
       />
-      <WoonklasseCityPage city={city} nearbyCities={nearbyCities} />
+      <WoonklasseCityPage city={city} nearbyCities={nearbyCities} relatedPosts={relatedPosts} />
     </>
   );
 }

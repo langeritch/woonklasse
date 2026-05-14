@@ -69,7 +69,7 @@ export default function OverOnsPage() {
         </div>
       </section>
 
-      {/* Intro — BAMO narrative style */}
+      {/* Intro - BAMO narrative style */}
       <section className="py-20 md:py-28 px-6 md:px-12 lg:px-20">
         <div className="max-w-4xl mx-auto">
           <FadeIn>
@@ -83,8 +83,8 @@ export default function OverOnsPage() {
           <div className="grid md:grid-cols-2 gap-8">
             <FadeIn delay={0.2}>
               <p className="text-woon-secondary text-base leading-relaxed">
-                Wat begon als een klein aannemersbedrijf is uitgegroeid tot een full-service bouwbedrijf
-                dat gespecialiseerd is in complete woningtransformaties. Van de eerste schets tot de laatste afwerking.
+                Wat begon als een klein aannemersbedrijf is uitgegroeid tot een bouwbedrijf met alle disciplines in huis,
+                gespecialiseerd in complete woningtransformaties. Van de eerste schets tot de laatste afwerking.
                 wij doen het allemaal in eigen beheer.
               </p>
             </FadeIn>
@@ -100,7 +100,7 @@ export default function OverOnsPage() {
       </section>
 
 
-      {/* Values — BAMO 5-column style */}
+      {/* Values - BAMO 5-column style */}
       <section className="py-20 md:py-28 px-6 md:px-12 lg:px-20">
         <div className="max-w-6xl mx-auto">
           <FadeIn>

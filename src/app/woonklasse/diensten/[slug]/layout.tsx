@@ -86,7 +86,7 @@ export default async function ServiceLayout({
     areaServed: { '@type': 'Country', name: 'Netherlands' },
     offers: service.tiers.map((t) => ({
       '@type': 'Offer',
-      name: `${service.name} — ${t.label}`,
+      name: `${service.name}: ${t.label}`,
       description: t.desc,
       priceSpecification: {
         '@type': 'PriceSpecification',

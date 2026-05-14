@@ -122,7 +122,7 @@ export default function OffertePage() {
       {/* Content: offices + form side by side */}
       <section className="py-20 md:py-28 px-6 md:px-12 lg:px-20">
         <div className="max-w-6xl mx-auto grid lg:grid-cols-2 gap-16 lg:gap-24">
-          {/* Left — Info */}
+          {/* Left - Info */}
           <div>
             <FadeIn>
               <p className="text-woon-accent text-xs tracking-[0.3em] uppercase mb-6">Contact</p>
@@ -135,7 +135,7 @@ export default function OffertePage() {
               </p>
             </FadeIn>
 
-            {/* Office info — BAMO style */}
+            {/* Office info - BAMO style */}
             <FadeIn delay={0.1}>
               <div className="border-t border-woon-primary/10 pt-8 space-y-8">
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-8">
@@ -146,7 +146,7 @@ export default function OffertePage() {
                     </a>
                   </div>
                   <div>
-                    <h3 className="text-[10px] tracking-[0.25em] uppercase text-woon-secondary mb-2">E-mail</h3>
+                    <h3 className="text-[10px] tracking-[0.25em] uppercase text-woon-secondary mb-2">Mail</h3>
                     <a href={`mailto:${CONTACT.email}`} className="text-woon-primary hover:text-woon-accent transition-colors font-heading font-bold break-all">
                       {CONTACT.email}
                     </a>
@@ -166,12 +166,12 @@ export default function OffertePage() {
             </FadeIn>
           </div>
 
-          {/* Right — Form */}
+          {/* Right - Form */}
           <FadeIn delay={0.2}>
             <div className="bg-woon-cream p-8 md:p-12">
               <h3 className="font-heading text-xl font-bold mb-8">Projectaanvraag</h3>
               <form className="space-y-6" onSubmit={handleSubmit}>
-                {/* Honeypot — hidden from humans, bots fill this */}
+                {/* Honeypot - hidden from humans, bots fill this */}
                 <div aria-hidden="true" className="absolute opacity-0 h-0 overflow-hidden">
                   <input type="text" name="website" tabIndex={-1} autoComplete="off" value={formData.website} onChange={handleChange} />
                 </div>
@@ -204,7 +204,7 @@ export default function OffertePage() {
                 </div>
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
                   <div>
-                    <label htmlFor="email" className="text-[10px] tracking-[0.2em] uppercase text-woon-secondary mb-2 block">E-mail *</label>
+                    <label htmlFor="email" className="text-[10px] tracking-[0.2em] uppercase text-woon-secondary mb-2 block">Mailadres *</label>
                     <input
                       id="email"
                       type="email"
