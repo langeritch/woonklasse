@@ -86,12 +86,22 @@ export default function Navigation() {
   // ==========================================
   return (
     <>
-      <nav className={`fixed top-0 w-full z-50 transition-all duration-500 ${
-        scrolled
-          ? 'bg-white/95 backdrop-blur-xl shadow-[0_1px_0_rgba(0,0,0,0.05)]'
-          : 'bg-transparent'
-      }`}>
-        <div className="w-full px-4 sm:px-6 md:px-12 lg:px-20">
+      <nav className="fixed top-0 w-full z-50">
+        {/* Blurred background on its own non-interactive layer. Keeping
+            backdrop-filter OFF the element that contains the buttons avoids a
+            Chromium bug (notably on macOS Chrome) where a backdrop-filter
+            compositing surface swallows pointer events from its interactive
+            children — which broke the menu button after scrolling. Appearance
+            is unchanged. */}
+        <div
+          aria-hidden="true"
+          className={`pointer-events-none absolute inset-0 transition-all duration-500 ${
+            scrolled
+              ? 'bg-white/95 backdrop-blur-xl shadow-[0_1px_0_rgba(0,0,0,0.05)]'
+              : 'bg-transparent'
+          }`}
+        />
+        <div className="relative w-full px-4 sm:px-6 md:px-12 lg:px-20">
           <div className="flex justify-between items-center h-16 sm:h-20">
             {/* Left - Hamburger (relative z-10 so it stacks above the absolute logo Link) */}
             <button
@@ -100,7 +110,7 @@ export default function Navigation() {
               aria-label={mobileOpen ? 'Menu sluiten' : 'Menu openen'}
               aria-expanded={mobileOpen}
               aria-controls="woon-mobile-menu"
-              className={`relative z-10 flex items-center gap-3 -ml-2 p-2 transition-colors ${
+              className={`relative z-10 flex items-center gap-3 -ml-2 p-2 cursor-pointer touch-manipulation transition-colors ${
                 scrolled ? 'text-gray-900' : 'text-white'
               } hover:opacity-70`}
             >
