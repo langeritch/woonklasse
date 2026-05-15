@@ -149,14 +149,14 @@ export default function Navigation() {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.4 }}
-            className="fixed inset-0 z-40 bg-black/95 backdrop-blur-xl flex items-center justify-center"
+            className="fixed inset-0 z-40 bg-black/95 backdrop-blur-xl overflow-y-auto overscroll-contain"
           >
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: 20 }}
               transition={{ duration: 0.5, delay: 0.1 }}
-              className="flex flex-col items-center gap-2"
+              className="min-h-full flex flex-col items-center justify-center gap-2 px-6 pt-28 pb-20"
             >
               {navLinks.map((link, idx) => (
                 <motion.div
