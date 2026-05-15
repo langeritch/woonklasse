@@ -63,7 +63,7 @@ export default function Navigation() {
   ];
 
   const ctaPath = '/woonklasse/offerte';
-  const ctaLabel = 'Offerte';
+  const ctaLabel = 'Contact';
 
   // ==========================================
   // WOONKLASSE NAV
@@ -77,7 +77,7 @@ export default function Navigation() {
       }`}>
         <div className="w-full px-4 sm:px-6 md:px-12 lg:px-20">
           <div className="flex justify-between items-center h-16 sm:h-20">
-            {/* Left — Hamburger (relative z-10 so it stacks above the absolute logo Link) */}
+            {/* Left - Hamburger (relative z-10 so it stacks above the absolute logo Link) */}
             <button
               type="button"
               onClick={() => setMobileOpen((v) => !v)}
@@ -96,19 +96,32 @@ export default function Navigation() {
               <span className="text-xs tracking-[0.2em] uppercase font-medium hidden sm:block">Menu</span>
             </button>
 
-            {/* Center — Logo (shrinks on mobile so it doesn't cover side buttons) */}
+            {/* Center - Logo (shrinks on mobile so it doesn't cover side buttons).
+                Two stacked variants cross-fade on scroll: the white logo reads on
+                the dark hero, the dark logo reads on the white scrolled background. */}
             <Link href="/woonklasse" className="absolute left-1/2 -translate-x-1/2 pointer-events-auto">
-              <Image
-                src="/woonklasse-logo-v2.png"
-                alt="Woonklasse"
-                width={360}
-                height={110}
-                priority
-                className={`h-10 sm:h-14 md:h-20 lg:h-24 w-auto object-contain transition-all duration-300 ${scrolled ? '' : 'brightness-0 invert'}`}
-              />
+              <span className="relative block h-10 sm:h-14 md:h-20 lg:h-24">
+                <Image
+                  src="/woonklasse-logo-white-2048.png"
+                  alt="Woonklasse"
+                  width={360}
+                  height={110}
+                  priority
+                  className={`h-full w-auto object-contain transition-opacity duration-300 ${scrolled ? 'opacity-0' : 'opacity-100'}`}
+                />
+                <Image
+                  src="/woonklasse-logo-dark-2048.png"
+                  alt=""
+                  aria-hidden="true"
+                  width={360}
+                  height={110}
+                  priority
+                  className={`absolute inset-0 h-full w-auto object-contain transition-opacity duration-300 ${scrolled ? 'opacity-100' : 'opacity-0'}`}
+                />
+              </span>
             </Link>
 
-            {/* Right — CTA word */}
+            {/* Right - CTA word */}
             <Link
               href={ctaPath}
               className={`relative z-10 text-xs tracking-[0.2em] uppercase font-medium transition-colors ${
