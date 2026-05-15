@@ -109,7 +109,7 @@ export default function Navigation() {
                 Two stacked variants cross-fade on scroll: the white logo reads on
                 the dark hero, the dark logo reads on the white scrolled background. */}
             <Link href="/woonklasse" className="absolute left-1/2 -translate-x-1/2 pointer-events-auto">
-              <span className="relative block h-10 sm:h-14 md:h-20 lg:h-24">
+              <span className="relative block h-14 sm:h-16 md:h-24 lg:h-28">
                 <Image
                   src="/woonklasse-logo-white-2048.png"
                   alt="Woonklasse"
