@@ -10,7 +10,6 @@ import HeroAdviesTool from '@/components/HeroAdviesTool';
 // FUTURE (round 2): vervang generieke trust strip door echte signalen —
 // afgeronde projecten, klant-testimonials, materiaalclose-ups, "Onze werkwijze in 5 stappen".
 type Service = {
-  number: string;
   eyebrow: string;
   title: string;
   desc: string;
@@ -22,18 +21,16 @@ type Service = {
 
 const services: Service[] = [
   {
-    number: '01',
     eyebrow: 'Discipline',
-    title: 'Totaalrenovatie',
+    title: 'Volledige renovatie, één aanspreekpunt',
     desc: 'Of je nu je badkamer vernieuwt, een slaapkamer uitbouwt of je hele huis omgooit, het principe is hetzelfde. We beginnen bij jou thuis, kijken wat er is, beluisteren wat je wil en maken een plan waar je achter staat. Geen verrassingen onderweg. Je weet vanaf het begin waar je aan toe bent.',
     pillars: ['Ontwerp', 'Vergunningen', 'Uitvoering', 'Oplevering'],
     image: '/woonklasse/canal-residence-2.jpg',
     imageAlt: 'Maatwerk keuken in grachtenhuis door Woonklasse',
   },
   {
-    number: '02',
     eyebrow: 'Specialisme',
-    title: 'Eigen sanitair atelier',
+    title: 'Luxe badkamers door eigen sanitairspecialisten',
     desc: 'Voor badkamers zijn we nog specialistischer. Acht jaar ervaring met sanitair, en we hebben onze eigen leverancier voor badkamermeubels en tegelwerk. Dat geeft ons scherpte die je bij een reguliere aannemer niet hebt. En het geeft jou iets unieks: we bouwen samen jouw droombadkamer.',
     pillars: ['Maatwerk meubels', 'Natuursteen', 'Sanitair', 'Installatie'],
     image: '/woonklasse/projecten/luxe-afwerking/3.jpg',
@@ -205,7 +202,7 @@ export default function WoonklassePage() {
           <div className="space-y-24 md:space-y-36">
             {services.map((service, idx) => (
               <motion.article
-                key={service.number}
+                key={service.title}
                 initial={{ opacity: 0, y: 40 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.9, ease: [0.16, 1, 0.3, 1] }}
@@ -225,11 +222,8 @@ export default function WoonklassePage() {
 
                 {/* Content */}
                 <div className="lg:px-4">
-                  <div className="flex items-baseline gap-6 mb-6">
-                    <span className="font-display font-light italic text-7xl md:text-8xl lg:text-9xl text-woon-accent/30 leading-none">
-                      {service.number}
-                    </span>
-                    <span className="text-[10px] tracking-[0.35em] uppercase text-woon-secondary font-medium">
+                  <div className="mb-6">
+                    <span className="text-[10px] tracking-[0.35em] uppercase text-woon-wood font-medium">
                       {service.eyebrow}
                     </span>
                   </div>
