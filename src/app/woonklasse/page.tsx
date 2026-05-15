@@ -70,8 +70,8 @@ export default function WoonklassePage() {
           />
         </motion.div>
 
-        <div className="absolute inset-0 bg-black/40 z-10" />
-        <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-black/5 z-10" />
+        <div className="absolute inset-0 bg-woon-anthracite/45 z-10" />
+        <div className="absolute inset-0 bg-gradient-to-t from-woon-anthracite/55 via-transparent to-woon-anthracite/5 z-10" />
 
         <div className="relative z-20 w-full max-w-7xl mx-auto px-6 lg:px-12 grid lg:grid-cols-[1.1fr_1fr] gap-10 lg:gap-16 items-center">
           {/* Left - hero copy */}
@@ -121,7 +121,7 @@ export default function WoonklassePage() {
       </section>
 
       {/* ===== INTRO TEXT ===== */}
-      <section className="py-24 md:py-32 bg-woon-light">
+      <section className="py-24 md:py-32 bg-woon-sand">
         <div className="max-w-5xl mx-auto px-6 text-center">
           <motion.h2
             initial={{ opacity: 0, y: 30 }}
@@ -152,7 +152,7 @@ export default function WoonklassePage() {
               initial={{ opacity: 0 }}
               whileInView={{ opacity: 1 }}
               viewport={{ once: true }}
-              className="text-xs tracking-[0.3em] uppercase text-woon-secondary mb-4"
+              className="text-xs tracking-[0.3em] uppercase text-woon-wood mb-4"
             >
               Onze expertise
             </motion.p>
@@ -287,7 +287,7 @@ export default function WoonklassePage() {
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.1 }}
             viewport={{ once: true }}
-            className="mt-20 md:mt-24 grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-10 max-w-5xl mx-auto border-y border-woon-dark/10 py-10 md:py-12"
+            className="mt-20 md:mt-24 grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-10 max-w-5xl mx-auto border-y border-woon-brass/30 py-10 md:py-12"
           >
             {[
               'Eigen leveranciers, geen tussenpersonen, scherp geprijsd',
@@ -306,7 +306,7 @@ export default function WoonklassePage() {
 
           {/* Curated details strip */}
           <div className="mt-20 md:mt-24">
-            <p className="text-xs tracking-[0.3em] uppercase text-woon-secondary mb-8 text-center">
+            <p className="text-xs tracking-[0.3em] uppercase text-woon-wood mb-8 text-center">
               Uit ons werk
             </p>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-6">
@@ -348,24 +348,24 @@ export default function WoonklassePage() {
         </Link>
       </section>
 
-      {/* ===== CTA SECTION ===== */}
-      <section className="py-24 md:py-28 bg-woon-light">
+      {/* ===== CTA SECTION - dark anthracite grounding band ===== */}
+      <section className="py-24 md:py-28 bg-woon-anthracite text-white border-t border-woon-brass/30">
         <div className="max-w-4xl mx-auto px-6 text-center">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
           >
-            <p className="text-xs tracking-[0.3em] uppercase text-woon-secondary mb-6">Klaar om te starten?</p>
-            <h2 className="font-display text-4xl md:text-5xl lg:text-6xl font-light italic mb-8">
+            <p className="text-xs tracking-[0.3em] uppercase text-woon-accent/80 mb-6">Klaar om te starten?</p>
+            <h2 className="font-display text-4xl md:text-5xl lg:text-6xl font-light italic mb-8 text-white">
               Laten we <span className="text-woon-accent not-italic font-medium">kennismaken</span>
             </h2>
-            <p className="text-woon-secondary text-lg mb-10 max-w-xl mx-auto font-light">
+            <p className="text-white/60 text-lg mb-10 max-w-xl mx-auto font-light">
               Vul het contactformulier in en laten we kennismaken. We bespreken jouw wensen, kijken wat er is en maken samen een plan. Geen verplichting, gewoon een gesprek.
             </p>
             <Link
               href="/woonklasse/offerte"
-              className="inline-flex items-center gap-3 bg-woon-accent text-woon-dark font-medium px-12 py-4 rounded-full transition-all hover:scale-105 hover:shadow-xl hover:shadow-woon-accent/20 text-base tracking-wide"
+              className="inline-flex items-center gap-3 bg-woon-accent text-woon-anthracite font-medium px-12 py-4 rounded-full transition-all hover:scale-105 hover:shadow-xl hover:shadow-woon-accent/30 text-base tracking-wide"
             >
               Offertegesprek aanvragen
               <ArrowRight className="w-5 h-5" />

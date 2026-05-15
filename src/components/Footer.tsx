@@ -28,10 +28,10 @@ export default function Footer() {
   ];
 
   // ==========================================
-  // WOONKLASSE FOOTER — Dark, cinematic, giant typography
+  // WOONKLASSE FOOTER - Dark, cinematic, giant typography
   // ==========================================
   return (
-    <footer className="bg-woon-dark text-white mt-auto relative overflow-hidden">
+    <footer className="bg-woon-anthracite text-white mt-auto relative overflow-hidden border-t border-woon-brass/30">
       <div className="max-w-7xl mx-auto px-6 lg:px-20 pt-20 pb-12 relative z-10">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-12 md:gap-8">
           {/* Brand */}
@@ -68,7 +68,7 @@ export default function Footer() {
             <div className="mt-8 pt-6 border-t border-white/10">
               <p className="text-[10px] tracking-[0.2em] uppercase text-white/35 mb-2">Zusterbedrijf</p>
               <Link href="/badkamerstijl" className="text-xs tracking-[0.2em] uppercase text-woon-accent hover:opacity-70 transition-opacity">
-                Badkamerstijl &mdash; luxe badkamers &rarr;
+                Badkamerstijl luxe badkamers &rarr;
               </Link>
             </div>
           </div>

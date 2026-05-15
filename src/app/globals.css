@@ -11,16 +11,27 @@
   --color-background: var(--background);
   --color-foreground: var(--foreground);
 
-  /* Woonklasse Palette — BAMO-inspired warm luxury */
+  /* Woonklasse Palette - calm beige base + three restrained accents.
+     Beige (light/cream/sand) stays dominant. Exactly one dark anchor
+     (anthracite), one warm (wood/sand), one metallic (brass) used sparingly. */
   --color-woon-primary: #2D2926;
   --color-woon-secondary: #8F827A;
-  --color-woon-accent: #D4AF37;
+  /* Metallic accent softened from a bright #D4AF37 to a muted antique brass */
+  --color-woon-accent: #B08A4A;
   --color-woon-light: #FFFAF2;
   --color-woon-dark: #1A1716;
   --color-woon-cream: #F8F1E6;
   --color-woon-warm: #4A3E3D;
 
-  /* Badkamerstijl V2 — neva17 style with badkamerstijl palette */
+  /* Dark anchor: deep warm anthracite for footer / dark CTA band / dividers */
+  --color-woon-anthracite: #211F1B;
+  /* Warm: walnut for small accent labels, sand for a warm beige band */
+  --color-woon-wood: #9A6F47;
+  --color-woon-sand: #EFE2CF;
+  /* Metallic: deeper muted brass for hairline rules and icon strokes */
+  --color-woon-brass: #8C6F3E;
+
+  /* Badkamerstijl V2 - neva17 style with badkamerstijl palette */
   --color-bsv2-cream: #F5F0E8;
   --color-bsv2-charcoal: #332C27;
   --color-bsv2-accent: #374543;
@@ -30,7 +41,7 @@
   --color-bsv2-pink: #EABFC4;
   --color-bsv2-warm: #E8DFD3;
 
-  /* Badkamerstijl Palette — Merise-inspired warm luxury */
+  /* Badkamerstijl Palette - Merise-inspired warm luxury */
   --color-badkamer-primary: #332C27;
   --color-badkamer-secondary: #DFC3C2;
   --color-badkamer-accent: #EABFC4;
@@ -39,7 +50,7 @@
   --color-badkamer-teal: #374543;
   --color-badkamer-pink: #EABFC4;
 
-  /* ExclusiveDecks Palette — Warm wood + amber LED glow */
+  /* ExclusiveDecks Palette - Warm wood + amber LED glow */
   --color-deck-primary: #1A120B;
   --color-deck-secondary: #3E2A18;
   --color-deck-accent: #E8A857;
@@ -153,7 +164,7 @@ h1, h2, h3, h4, h5, h6 {
   border: 1px solid rgba(255, 255, 255, 0.05);
 }
 
-/* Sidebar theme transitions — 700ms smooth */
+/* Sidebar theme transitions - 700ms smooth */
 .sidebar-themed {
   transition: background-color 700ms ease, color 700ms ease, border-left-color 700ms ease;
 }
@@ -213,7 +224,7 @@ a:focus-visible {
 
 /* Smooth selection color matching brand palettes */
 ::selection {
-  background: rgba(212, 175, 55, 0.25);
+  background: rgba(176, 138, 74, 0.22);
 }
 .badkamer-page ::selection {
   background: rgba(234, 191, 196, 0.35);
