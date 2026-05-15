@@ -52,7 +52,7 @@ export default function WoonklassePage() {
     <main className="min-h-screen bg-woon-light text-woon-dark">
 
       {/* ===== HERO - softer, with embedded advies tool ===== */}
-      <section ref={heroRef} className="relative min-h-[640px] md:min-h-[720px] flex items-center overflow-hidden py-24 md:py-28">
+      <section ref={heroRef} data-hero className="relative min-h-[640px] md:min-h-[720px] flex items-center overflow-hidden py-24 md:py-28">
         <motion.div
           style={{ scale: 1.05 }}
           className="absolute inset-0"

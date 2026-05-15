@@ -30,7 +30,14 @@ export default function Navigation() {
   // browsers restore scroll position on reload/back, which previously left the
   // logo stuck in its white (invisible-on-white) state until a manual scroll.
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 20);
+    const onScroll = () => {
+      // Flip when the logo leaves the dark hero: once the hero has scrolled up
+      // past the fixed nav (~80px tall) the logo turns black on the white nav.
+      // Pages without a hero fall back to a small threshold (light tops).
+      const hero = document.querySelector('[data-hero]') as HTMLElement | null;
+      const threshold = hero ? hero.offsetHeight - 80 : 20;
+      setScrolled(window.scrollY > threshold);
+    };
     onScroll();
     window.addEventListener('scroll', onScroll, { passive: true });
     window.addEventListener('resize', onScroll, { passive: true });
@@ -105,29 +112,19 @@ export default function Navigation() {
               <span className="text-xs tracking-[0.2em] uppercase font-medium hidden sm:block">Menu</span>
             </button>
 
-            {/* Center - Logo (shrinks on mobile so it doesn't cover side buttons).
-                Two stacked variants cross-fade on scroll: the white logo reads on
-                the dark hero, the dark logo reads on the white scrolled background. */}
+            {/* Center - Logo. One white asset: white over the dark hero, then
+                filtered to pure black once the hero scrolls past the fixed nav.
+                brightness(0) forces true black regardless of source tint and
+                preserves the logo's alpha; the filter transition is smooth. */}
             <Link href="/woonklasse" className="absolute left-1/2 -translate-x-1/2 pointer-events-auto">
-              <span className="relative block h-14 sm:h-16 md:h-24 lg:h-28">
-                <Image
-                  src="/woonklasse-logo-white-2048.png"
-                  alt="Woonklasse"
-                  width={360}
-                  height={110}
-                  priority
-                  className={`h-full w-auto object-contain transition-opacity duration-300 ${scrolled ? 'opacity-0' : 'opacity-100'}`}
-                />
-                <Image
-                  src="/woonklasse-logo-dark-2048.png"
-                  alt=""
-                  aria-hidden="true"
-                  width={360}
-                  height={110}
-                  priority
-                  className={`absolute inset-0 h-full w-auto object-contain transition-opacity duration-300 ${scrolled ? 'opacity-100' : 'opacity-0'}`}
-                />
-              </span>
+              <Image
+                src="/woonklasse-logo-white-2048.png"
+                alt="Woonklasse"
+                width={360}
+                height={110}
+                priority
+                className={`h-14 sm:h-16 md:h-24 lg:h-28 w-auto object-contain transition duration-300 ${scrolled ? 'brightness-0' : ''}`}
+              />
             </Link>
 
             {/* Right - CTA word */}
