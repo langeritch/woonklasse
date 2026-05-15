@@ -25,11 +25,20 @@ export default function Navigation() {
   const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
 
+  // Re-runs on every route change. Crucially it calls onScroll() immediately so
+  // `scrolled` is correct even when the page loads already scrolled — mobile
+  // browsers restore scroll position on reload/back, which previously left the
+  // logo stuck in its white (invisible-on-white) state until a manual scroll.
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 20);
-    window.addEventListener('scroll', onScroll);
-    return () => window.removeEventListener('scroll', onScroll);
-  }, []);
+    onScroll();
+    window.addEventListener('scroll', onScroll, { passive: true });
+    window.addEventListener('resize', onScroll, { passive: true });
+    return () => {
+      window.removeEventListener('scroll', onScroll);
+      window.removeEventListener('resize', onScroll);
+    };
+  }, [pathname]);
 
   useEffect(() => {
     setMobileOpen(false);
