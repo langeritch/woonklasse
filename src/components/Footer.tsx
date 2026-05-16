@@ -3,17 +3,28 @@
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { CONTACT } from '@/data/contact';
+import { CITY_SLUGS } from '@/data/cities';
 
-const BADKAMER_CLEAN_PATHS = new Set(['/stijlen', '/portfolio', '/diensten', '/adviesgesprek', '/prijzen']);
+// On badkamerstijl.nl these pages are served at clean single-segment URLs
+// (e.g. /bedankt, /amsterdam) rather than /badkamerstijl/*, so the
+// startsWith('/badkamerstijl') guard alone misses them and the Woonklasse
+// footer would leak onto Badkamerstijl pages. Each of those pages renders
+// its own footer, so suppressing the global one here is safe.
+const BADKAMER_CLEAN_PATHS = new Set(['/stijlen', '/portfolio', '/diensten', '/adviesgesprek', '/prijzen', '/bedankt']);
+const BADKAMER_CITY_SLUGS = new Set(CITY_SLUGS);
 
 export default function Footer() {
   const pathname = usePathname();
+  const cleanSegment = pathname.length > 1 && !pathname.includes('/', 1)
+    ? pathname.slice(1)
+    : '';
   if (
     pathname === '/' ||
     pathname.startsWith('/admin') ||
     pathname.startsWith('/badkamerstijl') ||
     pathname.startsWith('/blog') ||
-    BADKAMER_CLEAN_PATHS.has(pathname)
+    BADKAMER_CLEAN_PATHS.has(pathname) ||
+    BADKAMER_CITY_SLUGS.has(cleanSegment)
   ) {
     return null;
   }
