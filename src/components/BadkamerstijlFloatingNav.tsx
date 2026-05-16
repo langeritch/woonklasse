@@ -16,10 +16,12 @@ const navLinks = [
   { title: 'Contact', path: '/adviesgesprek' },
 ];
 
-
+// Despite the legacy filename this renders a normal, always-visible top
+// header for every Badkamerstijl page. (It used to be a bottom floating bar
+// that stayed invisible until you scrolled 120px - which left every page
+// without any way back to the home page above the fold.)
 export default function BadkamerstijlFloatingNav() {
   const [menuOpen, setMenuOpen] = useState(false);
-  const [scrolled, setScrolled] = useState(false);
 
   useEffect(() => {
     if (menuOpen) {
@@ -30,53 +32,47 @@ export default function BadkamerstijlFloatingNav() {
     return () => { document.body.style.overflow = ''; };
   }, [menuOpen]);
 
-  useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 120);
-    onScroll();
-    window.addEventListener('scroll', onScroll, { passive: true });
-    return () => window.removeEventListener('scroll', onScroll);
-  }, []);
-
   return (
     <>
-      {/* Floating Bottom Bar */}
-      <nav
-        className={`fixed bottom-6 left-1/2 -translate-x-1/2 z-50 transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] ${
-          scrolled
-            ? 'opacity-100 translate-y-0 pointer-events-auto'
-            : 'opacity-0 translate-y-20 pointer-events-none'
-        }`}
-        style={{ transformOrigin: 'center' }}
-      >
-        <div className="flex items-center gap-2 sm:gap-3 bg-white/70 backdrop-blur-xl border border-white/40 shadow-lg shadow-black/5 rounded-full px-2 sm:px-3 py-2 max-w-[calc(100vw-3rem)]">
-          {/* Brand name — hidden on very small screens */}
-          <Link href="/" className="flex-shrink-0 pl-2 sm:pl-3 hidden sm:block">
-            <span className="font-cormorant text-lg font-light text-bsv2-charcoal tracking-wide">
-              Badkamerstijl
-            </span>
-          </Link>
+      {/* Persistent top header */}
+      <header className="fixed top-0 left-0 w-full z-50">
+        <div className="bg-bsv2-cream/80 backdrop-blur-xl border-b border-bsv2-charcoal/10">
+          <div className="max-w-[1600px] mx-auto px-6 md:px-12 lg:px-20">
+            <div className="flex items-center justify-between h-16 md:h-20">
+              {/* Brand - back to the home portal */}
+              <Link href="/" className="flex-shrink-0">
+                <span className="font-cormorant text-xl md:text-2xl font-light text-bsv2-charcoal tracking-wide">
+                  Badkamerstijl
+                </span>
+              </Link>
 
-          {/* Menu button */}
-          <button
-            onClick={() => setMenuOpen(true)}
-            className="flex items-center gap-2 sm:gap-2.5 px-3 sm:px-5 py-2.5 rounded-full hover:bg-black/5 transition-colors"
-          >
-            <div className="flex flex-col gap-[4px] w-[18px]">
-              <span className="block h-[1.5px] w-full bg-bsv2-charcoal rounded-full" />
-              <span className="block h-[1.5px] w-full bg-bsv2-charcoal rounded-full" />
+              {/* Right - Menu + Contact */}
+              <div className="flex items-center gap-2 sm:gap-4">
+                <button
+                  onClick={() => setMenuOpen(true)}
+                  aria-label="Menu openen"
+                  className="flex items-center gap-2 sm:gap-2.5 px-3 sm:px-4 py-2.5 rounded-full hover:bg-black/5 transition-colors"
+                >
+                  <div className="flex flex-col gap-[4px] w-[18px]">
+                    <span className="block h-[1.5px] w-full bg-bsv2-charcoal rounded-full" />
+                    <span className="block h-[1.5px] w-full bg-bsv2-charcoal rounded-full" />
+                  </div>
+                  <span className="text-xs font-medium tracking-[0.1em] uppercase text-bsv2-charcoal hidden sm:block">
+                    Menu
+                  </span>
+                </button>
+
+                <Link
+                  href="/adviesgesprek"
+                  className="flex items-center gap-2 bg-bsv2-teal text-white text-xs font-medium tracking-[0.05em] px-4 sm:px-5 py-2.5 rounded-full hover:bg-bsv2-charcoal transition-colors duration-300"
+                >
+                  Contact
+                </Link>
+              </div>
             </div>
-            <span className="text-xs font-medium tracking-[0.1em] uppercase text-bsv2-charcoal">Menu</span>
-          </button>
-
-          {/* Contact CTA */}
-          <Link
-            href="/adviesgesprek"
-            className="flex items-center gap-2 bg-bsv2-teal text-white text-xs font-medium tracking-[0.05em] px-4 sm:px-5 py-2.5 rounded-full hover:bg-bsv2-charcoal transition-colors duration-300"
-          >
-            Contact
-          </Link>
+          </div>
         </div>
-      </nav>
+      </header>
 
       {/* Fullscreen Menu Overlay */}
       <AnimatePresence>
