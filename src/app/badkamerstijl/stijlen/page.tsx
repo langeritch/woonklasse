@@ -151,7 +151,7 @@ export default function StijlenPage() {
           transition={{ duration: 0.8 }}
           className="font-cormorant text-2xl md:text-3xl lg:text-[2.5rem] font-light leading-[1.4] max-w-4xl"
         >
-          Elke badkamer vertelt een verhaal. Ontdek welke stijl bij jou past — of laat ons
+          Elke badkamer vertelt een verhaal. Ontdek welke stijl bij jou past, of laat ons
           een uniek concept op maat creëren.
         </motion.p>
       </section>
@@ -170,7 +170,7 @@ export default function StijlenPage() {
                 <div className="sx-reveal aspect-[4/5] relative overflow-hidden">
                   <div className="sx-scale w-full h-full relative">
                     <Image
-                      src={style.accent}
+                      src={style.slug === 'industrieel' ? '/badkamerstijl/industrieel-chic.jpg' : style.accent}
                       alt={style.title}
                       fill
                       className="object-cover"
@@ -226,16 +226,19 @@ export default function StijlenPage() {
                   </Link>
                 </motion.div>
 
-                {/* Small reference image */}
-                <div className="sx-reveal mt-16 w-40 md:w-56 aspect-[4/3] relative overflow-hidden">
-                  <Image
-                    src={style.image}
-                    alt={`${style.title} referentie`}
-                    fill
-                    className="object-cover"
-                    sizes="224px"
-                  />
-                </div>
+                {/* Small reference image - omitted for Industrieel Chic,
+                    which now uses a single natuursteen photo in the main slot */}
+                {style.slug !== 'industrieel' && (
+                  <div className="sx-reveal mt-16 w-40 md:w-56 aspect-[4/3] relative overflow-hidden">
+                    <Image
+                      src={style.image}
+                      alt={`${style.title} referentie`}
+                      fill
+                      className="object-cover"
+                      sizes="224px"
+                    />
+                  </div>
+                )}
               </div>
             </div>
           </div>
