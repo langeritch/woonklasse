@@ -26,13 +26,13 @@ const nextConfig: NextConfig = {
             key: 'Content-Security-Policy',
             value: [
               "default-src 'self'",
-              `script-src 'self' 'unsafe-inline'${process.env.NODE_ENV === 'development' ? " 'unsafe-eval'" : ''}`,
+              `script-src 'self' 'unsafe-inline' https://www.clarity.ms https://*.clarity.ms${process.env.NODE_ENV === 'development' ? " 'unsafe-eval'" : ''}`,
               "style-src 'self' 'unsafe-inline' https://fonts.googleapis.com",
               "font-src 'self' https://fonts.gstatic.com",
               // Vercel Blob: browser PUTs uploads to vercel.com/api/blob/* and
               // reads the resulting blob from *.public.blob.vercel-storage.com.
               "img-src 'self' data: blob: https://*.public.blob.vercel-storage.com",
-              "connect-src 'self' https://vercel.com https://*.public.blob.vercel-storage.com",
+              "connect-src 'self' https://vercel.com https://*.public.blob.vercel-storage.com https://*.clarity.ms",
               "frame-ancestors 'self' https://*.amaso.nl http://localhost:5713 http://localhost:3005",
               "base-uri 'self'",
               "form-action 'self'",
