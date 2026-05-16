@@ -33,6 +33,10 @@ yarn-error.log*
 # env files (can opt-in for committing if needed)
 .env*
 
+# secrets / tokens
+token.json
+*token.json
+
 # vercel
 .vercel
 
@@ -62,3 +66,4 @@ STATUS.md
 
 .vercel
 .env*.local
+.gstack/
