@@ -6,6 +6,12 @@ export type WoonklasseCity = {
   context: string;
   areas: string[];
   nearby: string[];
+  // Optioneel per stad. Zet alleen deze twee velden om een stad een eigen
+  // omgevingsfoto en eigen hero-copy te geven. Steden zonder deze velden
+  // vallen terug op de standaard galerijfoto en de description/context-tekst,
+  // zodat een nieuwe stad met minimale aanpassing toegevoegd kan worden.
+  heroImage?: string;
+  intro?: string;
 };
 
 export const WOONKLASSE_CITIES: WoonklasseCity[] = [
@@ -19,13 +25,16 @@ export const WOONKLASSE_CITIES: WoonklasseCity[] = [
       'verbouwingen aan grachtenpanden, fundering- en houtrotherstel, optoppingen en uitbouwen op kleine kavels',
     areas: ['Centrum', 'Oud-Zuid', 'IJburg', 'De Pijp', 'Westerpark'],
     nearby: ['amstelveen', 'haarlem', 'zaanstad', 'almere'],
+    heroImage: '/woonklasse/amsterdam-hero.avif',
+    intro:
+      'Veel appartementen hier, weinig ruimte om fouten te maken. Met de juiste styling en renovatie wordt elke vierkante meter beter. Wij kennen Amsterdam en weten welke details het verschil maken. Laten we van jouw plek iets moois maken.',
   },
   {
     name: 'Rotterdam',
     slug: 'rotterdam',
     province: 'Zuid-Holland',
     description:
-      'Rotterdam is gebouwd op vooruitgang en architectuur. Van de naoorlogse rijwoning in Zuidwijk tot de penthouses in de Wilhelminapier — onze projectleiders kennen de bouwstijlen, de aanvraagtrajecten bij de gemeente en de logistiek van een stad waar overal gebouwd wordt.',
+      'Rotterdam is gebouwd op vooruitgang en architectuur. Van de naoorlogse rijwoning in Zuidwijk tot de penthouses in de Wilhelminapier - onze projectleiders kennen de bouwstijlen, de aanvraagtrajecten bij de gemeente en de logistiek van een stad waar overal gebouwd wordt.',
     context:
       'complete verbouwingen, optoppen en aanbouwen, naoorlogs casco upgraden, balkonherstel hoogbouw',
     areas: ['Kralingen', 'Hillegersberg', 'Centrum', 'Charlois', 'Prins Alexander'],
@@ -36,7 +45,7 @@ export const WOONKLASSE_CITIES: WoonklasseCity[] = [
     slug: 'den-haag',
     province: 'Zuid-Holland',
     description:
-      'Den Haag verzamelt herenhuizen, residentiële villa\'s, internationale appartementen en de zilte uitdagingen van Scheveningen. Wij verbouwen met respect voor karakteristieke lijsten, plafondornamenten en stucprofielen — én met de techniek die bewoners vandaag verwachten.',
+      'Den Haag verzamelt herenhuizen, residentiële villa\'s, internationale appartementen en de zilte uitdagingen van Scheveningen. Wij verbouwen met respect voor karakteristieke lijsten, plafondornamenten en stucprofielen - én met de techniek die bewoners vandaag verwachten.',
     context:
       'herenhuis-renovaties, restauratie van originele details, kelderverbouwingen en isolatieprojecten',
     areas: ['Statenkwartier', 'Benoordenhout', 'Scheveningen', 'Bezuidenhout', 'Archipelbuurt'],
@@ -58,7 +67,7 @@ export const WOONKLASSE_CITIES: WoonklasseCity[] = [
     slug: 'eindhoven',
     province: 'Noord-Brabant',
     description:
-      'Eindhoven loopt voorop in techniek en design. Wij vertalen die mentaliteit naar verbouwingen waarin slimme installaties, isolatiewaarden en strakke afwerking samenkomen — van Strijp-S lofts tot vrijstaande gezinswoningen in Tongelre.',
+      'Eindhoven loopt voorop in techniek en design. Wij vertalen die mentaliteit naar verbouwingen waarin slimme installaties, isolatiewaarden en strakke afwerking samenkomen - van Strijp-S lofts tot vrijstaande gezinswoningen in Tongelre.',
     context:
       'energetische renovaties, complete keuken-leefkamer transformaties, aanbouwen met grote glaspuien',
     areas: ['Strijp', 'Tongelre', 'Stratum', 'Woensel', 'Gestel'],
@@ -69,7 +78,7 @@ export const WOONKLASSE_CITIES: WoonklasseCity[] = [
     slug: 'tilburg',
     province: 'Noord-Brabant',
     description:
-      'Tilburg ademt nuchtere Brabantse degelijkheid. De stad is gebouwd door textielfabrikanten en vraagt om een aannemer die net zo hard werkt: heldere afspraken, nette steigers, en een afwerking die generaties meegaat — in De Reeshof én in Oud-Noord.',
+      'Tilburg ademt nuchtere Brabantse degelijkheid. De stad is gebouwd door textielfabrikanten en vraagt om een aannemer die net zo hard werkt: heldere afspraken, nette steigers, en een afwerking die generaties meegaat - in De Reeshof én in Oud-Noord.',
     context:
       'rij- en hoekwoning verbouwingen, dakopbouwen, achteraanbouwen en complete onderhoudsbeurten',
     areas: ['Reeshof', 'Goirke', 'Oud-Noord', 'Berkel-Enschot', 'Udenhout'],
@@ -91,7 +100,7 @@ export const WOONKLASSE_CITIES: WoonklasseCity[] = [
     slug: 'almere',
     province: 'Flevoland',
     description:
-      'Almere is jong en groot opgezet. De woningen hebben ruime kavels en hoge plafonds — ideaal voor royale aanbouwen, dakopbouwen en complete keukenzones met openverbinding naar de tuin. Wij benutten elke vierkante meter die deze polderstad biedt.',
+      'Almere is jong en groot opgezet. De woningen hebben ruime kavels en hoge plafonds - ideaal voor royale aanbouwen, dakopbouwen en complete keukenzones met openverbinding naar de tuin. Wij benutten elke vierkante meter die deze polderstad biedt.',
     context:
       'aanbouwen op ruime kavels, dakopbouwen, totaalverbouwingen van VINEX-woningen',
     areas: ['Almere Stad', 'Almere Buiten', 'Almere Haven', 'Almere Poort'],
@@ -102,7 +111,7 @@ export const WOONKLASSE_CITIES: WoonklasseCity[] = [
     slug: 'breda',
     province: 'Noord-Brabant',
     description:
-      'Breda is een stad van klassieke villa\'s in het Ginneken en gemoedelijke wijken zoals Boeimeer. Wij verbouwen met aandacht voor architectonische lijsten, glas-in-lood en authentieke vloeren — en voegen de comfort, isolatie en techniek toe die je vandaag verwacht.',
+      'Breda is een stad van klassieke villa\'s in het Ginneken en gemoedelijke wijken zoals Boeimeer. Wij verbouwen met aandacht voor architectonische lijsten, glas-in-lood en authentieke vloeren - en voegen de comfort, isolatie en techniek toe die je vandaag verwacht.',
     context:
       'villarenovaties, restauratiewerk, energetisch upgraden van vooroorlogse woningen',
     areas: ['Ginneken', 'Boeimeer', 'Princenhage', 'Brabantpark', 'Heusdenhout'],
@@ -113,7 +122,7 @@ export const WOONKLASSE_CITIES: WoonklasseCity[] = [
     slug: 'nijmegen',
     province: 'Gelderland',
     description:
-      'Nijmegen is de oudste stad van Nederland en heeft een rijke woningvoorraad — van vooroorlogse panden in Nijmegen-Oost tot Vinex-uitbreidingen in Lent. Wij verbouwen met respect voor het karakter en voegen de extra ruimte toe die gezinnen hier vragen.',
+      'Nijmegen is de oudste stad van Nederland en heeft een rijke woningvoorraad - van vooroorlogse panden in Nijmegen-Oost tot Vinex-uitbreidingen in Lent. Wij verbouwen met respect voor het karakter en voegen de extra ruimte toe die gezinnen hier vragen.',
     context:
       'jaren-dertig renovaties, optoppen, kelderverbouwingen op heuvelachtige kavels',
     areas: ['Nijmegen-Oost', 'Hees', 'Lent', 'Hatert', 'Dukenburg'],
@@ -124,7 +133,7 @@ export const WOONKLASSE_CITIES: WoonklasseCity[] = [
     slug: 'apeldoorn',
     province: 'Gelderland',
     description:
-      'Apeldoorn ligt aan de rand van de Veluwe en heeft ruime, vrijstaande woningen met grote tuinen. Wij realiseren ruime aanbouwen, serres en complete dakrenovaties — met respect voor de bosrijke omgeving en de architectuur van Berg en Bos en Ugchelen.',
+      'Apeldoorn ligt aan de rand van de Veluwe en heeft ruime, vrijstaande woningen met grote tuinen. Wij realiseren ruime aanbouwen, serres en complete dakrenovaties - met respect voor de bosrijke omgeving en de architectuur van Berg en Bos en Ugchelen.',
     context:
       'serres en aanbouwen, dakopbouwen, complete villa-renovaties, schuurverbouwingen',
     areas: ['Berg en Bos', 'De Maten', 'Ugchelen', 'Zevenhuizen', 'Loenen'],
@@ -135,7 +144,7 @@ export const WOONKLASSE_CITIES: WoonklasseCity[] = [
     slug: 'haarlem',
     province: 'Noord-Holland',
     description:
-      'Haarlem is een schatkamer van jugendstil, hofjes en historische binnenstad. Verbouwen vraagt hier om gevoel voor profielen, kozijnen en glas-in-lood — én om praktische kennis van de monumentencommissie. Onze ploeg combineert beide.',
+      'Haarlem is een schatkamer van jugendstil, hofjes en historische binnenstad. Verbouwen vraagt hier om gevoel voor profielen, kozijnen en glas-in-lood - én om praktische kennis van de monumentencommissie. Onze ploeg combineert beide.',
     context:
       'monumentale verbouwingen, jugendstil restauratie, dakkapellen en uitbouwen aan binnenstadwoningen',
     areas: ['Haarlem-Noord', 'Schalkwijk', 'Centrum', 'Vogelenbuurt', 'Spaarndam'],
@@ -146,7 +155,7 @@ export const WOONKLASSE_CITIES: WoonklasseCity[] = [
     slug: 'arnhem',
     province: 'Gelderland',
     description:
-      'Arnhem heeft een fijn oog voor stijl en materiaal — niet voor niets staat hier de Modeacademie. Wij verbouwen woningen in Schaarsbergen en Klarendal met aandacht voor materiaalmix en bouwfysica, zodat oud en nieuw naadloos in elkaar overlopen.',
+      'Arnhem heeft een fijn oog voor stijl en materiaal - niet voor niets staat hier de Modeacademie. Wij verbouwen woningen in Schaarsbergen en Klarendal met aandacht voor materiaalmix en bouwfysica, zodat oud en nieuw naadloos in elkaar overlopen.',
     context:
       'villa-renovaties op heuvelachtige percelen, moderne aanbouwen, complete onderhoudstrajecten',
     areas: ['Schaarsbergen', 'Klarendal', 'Rijkerswoerd', 'Spijkerkwartier', 'Velp'],
@@ -157,7 +166,7 @@ export const WOONKLASSE_CITIES: WoonklasseCity[] = [
     slug: 'enschede',
     province: 'Overijssel',
     description:
-      'Twentse degelijkheid is voelbaar in elk huis dat we hier verbouwen. Onze projecten in Enschede zijn gebouwd om generaties mee te gaan — robuuste materialen, doordachte techniek en een afwerking die net zo trots is als de mensen die er wonen.',
+      'Twentse degelijkheid is voelbaar in elk huis dat we hier verbouwen. Onze projecten in Enschede zijn gebouwd om generaties mee te gaan - robuuste materialen, doordachte techniek en een afwerking die net zo trots is als de mensen die er wonen.',
     context:
       'totaalverbouwingen, dakopbouwen, schuurverbouwingen en aanbouwen op ruime Twentse kavels',
     areas: ['Glanerbrug', 'Boswinkel', "'t Ribbelt", 'Twekkelerveld', 'Hengelo (omgeving)'],
@@ -168,7 +177,7 @@ export const WOONKLASSE_CITIES: WoonklasseCity[] = [
     slug: 'amersfoort',
     province: 'Utrecht',
     description:
-      'Amersfoort verbindt middeleeuwse stadsmuren met moderne wijken zoals Vathorst en Schothorst. Wij brengen die balans tussen oud en nieuw terug in elke verbouwing — natuurlijke materialen die ouderdom uitstralen, gecombineerd met de installaties van vandaag.',
+      'Amersfoort verbindt middeleeuwse stadsmuren met moderne wijken zoals Vathorst en Schothorst. Wij brengen die balans tussen oud en nieuw terug in elke verbouwing - natuurlijke materialen die ouderdom uitstralen, gecombineerd met de installaties van vandaag.',
     context:
       'binnenstad-renovaties, jaren-dertig verbouwingen, energetisch upgraden van VINEX-woningen',
     areas: ['Vathorst', 'Soesterkwartier', 'Kruiskamp', 'Schothorst', 'Hoogland'],
@@ -179,7 +188,7 @@ export const WOONKLASSE_CITIES: WoonklasseCity[] = [
     slug: 'zaanstad',
     province: 'Noord-Holland',
     description:
-      'De Zaanse traditie van houtbouw, ambacht en industriële architectuur zit in onze projecten verweven. Wij verbouwen Zaanse huizen met respect voor het oorspronkelijke karakter — donker hout, krappe percelen, en altijd de vraag hoe je er een eigentijdse woning van maakt.',
+      'De Zaanse traditie van houtbouw, ambacht en industriële architectuur zit in onze projecten verweven. Wij verbouwen Zaanse huizen met respect voor het oorspronkelijke karakter - donker hout, krappe percelen, en altijd de vraag hoe je er een eigentijdse woning van maakt.',
     context:
       'Zaanse huis renovaties, optoppingen, aanbouwen op smalle stadskavels, fundering- en houtrotherstel',
     areas: ['Zaandam', 'Krommenie', 'Wormerveer', 'Koog aan de Zaan', 'Wormer'],
@@ -190,7 +199,7 @@ export const WOONKLASSE_CITIES: WoonklasseCity[] = [
     slug: 'haarlemmermeer',
     province: 'Noord-Holland',
     description:
-      'Hoofddorp en Nieuw-Vennep groeien hard met ruime kavels en moderne woningen. Wij benutten die schaal voor genereuze aanbouwen, complete keukenrenovaties en doordachte dakopbouwen — met oog voor het strakke karakter van de polder.',
+      'Hoofddorp en Nieuw-Vennep groeien hard met ruime kavels en moderne woningen. Wij benutten die schaal voor genereuze aanbouwen, complete keukenrenovaties en doordachte dakopbouwen - met oog voor het strakke karakter van de polder.',
     context:
       'aanbouwen op ruime polderkavels, dakopbouwen, complete onderhoudsbeurten van VINEX-woningen',
     areas: ['Hoofddorp', 'Nieuw-Vennep', 'Badhoevedorp', 'Vijfhuizen', 'Lisserbroek'],
@@ -201,7 +210,7 @@ export const WOONKLASSE_CITIES: WoonklasseCity[] = [
     slug: 'den-bosch',
     province: 'Noord-Brabant',
     description:
-      "'s-Hertogenbosch is Bourgondisch en bouwhistorisch rijk. Wij verbouwen monumenten binnen de vesting net zo zorgvuldig als nieuwbouw aan de Maas — met aandacht voor balklagen, gevelornamenten en de sfeer waarvoor je in deze stad woont.",
+      "'s-Hertogenbosch is Bourgondisch en bouwhistorisch rijk. Wij verbouwen monumenten binnen de vesting net zo zorgvuldig als nieuwbouw aan de Maas - met aandacht voor balklagen, gevelornamenten en de sfeer waarvoor je in deze stad woont.",
     context:
       'monumentale renovaties, balklaagherstel, optoppen binnen de vesting, complete verbouwingen',
     areas: ['Vughterpoort', 'Boschveld', 'Maaspoort', 'Rosmalen', 'Empel'],
@@ -212,7 +221,7 @@ export const WOONKLASSE_CITIES: WoonklasseCity[] = [
     slug: 'zoetermeer',
     province: 'Zuid-Holland',
     description:
-      'Zoetermeer is opgebouwd uit doordachte, planmatige wijken zoals Rokkeveen, Oosterheem en Buytenwegh. Wij verbouwen er tienduizenden vergelijkbare woningen herkenbaar, voorspelbaar en met strakke planning — precies wat deze stad vraagt.',
+      'Zoetermeer is opgebouwd uit doordachte, planmatige wijken zoals Rokkeveen, Oosterheem en Buytenwegh. Wij verbouwen er tienduizenden vergelijkbare woningen herkenbaar, voorspelbaar en met strakke planning - precies wat deze stad vraagt.',
     context:
       'standaardwoning-aanbouwen, dakopbouwen, complete keuken- en woonkamertransformaties',
     areas: ['Rokkeveen', 'Oosterheem', 'Buytenwegh', 'Meerzicht', 'Seghwaert'],
@@ -234,7 +243,7 @@ export const WOONKLASSE_CITIES: WoonklasseCity[] = [
     slug: 'leiden',
     province: 'Zuid-Holland',
     description:
-      'Leiden is een universiteitsstad met grachten, hofjes en historische gevels. Verbouwen vraagt hier om vakmanschap met oude details, smalle stoepen en zorg voor buren. Wij werken precies en netjes — zoals het hoort in een stad waar elke straat geschiedenis ademt.',
+      'Leiden is een universiteitsstad met grachten, hofjes en historische gevels. Verbouwen vraagt hier om vakmanschap met oude details, smalle stoepen en zorg voor buren. Wij werken precies en netjes - zoals het hoort in een stad waar elke straat geschiedenis ademt.',
     context:
       'monumentale verbouwingen, hofjeswoning-renovaties, dakkapellen en uitbouwen op smalle kavels',
     areas: ['Roomburg', 'Stevenshof', 'Burgemeesterswijk', 'Merenwijk', 'Tuinstadwijk'],
@@ -245,7 +254,7 @@ export const WOONKLASSE_CITIES: WoonklasseCity[] = [
     slug: 'maastricht',
     province: 'Limburg',
     description:
-      'Maastricht ademt Bourgondische sfeer en internationale invloeden. Wij verbouwen hier mergelhuizen, statige stadswoningen in Wijck en moderne villa\'s in Sint Pieter — met de robuuste vakmanschap en zuidelijke afwerking die deze stad verdient.',
+      'Maastricht ademt Bourgondische sfeer en internationale invloeden. Wij verbouwen hier mergelhuizen, statige stadswoningen in Wijck en moderne villa\'s in Sint Pieter - met de robuuste vakmanschap en zuidelijke afwerking die deze stad verdient.',
     context:
       'mergelhuis renovaties, monumentale verbouwingen, kelder- en gewelfwerk, complete villa-projecten',
     areas: ['Wijck', 'Sint Pieter', 'Heer', 'Caberg', 'Heugem'],
@@ -256,7 +265,7 @@ export const WOONKLASSE_CITIES: WoonklasseCity[] = [
     slug: 'dordrecht',
     province: 'Zuid-Holland',
     description:
-      'Dordrecht is de oudste stad van Holland en draagt dat trots in elke gevel. Onze verbouwingen aan de kades combineren historische details met moderne installaties — en in Sterrenburg of Dubbeldam realiseren we de aanbouwen waar gezinnen om vragen.',
+      'Dordrecht is de oudste stad van Holland en draagt dat trots in elke gevel. Onze verbouwingen aan de kades combineren historische details met moderne installaties - en in Sterrenburg of Dubbeldam realiseren we de aanbouwen waar gezinnen om vragen.',
     context:
       'monumentale verbouwingen, balklaagherstel, aanbouwen aan naoorlogse gezinswoningen',
     areas: ['Dubbeldam', 'Sterrenburg', 'Krispijn', 'Stadspolders', 'Wielwijk'],
@@ -267,7 +276,7 @@ export const WOONKLASSE_CITIES: WoonklasseCity[] = [
     slug: 'ede',
     province: 'Gelderland',
     description:
-      'Aan de rand van de Veluwe vind je in Ede ruime woningen met grote tuinen en bos om de hoek. Wij verbouwen hier woningen waar buiten en binnen samenkomen — grote glaspuien, serres, dakopbouwen en doordachte isolatie.',
+      'Aan de rand van de Veluwe vind je in Ede ruime woningen met grote tuinen en bos om de hoek. Wij verbouwen hier woningen waar buiten en binnen samenkomen - grote glaspuien, serres, dakopbouwen en doordachte isolatie.',
     context:
       'serres en aanbouwen, complete dakrenovaties, energetisch upgraden, schuurverbouwingen',
     areas: ['Ede-Wageningen', 'Bennekom', 'Lunteren', 'Ederveen', 'Harskamp'],
@@ -278,7 +287,7 @@ export const WOONKLASSE_CITIES: WoonklasseCity[] = [
     slug: 'alphen-aan-den-rijn',
     province: 'Zuid-Holland',
     description:
-      'Alphen ligt midden in het Groene Hart, met ruime nieuwbouw en doordachte gezinswoningen. Wij verbouwen hier rij- en hoekwoningen met aanbouwen, dakopbouwen en een complete energetische update — met oog voor de open polderlucht.',
+      'Alphen ligt midden in het Groene Hart, met ruime nieuwbouw en doordachte gezinswoningen. Wij verbouwen hier rij- en hoekwoningen met aanbouwen, dakopbouwen en een complete energetische update - met oog voor de open polderlucht.',
     context:
       'aanbouwen, dakopbouwen, complete onderhoudsbeurten en isolatieprojecten',
     areas: ['Kerk en Zanen', 'Ridderveld', 'Boskoop', 'Hazerswoude-Dorp', 'Zwammerdam'],
@@ -289,7 +298,7 @@ export const WOONKLASSE_CITIES: WoonklasseCity[] = [
     slug: 'leeuwarden',
     province: 'Friesland',
     description:
-      'De Friese hoofdstad combineert klassieke woningen met culturele vooruitgang. Wij verbouwen hier met Friese degelijkheid en oog voor detail — donker hout, vakmanschap tot in de naden, en materialen die het noordelijke licht oppakken.',
+      'De Friese hoofdstad combineert klassieke woningen met culturele vooruitgang. Wij verbouwen hier met Friese degelijkheid en oog voor detail - donker hout, vakmanschap tot in de naden, en materialen die het noordelijke licht oppakken.',
     context:
       'jaren-dertig renovaties, monumentale verbouwingen, dakkapellen en complete onderhoudsbeurten',
     areas: ['Aldlân', 'Camminghaburen', 'Bilgaard', 'Huizum', 'Westeinde'],
@@ -300,7 +309,7 @@ export const WOONKLASSE_CITIES: WoonklasseCity[] = [
     slug: 'alkmaar',
     province: 'Noord-Holland',
     description:
-      'De kaasstad ademt Hollandse charme. Van karakteristieke woningen rond de Waag tot moderne wijken in De Mare — wij verbouwen met oog voor licht, proportie en de nuchtere afwerking die past bij deze West-Friese stad.',
+      'De kaasstad ademt Hollandse charme. Van karakteristieke woningen rond de Waag tot moderne wijken in De Mare - wij verbouwen met oog voor licht, proportie en de nuchtere afwerking die past bij deze West-Friese stad.',
     context:
       'monumentale renovaties, optoppen van naoorlogse rijwoningen, aanbouwen en kelderwerken',
     areas: ['Overdie', 'Oudorp', 'De Mare', 'Schermereiland', 'Heerhugowaard (omgeving)'],
@@ -311,7 +320,7 @@ export const WOONKLASSE_CITIES: WoonklasseCity[] = [
     slug: 'emmen',
     province: 'Drenthe',
     description:
-      'Drentse rust en ruime erven kenmerken Emmen. Onze projecten zijn vaak royaal opgezet — flinke aanbouwen, schuurverbouwingen en complete onderhoudsbeurten op woningen die generaties mee moeten.',
+      'Drentse rust en ruime erven kenmerken Emmen. Onze projecten zijn vaak royaal opgezet - flinke aanbouwen, schuurverbouwingen en complete onderhoudsbeurten op woningen die generaties mee moeten.',
     context:
       'schuurverbouwingen, aanbouwen op ruime erven, dakrenovaties, complete onderhoudstrajecten',
     areas: ['Bargeres', 'Angelslo', 'Emmer-Compascuum', 'Klazienaveen', 'Nieuw-Amsterdam'],
@@ -322,7 +331,7 @@ export const WOONKLASSE_CITIES: WoonklasseCity[] = [
     slug: 'westland',
     province: 'Zuid-Holland',
     description:
-      'Tussen kassen en kust ligt het Westland — met ruime kavels en moderne villa\'s in Naaldwijk en Wateringen. Wij verbouwen hier woningen met grote glaspuien, ruimere indelingen en open verbinding naar de tuin, met materialen die de zilte lucht weerstaan.',
+      'Tussen kassen en kust ligt het Westland - met ruime kavels en moderne villa\'s in Naaldwijk en Wateringen. Wij verbouwen hier woningen met grote glaspuien, ruimere indelingen en open verbinding naar de tuin, met materialen die de zilte lucht weerstaan.',
     context:
       'villa-renovaties, grote glaspuien, aanbouwen en serres, kustbestendige afwerking',
     areas: ['Naaldwijk', 'Wateringen', 'Monster', "'s-Gravenzande", 'De Lier'],
@@ -344,7 +353,7 @@ export const WOONKLASSE_CITIES: WoonklasseCity[] = [
     slug: 'deventer',
     province: 'Overijssel',
     description:
-      'Hanzestad Deventer aan de IJssel heeft een prachtige monumentale kern. Wij renoveren karakteristieke panden in de binnenstad met respect voor het originele werk — en voegen de comfort en techniek toe die generaties bewoners gemist hebben.',
+      'Hanzestad Deventer aan de IJssel heeft een prachtige monumentale kern. Wij renoveren karakteristieke panden in de binnenstad met respect voor het originele werk - en voegen de comfort en techniek toe die generaties bewoners gemist hebben.',
     context:
       'monumentale renovaties, balklaagherstel, aanbouwen aan naoorlogse rijwoningen',
     areas: ['Colmschate', 'Borgele', 'Voorstad', 'Keizerslanden', 'Diepenveen'],
@@ -366,7 +375,7 @@ export const WOONKLASSE_CITIES: WoonklasseCity[] = [
     slug: 'helmond',
     province: 'Noord-Brabant',
     description:
-      'Helmond combineert industrieel verleden met moderne wijken zoals Brandevoort. Wij verbouwen hier rijwoningen, twee-onder-een-kap en vrijstaande villa\'s — met de Brabantse warmte en strakke planning waar onze klanten om vragen.',
+      'Helmond combineert industrieel verleden met moderne wijken zoals Brandevoort. Wij verbouwen hier rijwoningen, twee-onder-een-kap en vrijstaande villa\'s - met de Brabantse warmte en strakke planning waar onze klanten om vragen.',
     context:
       'aanbouwen, dakopbouwen, complete keuken-leefkamer transformaties, energetische renovaties',
     areas: ['Brandevoort', 'Stiphout', 'Mierlo-Hout', 'Helmond-Noord', 'Dierdonk'],
@@ -377,7 +386,7 @@ export const WOONKLASSE_CITIES: WoonklasseCity[] = [
     slug: 'venlo',
     province: 'Limburg',
     description:
-      'Venlo profiteert van zijn ligging tegen de Duitse grens — met internationale invloed in stijl en bouwmateriaal. Onze verbouwingen zijn vaak een mix van Limburgse warmte en strak Duits design, met natuursteen, robuuste isolatie en doordachte details.',
+      'Venlo profiteert van zijn ligging tegen de Duitse grens - met internationale invloed in stijl en bouwmateriaal. Onze verbouwingen zijn vaak een mix van Limburgse warmte en strak Duits design, met natuursteen, robuuste isolatie en doordachte details.',
     context:
       'verbouwingen aan vooroorlogse woningen, energetische renovaties, aanbouwen en serres',
     areas: ['Blerick', 'Tegelen', 'Velden', 'Belfeld', 'Arcen'],
@@ -388,7 +397,7 @@ export const WOONKLASSE_CITIES: WoonklasseCity[] = [
     slug: 'hilversum',
     province: 'Noord-Holland',
     description:
-      'Hilversum, de mediastad, herbergt prachtige jaren-dertig villa\'s en Dudok-architectuur. Wij verbouwen met respect voor die rijke bouwgeschiedenis — strakke lijnen, baksteendetails en de luxueuze materialen die het Gooi typeren.',
+      'Hilversum, de mediastad, herbergt prachtige jaren-dertig villa\'s en Dudok-architectuur. Wij verbouwen met respect voor die rijke bouwgeschiedenis - strakke lijnen, baksteendetails en de luxueuze materialen die het Gooi typeren.',
     context:
       'Dudok- en jaren-dertig renovaties, villa-verbouwingen, aanbouwen en complete dakrenovaties',
     areas: ['Trompenberg', 'Kerkelanden', 'Astoria', 'Bosdrift', 'Loosdrecht'],
@@ -399,7 +408,7 @@ export const WOONKLASSE_CITIES: WoonklasseCity[] = [
     slug: 'oss',
     province: 'Noord-Brabant',
     description:
-      'Oss ontwikkelt zich snel met nieuwe wijken en een gerenoveerde stadskern. Wij verbouwen hier rij- en hoekwoningen, voegen aanbouwen toe en moderniseren badkamers, keukens en daken — altijd met Brabantse degelijkheid en duidelijke afspraken.',
+      'Oss ontwikkelt zich snel met nieuwe wijken en een gerenoveerde stadskern. Wij verbouwen hier rij- en hoekwoningen, voegen aanbouwen toe en moderniseren badkamers, keukens en daken - altijd met Brabantse degelijkheid en duidelijke afspraken.',
     context:
       'aanbouwen, dakopbouwen, complete onderhoudsbeurten, vrijstaand woning renovaties',
     areas: ['Ruwaard', 'Schadewijk', 'Krinkelhoek', 'Berghem', 'Geffen'],
@@ -410,7 +419,7 @@ export const WOONKLASSE_CITIES: WoonklasseCity[] = [
     slug: 'amstelveen',
     province: 'Noord-Holland',
     description:
-      'Amstelveen is de groene, ruime tegenhanger van Amsterdam — met villa\'s, internationale bewoners en een verfijnde smaak. Wij verbouwen hier met internationale luxe en strakke uitvoering, voor klanten die het beste van twee werelden willen.',
+      'Amstelveen is de groene, ruime tegenhanger van Amsterdam - met villa\'s, internationale bewoners en een verfijnde smaak. Wij verbouwen hier met internationale luxe en strakke uitvoering, voor klanten die het beste van twee werelden willen.',
     context:
       'villa-renovaties, complete verbouwingen, internationale luxe afwerking, aanbouwen en serres',
     areas: ['Westwijk', 'Bovenkerk', 'Patrimonium', 'Elsrijk', 'Bankras'],
@@ -421,7 +430,7 @@ export const WOONKLASSE_CITIES: WoonklasseCity[] = [
     slug: 'heerlen',
     province: 'Limburg',
     description:
-      'Heerlen, hart van Parkstad, heeft een uniek mijnverleden en architectonisch erfgoed. Wij verbouwen hier woningen met Limburgse warmte — donkere natuursteen, robuuste afwerking en een vleugje retro die past bij het karakter van de regio.',
+      'Heerlen, hart van Parkstad, heeft een uniek mijnverleden en architectonisch erfgoed. Wij verbouwen hier woningen met Limburgse warmte - donkere natuursteen, robuuste afwerking en een vleugje retro die past bij het karakter van de regio.',
     context:
       'mijnwerkerswoning renovaties, jaren-dertig verbouwingen, aanbouwen en complete onderhoudsbeurten',
     areas: ['Heerlerheide', 'Hoensbroek', 'Welten', 'Heerlerbaan', 'Bekkerveld'],
@@ -432,7 +441,7 @@ export const WOONKLASSE_CITIES: WoonklasseCity[] = [
     slug: 'roosendaal',
     province: 'Noord-Brabant',
     description:
-      'Roosendaal in West-Brabant biedt ruime woningen en een gemoedelijke sfeer. Onze verbouwingen ademen Brabantse gastvrijheid — warme houttinten, doordachte indelingen en aanbouwen die de woning vergroten zonder het karakter te verliezen.',
+      'Roosendaal in West-Brabant biedt ruime woningen en een gemoedelijke sfeer. Onze verbouwingen ademen Brabantse gastvrijheid - warme houttinten, doordachte indelingen en aanbouwen die de woning vergroten zonder het karakter te verliezen.',
     context:
       'aanbouwen, dakopbouwen, jaren-dertig renovaties, schuurverbouwingen',
     areas: ['Tolberg', 'Kortendijk', 'Westrand', 'Burgerhout', 'Wouw'],
@@ -443,7 +452,7 @@ export const WOONKLASSE_CITIES: WoonklasseCity[] = [
     slug: 'purmerend',
     province: 'Noord-Holland',
     description:
-      'Aan de rand van Waterland combineert Purmerend ruime gezinswoningen met dorpse rust. Wij verbouwen woningen functioneel én ruim — met aanbouwen, dakopbouwen en slimme indelingen voor het hele gezin.',
+      'Aan de rand van Waterland combineert Purmerend ruime gezinswoningen met dorpse rust. Wij verbouwen woningen functioneel én ruim - met aanbouwen, dakopbouwen en slimme indelingen voor het hele gezin.',
     context:
       'aanbouwen, dakopbouwen, complete keuken- en woonkamerverbouwingen',
     areas: ['Weidevenne', 'Overwhere', 'Wheermolen', 'Gors', 'Beemster'],
@@ -454,7 +463,7 @@ export const WOONKLASSE_CITIES: WoonklasseCity[] = [
     slug: 'schiedam',
     province: 'Zuid-Holland',
     description:
-      'Schiedam heeft een rijk jeneververleden en industriële architectuur. Onze verbouwingen omarmen die ruwe charme — met staal, donker hout en gepolijst beton, gecombineerd met de zachte materialen die een woning warmte geven.',
+      'Schiedam heeft een rijk jeneververleden en industriële architectuur. Onze verbouwingen omarmen die ruwe charme - met staal, donker hout en gepolijst beton, gecombineerd met de zachte materialen die een woning warmte geven.',
     context:
       'industriële renovaties, jaren-dertig verbouwingen, optoppingen en kelderprojecten',
     areas: ['Groenoord', 'Nieuwland', 'Kethel', 'Spaland', 'Centrum'],
@@ -465,7 +474,7 @@ export const WOONKLASSE_CITIES: WoonklasseCity[] = [
     slug: 'spijkenisse',
     province: 'Zuid-Holland',
     description:
-      'Spijkenisse op Voorne-Putten heeft ruime gezinswoningen, planmatige wijken en groene erven. Wij verbouwen hier rij- en hoekwoningen met aanbouwen, dakopbouwen en complete onderhoudsbeurten — met heldere planning en eigen vakmensen.',
+      'Spijkenisse op Voorne-Putten heeft ruime gezinswoningen, planmatige wijken en groene erven. Wij verbouwen hier rij- en hoekwoningen met aanbouwen, dakopbouwen en complete onderhoudsbeurten - met heldere planning en eigen vakmensen.',
     context:
       'aanbouwen, dakopbouwen, complete keuken- en badkamerprojecten, energetische renovaties',
     areas: ['De Akkers', 'Sterrenkwartier', 'Hoogwerf', 'Vriesland', 'Maaswijk'],
@@ -476,7 +485,7 @@ export const WOONKLASSE_CITIES: WoonklasseCity[] = [
     slug: 'vlaardingen',
     province: 'Zuid-Holland',
     description:
-      'Aan de Nieuwe Maas combineert Vlaardingen havenkarakter met rustige woonwijken. Onze verbouwingen weerspiegelen die balans — robuust waar het kan, verfijnd waar het moet, met materialen die de zilte zeelucht weerstaan.',
+      'Aan de Nieuwe Maas combineert Vlaardingen havenkarakter met rustige woonwijken. Onze verbouwingen weerspiegelen die balans - robuust waar het kan, verfijnd waar het moet, met materialen die de zilte zeelucht weerstaan.',
     context:
       'jaren-dertig renovaties, aanbouwen, dakopbouwen en complete onderhoudsbeurten',
     areas: ['Holy', 'Westwijk', 'Ambacht', 'Babberspolder', 'Vettenoord'],
@@ -487,7 +496,7 @@ export const WOONKLASSE_CITIES: WoonklasseCity[] = [
     slug: 'hoorn',
     province: 'Noord-Holland',
     description:
-      'Hoorn met zijn VOC-verleden heeft een prachtige historische binnenstad en pittoreske haven. Wij verbouwen hier monumentale panden met klassieke verhoudingen, donkere houtaccenten en de techniek die je vandaag verwacht — zonder afbreuk te doen aan het karakter.',
+      'Hoorn met zijn VOC-verleden heeft een prachtige historische binnenstad en pittoreske haven. Wij verbouwen hier monumentale panden met klassieke verhoudingen, donkere houtaccenten en de techniek die je vandaag verwacht - zonder afbreuk te doen aan het karakter.',
     context:
       'monumentale renovaties, balklaagherstel, jaren-dertig verbouwingen, aanbouwen aan rijwoningen',
     areas: ['Risdam', 'Kersenboogerd', 'Zwaag', 'Grote Waal', 'Blokker'],
@@ -498,7 +507,7 @@ export const WOONKLASSE_CITIES: WoonklasseCity[] = [
     slug: 'gouda',
     province: 'Zuid-Holland',
     description:
-      'Gouda staat voor ambacht — kaas, kaarsen, stroopwafels. Wij brengen dat ambacht naar je verbouwing met handgemaakt timmerwerk, op maat gezaagde kozijnen en details die alleen door echt vakmanschap mogelijk zijn.',
+      'Gouda staat voor ambacht - kaas, kaarsen, stroopwafels. Wij brengen dat ambacht naar je verbouwing met handgemaakt timmerwerk, op maat gezaagde kozijnen en details die alleen door echt vakmanschap mogelijk zijn.',
     context:
       'monumentale renovaties, aanbouwen op smalle stadskavels, complete onderhoudsbeurten',
     areas: ['Goverwelle', 'Bloemendaal', 'Korte Akkeren', 'Gouwepark', 'Plaswijck'],
@@ -509,7 +518,7 @@ export const WOONKLASSE_CITIES: WoonklasseCity[] = [
     slug: 'lelystad',
     province: 'Flevoland',
     description:
-      'Lelystad is een moderne polderstad met ruime kavels en heldere architectuur. Wij verbouwen hier met de strakke lijnen die de polder vraagt — grote glaspuien, ruime aanbouwen en complete dakrenovaties die optimaal gebruik maken van het Flevolandse licht.',
+      'Lelystad is een moderne polderstad met ruime kavels en heldere architectuur. Wij verbouwen hier met de strakke lijnen die de polder vraagt - grote glaspuien, ruime aanbouwen en complete dakrenovaties die optimaal gebruik maken van het Flevolandse licht.',
     context:
       'aanbouwen, dakopbouwen, energetische renovaties, complete onderhoudsbeurten',
     areas: ['Atolwijk', 'Boswijk', 'Zuiderzeewijk', 'Warande', 'Lelystad-Haven'],
@@ -520,7 +529,7 @@ export const WOONKLASSE_CITIES: WoonklasseCity[] = [
     slug: 'katwijk',
     province: 'Zuid-Holland',
     description:
-      'Katwijk aan Zee heeft kustwoningen, vissersdorpkarakter en moderne nieuwbouw in Hoornes. Wij verbouwen hier met materialen die de zilte zeelucht weerstaan — duurzame kozijnen, robuuste afwerking en doordachte isolatie.',
+      'Katwijk aan Zee heeft kustwoningen, vissersdorpkarakter en moderne nieuwbouw in Hoornes. Wij verbouwen hier met materialen die de zilte zeelucht weerstaan - duurzame kozijnen, robuuste afwerking en doordachte isolatie.',
     context:
       'kustbestendige renovaties, dakopbouwen, aanbouwen en complete onderhoudsbeurten',
     areas: ['Katwijk aan Zee', 'Katwijk aan den Rijn', 'Rijnsburg', 'Valkenburg', 'Hoornes'],
@@ -531,7 +540,7 @@ export const WOONKLASSE_CITIES: WoonklasseCity[] = [
     slug: 'zeist',
     province: 'Utrecht',
     description:
-      'Zeist is bosrijk, lommerrijk en bekend om zijn statige villa\'s. Onze projecten hier zijn even royaal als de woningen waar ze in komen — met ruime aanbouwen, doordachte serres, hoogwaardige materialen en een tijdloze elegantie.',
+      'Zeist is bosrijk, lommerrijk en bekend om zijn statige villa\'s. Onze projecten hier zijn even royaal als de woningen waar ze in komen - met ruime aanbouwen, doordachte serres, hoogwaardige materialen en een tijdloze elegantie.',
     context:
       'villa-renovaties, serres en aanbouwen, restauratie van originele details',
     areas: ['Den Dolder', 'Austerlitz', 'Kerckebosch', 'Vollenhove', 'Bosch en Duin'],
@@ -553,7 +562,7 @@ export const WOONKLASSE_CITIES: WoonklasseCity[] = [
     slug: 'rijswijk',
     province: 'Zuid-Holland',
     description:
-      'Rijswijk biedt moderne hoogbouw én karakteristieke jaren-dertig wijken naast Den Haag. Wij verbouwen woningen die werken in beide werelden — strak en hedendaags voor appartementen, klassiek en gedetailleerd voor de oudere woningen in Te Werve en Steenvoorde.',
+      'Rijswijk biedt moderne hoogbouw én karakteristieke jaren-dertig wijken naast Den Haag. Wij verbouwen woningen die werken in beide werelden - strak en hedendaags voor appartementen, klassiek en gedetailleerd voor de oudere woningen in Te Werve en Steenvoorde.',
     context:
       'jaren-dertig renovaties, appartement-verbouwingen, aanbouwen en dakopbouwen',
     areas: ['Hoornwijck', 'Steenvoorde', 'Te Werve', 'Strijp', 'Endenhout'],

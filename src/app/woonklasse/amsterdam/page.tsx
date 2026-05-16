@@ -3,7 +3,6 @@ import { notFound } from 'next/navigation';
 import { getWoonklasseCityBySlug } from '@/data/woonklasse-cities';
 import { CONTACT } from '@/data/contact';
 import AmsterdamPage from '@/components/AmsterdamPage';
-import { buildCityFaqs } from '@/data/city-faqs';
 
 const SITE_URL = 'https://woonklasse.nl';
 const SLUG = 'amsterdam';
@@ -29,10 +28,6 @@ export const metadata: Metadata = {
 export default function Page() {
   const city = getWoonklasseCityBySlug(SLUG);
   if (!city) notFound();
-
-  const nearbyCities = city.nearby
-    .map((s) => getWoonklasseCityBySlug(s))
-    .filter((c): c is NonNullable<typeof c> => Boolean(c));
 
   const pageUrl = `${SITE_URL}/${city.slug}`;
 
@@ -73,16 +68,6 @@ export default function Page() {
     ],
   };
 
-  const faqJsonLd = {
-    '@context': 'https://schema.org',
-    '@type': 'FAQPage',
-    mainEntity: buildCityFaqs(city).map((f) => ({
-      '@type': 'Question',
-      name: f.q,
-      acceptedAnswer: { '@type': 'Answer', text: f.a },
-    })),
-  };
-
   return (
     <>
       <script
@@ -93,11 +78,7 @@ export default function Page() {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }}
       />
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }}
-      />
-      <AmsterdamPage city={city} nearbyCities={nearbyCities} ctaHref="/woonklasse/offerte" />
+      <AmsterdamPage city={city} ctaHref="/woonklasse/offerte" />
     </>
   );
 }
