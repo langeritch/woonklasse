@@ -174,7 +174,7 @@ export default function StijlenPage() {
                       alt={style.title}
                       fill
                       className="object-cover"
-                      sizes="(max-width: 1024px) 100vw, 460px"
+                      sizes="(max-width: 1024px) 100vw, 50vw"
                     />
                   </div>
                 </div>
