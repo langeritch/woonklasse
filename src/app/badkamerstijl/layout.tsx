@@ -1,13 +1,14 @@
 import type { Metadata } from 'next';
 import ScrollToTop from '@/components/ScrollToTop';
 import BadkamerstijlTransition from '@/components/BadkamerstijlTransition';
+import BadkamerstijlFooter from '@/components/BadkamerstijlFooter';
 import { CONTACT_BADKAMERSTIJL } from '@/data/contact';
 
 const SITE_URL = 'https://badkamerstijl.nl';
 
-const TITLE = 'Badkamerstijl — Luxe badkamers op maat door heel Nederland';
+const TITLE = 'Badkamerstijl: luxe badkamers op maat door heel Nederland';
 const DESCRIPTION =
-  'Badkamerstijl ontwerpt en realiseert luxe badkamers op maat. Van 3D-ontwerp tot oplevering, met eigen vakmensen, vaste aanneemsom en uitgebreide installatiegarantie.';
+  'Badkamerstijl ontwerpt en realiseert luxe badkamers op maat. Van ontwerp in 3D tot oplevering, met eigen vakmensen, vaste aanneemsom en uitgebreide installatiegarantie.';
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
@@ -64,7 +65,7 @@ const localBusinessJsonLd = {
     `${SITE_URL}/badkamerstijl/2200xxs(43).jpg`,
   ],
   description:
-    'Badkamerstijl ontwerpt en realiseert luxe badkamers op maat. Van 3D-ontwerp tot oplevering, met eigen vakmensen, vaste aanneemsom en uitgebreide installatiegarantie.',
+    'Badkamerstijl ontwerpt en realiseert luxe badkamers op maat. Van ontwerp in 3D tot oplevering, met eigen vakmensen, vaste aanneemsom en uitgebreide installatiegarantie.',
   email: CONTACT_BADKAMERSTIJL.email,
   telephone: CONTACT_BADKAMERSTIJL.telefoon,
   priceRange: '€€€',
@@ -117,7 +118,7 @@ const serviceJsonLd = {
     lowPrice: '5000',
     highPrice: '60000',
     offerCount: '4',
-    url: `${SITE_URL}/badkamerstijl/prijzen`,
+    url: `${SITE_URL}/prijzen`,
   },
   hasOfferCatalog: {
     '@type': 'OfferCatalog',
@@ -131,12 +132,12 @@ const serviceJsonLd = {
       {
         '@type': 'OfferCatalog',
         name: 'Standaard badkamer',
-        description: 'Designsanitair en grootformaat tegels, € 12.000 — € 22.000.',
+        description: 'Designsanitair en grootformaat tegels, tussen € 12.000 en € 22.000.',
       },
       {
         '@type': 'OfferCatalog',
         name: 'Premium badkamer',
-        description: 'Topmerken, vrijstaand bad en maatwerk meubels, € 22.000 — € 35.000.',
+        description: 'Topmerken, vrijstaand bad en maatwerk meubels, tussen € 22.000 en € 35.000.',
       },
       {
         '@type': 'OfferCatalog',
@@ -175,6 +176,7 @@ export default function BadkamerstijlLayout({ children }: { children: React.Reac
       <ScrollToTop />
       <BadkamerstijlTransition />
       {children}
+      <BadkamerstijlFooter />
     </>
   );
 }
