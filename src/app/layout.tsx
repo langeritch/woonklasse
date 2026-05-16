@@ -75,6 +75,16 @@ export default function RootLayout({
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
         />
+        <script
+          type="text/javascript"
+          dangerouslySetInnerHTML={{ __html: `
+    (function(c,l,a,r,i,t,y){
+        c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+        t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+        y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+    })(window, document, "clarity", "script", "wrr34ehnau");
+` }}
+        />
       </head>
       <body className={`${poppins.variable} antialiased flex flex-col min-h-screen`}>
         <script dangerouslySetInnerHTML={{ __html: `
@@ -93,7 +103,7 @@ export default function RootLayout({
           <Footer />
           <WhatsAppFab />
         </SmoothScroll>
-        {/* Amaso Dashboard Alt+Click inspector bridge — dev-only, self-contained. */}
+        {/* Amaso Dashboard Alt+Click inspector bridge - dev-only, self-contained. */}
         {process.env.NODE_ENV !== "production" && (
           <script async src="/amaso-inspector.js" />
         )}
