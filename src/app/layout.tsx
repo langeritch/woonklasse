@@ -85,6 +85,15 @@ export default function RootLayout({
     })(window, document, "clarity", "script", "wrr34ehnau");
 ` }}
         />
+        <script async src="https://www.googletagmanager.com/gtag/js?id=G-213KZ073R2" />
+        <script
+          dangerouslySetInnerHTML={{ __html: `
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-213KZ073R2');
+` }}
+        />
       </head>
       <body className={`${poppins.variable} antialiased flex flex-col min-h-screen`}>
         <script dangerouslySetInnerHTML={{ __html: `
