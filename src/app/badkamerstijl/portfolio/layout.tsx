@@ -1,11 +1,11 @@
 import type { Metadata } from 'next';
 
 const SITE_URL = 'https://badkamerstijl.nl';
-const PAGE_URL = `${SITE_URL}/badkamerstijl/portfolio`;
+const PAGE_URL = `${SITE_URL}/portfolio`;
 
-const TITLE = 'Portfolio — Gerealiseerde badkamers | Badkamerstijl';
+const TITLE = 'Portfolio: gerealiseerde badkamers | Badkamerstijl';
 const DESCRIPTION =
-  'Bekijk ons portfolio van gerealiseerde luxe badkamers door heel Nederland. Van modern minimalistisch tot klassiek luxe — laat je inspireren door echte projecten van Badkamerstijl.';
+  'Bekijk ons portfolio van gerealiseerde luxe badkamers door heel Nederland. Van modern minimalistisch tot klassiek luxe. Laat je inspireren door echte projecten van Badkamerstijl.';
 
 export const metadata: Metadata = {
   title: TITLE,

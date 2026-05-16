@@ -1,7 +1,7 @@
 import type { Metadata } from 'next';
 
 const SITE_URL = 'https://badkamerstijl.nl';
-const PAGE_URL = `${SITE_URL}/badkamerstijl/adviesgesprek`;
+const PAGE_URL = `${SITE_URL}/adviesgesprek`;
 
 const TITLE = 'Gratis adviesgesprek voor jouw badkamer | Badkamerstijl';
 const DESCRIPTION =

@@ -1,9 +1,9 @@
 import type { Metadata } from 'next';
 
 const SITE_URL = 'https://badkamerstijl.nl';
-const PAGE_URL = `${SITE_URL}/badkamerstijl/stijlen`;
+const PAGE_URL = `${SITE_URL}/stijlen`;
 
-const TITLE = 'Badkamer stijlen — Modern, klassiek, natuurlijk | Badkamerstijl';
+const TITLE = 'Badkamer stijlen: modern, klassiek, natuurlijk | Badkamerstijl';
 const DESCRIPTION =
   'Ontdek alle badkamer stijlen: modern minimalistisch, warm natuurlijk, klassiek luxe, scandinavisch, industrieel chic en boutique hotel. Vind de stijl die bij je past en plan een gratis adviesgesprek.';
 
@@ -32,7 +32,7 @@ export const metadata: Metadata = {
         url: `${SITE_URL}/badkamerstijl/2200xxs(28).jpg`,
         width: 2200,
         height: 1467,
-        alt: 'Verschillende badkamer stijlen — Badkamerstijl',
+        alt: 'Verschillende badkamer stijlen door Badkamerstijl',
       },
     ],
   },
