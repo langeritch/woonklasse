@@ -9,10 +9,12 @@ const SITE_URL = 'https://woonklasse.nl';
 
 export const dynamicParams = false;
 
+// Steden met een eigen schone template-route (src/app/woonklasse/<slug>),
+// die deze [city]-template overrulen en dus hier niet ook gegenereerd mogen worden.
+const DEDICATED_ROUTE_SLUGS = new Set(['amsterdam', 'rotterdam', 'utrecht']);
+
 export async function generateStaticParams() {
-  // 'amsterdam' has a dedicated static route (src/app/woonklasse/amsterdam) that
-  // overrides this [city] template, so it must not also be generated here.
-  return WOONKLASSE_CITIES.filter((c) => c.slug !== 'amsterdam').map((c) => ({
+  return WOONKLASSE_CITIES.filter((c) => !DEDICATED_ROUTE_SLUGS.has(c.slug)).map((c) => ({
     city: c.slug,
   }));
 }

@@ -39,6 +39,12 @@ export const WOONKLASSE_CITIES: WoonklasseCity[] = [
       'complete verbouwingen, optoppen en aanbouwen, naoorlogs casco upgraden, balkonherstel hoogbouw',
     areas: ['Kralingen', 'Hillegersberg', 'Centrum', 'Charlois', 'Prins Alexander'],
     nearby: ['schiedam', 'vlaardingen', 'spijkenisse', 'dordrecht'],
+    // TIJDELIJKE hero: bestaande galerijfoto. Vervang door de echte
+    // Rotterdam-stadsfoto zodra die in public/woonklasse/ staat
+    // (bv. /woonklasse/rotterdam-hero.avif). Dit is de enige regel die wijzigt.
+    heroImage: '/woonklasse/villa-bergen-1.jpg',
+    intro:
+      'Stoere architectuur, veel nieuwbouw, en woningen die om een eigen stijl vragen. Met de juiste renovatie en afwerking haal je het beste uit elke ruimte. Wij kennen Rotterdam en weten welke details het verschil maken. Laten we van jouw plek iets moois maken.',
   },
   {
     name: 'Den Haag',
@@ -61,6 +67,12 @@ export const WOONKLASSE_CITIES: WoonklasseCity[] = [
       'jaren-dertig renovaties, optoppingen, uitbouwen op stadse kavels, kelderwerken in oude binnenstad',
     areas: ['Oudwijk', 'Wittevrouwen', 'Lombok', 'Tuindorp', 'Leidsche Rijn'],
     nearby: ['amersfoort', 'zeist', 'veenendaal', 'hilversum'],
+    // TIJDELIJKE hero: bestaande galerijfoto. Vervang door de echte
+    // Utrecht-stadsfoto zodra die in public/woonklasse/ staat
+    // (bv. /woonklasse/utrecht-hero.avif). Dit is de enige regel die wijzigt.
+    heroImage: '/woonklasse/canal-residence-3.jpg',
+    intro:
+      'Karaktervolle huizen, vaak met historie, en weinig ruimte om fouten te maken. Met de juiste renovatie en styling wordt elke vierkante meter beter. Wij kennen Utrecht en weten welke details het verschil maken. Laten we van jouw plek iets moois maken.',
   },
   {
     name: 'Eindhoven',
