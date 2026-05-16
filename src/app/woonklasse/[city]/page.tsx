@@ -10,7 +10,11 @@ const SITE_URL = 'https://woonklasse.nl';
 export const dynamicParams = false;
 
 export async function generateStaticParams() {
-  return WOONKLASSE_CITIES.map((c) => ({ city: c.slug }));
+  // 'amsterdam' has a dedicated static route (src/app/woonklasse/amsterdam) that
+  // overrides this [city] template, so it must not also be generated here.
+  return WOONKLASSE_CITIES.filter((c) => c.slug !== 'amsterdam').map((c) => ({
+    city: c.slug,
+  }));
 }
 
 export async function generateMetadata(

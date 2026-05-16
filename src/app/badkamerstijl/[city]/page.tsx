@@ -2,12 +2,17 @@ import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import { CITIES, getCityBySlug } from '@/data/cities';
 import { CONTACT_BADKAMERSTIJL } from '@/data/contact';
+import { BLOG_POSTS } from '@/data/blog';
 import CityPage from '@/components/badkamerstijl/CityPage';
 
 const SITE_URL = 'https://badkamerstijl.nl';
 
 export async function generateStaticParams() {
-  return CITIES.map((c) => ({ city: c.slug }));
+  // 'amsterdam' has a dedicated static route (src/app/badkamerstijl/amsterdam)
+  // that overrides this [city] template, so it must not also be generated here.
+  return CITIES.filter((c) => c.slug !== 'amsterdam').map((c) => ({
+    city: c.slug,
+  }));
 }
 
 export async function generateMetadata(
@@ -19,8 +24,8 @@ export async function generateMetadata(
     return { title: 'Niet gevonden | Badkamerstijl' };
   }
 
-  const title = `Badkamer renovatie ${city.name} — Luxe op maat | Badkamerstijl`;
-  const description = `Badkamer renovatie in ${city.name} door Badkamerstijl. 3D-ontwerp, eigen vakmensen en vaste aanneemsom. Plan een gratis adviesgesprek voor jouw droombadkamer in ${city.name}.`;
+  const title = `Badkamer renovatie ${city.name}: luxe op maat | Badkamerstijl`;
+  const description = `Badkamer renovatie in ${city.name} door Badkamerstijl. Ontwerp in 3D, eigen vakmensen en vaste aanneemsom. Plan een gratis adviesgesprek voor jouw droombadkamer in ${city.name}.`;
   const url = `${SITE_URL}/${city.slug}`;
 
   return {
@@ -54,6 +59,10 @@ export default async function Page(
     .map((s) => getCityBySlug(s))
     .filter((c): c is NonNullable<typeof c> => Boolean(c));
 
+  const recentArticles = [...BLOG_POSTS]
+    .sort((a, b) => b.date.localeCompare(a.date))
+    .slice(0, 3);
+
   const pageUrl = `${SITE_URL}/${city.slug}`;
 
   const localBusinessJsonLd = {
@@ -61,7 +70,7 @@ export default async function Page(
     '@type': ['LocalBusiness', 'HomeAndConstructionBusiness', 'GeneralContractor'],
     '@id': `${pageUrl}#localbusiness`,
     name: 'BadkamerStijl',
-    alternateName: `BadkamerStijl — Badkamer Renovatie ${city.name}`,
+    alternateName: `BadkamerStijl, badkamer renovatie in ${city.name}`,
     description: `Luxe badkamer renovatie en op maat gemaakte badkamers in ${city.name}. Volledig ontwerp en realisatie door eigen vakmensen.`,
     url: pageUrl,
     telephone: CONTACT_BADKAMERSTIJL.telefoon,
@@ -139,12 +148,6 @@ export default async function Page(
       {
         '@type': 'ListItem',
         position: 2,
-        name: 'Badkamerstijl',
-        item: `${SITE_URL}/badkamerstijl`,
-      },
-      {
-        '@type': 'ListItem',
-        position: 3,
         name: `Badkamer Renovatie ${city.name}`,
         item: pageUrl,
       },
@@ -168,7 +171,7 @@ export default async function Page(
         name: `Wat kost een badkamer renovatie in ${city.name}?`,
         acceptedAnswer: {
           '@type': 'Answer',
-          text: `In ${city.name} liggen de kosten meestal tussen €5.000 (budget) en €40.000+ (luxe). De gemiddelde renovatie kost €10.000 — €25.000.`,
+          text: `In ${city.name} liggen de kosten meestal tussen €5.000 (budget) en €40.000+ (luxe). De gemiddelde renovatie kost tussen €10.000 en €25.000.`,
         },
       },
       {
@@ -196,7 +199,7 @@ export default async function Page(
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }}
       />
-      <CityPage city={city} nearbyCities={nearbyCities} />
+      <CityPage city={city} nearbyCities={nearbyCities} recentArticles={recentArticles} />
     </>
   );
 }
