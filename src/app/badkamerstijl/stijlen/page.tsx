@@ -167,14 +167,14 @@ export default function StijlenPage() {
             <div className={`grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center ${i % 2 === 1 ? 'lg:direction-rtl' : ''}`}>
               {/* Image side */}
               <div className={`${i % 2 === 1 ? 'lg:order-2' : ''}`}>
-                <div className="sx-reveal aspect-[4/5] relative overflow-hidden">
+                <div className="sx-reveal aspect-[4/5] relative overflow-hidden lg:max-w-[460px] lg:mx-auto">
                   <div className="sx-scale w-full h-full relative">
                     <Image
                       src={style.slug === 'industrieel' ? '/badkamerstijl/industrieel-chic.jpg' : style.accent}
                       alt={style.title}
                       fill
                       className="object-cover"
-                      sizes="(max-width: 1024px) 100vw, 50vw"
+                      sizes="(max-width: 1024px) 100vw, 460px"
                     />
                   </div>
                 </div>
