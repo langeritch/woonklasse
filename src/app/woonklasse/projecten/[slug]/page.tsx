@@ -191,7 +191,7 @@ export default function ProjectDetailPage() {
   return (
     <main className="min-h-screen bg-woon-light text-woon-dark">
 
-      {/* ===== BLOK 1 — HERO (full-bleed) ===== */}
+      {/* ===== BLOK 1 - HERO (full-bleed) ===== */}
       <section className="relative w-full h-[60vh] md:h-[85vh] overflow-hidden bg-woon-dark">
         <motion.div
           initial={{ scale: 1.05 }}
@@ -211,11 +211,11 @@ export default function ProjectDetailPage() {
         </div>
       </section>
 
-      {/* ===== BLOK 2 — PROJECT INFO HEADER (two columns) ===== */}
+      {/* ===== BLOK 2 - PROJECT INFO HEADER (two columns) ===== */}
       <section className="py-16 md:py-24">
         <div className="max-w-7xl mx-auto px-5 md:px-12 lg:px-[50px]">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-10">
-            {/* Left — Title + description */}
+            {/* Left - Title + description */}
             <div className="lg:col-span-7">
               <motion.p
                 initial={{ opacity: 0 }}
@@ -243,7 +243,7 @@ export default function ProjectDetailPage() {
               </motion.p>
             </div>
 
-            {/* Right — Meta details */}
+            {/* Right - Meta details */}
             <div className="lg:col-span-5">
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
