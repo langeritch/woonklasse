@@ -7,6 +7,41 @@ import { ArrowRight } from 'lucide-react';
 import { projects } from '@/data/projects';
 import { CollageGrid } from '@/components/woonklasse/CollageGrid';
 
+const SITE_URL = 'https://woonklasse.nl';
+const PAGE_URL = `${SITE_URL}/woonklasse/projecten`;
+
+const collectionJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'CollectionPage',
+  '@id': `${PAGE_URL}#collection`,
+  name: 'Projecten: gerealiseerde verbouwingen en veranda\'s',
+  description:
+    'Bekijk ons portfolio van gerealiseerde verbouwingen, totaalrenovaties, aanbouwen en veranda\'s. Inspiratie voor jouw verbouwing door heel Nederland.',
+  url: PAGE_URL,
+  inLanguage: 'nl-NL',
+  isPartOf: { '@id': `${SITE_URL}#website` },
+  mainEntity: {
+    '@type': 'ItemList',
+    numberOfItems: projects.length,
+    itemListElement: projects.map((p, i) => ({
+      '@type': 'ListItem',
+      position: i + 1,
+      url: `${SITE_URL}/woonklasse/projecten/${p.slug}`,
+      name: p.subtitle,
+    })),
+  },
+};
+
+const breadcrumbJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Home', item: SITE_URL },
+    { '@type': 'ListItem', position: 2, name: 'Woonklasse', item: `${SITE_URL}/woonklasse` },
+    { '@type': 'ListItem', position: 3, name: 'Projecten', item: PAGE_URL },
+  ],
+};
+
 function FadeIn({ children, className = '', delay = 0 }: { children: React.ReactNode; className?: string; delay?: number }) {
   return (
     <motion.div
@@ -22,7 +57,7 @@ function FadeIn({ children, className = '', delay = 0 }: { children: React.React
 }
 
 export default function ProjectenPage() {
-  // Pick a featured project for the hero collage — use different images than homepage
+  // Pick a featured project for the hero collage - use different images than homepage
   const heroProject = projects[1]; // luxe-afwerking
   const heroImgs = [
     `/woonklasse/projecten/${heroProject.slug}/2.jpg`,
@@ -31,7 +66,16 @@ export default function ProjectenPage() {
   ];
 
   return (
-    <main className="min-h-screen bg-woon-light text-woon-primary">
+    <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(collectionJsonLd) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }}
+      />
+      <main className="min-h-screen bg-woon-light text-woon-primary">
       {/* Hero with CollageGrid */}
       <section className="pt-32 pb-8 md:pt-40 md:pb-12 px-6 md:px-12 lg:px-20">
         <div className="max-w-4xl mb-12">
@@ -75,7 +119,7 @@ export default function ProjectenPage() {
       {/* Divider */}
       <div className="mx-6 md:mx-12 lg:mx-20 border-b border-woon-primary/10" />
 
-      {/* Projects Grid — BAMO style cards */}
+      {/* Projects Grid - BAMO style cards */}
       <section className="px-6 md:px-12 lg:px-20 py-16 md:py-24">
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-7xl">
           {projects.map((project, idx) => (
@@ -127,6 +171,7 @@ export default function ProjectenPage() {
           </Link>
         </FadeIn>
       </section>
-    </main>
+      </main>
+    </>
   );
 }
