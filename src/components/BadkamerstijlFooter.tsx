@@ -1,7 +1,6 @@
 'use client';
 
 import Link from 'next/link';
-import { usePathname } from 'next/navigation';
 import { CONTACT_BADKAMERSTIJL } from '@/data/contact';
 
 const navLinks = [
@@ -14,28 +13,11 @@ const navLinks = [
   { title: 'Contact', path: '/adviesgesprek' },
 ];
 
-// Mounted once from the Badkamerstijl layout, so it covers every
-// /badkamerstijl/* route (and every clean path that rewrites into it on
-// badkamerstijl.nl). Several Badkamerstijl pages already end with their own
-// bespoke footer (home, bedankt, blog, blog article, city, prijzen) - this
-// shared footer only renders on the pages that lack one, matched by the last
-// path segment so it works for both the clean live URLs (/stijlen) and the
-// internal routes (/badkamerstijl/stijlen).
-const PAGES_WITHOUT_OWN_FOOTER = new Set([
-  'stijlen',
-  'portfolio',
-  'diensten',
-  'kosten',
-  'adviesgesprek',
-]);
-
+// Mounted once from the Badkamerstijl layout, so it is the single shared
+// footer for every Badkamerstijl route (including the clean paths that
+// rewrite into /badkamerstijl/* on badkamerstijl.nl). The per-page bespoke
+// inline footers were removed in favour of this one for visual consistency.
 export default function BadkamerstijlFooter() {
-  const pathname = usePathname();
-  const lastSegment = pathname.split('/').filter(Boolean).pop() ?? '';
-  if (!PAGES_WITHOUT_OWN_FOOTER.has(lastSegment)) {
-    return null;
-  }
-
   return (
     <footer className="bg-bsv2-charcoal text-bsv2-cream mt-auto border-t border-white/10">
       <div className="max-w-[1600px] mx-auto px-6 md:px-12 lg:px-20 pt-20 pb-12">

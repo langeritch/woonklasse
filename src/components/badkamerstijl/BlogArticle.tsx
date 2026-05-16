@@ -98,7 +98,7 @@ export default function BlogArticle({
         </div>
       </section>
 
-      {/* BODY: 2 columns — TOC sidebar + article */}
+      {/* BODY: 2 columns - TOC sidebar + article */}
       <section className="px-6 md:px-12 lg:px-20 py-20 md:py-28 max-w-[1400px] mx-auto">
         <div className="grid grid-cols-1 lg:grid-cols-[260px_1fr] gap-12 lg:gap-20">
           {/* TOC + Sidebar ad */}
@@ -237,27 +237,6 @@ export default function BlogArticle({
         </section>
       )}
 
-      {/* FOOTER */}
-      <section className="py-16 md:py-20 px-6 md:px-12 lg:px-20 bg-bsv2-cream border-t border-bsv2-charcoal/[0.06]">
-        <div className="max-w-[1400px] mx-auto">
-          <div className="grid grid-cols-2 gap-x-16 gap-y-3 md:grid-cols-7 text-sm text-bsv2-grey mb-10">
-            <Link href="/" className="hover:text-bsv2-charcoal transition-colors">Home</Link>
-            <Link href="/diensten" className="hover:text-bsv2-charcoal transition-colors">Diensten</Link>
-            <Link href="/stijlen" className="hover:text-bsv2-charcoal transition-colors">Stijlen</Link>
-            <Link href="/portfolio" className="hover:text-bsv2-charcoal transition-colors">Portfolio</Link>
-            <Link href="/prijzen" className="hover:text-bsv2-charcoal transition-colors">Prijzen</Link>
-            <Link href="/blog" className="hover:text-bsv2-charcoal transition-colors">Blog</Link>
-            <Link href="/adviesgesprek" className="hover:text-bsv2-charcoal transition-colors">Contact</Link>
-          </div>
-          <div className="pt-8 border-t border-bsv2-charcoal/10 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 text-xs text-bsv2-grey">
-            <p>&copy; 2025 Badkamerstijl. Alle rechten voorbehouden.</p>
-            <div className="flex gap-6">
-              <Link href="/privacybeleid" className="hover:text-bsv2-charcoal transition-colors">Privacybeleid</Link>
-              <Link href="/algemene-voorwaarden" className="hover:text-bsv2-charcoal transition-colors">Voorwaarden</Link>
-            </div>
-          </div>
-        </div>
-      </section>
     </main>
   );
 }

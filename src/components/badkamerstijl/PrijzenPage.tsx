@@ -22,7 +22,7 @@ const TIERS: Tier[] = [
   {
     id: 'basis',
     label: 'Basis',
-    range: '€ 5.000 — € 12.000',
+    range: '€ 5.000 - € 12.000',
     summary:
       'Een nette renovatie met betrouwbaar middensegment sanitair en strak tegelwerk. Voor wie een verzorgde badkamer wil zonder concessies aan vakmanschap.',
     duration: 'ca. 2 weken',
@@ -42,10 +42,10 @@ const TIERS: Tier[] = [
   {
     id: 'standaard',
     label: 'Standaard',
-    range: '€ 12.000 — € 22.000',
+    range: '€ 12.000 - € 22.000',
     summary:
-      'De populairste keuze. Ruime materiaalkeuze, grootformaat tegels en designkranen — een badkamer die voelt als die van een nieuwbouwhuis in topafwerking.',
-    duration: '2,5 — 3,5 weken',
+      'De populairste keuze. Ruime materiaalkeuze, grootformaat tegels en designkranen - een badkamer die voelt als die van een nieuwbouwhuis in topafwerking.',
+    duration: '2,5 - 3,5 weken',
     image: '/badkamerstijl/2200xxs(29).jpg',
     featured: true,
     includes: [
@@ -64,10 +64,10 @@ const TIERS: Tier[] = [
   {
     id: 'premium',
     label: 'Premium',
-    range: '€ 22.000 — € 35.000',
+    range: '€ 22.000 - € 35.000',
     summary:
       'Topmerken, een vrijstaand bad en maatwerk meubels. Een badkamer met hotel-allure waar elk element bewust is gekozen.',
-    duration: '3 — 4 weken',
+    duration: '3 - 4 weken',
     image: '/badkamerstijl/2200xxs(25).jpg',
     includes: [
       'Alles uit Standaard, plus:',
@@ -85,10 +85,10 @@ const TIERS: Tier[] = [
   {
     id: 'luxe',
     label: 'Luxe',
-    range: '€ 35.000 — € 60.000+',
+    range: '€ 35.000 - € 60.000+',
     summary:
       'Volledig op maat ontworpen droombadkamer met echte natuursteen, designmerken en bijzondere extra\'s als sauna of stoomdouche.',
-    duration: '4 — 6 weken',
+    duration: '4 - 6 weken',
     image: '/badkamerstijl/2200xxs(24).jpg',
     includes: [
       'Alles uit Premium, plus:',
@@ -143,7 +143,7 @@ const FACTORS = [
 const FAQS = [
   {
     q: 'Wat is precies inbegrepen in jullie prijzen?',
-    a: 'Onze offertes zijn altijd compleet: sloop en afvoer, leidingwerk, tegelwerk, sanitair, kranen, verlichting, ventilatie, vloerverwarming en alle arbeid. Je krijgt een gespecificeerde offerte zodat je per onderdeel ziet wat je betaalt. Showroombezoeken en 3D-ontwerp zitten standaard bij Premium en Luxe — bij Basis en Standaard tegen meerprijs.',
+    a: 'Onze offertes zijn altijd compleet: sloop en afvoer, leidingwerk, tegelwerk, sanitair, kranen, verlichting, ventilatie, vloerverwarming en alle arbeid. Je krijgt een gespecificeerde offerte zodat je per onderdeel ziet wat je betaalt. Showroombezoeken en 3D-ontwerp zitten standaard bij Premium en Luxe - bij Basis en Standaard tegen meerprijs.',
   },
   {
     q: 'Werken jullie met vaste prijzen of nacalculatie?',
@@ -155,7 +155,7 @@ const FAQS = [
   },
   {
     q: 'Welke garanties geven jullie?',
-    a: 'Op installatie en montage geven we minimaal 5 jaar garantie, en bij Premium en Luxe oplopend tot 10 jaar op constructie. Op materialen geldt de fabrieksgarantie van merken als Geberit, Hansgrohe en Villeroy & Boch — vaak 5 tot 25 jaar. Wij regelen claims voor je af.',
+    a: 'Op installatie en montage geven we minimaal 5 jaar garantie, en bij Premium en Luxe oplopend tot 10 jaar op constructie. Op materialen geldt de fabrieksgarantie van merken als Geberit, Hansgrohe en Villeroy & Boch - vaak 5 tot 25 jaar. Wij regelen claims voor je af.',
   },
   {
     q: 'Hoe lang is een offerte geldig?',
@@ -171,14 +171,14 @@ const FAQS = [
   },
   {
     q: 'Komen showroomkosten bovenop de prijs?',
-    a: 'Bij Premium en Luxe begeleiden wij je gratis in onze showroom-partners (Hansgrohe, Villeroy & Boch, Dornbracht). Voor Basis en Standaard kun je optioneel een showroombezoek toevoegen. De materialen worden uiteraard wel apart afgerekend in de offerte — geen verborgen marges.',
+    a: 'Bij Premium en Luxe begeleiden wij je gratis in onze showroom-partners (Hansgrohe, Villeroy & Boch, Dornbracht). Voor Basis en Standaard kun je optioneel een showroombezoek toevoegen. De materialen worden uiteraard wel apart afgerekend in de offerte - geen verborgen marges.',
   },
 ];
 
 const SIZES = [
   { id: 'klein', label: 'Klein', sub: '≤ 5 m²', m2: 4 },
-  { id: 'gemiddeld', label: 'Gemiddeld', sub: '5 — 8 m²', m2: 6.5 },
-  { id: 'groot', label: 'Groot', sub: '8 — 12 m²', m2: 10 },
+  { id: 'gemiddeld', label: 'Gemiddeld', sub: '5 - 8 m²', m2: 6.5 },
+  { id: 'groot', label: 'Groot', sub: '8 - 12 m²', m2: 10 },
   { id: 'zeer-groot', label: 'Zeer groot', sub: '12 m² +', m2: 14 },
 ] as const;
 
@@ -283,7 +283,7 @@ export default function PrijzenPage() {
             transition={{ duration: 0.8, delay: 0.3 }}
             className="mt-8 max-w-2xl text-white/80 text-base md:text-lg leading-relaxed"
           >
-            Een complete badkamer renovatie kost in Nederland tussen de € 5.000 en € 60.000+. Hieronder lees je precies wat je voor welk budget krijgt — eerlijk, gespecificeerd en zonder verborgen kosten.
+            Een complete badkamer renovatie kost in Nederland tussen de € 5.000 en € 60.000+. Hieronder lees je precies wat je voor welk budget krijgt - eerlijk, gespecificeerd en zonder verborgen kosten.
           </motion.p>
           <motion.div
             initial={{ opacity: 0, y: 16 }}
@@ -332,7 +332,7 @@ export default function PrijzenPage() {
               Wij geloven in volledige transparantie. Je krijgt vooraf een gespecificeerde offerte met daarin elk onderdeel: van sloopwerk en leidingen tot tegels, sanitair en afwerking.
             </p>
             <p className="text-base md:text-lg text-bsv2-grey leading-relaxed">
-              De vier pakketten op deze pagina zijn richtprijzen, gebaseerd op honderden gerealiseerde projecten. Tijdens het gratis adviesgesprek vertalen we jouw wensen naar een vaste aanneemsom — geen nacalculatie, geen verborgen kosten.
+              De vier pakketten op deze pagina zijn richtprijzen, gebaseerd op honderden gerealiseerde projecten. Tijdens het gratis adviesgesprek vertalen we jouw wensen naar een vaste aanneemsom - geen nacalculatie, geen verborgen kosten.
             </p>
             <p className="text-base md:text-lg text-bsv2-grey leading-relaxed">
               Wil je eerst een uitleg over wat een badkamer renovatie kost en welke factoren de prijs bepalen? Lees onze <Link href="/kosten" className="text-bsv2-charcoal underline underline-offset-2 hover:text-bsv2-teal transition-colors">kostengids voor 2026</Link>.
@@ -554,7 +554,7 @@ export default function PrijzenPage() {
                 </span>
                 <p className="font-cormorant text-3xl md:text-[2.5rem] font-light leading-tight">
                   {formatEuro(estimate.low)}
-                  <span className="text-bsv2-grey mx-3 text-2xl md:text-3xl">—</span>
+                  <span className="text-bsv2-grey mx-3 text-2xl md:text-3xl">-</span>
                   {formatEuro(estimate.high)}
                 </p>
                 <p className="text-xs text-bsv2-grey mt-3 leading-relaxed">
@@ -621,7 +621,7 @@ export default function PrijzenPage() {
               <span className="italic">eigen vakmensen</span>
             </h2>
             <p className="text-bsv2-grey text-base md:text-lg leading-relaxed mb-8 max-w-2xl">
-              Wij werken niet met onderaannemers. Onze monteurs, tegelzetters en loodgieters zijn in vaste dienst — daardoor leveren we consistente kwaliteit, ongeacht het pakket dat je kiest.
+              Wij werken niet met onderaannemers. Onze monteurs, tegelzetters en loodgieters zijn in vaste dienst - daardoor leveren we consistente kwaliteit, ongeacht het pakket dat je kiest.
             </p>
             <div className="flex flex-col sm:flex-row gap-4">
               <Link
@@ -762,26 +762,6 @@ export default function PrijzenPage() {
         </div>
       </section>
 
-      {/* FOOTER */}
-      <section className="py-16 md:py-20 px-6 md:px-12 lg:px-20 bg-bsv2-cream border-t border-bsv2-charcoal/[0.06]">
-        <div className="max-w-[1400px] mx-auto">
-          <div className="grid grid-cols-2 gap-x-16 gap-y-3 md:grid-cols-6 text-sm text-bsv2-grey mb-10">
-            <Link href="/" className="hover:text-bsv2-charcoal transition-colors">Home</Link>
-            <Link href="/diensten" className="hover:text-bsv2-charcoal transition-colors">Diensten</Link>
-            <Link href="/stijlen" className="hover:text-bsv2-charcoal transition-colors">Stijlen</Link>
-            <Link href="/portfolio" className="hover:text-bsv2-charcoal transition-colors">Portfolio</Link>
-            <Link href="/prijzen" className="hover:text-bsv2-charcoal transition-colors">Prijzen</Link>
-            <Link href="/adviesgesprek" className="hover:text-bsv2-charcoal transition-colors">Contact</Link>
-          </div>
-          <div className="pt-8 border-t border-bsv2-charcoal/10 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 text-xs text-bsv2-grey">
-            <p>&copy; 2025 Badkamerstijl. Alle rechten voorbehouden.</p>
-            <div className="flex gap-6">
-              <Link href="/privacybeleid" className="hover:text-bsv2-charcoal transition-colors">Privacybeleid</Link>
-              <Link href="/algemene-voorwaarden" className="hover:text-bsv2-charcoal transition-colors">Voorwaarden</Link>
-            </div>
-          </div>
-        </div>
-      </section>
     </main>
   );
 }

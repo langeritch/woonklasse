@@ -153,7 +153,7 @@ export default function BadkamerstijlHome() {
   const processScrollRef = useRef<HTMLDivElement>(null);
   const [heroIndex, setHeroIndex] = useState(0);
 
-  /* Auto-advance hero slideshow — resets when heroIndex changes */
+  /* Auto-advance hero slideshow - resets when heroIndex changes */
   useEffect(() => {
     const id = setTimeout(() => {
       setHeroIndex((i) => (i + 1) % heroSlides.length);
@@ -168,7 +168,7 @@ export default function BadkamerstijlHome() {
   });
   const fwY = useTransform(fwScroll, [0, 1], ['-8%', '8%']);
 
-  /* GSAP — horizontal scroll + image reveals */
+  /* GSAP - horizontal scroll + image reveals */
   useEffect(() => {
     let ctx: { revert: () => void } | undefined;
 
@@ -181,7 +181,7 @@ export default function BadkamerstijlHome() {
       gsap.registerPlugin(ScrollTrigger);
 
       ctx = gsap.context(() => {
-        /* Horizontal scroll — desktop only */
+        /* Horizontal scroll - desktop only */
         if (window.innerWidth >= 768) {
           const section = processSectionRef.current;
           const container = processScrollRef.current;
@@ -414,7 +414,7 @@ export default function BadkamerstijlHome() {
               Vertel ons over jouw <span className="italic text-bsv2-teal">droombadkamer</span>
             </h2>
             <p className="text-bsv2-grey text-base leading-relaxed max-w-md">
-              In 3 stappen krijg je persoonlijk advies van ons team — upload eventueel foto&apos;s van je huidige situatie, dan denken wij gericht met je mee.
+              In 3 stappen krijg je persoonlijk advies van ons team. Upload eventueel foto&apos;s van je huidige situatie, dan denken wij gericht met je mee.
             </p>
           </div>
           <div className="w-full">
@@ -430,7 +430,7 @@ export default function BadkamerstijlHome() {
         </span>
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-start">
-          {/* Left — tall image */}
+          {/* Left - tall image */}
           <div className="sx-reveal aspect-[3/4] relative overflow-hidden">
             <div className="sx-scale w-full h-full relative">
               <Image
@@ -443,7 +443,7 @@ export default function BadkamerstijlHome() {
             </div>
           </div>
 
-          {/* Right — text + small offset image */}
+          {/* Right - text + small offset image */}
           <div className="flex flex-col">
             <motion.p
               initial={{ opacity: 0, y: 30 }}
@@ -465,7 +465,7 @@ export default function BadkamerstijlHome() {
               className="text-bsv2-grey text-base leading-relaxed mb-12 max-w-lg"
             >
               Jij droomt het, wij bouwen hem. Van het eerste adviesgesprek tot de
-              laatste tegel — onze aanpak is persoonlijk, onze standaard
+              laatste tegel: onze aanpak is persoonlijk, onze standaard
               oncompromitterend. Specialist in badkamerontwerp, renovatie en
               montage.
             </motion.p>
@@ -554,7 +554,7 @@ export default function BadkamerstijlHome() {
         </div>
       </section>
 
-      {/* ═══════════════ 4. PROCES — Horizontal Scroll ═══════════════ */}
+      {/* ═══════════════ 4. PROCES - Horizontal Scroll ═══════════════ */}
       <section
         ref={processSectionRef}
         className="relative bg-bsv2-cream md:h-screen md:overflow-hidden"
@@ -705,7 +705,7 @@ export default function BadkamerstijlHome() {
       {/* ═══════════════ 9. FOOTER / CTA ═══════════════ */}
       <section className="py-24 md:py-32 px-6 md:px-12 lg:px-20 bg-bsv2-cream border-t border-bsv2-charcoal/[0.06]">
         <div className="max-w-[1400px] mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
-          {/* Left — artistic image */}
+          {/* Left - artistic image */}
           <motion.div
             initial={{ opacity: 0, x: -30 }}
             whileInView={{ opacity: 1, x: 0 }}
@@ -722,7 +722,7 @@ export default function BadkamerstijlHome() {
             />
           </motion.div>
 
-          {/* Right — CTA + nav + legal */}
+          {/* Right - CTA + nav + legal */}
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -752,27 +752,6 @@ export default function BadkamerstijlHome() {
               >
                 Bel ons direct
               </Link>
-            </div>
-
-            {/* Nav links */}
-            <div className="grid grid-cols-2 gap-x-16 gap-y-3 text-sm text-bsv2-grey mb-12">
-              <Link href="/" className="hover:text-bsv2-charcoal transition-colors">Home</Link>
-              <Link href="/diensten" className="hover:text-bsv2-charcoal transition-colors">Diensten</Link>
-              <Link href="/stijlen" className="hover:text-bsv2-charcoal transition-colors">Stijlen</Link>
-              <Link href="/portfolio" className="hover:text-bsv2-charcoal transition-colors">Portfolio</Link>
-              <Link href="/adviesgesprek" className="hover:text-bsv2-charcoal transition-colors">Contact</Link>
-              <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" className="hover:text-bsv2-charcoal transition-colors">Instagram</a>
-            </div>
-
-            {/* Legal */}
-            <div className="pt-8 border-t border-bsv2-charcoal/10">
-              <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 text-xs text-bsv2-grey">
-                <p>&copy; 2025 Badkamerstijl. Alle rechten voorbehouden.</p>
-                <div className="flex gap-6">
-                  <Link href="/privacybeleid" className="hover:text-bsv2-charcoal transition-colors">Privacybeleid</Link>
-                  <Link href="/algemene-voorwaarden" className="hover:text-bsv2-charcoal transition-colors">Voorwaarden</Link>
-                </div>
-              </div>
             </div>
           </motion.div>
         </div>
