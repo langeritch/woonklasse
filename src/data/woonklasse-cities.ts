@@ -97,12 +97,21 @@ export const WOONKLASSE_CITIES: WoonklasseCity[] = [
     name: 'Eindhoven',
     slug: 'eindhoven',
     province: 'Noord-Brabant',
+    // BLOK 2 (city-specifiek): bewijs plus reden om te bellen.
+    // Eigen insteek, los van de andere steden.
     description:
-      'Eindhoven loopt voorop in techniek en design. Wij vertalen die mentaliteit naar verbouwingen waarin slimme installaties, isolatiewaarden en strakke afwerking samenkomen - van Strijp-S lofts tot vrijstaande gezinswoningen in Tongelre.',
+      "Van energieneutraal renoveren tot een complete aanbouw met grote glaspuien, dit soort projecten doen we in Eindhoven vaak. Stuur ons je plan of foto's, dan krijg je een eerlijk beeld van wat het kost en oplevert.",
     context:
       'energetische renovaties, complete keuken-leefkamer transformaties, aanbouwen met grote glaspuien',
     areas: ['Strijp', 'Tongelre', 'Stratum', 'Woensel', 'Gestel'],
     nearby: ['helmond', 'tilburg', 'den-bosch', 'oss'],
+    // Hero volgt de stadsconventie. Zet het bestand neer als
+    // public/woonklasse/Eindhoven.avif, dan laadt de hero vanzelf.
+    heroImage: '/woonklasse/Eindhoven.avif',
+    // BLOK 1 (city-specifiek): één belofte, klantgericht.
+    // Eigen insteek, los van de andere steden.
+    intro:
+      'Hier draait alles om techniek die klopt: een warmtepomp die het waarmaakt, isolatie die je terugziet op de rekening, afwerking strak tot in de hoeken. Vertel ons wat je wil bereiken, dan rekenen we het vooraf voor je door.',
   },
   {
     name: 'Tilburg',
