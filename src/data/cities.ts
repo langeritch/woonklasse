@@ -37,6 +37,10 @@ export const CITIES: City[] = [
       'Rotterdam ademt architectuur en durf. Of je nu een appartement in een woontoren bezit of een vooroorlogse woning in Kralingen - wij vertalen die stoere stedelijke energie naar een badkamer met strakke lijnen, donkere accenten en doordachte details.',
     areas: ['Kralingen', 'Hillegersberg', 'Centrum'],
     nearby: ['schiedam', 'vlaardingen', 'dordrecht', 'delft'],
+    landingIntro:
+      'Een badkamer in een Rotterdamse woontoren aan de Maas vraagt om andere keuzes dan een vooroorlogse woning in Kralingen: betonvloeren, lange leidingtrajecten en weinig speling in de schacht. Dat lossen wij hier elke week op. We meten de ruimte in, tekenen de indeling in 3D en voeren sloop, leidingwerk, tegelwerk en sanitair uit met onze eigen tegelzetters en loodgieters. Strakke lijnen, donkere accenten, één ploeg en één planning.',
+    landingOutro:
+      'Benieuwd wat jouw badkamer gaat kosten en wanneer hij klaar is? Vraag een vrijblijvend adviesgesprek aan. We komen langs, nemen de ruimte op en geven een eerlijke prijs en planning, zonder meerwerk dat je niet zag aankomen. Eén vast aanspreekpunt van de eerste schets tot de oplevering, zodat je altijd weet waar je aan toe bent.',
   },
   {
     name: 'Den Haag',

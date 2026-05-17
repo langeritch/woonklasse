@@ -3,7 +3,7 @@ import CityLandingRoute, { cityLandingMetadata } from '@/components/badkamerstij
 // Dedicated stadspagina. Alle layout, formulieren, WhatsApp en SEO/schema
 // komen uit het gedeelde template; per stad alleen de slug + de twee unieke
 // teksten en de stadsfoto (zie cityLandingRoute.tsx).
-const SLUG = 'amsterdam';
+const SLUG = 'rotterdam';
 
 export const generateMetadata = () => cityLandingMetadata(SLUG);
 

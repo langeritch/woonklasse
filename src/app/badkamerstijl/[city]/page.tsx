@@ -7,10 +7,12 @@ import CityPage from '@/components/badkamerstijl/CityPage';
 
 const SITE_URL = 'https://badkamerstijl.nl';
 
+// Steden met een eigen dedicated route (src/app/badkamerstijl/<slug>) die
+// dit [city]-template overrulen en hier dus niet ook gegenereerd worden.
+const DEDICATED_ROUTE_SLUGS = new Set(['amsterdam', 'rotterdam']);
+
 export async function generateStaticParams() {
-  // 'amsterdam' has a dedicated static route (src/app/badkamerstijl/amsterdam)
-  // that overrides this [city] template, so it must not also be generated here.
-  return CITIES.filter((c) => c.slug !== 'amsterdam').map((c) => ({
+  return CITIES.filter((c) => !DEDICATED_ROUTE_SLUGS.has(c.slug)).map((c) => ({
     city: c.slug,
   }));
 }
