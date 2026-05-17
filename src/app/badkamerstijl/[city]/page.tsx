@@ -20,6 +20,7 @@ const DEDICATED_ROUTE_SLUGS = new Set([
   'almere',
   'breda',
   'nijmegen',
+  'apeldoorn',
 ]);
 
 export async function generateStaticParams() {

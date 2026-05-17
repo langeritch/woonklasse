@@ -154,6 +154,10 @@ export const CITIES: City[] = [
       'Aan de rand van de Veluwe staan in Apeldoorn ruime woningen met grote tuinen. Wij gebruiken die ruimte voor genereuze badkamers met vrijstaande baden, sauna-elementen en grote raampartijen die het bos binnenhalen.',
     areas: ['Berg en Bos', 'De Maten', 'Ugchelen'],
     nearby: ['deventer', 'zwolle', 'ede', 'arnhem'],
+    landingIntro:
+      'Apeldoornse villa\'s aan de rand van de Veluwe hebben vaak ruime badkamers met uitzicht op het bos: hoge ramen, hout dat het buitenleven binnenbrengt en plek voor een vrijstaand bad naast een sauna. Wij meten de ruimte in, tekenen de indeling in 3D en voeren sloop, leidingwerk, tegelwerk en sanitair uit met onze eigen tegelzetters en loodgieters. Natuurlijke materialen, doordacht licht en een afwerking die klopt tot in de laatste voeg.',
+    landingOutro:
+      'Denk je aan een wellness-element zoals een sauna of stoomdouche? Vraag een vrijblijvend adviesgesprek aan. We komen langs, nemen de ruimte op en geven een vaste prijs en planning, zonder verrassingen achteraf. Eén vast aanspreekpunt begeleidt je van de eerste schets tot de oplevering, zodat je altijd weet waar je aan toe bent.',
   },
   {
     name: 'Haarlem',
