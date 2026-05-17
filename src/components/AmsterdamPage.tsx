@@ -39,7 +39,7 @@ export default function AmsterdamPage({
       <section className="relative h-[80vh] min-h-[560px] flex items-end overflow-hidden bg-woon-dark">
         <Image
           src={heroImage}
-          alt={city.name}
+          alt={`Aannemer voor verbouwing en renovatie in ${city.name}`}
           fill
           priority
           className="object-cover"
@@ -52,7 +52,7 @@ export default function AmsterdamPage({
             {city.province}
           </span>
           <h1 className="font-display text-[clamp(2.75rem,8vw,7.5rem)] font-light leading-[1.02] tracking-tight text-white">
-            {city.name}
+            Aannemer in {city.name}
           </h1>
         </div>
       </section>
@@ -88,6 +88,27 @@ export default function AmsterdamPage({
               </div>
             ))}
           </div>
+        </div>
+      </section>
+
+      {/* ═══════════════ STAD-SPECIFIEKE TEKST + H2 (SEO) ═══════════════ */}
+      <section className="pt-20 md:pt-28 pb-4 md:pb-6 px-6 md:px-12 lg:px-20 bg-woon-light">
+        <div className="max-w-[820px] mx-auto text-center">
+          <span className="inline-flex items-center gap-3 text-[11px] tracking-[0.3em] uppercase text-woon-secondary mb-6 font-medium">
+            Woonklasse in {city.province}
+          </span>
+          <h2 className="font-display text-3xl md:text-4xl lg:text-5xl font-light leading-[1.15] text-woon-dark mb-8">
+            Verbouwen in {city.name}
+          </h2>
+          {city.intro && (
+            <p className="text-woon-secondary text-base md:text-lg leading-relaxed">
+              {city.description}
+            </p>
+          )}
+          <p className="mt-6 text-woon-secondary text-base md:text-lg leading-relaxed">
+            Veel gevraagd in {city.name}: {city.context}. Actief in{' '}
+            {city.areas.join(', ')} en de omliggende wijken.
+          </p>
         </div>
       </section>
 
