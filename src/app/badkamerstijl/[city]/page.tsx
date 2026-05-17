@@ -15,6 +15,7 @@ const DEDICATED_ROUTE_SLUGS = new Set([
   'utrecht',
   'den-haag',
   'eindhoven',
+  'tilburg',
 ]);
 
 export async function generateStaticParams() {

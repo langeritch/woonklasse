@@ -98,6 +98,10 @@ export const CITIES: City[] = [
       'Tilburgs textielverleden leeft door in een voorkeur voor industrieel chic en warme materialen. Wij ontwerpen badkamers waarin staal, hout en zachte tinten samenkomen - passend bij zowel de Reeshof als de karakteristieke woningen in Oud-Noord.',
     areas: ['Reeshof', 'Goirke', 'Oud-Noord'],
     nearby: ['breda', 'eindhoven', 'den-bosch', 'oss'],
+    landingIntro:
+      'Tilburgs textielverleden zie je terug in de woningen: stoere hoekpanden in Oud-Noord, ruime gezinshuizen in de Reeshof en lofts in oude fabrieken. Wij meten de ruimte in, tekenen de indeling in 3D en voeren sloop, leidingwerk, tegelwerk en sanitair uit met onze eigen tegelzetters en loodgieters. Staal, warm hout en zachte tegeltinten naast elkaar, met een afwerking die klopt tot in de laatste voeg.',
+    landingOutro:
+      'Liever eerst kijken wat er past binnen je budget en planning? Vraag een vrijblijvend adviesgesprek aan. We komen langs, nemen de ruimte op en geven een vaste prijs zonder kleine lettertjes erbij. Eén vast aanspreekpunt loodst je van het eerste idee tot de oplevering, zodat je nooit hoeft te bellen om te vragen hoe het ervoor staat.',
   },
   {
     name: 'Almere',
