@@ -37,18 +37,21 @@ export const WOONKLASSE_CITIES: WoonklasseCity[] = [
     name: 'Rotterdam',
     slug: 'rotterdam',
     province: 'Zuid-Holland',
+    // BLOK 2 (city-specifiek): rendert vlak voor het onderste formulier.
+    // Bewijs plus reden om te bellen. Andere insteek dan Amsterdam.
     description:
-      'Rotterdam is gebouwd op vooruitgang en architectuur. Van de naoorlogse rijwoning in Zuidwijk tot de penthouses in de Wilhelminapier - onze projectleiders kennen de bouwstijlen, de aanvraagtrajecten bij de gemeente en de logistiek van een stad waar overal gebouwd wordt.',
+      'Van balkonherstel in de hoogbouw tot een complete uitbouw, in Rotterdam hebben we het al vaak gedaan. Bel ons en je hebt binnen één gesprek een realistisch beeld van je plan, zonder verkooppraat.',
     context:
       'complete verbouwingen, optoppen en aanbouwen, naoorlogs casco upgraden, balkonherstel hoogbouw',
     areas: ['Kralingen', 'Hillegersberg', 'Centrum', 'Charlois', 'Prins Alexander'],
     nearby: ['schiedam', 'vlaardingen', 'spijkenisse', 'dordrecht'],
-    // TIJDELIJKE hero: bestaande galerijfoto. Vervang door de echte
-    // Rotterdam-stadsfoto zodra die in public/woonklasse/ staat
-    // (bv. /woonklasse/rotterdam-hero.avif). Dit is de enige regel die wijzigt.
-    heroImage: '/woonklasse/villa-bergen-1.jpg',
+    // Hero volgt de stadsconventie. Zet het bestand neer als
+    // public/woonklasse/Rotterdam.avif, dan laadt de hero vanzelf.
+    heroImage: '/woonklasse/Rotterdam.avif',
+    // BLOK 1 (city-specifiek): rendert in de sectie direct onder de hero.
+    // Eén belofte, klantgericht. Andere voorbeelden dan Amsterdam.
     intro:
-      'Stoere architectuur, veel nieuwbouw, en woningen die om een eigen stijl vragen. Met de juiste renovatie en afwerking haal je het beste uit elke ruimte. Wij kennen Rotterdam en weten welke details het verschil maken. Laten we van jouw plek iets moois maken.',
+      'Een jaren dertig woning in Kralingen vraagt iets anders dan een naoorlogse flat op Zuid. Je wil weten waar je aan toe bent voordat de eerste muur eruit gaat. Wij kennen de bouw hier en zeggen vooraf eerlijk wat kan, wat het kost en hoe lang het duurt.',
   },
   {
     name: 'Den Haag',
