@@ -19,15 +19,19 @@ export const WOONKLASSE_CITIES: WoonklasseCity[] = [
     name: 'Amsterdam',
     slug: 'amsterdam',
     province: 'Noord-Holland',
+    // BLOK 2 (city-specifiek): rendert vlak voor het onderste formulier
+    // op de stadspagina. Kort, klantgericht, maximaal 1x de stadsnaam.
     description:
-      'Amsterdam is een stad waar 17e-eeuwse grachtenpanden, jaren-dertig portieken en moderne nieuwbouw op IJburg naast elkaar staan. Verbouwen vraagt hier om kennis van monumentale regelgeving, beperkte aanrijroutes en buren die dichtbij wonen. Wij combineren die ervaring met strakke planning en eigen vakmensen.',
+      'Of het nu om een grachtenpand, een portiekwoning of nieuwbouw gaat, in Amsterdam telt elke ingreep. Eén vast aanspreekpunt regelt alles van eerste schets tot oplevering, voor een prijs die vooraf vaststaat.',
     context:
       'verbouwingen aan grachtenpanden, fundering- en houtrotherstel, optoppingen en uitbouwen op kleine kavels',
     areas: ['Centrum', 'Oud-Zuid', 'IJburg', 'De Pijp', 'Westerpark'],
     nearby: ['amstelveen', 'haarlem', 'zaanstad', 'almere'],
     heroImage: '/woonklasse/amsterdam-hero.avif',
+    // BLOK 1 (city-specifiek): rendert in de sectie direct onder de hero.
+    // Kort, klantgericht, vermijdt herhaling van de stadsnaam.
     intro:
-      'Veel appartementen hier, weinig ruimte om fouten te maken. Met de juiste styling en renovatie wordt elke vierkante meter beter. Wij kennen Amsterdam en weten welke details het verschil maken. Laten we van jouw plek iets moois maken.',
+      'In de stad is elke vierkante meter kostbaar en is er weinig ruimte voor fouten. Wij kennen het werk hier, van krappe aanrijroutes tot buren die dichtbij wonen, en leveren je verbouwing op zonder verrassingen.',
   },
   {
     name: 'Rotterdam',

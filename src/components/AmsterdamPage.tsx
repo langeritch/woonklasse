@@ -3,7 +3,7 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import { motion } from 'framer-motion';
-import { ArrowRight, Phone } from 'lucide-react';
+import { ArrowRight, Phone, UserRound, BadgeEuro, CalendarCheck, ShieldCheck } from 'lucide-react';
 import type { WoonklasseCity } from '@/data/woonklasse-cities';
 import { CONTACT } from '@/data/contact';
 import HeroAdviesTool from '@/components/HeroAdviesTool';
@@ -13,27 +13,37 @@ import HeroAdviesTool from '@/components/HeroAdviesTool';
 const GALLERY_LARGE = 'penthouse-amsterdam-1.jpg';
 const GALLERY_SMALL = ['apartment-amsterdam-2.jpg', 'canal-residence-1.jpg'];
 
-// Statisch proces, identiek voor elke stad.
-const STEPS = [
+// ───────────────────────────────────────────────────────────────────────
+// COPY-TEMPLATE. Alle tekst in dit component is VAST en rendert identiek
+// voor elke stad. Per stad verschillen exact TWEE korte blokken, beide uit
+// woonklasse-cities.ts:
+//   BLOK 1  city.intro        -> sectie onder de hero ("Jouw verbouwing")
+//   BLOK 2  city.description   -> sectie vlak voor het onderste formulier
+// Een nieuwe stad toevoegen = foto + die twee strings. Niets anders.
+// Geen em dashes of liggende streepjes in zichtbare copy.
+// ───────────────────────────────────────────────────────────────────────
+
+// Vier vaste beloftes, identiek voor elke stad.
+const GUARANTEES = [
   {
-    n: '01',
-    title: 'Overleg',
-    desc: 'We komen langs en kijken samen wat je wil. Geen verkooppraat, gewoon goed luisteren.',
+    Icon: UserRound,
+    title: 'Eén vast aanspreekpunt',
+    line: 'Van eerste gesprek tot oplevering altijd dezelfde persoon.',
   },
   {
-    n: '02',
-    title: 'Offerte',
-    desc: 'Een schone, vaste prijs vooraf. Alles staat erin, zodat je nooit voor verrassingen komt te staan.',
+    Icon: BadgeEuro,
+    title: 'Prijs vooraf, geen verrassingen',
+    line: 'Scherpe vaste prijs via ons eigen leveranciersnetwerk.',
   },
   {
-    n: '03',
-    title: 'Uitvoering',
-    desc: 'Eigen vakmensen voeren het werk snel en schoon uit, met een vaste projectleider als aanspreekpunt.',
+    Icon: CalendarCheck,
+    title: 'Op tijd opgeleverd',
+    line: 'Afspraak is afspraak, ook de opleverdatum staat vast.',
   },
   {
-    n: '04',
-    title: 'Klaar',
-    desc: 'We leveren netjes op en jij geniet ervan. Met garantie, voor de zekerheid op lange termijn.',
+    Icon: ShieldCheck,
+    title: '15+ jaar track record',
+    line: 'Bewezen ervaring in bouw en sanitair.',
   },
 ];
 
@@ -90,18 +100,18 @@ export default function AmsterdamPage({
               <span className="w-8 h-px bg-woon-accent/60" />
               {city.province}
             </span>
-            <h1 className="font-display text-[clamp(2.75rem,8vw,7.5rem)] font-light leading-[1.02] tracking-tight text-white">
-              Aannemer in {city.name}
+            <h1 className="font-display text-[clamp(1.6rem,3.1vw,2.4rem)] font-light leading-[1.15] tracking-tight text-white [text-wrap:balance]">
+              Verbouwen in {city.name} zonder verrassingen
             </h1>
             <p className="mt-6 text-white/80 text-lg md:text-xl font-light max-w-xl">
-              Meer uit je vierkante meter
+              Eén vast aanspreekpunt, prijs vooraf, opgeleverd op tijd.
             </p>
             <div className="mt-10 flex flex-col sm:flex-row gap-4">
               <Link
                 href="#offerte"
                 className="group inline-flex items-center justify-center gap-3 bg-woon-accent text-woon-dark text-sm font-medium px-8 py-4 rounded-full hover:scale-[1.02] hover:shadow-lg hover:shadow-woon-accent/20 transition-all"
               >
-                Vraag offerte aan voor {city.name}
+                Vraag een vrijblijvende offerte aan
                 <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
               </Link>
               <a
@@ -121,40 +131,39 @@ export default function AmsterdamPage({
         </div>
       </section>
 
-      {/* ═══════════════ WAAROM DEZE STAD ═══════════════ */}
+      {/* ═══════════ BLOK 1 (CITY-SPECIFIEK = city.intro) ═══════════ */}
       <section className="pt-20 md:pt-28 pb-14 md:pb-16 px-6 md:px-12 lg:px-20 bg-woon-light">
         <FadeIn className="max-w-[820px] mx-auto text-center">
           <span className="inline-flex items-center gap-3 text-[11px] tracking-[0.3em] uppercase text-woon-secondary mb-6 font-medium">
-            Waarom {city.name}
+            Jouw verbouwing
           </span>
+          {/* CITY-SPECIFIEK blok 1 van 2: uit woonklasse-cities.ts (city.intro). */}
           <p className="font-display text-2xl md:text-3xl lg:text-[2.4rem] font-light leading-[1.45] text-woon-dark/90">
             {lead}
           </p>
         </FadeIn>
       </section>
 
-      {/* ═══════════════ HOE WERKT HET (4 STAPPEN) ═══════════════ */}
-      <section className="py-16 md:py-24 px-6 md:px-12 lg:px-20 bg-white">
+      {/* ═══════════ GARANTIEBLOK (VAST, vervangt 'hoe werkt het') ═══════════ */}
+      <section className="py-16 md:py-24 px-6 md:px-12 lg:px-20 bg-woon-light">
         <div className="max-w-[1400px] mx-auto">
           <FadeIn className="mb-14 md:mb-20 max-w-2xl">
             <span className="text-woon-secondary text-[11px] tracking-[0.3em] uppercase mb-4 block">
-              Hoe werkt het
+              Onze garantie
             </span>
             <h2 className="font-display text-3xl md:text-4xl lg:text-5xl font-light leading-[1.15]">
-              Van eerste gesprek tot oplevering
+              Wat je van ons krijgt
             </h2>
           </FadeIn>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 md:gap-10">
-            {STEPS.map((step, i) => (
-              <FadeIn key={step.n} delay={i * 0.08}>
+            {GUARANTEES.map(({ Icon, title, line }, i) => (
+              <FadeIn key={title} delay={i * 0.08}>
                 <div className="border-t border-woon-dark/15 pt-6">
-                  <span className="text-woon-accent text-[11px] tracking-[0.3em] font-medium block mb-4">
-                    {step.n}
-                  </span>
+                  <Icon className="w-8 h-8 text-woon-accent mb-5" strokeWidth={1.5} />
                   <h3 className="font-heading text-xl md:text-2xl font-bold mb-3">
-                    {step.title}
+                    {title}
                   </h3>
-                  <p className="text-woon-secondary text-sm leading-relaxed">{step.desc}</p>
+                  <p className="text-woon-secondary text-sm leading-relaxed">{line}</p>
                 </div>
               </FadeIn>
             ))}
@@ -168,7 +177,7 @@ export default function AmsterdamPage({
           <FadeIn className="relative aspect-[4/5] lg:aspect-auto lg:h-full min-h-[420px] overflow-hidden rounded-xl bg-woon-cream">
             <Image
               src={`/woonklasse/${GALLERY_LARGE}`}
-              alt={`Interieur verbouwing in ${city.name}`}
+              alt="Interieur en afwerking door Woonklasse"
               fill
               className="object-cover"
               sizes="(max-width: 1024px) 100vw, 50vw"
@@ -183,7 +192,7 @@ export default function AmsterdamPage({
               >
                 <Image
                   src={`/woonklasse/${file}`}
-                  alt={`Interieur in ${city.name}`}
+                  alt="Detail van een Woonklasse verbouwing"
                   fill
                   className="object-cover"
                   sizes="(max-width: 1024px) 100vw, 50vw"
@@ -194,21 +203,17 @@ export default function AmsterdamPage({
         </div>
       </section>
 
-      {/* ═══════════════ STAD-SPECIFIEKE TEKST + H2 (SEO) ═══════════════ */}
+      {/* ═══════════════ BEWIJS + REDEN (VASTE TEMPLATE) ═══════════════ */}
       <section className="pt-16 md:pt-24 pb-4 md:pb-6 px-6 md:px-12 lg:px-20 bg-woon-light">
         <FadeIn className="max-w-[820px] mx-auto text-center">
           <span className="inline-flex items-center gap-3 text-[11px] tracking-[0.3em] uppercase text-woon-secondary mb-6 font-medium">
-            Woonklasse in {city.province}
+            Waarom Woonklasse
           </span>
           <h2 className="font-display text-3xl md:text-4xl lg:text-5xl font-light leading-[1.15] text-woon-dark mb-8">
-            Verbouwen in {city.name}
+            Bewezen werk, geen verrassingen
           </h2>
           <p className="text-woon-secondary text-base md:text-lg leading-relaxed">
-            {city.description}
-          </p>
-          <p className="mt-6 text-woon-secondary text-base md:text-lg leading-relaxed">
-            Veel gevraagd in {city.name}: {city.context}. Actief in {city.areas.join(', ')} en de
-            omliggende wijken.
+            Vijftien jaar ervaring in bouw en sanitair. Doordat we met ons eigen leveranciersnetwerk werken krijg je een scherpe prijs die vooraf vaststaat. Wat we afspreken doen we, op tijd en zonder meerwerk dat je niet zag aankomen.
           </p>
         </FadeIn>
       </section>
@@ -221,14 +226,14 @@ export default function AmsterdamPage({
         <div className="max-w-[1100px] mx-auto grid grid-cols-1 lg:grid-cols-[1fr_1.3fr] gap-12 lg:gap-20 items-start">
           <FadeIn>
             <span className="text-woon-secondary text-[11px] tracking-[0.3em] uppercase mb-6 block">
-              Vrijblijvende offerte
+              Vrijblijvend gesprek
             </span>
             <h2 className="font-display text-3xl md:text-4xl lg:text-5xl font-light leading-[1.15] mb-6">
-              Vraag een offerte aan voor {city.name}
+              Klaar om te beginnen?
             </h2>
+            {/* CITY-SPECIFIEK blok 2 van 2: uit woonklasse-cities.ts (city.description). */}
             <p className="text-woon-secondary text-base md:text-lg leading-relaxed mb-10">
-              Vertel ons over je plannen. We komen langs in {city.name}, luisteren en sturen een
-              maatwerk voorstel met vaste prijs. Geen verrassingen achteraf.
+              {city.description}
             </p>
             <a
               href={CONTACT.telefoonLink}
