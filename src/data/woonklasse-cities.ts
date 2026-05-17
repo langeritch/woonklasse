@@ -117,12 +117,21 @@ export const WOONKLASSE_CITIES: WoonklasseCity[] = [
     name: 'Tilburg',
     slug: 'tilburg',
     province: 'Noord-Brabant',
+    // BLOK 2 (city-specifiek): bewijs plus reden om te bellen.
+    // Eigen insteek, los van de andere steden.
     description:
-      'Tilburg ademt nuchtere Brabantse degelijkheid. De stad is gebouwd door textielfabrikanten en vraagt om een aannemer die net zo hard werkt: heldere afspraken, nette steigers, en een afwerking die generaties meegaat - in De Reeshof én in Oud-Noord.',
+      'Dakopbouwen, achteraanbouwen en complete onderhoudsbeurten, dat is voor ons in Tilburg dagelijks werk. Bel of mail kort wat je van plan bent, dan zeggen we eerlijk of het slim is en wat het kost.',
     context:
       'rij- en hoekwoning verbouwingen, dakopbouwen, achteraanbouwen en complete onderhoudsbeurten',
     areas: ['Reeshof', 'Goirke', 'Oud-Noord', 'Berkel-Enschot', 'Udenhout'],
     nearby: ['breda', 'eindhoven', 'oss', 'den-bosch'],
+    // Hero volgt de stadsconventie. Zet het bestand neer als
+    // public/woonklasse/Tilburg.avif, dan laadt de hero vanzelf.
+    heroImage: '/woonklasse/Tilburg.avif',
+    // BLOK 1 (city-specifiek): één belofte, klantgericht.
+    // Eigen insteek, los van de andere steden.
+    intro:
+      'Geen poespas, gewoon degelijk werk, dat is wat hier telt. Of je nu een rijwoning in De Reeshof aanpakt of een oud arbeidershuis in het noorden, je wil eerlijk advies en een prijs die klopt. Dat krijg je, zonder omwegen.',
   },
   {
     name: 'Groningen',
