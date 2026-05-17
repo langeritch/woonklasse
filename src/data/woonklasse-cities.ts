@@ -68,18 +68,21 @@ export const WOONKLASSE_CITIES: WoonklasseCity[] = [
     name: 'Utrecht',
     slug: 'utrecht',
     province: 'Utrecht',
+    // BLOK 2 (city-specifiek): rendert vlak voor het onderste formulier.
+    // Bewijs plus reden om te bellen. Andere insteek dan Amsterdam en Rotterdam.
     description:
-      'Utrecht combineert middeleeuwse binnenstad met de groei van Leidsche Rijn en Vleuten. Wij verbouwen jaren-dertigwoningen rond het Wilhelminapark net zo zorgvuldig als we nieuwbouwwoningen voorzien van een stevige tweede laag of doordachte achteruitbouw.',
+      'Van een extra woonlaag tot het uitgraven van een oude werfkelder, in Utrecht doen we dit soort werk al jaren. Plan een gesprek, dan weet je snel of jouw idee haalbaar is en wat het ongeveer kost.',
     context:
       'jaren-dertig renovaties, optoppingen, uitbouwen op stadse kavels, kelderwerken in oude binnenstad',
     areas: ['Oudwijk', 'Wittevrouwen', 'Lombok', 'Tuindorp', 'Leidsche Rijn'],
     nearby: ['amersfoort', 'zeist', 'veenendaal', 'hilversum'],
-    // TIJDELIJKE hero: bestaande galerijfoto. Vervang door de echte
-    // Utrecht-stadsfoto zodra die in public/woonklasse/ staat
-    // (bv. /woonklasse/utrecht-hero.avif). Dit is de enige regel die wijzigt.
-    heroImage: '/woonklasse/canal-residence-3.jpg',
+    // Hero volgt de stadsconventie. Zet het bestand neer als
+    // public/woonklasse/Utrecht.avif, dan laadt de hero vanzelf.
+    heroImage: '/woonklasse/Utrecht.avif',
+    // BLOK 1 (city-specifiek): rendert in de sectie direct onder de hero.
+    // Eén belofte, klantgericht. Andere insteek dan Amsterdam en Rotterdam.
     intro:
-      'Karaktervolle huizen, vaak met historie, en weinig ruimte om fouten te maken. Met de juiste renovatie en styling wordt elke vierkante meter beter. Wij kennen Utrecht en weten welke details het verschil maken. Laten we van jouw plek iets moois maken.',
+      'Hier staat de middeleeuwse binnenstad naast de nieuwbouw van Leidsche Rijn, en bijna elk huis vraagt om maatwerk. Je wil geen standaardaanpak maar een plan dat klopt voor jouw woning. Dat maken we samen, en daar houden we ons aan.',
   },
   {
     name: 'Eindhoven',
