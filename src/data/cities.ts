@@ -50,6 +50,10 @@ export const CITIES: City[] = [
       'In Den Haag staan herenhuizen, residentiële villa\'s en moderne appartementen langs zee. Wij ontwerpen badkamers met klassieke allure of internationale luxe, perfect afgestemd op de gevarieerde woningvoorraad van het Statenkwartier tot Scheveningen.',
     areas: ['Statenkwartier', 'Benoordenhout', 'Scheveningen'],
     nearby: ['rijswijk', 'delft', 'zoetermeer', 'leiden'],
+    landingIntro:
+      'Van een Haags herenhuis in het Statenkwartier tot een appartement met zeezicht in Scheveningen: badkamers hier lopen sterk uiteen in stijl en bouwjaar. Wij meten de ruimte in, tekenen de indeling in 3D en voeren sloop, leidingwerk, tegelwerk en sanitair uit met onze eigen tegelzetters en loodgieters. Klassieke allure of strak en internationaal, met materialen die de zilte zeelucht aankunnen en een afwerking die klopt tot in de laatste voeg.',
+    landingOutro:
+      'Wil je eerst weten wat haalbaar is en wat het kost? Vraag een vrijblijvend adviesgesprek aan. We komen langs, nemen de ruimte op en zetten alles zwart op wit: een vaste prijs en een planning zonder verrassingen achteraf. Eén vast aanspreekpunt van de eerste schets tot de oplevering, zodat je altijd weet waar je aan toe bent.',
   },
   {
     name: 'Utrecht',
