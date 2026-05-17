@@ -137,12 +137,21 @@ export const WOONKLASSE_CITIES: WoonklasseCity[] = [
     name: 'Groningen',
     slug: 'groningen',
     province: 'Groningen',
+    // BLOK 2 (city-specifiek): bewijs plus reden om te bellen.
+    // Eigen insteek, los van de andere steden.
     description:
-      'Groningen vraagt om een aannemer die nadenkt over aardbevingsbestendig bouwen, verzakkingen en de academische woningvoorraad rond het Noorderplantsoen. Wij werken met versterkingsplannen én met de smaak voor doordachte, tijdloze details die bij deze stad past.',
+      'Van versterkingsplannen tot het opknappen van een jaren dertig huis bij het Noorderplantsoen, in Groningen kennen we het werk en de regels. Leg ons je situatie voor, dan hoor je eerlijk wat de versterking betekent voor het plan en de prijs.',
     context:
       'aardbevingsbestendig versterken, jaren-dertig renovaties, oude binnenstad opknapbeurten',
     areas: ['Helpman', 'Schildersbuurt', 'Oosterpoort', 'Paddepoel', 'Haren'],
     nearby: ['leeuwarden', 'emmen', 'zwolle'],
+    // Hero volgt de stadsconventie. Zet het bestand neer als
+    // public/woonklasse/Groningen.avif, dan laadt de hero vanzelf.
+    heroImage: '/woonklasse/Groningen.avif',
+    // BLOK 1 (city-specifiek): één belofte, klantgericht.
+    // Eigen insteek, los van de andere steden.
+    intro:
+      'In het noorden speelt iets wat elders niet speelt: versterken tegen verzakking en bevingsschade. Je wil iemand die dat snapt en meteen meeneemt in het plan, niet als losse post achteraf. Wij bouwen het in één keer goed mee.',
   },
   {
     name: 'Almere',
