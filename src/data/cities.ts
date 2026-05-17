@@ -128,6 +128,10 @@ export const CITIES: City[] = [
       'Bredase gezelligheid en klassieke villa\'s in het Ginneken vragen om badkamers met warmte en allure. Wij combineren natuursteen, krachtige sanitair-merken en doordacht licht tot een ruimte waarin je elke ochtend tot rust komt.',
     areas: ['Ginneken', 'Boeimeer', 'Princenhage'],
     nearby: ['tilburg', 'roosendaal', 'dordrecht', 'oss'],
+    landingIntro:
+      'Een klassieke villa in het Ginneken vraagt om andere keuzes dan een rijtjeswoning in Princenhage: ruime kamers met hoge plafonds tegenover compactere indelingen waarin elke centimeter telt. Wij meten de ruimte in, tekenen de indeling in 3D en voeren sloop, leidingwerk, tegelwerk en sanitair uit met onze eigen tegelzetters en loodgieters. Bredase warmte met natuursteen, doordacht licht en een afwerking die klopt tot in de laatste voeg.',
+    landingOutro:
+      'Klaar om de eerste stap te zetten? Vraag een vrijblijvend adviesgesprek aan. We komen langs, nemen de ruimte op en geven een vaste prijs en planning, zonder verrassingen achteraf. Eén vast aanspreekpunt begeleidt je van de eerste schets tot de oplevering, zodat je altijd weet waar je aan toe bent.',
   },
   {
     name: 'Nijmegen',
