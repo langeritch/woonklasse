@@ -89,6 +89,10 @@ export const CITIES: City[] = [
       'De academische uitstraling van Groningen vraagt om doordachte, tijdloze ontwerpen. Of je nu een statige woning hebt in Helpman of een appartement in de Oosterpoort - wij realiseren badkamers met noordelijke degelijkheid en internationale klasse.',
     areas: ['Helpman', 'Schildersbuurt', 'Oosterpoort'],
     nearby: ['leeuwarden', 'emmen', 'zwolle', 'assen'],
+    landingIntro:
+      'Een statige woning in Helpman vraagt om andere keuzes dan een Gronings benedenhuis in de Oosterpoort: hoge plafonds en houten vloeren tegenover beperkte ruimte en gedeelde leidingen. Wij meten de ruimte in, tekenen de indeling in 3D en voeren sloop, leidingwerk, tegelwerk en sanitair uit met onze eigen tegelzetters en loodgieters. Tijdloze keuzes, doordachte materialen en een afwerking die klopt tot in de laatste voeg.',
+    landingOutro:
+      'Liever eerst kennismaken zonder verplichting? Vraag een vrijblijvend adviesgesprek aan. We komen langs, nemen de ruimte op en geven een vaste prijs en planning, zonder verrassingen achteraf. Eén vast aanspreekpunt begeleidt je van de eerste schets tot de oplevering, zodat je altijd weet waar je aan toe bent.',
   },
   {
     name: 'Tilburg',
