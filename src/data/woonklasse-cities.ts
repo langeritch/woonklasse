@@ -157,12 +157,21 @@ export const WOONKLASSE_CITIES: WoonklasseCity[] = [
     name: 'Almere',
     slug: 'almere',
     province: 'Flevoland',
+    // BLOK 2 (city-specifiek): bewijs plus reden om te bellen.
+    // Eigen insteek, los van de andere steden.
     description:
-      'Almere is jong en groot opgezet. De woningen hebben ruime kavels en hoge plafonds - ideaal voor royale aanbouwen, dakopbouwen en complete keukenzones met openverbinding naar de tuin. Wij benutten elke vierkante meter die deze polderstad biedt.',
+      'Royale aanbouwen, dakopbouwen en het volledig herindelen van een VINEX-woning, dat soort projecten kennen we in Almere van binnen en buiten. Bespreek je plannen vrijblijvend met ons en je krijgt een helder voorstel met een vaste prijs, geen losse eindjes.',
     context:
       'aanbouwen op ruime kavels, dakopbouwen, totaalverbouwingen van VINEX-woningen',
     areas: ['Almere Stad', 'Almere Buiten', 'Almere Haven', 'Almere Poort'],
     nearby: ['lelystad', 'amsterdam', 'amstelveen', 'hilversum'],
+    // Hero volgt de stadsconventie. Zet het bestand neer als
+    // public/woonklasse/Almere.avif, dan laadt de hero vanzelf.
+    heroImage: '/woonklasse/Almere.avif',
+    // BLOK 1 (city-specifiek): één belofte, klantgericht.
+    // Eigen insteek, los van de andere steden.
+    intro:
+      'Dit is een jonge stad met ruime kavels, dus er kan veel: een uitgebouwde leefkeuken, een extra verdieping, een complete metamorfose. Je wil dat die ruimte slim benut wordt, niet half. Wij maken er één doordacht plan van en voeren het strak uit.',
   },
   {
     name: 'Breda',
