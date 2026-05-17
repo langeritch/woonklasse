@@ -25,10 +25,14 @@ export async function generateMetadata(
   const { city: slug } = await params;
   const city = getWoonklasseCityBySlug(slug);
   if (!city) {
-    return { title: 'Niet gevonden | Woonklasse' };
+    return { title: 'Niet gevonden' };
   }
 
-  const title = `Aannemer ${city.name} voor verbouwing, renovatie & onderhoud | Woonklasse`;
+  // De woonklasse-layout heeft title.template '%s | Woonklasse'. De
+  // document-title mag het merk dus NIET zelf bevatten (anders dubbel).
+  // OG/Twitter-titel staat los van die template, daar houden we het merk.
+  const title = `Aannemer ${city.name} voor verbouwing, renovatie & onderhoud`;
+  const ogTitle = `${title} | Woonklasse`;
   const description = `Aannemer in ${city.name} voor verbouwingen, renovaties, aanbouw, dakwerk en woningonderhoud. Eigen vakmensen, vaste prijs vooraf en één projectleider. Vraag een vrijblijvende offerte aan.`;
   const url = `${SITE_URL}/${city.slug}`;
 
@@ -37,7 +41,7 @@ export async function generateMetadata(
     description,
     alternates: { canonical: url },
     openGraph: {
-      title,
+      title: ogTitle,
       description,
       url,
       type: 'website',
@@ -47,7 +51,7 @@ export async function generateMetadata(
     },
     twitter: {
       card: 'summary_large_image',
-      title,
+      title: ogTitle,
       description,
     },
   };
