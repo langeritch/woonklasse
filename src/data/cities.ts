@@ -59,6 +59,10 @@ export const CITIES: City[] = [
       'Utrecht combineert middeleeuwse binnenstad met dynamische nieuwbouw in Leidsche Rijn. Wij renoveren badkamers in monumentale grachtenpanden net zo zorgvuldig als in moderne stadswoningen - altijd met respect voor de bestaande architectuur.',
     areas: ['Oudwijk', 'Wittevrouwen', 'Lombok'],
     nearby: ['amersfoort', 'zeist', 'woerden', 'hilversum'],
+    landingIntro:
+      'Een badkamer in een Utrechts grachtenpand of jaren-30 woning in Wittevrouwen vraagt om andere keuzes dan een nieuwbouwappartement in Leidsche Rijn: scheve vloeren, krappe schachten en monumentale details die je wilt sparen. Dat lossen wij hier elke week op. We meten de ruimte in, tekenen de indeling in 3D en voeren sloop, leidingwerk, tegelwerk en sanitair uit met onze eigen tegelzetters en loodgieters. Eén ploeg, één planning, een afwerking die klopt tot in de laatste voeg.',
+    landingOutro:
+      'Benieuwd naar de mogelijkheden en wat het realistisch kost? Plan een vrijblijvend adviesgesprek. We nemen de ruimte ter plekke op, denken mee over indeling en materialen en geven een vaste prijs zonder kleine lettertjes. Van het eerste gesprek tot de oplevering hou je hetzelfde aanspreekpunt, zodat je nooit hoeft te raden hoe ver het staat.',
   },
   {
     name: 'Eindhoven',
