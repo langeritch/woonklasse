@@ -167,6 +167,10 @@ export const CITIES: City[] = [
       'Haarlem is een schatkamer van jugendstilpanden, hofjes en historische binnenstad. Wij ontwerpen badkamers die de fijne details van deze architectuur eren - met klassieke kranen, elegant tegelwerk en zorgvuldig restauratiewerk waar nodig.',
     areas: ['Haarlem-Noord', 'Schalkwijk', 'Centrum'],
     nearby: ['zaanstad', 'haarlemmermeer', 'alkmaar', 'amsterdam'],
+    landingIntro:
+      'Een Haarlemse jaren-30 jugendstilwoning vraagt om andere keuzes dan een moderne woning in Schalkwijk: glas-in-lood, oude lambrisering en krappe leidingschachten tegenover strakke wanden en een ruime indeling. Wij meten de ruimte in, tekenen de indeling in 3D en voeren sloop, leidingwerk, tegelwerk en sanitair uit met onze eigen tegelzetters en loodgieters. Klassieke visgraattegels met messing details of strak hedendaags, met een afwerking die klopt tot in de laatste voeg.',
+    landingOutro:
+      'Wil je dat de monumentale details van je woning bewaard blijven? Vraag een vrijblijvend adviesgesprek aan. We komen langs, nemen de ruimte op en geven een vaste prijs en planning, zonder verrassingen achteraf. Eén vast aanspreekpunt begeleidt je van de eerste schets tot de oplevering, zodat je altijd weet waar je aan toe bent.',
   },
   {
     name: 'Arnhem',
