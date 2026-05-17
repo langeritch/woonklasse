@@ -3,42 +3,43 @@
 import { motion } from 'framer-motion';
 import Link from 'next/link';
 import Image from 'next/image';
-import { ArrowRight, ArrowUpRight, Plus, Minus, Phone } from 'lucide-react';
+import { ArrowRight, ArrowUpRight, Plus, Minus, Phone, UserRound, BadgeEuro, CalendarCheck, ShieldCheck } from 'lucide-react';
 import { useState } from 'react';
 import type { WoonklasseCity } from '@/data/woonklasse-cities';
 import type { BlogPost } from '@/data/blog/index';
 import { CONTACT } from '@/data/contact';
 import HeroAdviesTool from '@/components/HeroAdviesTool';
 
-// Statisch proces, identiek voor elke stad. Bewust gedupliceerd met
-// AmsterdamPage: een 4-regelige lijst is goedkoper dan een gedeelde module.
-const STEPS = [
+// Vier vaste beloftes, identiek aan AmsterdamPage zodat het [city]-template
+// dezelfde garantiecopy toont. Bewust gedupliceerd: vier regels zijn
+// goedkoper dan een gedeelde module.
+const GUARANTEES = [
   {
-    n: '01',
-    title: 'Overleg',
-    desc: 'We komen langs en kijken samen wat je wil. Geen verkooppraat, gewoon goed luisteren.',
+    Icon: UserRound,
+    title: 'Eén vast aanspreekpunt',
+    line: 'Van eerste gesprek tot oplevering altijd dezelfde persoon.',
   },
   {
-    n: '02',
-    title: 'Offerte',
-    desc: 'Een schone, vaste prijs vooraf. Alles staat erin, zodat je nooit voor verrassingen komt te staan.',
+    Icon: BadgeEuro,
+    title: 'Prijs vooraf, geen verrassingen',
+    line: 'Scherpe vaste prijs via ons eigen leveranciersnetwerk.',
   },
   {
-    n: '03',
-    title: 'Uitvoering',
-    desc: 'Eigen vakmensen voeren het werk snel en schoon uit, met een vaste projectleider als aanspreekpunt.',
+    Icon: CalendarCheck,
+    title: 'Op tijd opgeleverd',
+    line: 'Afspraak is afspraak, ook de opleverdatum staat vast.',
   },
   {
-    n: '04',
-    title: 'Klaar',
-    desc: 'We leveren netjes op en jij geniet ervan. Met garantie, voor de zekerheid op lange termijn.',
+    Icon: ShieldCheck,
+    title: '15+ jaar track record',
+    line: 'Bewezen ervaring in bouw en sanitair.',
   },
 ];
 
 const SERVICES = [
   {
     title: 'Totaal renovatie & nieuwbouw',
-    desc: 'Complete renovaties en nieuwbouw van casco tot oplevering: één aanspreekpunt, één planning, één eindverantwoordelijke.',
+    desc: 'Complete renovaties en nieuwbouw van casco tot oplevering: één planning, één eindverantwoordelijke.',
     image: '/woonklasse/canal-residence-1.jpg',
   },
   {
@@ -234,10 +235,9 @@ export default function WoonklasseCityPage({
             initial={{ opacity: 0, y: 24 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
-            className="font-display text-[clamp(2.5rem,7vw,7rem)] font-light leading-[1.02] tracking-tight text-white max-w-5xl"
+            className="font-display text-[clamp(1.6rem,3.1vw,2.4rem)] font-light leading-[1.15] tracking-tight text-white [text-wrap:balance]"
           >
-            Aannemer in {city.name}<br />
-            <span className="italic text-woon-accent">voor verbouwing &amp; onderhoud</span>
+            Verbouwen in {city.name} zonder verrassingen
           </motion.h1>
           <motion.p
             initial={{ opacity: 0, y: 16 }}
@@ -245,7 +245,7 @@ export default function WoonklasseCityPage({
             transition={{ duration: 0.8, delay: 0.3 }}
             className="mt-8 max-w-2xl text-white/80 text-base md:text-lg leading-relaxed font-light"
           >
-            Complete verbouwingen, aanbouwen, dakwerk en woningonderhoud, uitgevoerd door eigen vakmensen, met een vaste prijs vooraf en één projectleider als aanspreekpunt.
+            Renovatie en verbouwing door eigen vakmensen.
           </motion.p>
           <motion.div
             initial={{ opacity: 0, y: 16 }}
@@ -257,7 +257,7 @@ export default function WoonklasseCityPage({
               href="#offerte"
               className="group inline-flex items-center justify-center gap-3 bg-woon-accent text-woon-dark text-sm font-medium px-8 py-4 rounded-full hover:scale-[1.02] hover:shadow-lg hover:shadow-woon-accent/20 transition-all"
             >
-              Vraag offerte aan voor {city.name}
+              Vraag een vrijblijvende offerte aan
               <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
             </Link>
             <a
@@ -309,36 +309,38 @@ export default function WoonklasseCityPage({
         </div>
       </section>
 
-      {/* ═══════════════ HOE WERKT HET (4 STAPPEN) ═══════════════ */}
+      {/* ═══════════ GARANTIEBLOK (VAST, vervangt 'hoe werkt het') ═══════════ */}
       <section className="py-24 md:py-32 px-6 md:px-12 lg:px-20 bg-woon-cream">
         <div className="max-w-[1400px] mx-auto">
-          <div className="mb-14 md:mb-20 max-w-2xl">
+          <motion.div
+            initial={{ opacity: 0, y: 24 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8 }}
+            className="mb-14 md:mb-20 max-w-2xl mx-auto text-center"
+          >
             <span className="text-woon-secondary text-[11px] tracking-[0.3em] uppercase mb-4 block">
-              Hoe werkt het
+              Waar je op kunt rekenen
             </span>
             <h2 className="font-display text-4xl md:text-5xl lg:text-6xl font-light italic leading-[1.1]">
-              Van eerste gesprek
-              <br />
-              <span className="not-italic font-medium text-woon-accent">tot oplevering</span>
+              Onze belofte aan jou
             </h2>
-          </div>
+          </motion.div>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 md:gap-10">
-            {STEPS.map((step, i) => (
+            {GUARANTEES.map(({ Icon, title, line }, i) => (
               <motion.div
-                key={step.n}
+                key={title}
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: '-50px' }}
                 transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1], delay: i * 0.08 }}
                 className="border-t border-woon-dark/15 pt-6"
               >
-                <span className="text-woon-accent text-[11px] tracking-[0.3em] font-medium block mb-4">
-                  {step.n}
-                </span>
+                <Icon className="w-8 h-8 text-woon-accent mb-5" strokeWidth={1.5} />
                 <h3 className="font-heading text-xl md:text-2xl font-bold mb-3">
-                  {step.title}
+                  {title}
                 </h3>
-                <p className="text-woon-secondary text-sm leading-relaxed">{step.desc}</p>
+                <p className="text-woon-secondary text-sm leading-relaxed">{line}</p>
               </motion.div>
             ))}
           </div>

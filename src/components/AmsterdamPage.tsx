@@ -104,7 +104,7 @@ export default function AmsterdamPage({
               Verbouwen in {city.name} zonder verrassingen
             </h1>
             <p className="mt-6 text-white/80 text-lg md:text-xl font-light max-w-xl">
-              Eén vast aanspreekpunt, prijs vooraf, opgeleverd op tijd.
+              Renovatie en verbouwing door eigen vakmensen.
             </p>
             <div className="mt-10 flex flex-col sm:flex-row gap-4">
               <Link
@@ -147,12 +147,12 @@ export default function AmsterdamPage({
       {/* ═══════════ GARANTIEBLOK (VAST, vervangt 'hoe werkt het') ═══════════ */}
       <section className="py-16 md:py-24 px-6 md:px-12 lg:px-20 bg-woon-light">
         <div className="max-w-[1400px] mx-auto">
-          <FadeIn className="mb-14 md:mb-20 max-w-2xl">
+          <FadeIn className="mb-14 md:mb-20 max-w-2xl mx-auto text-center">
             <span className="text-woon-secondary text-[11px] tracking-[0.3em] uppercase mb-4 block">
-              Onze garantie
+              Waar je op kunt rekenen
             </span>
             <h2 className="font-display text-3xl md:text-4xl lg:text-5xl font-light leading-[1.15]">
-              Wat je van ons krijgt
+              Onze belofte aan jou
             </h2>
           </FadeIn>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 md:gap-10">
@@ -210,10 +210,10 @@ export default function AmsterdamPage({
             Waarom Woonklasse
           </span>
           <h2 className="font-display text-3xl md:text-4xl lg:text-5xl font-light leading-[1.15] text-woon-dark mb-8">
-            Bewezen werk, geen verrassingen
+            Werk dat blijft staan
           </h2>
           <p className="text-woon-secondary text-base md:text-lg leading-relaxed">
-            Vijftien jaar ervaring in bouw en sanitair. Doordat we met ons eigen leveranciersnetwerk werken krijg je een scherpe prijs die vooraf vaststaat. Wat we afspreken doen we, op tijd en zonder meerwerk dat je niet zag aankomen.
+            Bel ons voor eerlijk advies over wat je plannen realistisch kosten en hoe lang het duurt. Je krijgt meteen iemand die het werk kent, geen callcenter.
           </p>
         </FadeIn>
       </section>

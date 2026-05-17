@@ -22,7 +22,7 @@ export const WOONKLASSE_CITIES: WoonklasseCity[] = [
     // BLOK 2 (city-specifiek): rendert vlak voor het onderste formulier
     // op de stadspagina. Kort, klantgericht, maximaal 1x de stadsnaam.
     description:
-      'Of het nu om een grachtenpand, een portiekwoning of nieuwbouw gaat, in Amsterdam telt elke ingreep. Eén vast aanspreekpunt regelt alles van eerste schets tot oplevering, voor een prijs die vooraf vaststaat.',
+      'Of het nu om een grachtenpand, een portiekwoning of nieuwbouw gaat, in Amsterdam telt elke ingreep. We kennen de panden, de regels en de logistiek hier, en zorgen dat jouw plek straks gewoon klopt.',
     context:
       'verbouwingen aan grachtenpanden, fundering- en houtrotherstel, optoppingen en uitbouwen op kleine kavels',
     areas: ['Centrum', 'Oud-Zuid', 'IJburg', 'De Pijp', 'Westerpark'],
@@ -31,7 +31,7 @@ export const WOONKLASSE_CITIES: WoonklasseCity[] = [
     // BLOK 1 (city-specifiek): rendert in de sectie direct onder de hero.
     // Kort, klantgericht, vermijdt herhaling van de stadsnaam.
     intro:
-      'In de stad is elke vierkante meter kostbaar en is er weinig ruimte voor fouten. Wij kennen het werk hier, van krappe aanrijroutes tot buren die dichtbij wonen, en leveren je verbouwing op zonder verrassingen.',
+      'In de stad is elke vierkante meter kostbaar en is er weinig ruimte voor fouten. Wij kennen het werk hier, van krappe aanrijroutes tot buren die dichtbij wonen, en houden je woning leefbaar tijdens de bouw.',
   },
   {
     name: 'Rotterdam',
