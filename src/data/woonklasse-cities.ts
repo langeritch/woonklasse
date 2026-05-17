@@ -177,12 +177,21 @@ export const WOONKLASSE_CITIES: WoonklasseCity[] = [
     name: 'Breda',
     slug: 'breda',
     province: 'Noord-Brabant',
+    // BLOK 2 (city-specifiek): bewijs plus reden om te bellen.
+    // Eigen insteek, los van de andere steden.
     description:
-      'Breda is een stad van klassieke villa\'s in het Ginneken en gemoedelijke wijken zoals Boeimeer. Wij verbouwen met aandacht voor architectonische lijsten, glas-in-lood en authentieke vloeren - en voegen de comfort, isolatie en techniek toe die je vandaag verwacht.',
+      'Van het herstellen van een originele vloer tot een complete isolatie- en installatiebeurt, in Breda doen we dit soort werk met zorg. Loop het rustig met ons door, dan weet je wat behouden kan blijven en wat het kost.',
     context:
       'villarenovaties, restauratiewerk, energetisch upgraden van vooroorlogse woningen',
     areas: ['Ginneken', 'Boeimeer', 'Princenhage', 'Brabantpark', 'Heusdenhout'],
     nearby: ['tilburg', 'roosendaal', 'oss', 'dordrecht'],
+    // Hero volgt de stadsconventie. Zet het bestand neer als
+    // public/woonklasse/Breda.avif, dan laadt de hero vanzelf.
+    heroImage: '/woonklasse/Breda.avif',
+    // BLOK 1 (city-specifiek): één belofte, klantgericht.
+    // Eigen insteek, los van de andere steden.
+    intro:
+      'Een vooroorlogse villa in het Ginneken verbouw je niet zomaar: glas in lood, authentieke vloeren, lijstwerk dat je niet wil verliezen. Tegelijk wil je een warm, zuinig huis van nu. Wij combineren dat, met respect voor wat er al is.',
   },
   {
     name: 'Nijmegen',
