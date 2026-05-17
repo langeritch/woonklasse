@@ -8,6 +8,32 @@ import { useState } from 'react';
 import type { WoonklasseCity } from '@/data/woonklasse-cities';
 import type { BlogPost } from '@/data/blog/index';
 import { CONTACT } from '@/data/contact';
+import OfferteFormEmbed from '@/components/woonklasse/OfferteFormEmbed';
+
+// Statisch proces, identiek voor elke stad. Bewust gedupliceerd met
+// AmsterdamPage: een 4-regelige lijst is goedkoper dan een gedeelde module.
+const STEPS = [
+  {
+    n: '01',
+    title: 'Overleg',
+    desc: 'We komen langs en kijken samen wat je wil. Geen verkooppraat, gewoon goed luisteren.',
+  },
+  {
+    n: '02',
+    title: 'Offerte',
+    desc: 'Een schone, vaste prijs vooraf. Alles staat erin, zodat je nooit voor verrassingen komt te staan.',
+  },
+  {
+    n: '03',
+    title: 'Uitvoering',
+    desc: 'Eigen vakmensen voeren het werk snel en schoon uit, met een vaste projectleider als aanspreekpunt.',
+  },
+  {
+    n: '04',
+    title: 'Klaar',
+    desc: 'We leveren netjes op en jij geniet ervan. Met garantie, voor de zekerheid op lange termijn.',
+  },
+];
 
 const SERVICES = [
   {
@@ -226,10 +252,10 @@ export default function WoonklasseCityPage({
             className="mt-10 flex flex-col sm:flex-row gap-4"
           >
             <Link
-              href="/woonklasse/offerte"
+              href="#offerte"
               className="group inline-flex items-center justify-center gap-3 bg-woon-accent text-woon-dark text-sm font-medium px-8 py-4 rounded-full hover:scale-[1.02] hover:shadow-lg hover:shadow-woon-accent/20 transition-all"
             >
-              Plan een vrijblijvend gesprek
+              Vraag offerte aan voor {city.name}
               <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
             </Link>
             <a
@@ -272,6 +298,42 @@ export default function WoonklasseCityPage({
               </p>
             )}
           </motion.div>
+        </div>
+      </section>
+
+      {/* ═══════════════ HOE WERKT HET (4 STAPPEN) ═══════════════ */}
+      <section className="py-24 md:py-32 px-6 md:px-12 lg:px-20 bg-woon-cream">
+        <div className="max-w-[1400px] mx-auto">
+          <div className="mb-14 md:mb-20 max-w-2xl">
+            <span className="text-woon-secondary text-[11px] tracking-[0.3em] uppercase mb-4 block">
+              Hoe werkt het
+            </span>
+            <h2 className="font-display text-4xl md:text-5xl lg:text-6xl font-light italic leading-[1.1]">
+              Van eerste gesprek
+              <br />
+              <span className="not-italic font-medium text-woon-accent">tot oplevering</span>
+            </h2>
+          </div>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 md:gap-10">
+            {STEPS.map((step, i) => (
+              <motion.div
+                key={step.n}
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, margin: '-50px' }}
+                transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1], delay: i * 0.08 }}
+                className="border-t border-woon-dark/15 pt-6"
+              >
+                <span className="text-woon-accent text-[11px] tracking-[0.3em] font-medium block mb-4">
+                  {step.n}
+                </span>
+                <h3 className="font-heading text-xl md:text-2xl font-bold mb-3">
+                  {step.title}
+                </h3>
+                <p className="text-woon-secondary text-sm leading-relaxed">{step.desc}</p>
+              </motion.div>
+            ))}
+          </div>
         </div>
       </section>
 
@@ -441,29 +503,75 @@ export default function WoonklasseCityPage({
         </div>
       </section>
 
-      {/* ═══════════════ CTA ═══════════════ */}
+      {/* ═══════════════ FOTOGALERIJ (ASYMMETRISCH) ═══════════════ */}
       <section className="py-24 md:py-32 px-6 md:px-12 lg:px-20 bg-white">
-        <div className="max-w-[1400px] mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
+        <div className="max-w-[1400px] mx-auto">
+          <div className="mb-12 md:mb-16 max-w-2xl">
+            <span className="text-woon-secondary text-[11px] tracking-[0.3em] uppercase mb-4 block">
+              Werk in uitvoering
+            </span>
+            <h2 className="font-display text-4xl md:text-5xl lg:text-6xl font-light italic leading-[1.1]">
+              Projecten uit
+              <br />
+              <span className="not-italic font-medium text-woon-accent">ons portfolio</span>
+            </h2>
+          </div>
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 md:gap-6">
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: '-50px' }}
+              transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
+              className="relative aspect-[4/5] lg:aspect-auto lg:h-full min-h-[420px] overflow-hidden rounded-xl bg-woon-cream"
+            >
+              <Image
+                src="/woonklasse/penthouse-amsterdam-1.jpg"
+                alt={`Verbouwingsproject Woonklasse ${city.name}`}
+                fill
+                className="object-cover"
+                sizes="(max-width: 1024px) 100vw, 50vw"
+              />
+            </motion.div>
+            <div className="grid grid-rows-2 gap-4 md:gap-6">
+              {['apartment-amsterdam-2.jpg', 'canal-residence-1.jpg'].map((file, i) => (
+                <motion.div
+                  key={file}
+                  initial={{ opacity: 0, y: 30 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true, margin: '-50px' }}
+                  transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1], delay: 0.1 + i * 0.1 }}
+                  className="relative aspect-[4/3] lg:aspect-auto lg:h-full min-h-[200px] overflow-hidden rounded-xl bg-woon-cream"
+                >
+                  <Image
+                    src={`/woonklasse/${file}`}
+                    alt={`Interieur in ${city.name}`}
+                    fill
+                    className="object-cover"
+                    sizes="(max-width: 1024px) 100vw, 50vw"
+                  />
+                </motion.div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ═══════════════ OFFERTEFORMULIER (STAD VOORINGEVULD) ═══════════════ */}
+      <section
+        id="offerte"
+        className="scroll-mt-24 py-24 md:py-32 px-6 md:px-12 lg:px-20 bg-woon-light"
+      >
+        <div className="max-w-[1100px] mx-auto grid grid-cols-1 lg:grid-cols-[1fr_1.3fr] gap-12 lg:gap-20 items-start">
           <motion.div
-            initial={{ opacity: 0, x: -24 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.8 }}
-            className="aspect-[4/5] relative overflow-hidden rounded-2xl"
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: '-50px' }}
+            transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
           >
-            <Image
-              src="/woonklasse/penthouse-amsterdam-1.jpg"
-              alt={`Verbouwingsproject Woonklasse ${city.name}`}
-              fill
-              className="object-cover"
-              sizes="(max-width: 1024px) 100vw, 50vw"
-            />
-          </motion.div>
-          <div>
             <span className="text-woon-secondary text-[11px] tracking-[0.3em] uppercase mb-6 block">
               Plan een opname
             </span>
-            <h2 className="font-display text-4xl md:text-5xl lg:text-6xl font-light italic leading-[1.1] mb-8">
+            <h2 className="font-display text-3xl md:text-4xl lg:text-5xl font-light italic leading-[1.15] mb-6">
               Klaar om uw woning in
               <br />
               <span className="not-italic font-medium text-woon-accent">{city.name} te verbouwen?</span>
@@ -471,22 +579,31 @@ export default function WoonklasseCityPage({
             <p className="text-woon-secondary text-base md:text-lg leading-relaxed mb-10 max-w-lg">
               Plan een vrijblijvende opname. Wij komen langs in {city.name}, luisteren naar uw plannen en sturen binnen 10 werkdagen een maatwerk voorstel met vaste prijs.
             </p>
-            <div className="flex flex-col sm:flex-row gap-4">
-              <Link
-                href="/woonklasse/offerte"
-                className="group inline-flex items-center justify-center gap-3 bg-woon-accent text-woon-dark text-sm font-medium px-8 py-4 rounded-full hover:scale-[1.02] hover:shadow-lg hover:shadow-woon-accent/20 transition-all"
+            <div className="flex flex-col gap-4">
+              <a
+                href={CONTACT.telefoonLink}
+                className="inline-flex items-center gap-3 text-woon-dark font-medium hover:text-woon-accent transition-colors"
               >
-                Plan een vrijblijvend gesprek
-                <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-              </Link>
+                <Phone className="w-4 h-4" />
+                Liever even bellen? {CONTACT.telefoon}
+              </a>
               <Link
                 href="/woonklasse/projecten"
-                className="inline-flex items-center justify-center gap-3 border border-woon-dark text-woon-dark text-sm font-medium px-8 py-4 rounded-full hover:bg-woon-dark hover:text-white transition-colors"
+                className="inline-flex items-center gap-2 text-woon-secondary text-sm hover:text-woon-dark transition-colors"
               >
-                Bekijk projecten
+                Bekijk eerst onze projecten
+                <ArrowUpRight className="w-4 h-4" />
               </Link>
             </div>
-          </div>
+          </motion.div>
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: '-50px' }}
+            transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1], delay: 0.15 }}
+          >
+            <OfferteFormEmbed defaultStad={city.name} />
+          </motion.div>
         </div>
       </section>
 
