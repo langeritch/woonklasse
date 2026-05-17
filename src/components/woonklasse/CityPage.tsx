@@ -8,7 +8,7 @@ import { useState } from 'react';
 import type { WoonklasseCity } from '@/data/woonklasse-cities';
 import type { BlogPost } from '@/data/blog/index';
 import { CONTACT } from '@/data/contact';
-import OfferteFormEmbed from '@/components/woonklasse/OfferteFormEmbed';
+import HeroAdviesTool from '@/components/HeroAdviesTool';
 
 // Statisch proces, identiek voor elke stad. Bewust gedupliceerd met
 // AmsterdamPage: een 4-regelige lijst is goedkoper dan een gedeelde module.
@@ -205,7 +205,7 @@ export default function WoonklasseCityPage({
       </nav>
 
       {/* ═══════════════ HERO ═══════════════ */}
-      <section className="relative h-[90vh] min-h-[640px] flex items-end overflow-hidden bg-woon-dark">
+      <section className="relative min-h-[680px] md:min-h-[800px] flex items-center overflow-hidden bg-woon-dark py-24 md:py-28">
         <div className="absolute inset-0">
           <Image
             src={city.heroImage ?? '/woonklasse/villa-bergen-1.jpg'}
@@ -216,9 +216,11 @@ export default function WoonklasseCityPage({
             sizes="100vw"
           />
         </div>
-        <div className="absolute inset-0 z-10 bg-gradient-to-b from-black/55 via-black/25 to-black/85" />
+        <div className="absolute inset-0 z-10 bg-gradient-to-b from-black/55 via-black/35 to-black/85" />
 
-        <div className="relative z-20 w-full px-6 md:px-12 lg:px-20 pb-16 md:pb-24 max-w-[1600px] mx-auto">
+        <div className="relative z-20 w-full px-6 md:px-12 lg:px-20 max-w-[1600px] mx-auto grid grid-cols-1 lg:grid-cols-[1.1fr_1fr] gap-10 lg:gap-16 items-center">
+          {/* Left - hero copy */}
+          <div>
           <motion.span
             initial={{ opacity: 0, y: 12 }}
             animate={{ opacity: 1, y: 0 }}
@@ -266,6 +268,12 @@ export default function WoonklasseCityPage({
               {CONTACT.telefoon}
             </a>
           </motion.div>
+          </div>
+          {/* Right - homepage project form. Stacks BELOW the hero copy on
+              mobile (single column); side-by-side from lg up. */}
+          <div className="w-full max-w-xl lg:ml-auto">
+            <HeroAdviesTool brand="woonklasse" city={city.name} />
+          </div>
         </div>
       </section>
 
@@ -602,7 +610,7 @@ export default function WoonklasseCityPage({
             viewport={{ once: true, margin: '-50px' }}
             transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1], delay: 0.15 }}
           >
-            <OfferteFormEmbed defaultStad={city.name} />
+            <HeroAdviesTool brand="woonklasse" city={city.name} />
           </motion.div>
         </div>
       </section>

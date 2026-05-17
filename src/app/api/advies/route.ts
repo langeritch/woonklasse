@@ -9,7 +9,7 @@ import { sendPushToAll } from '@/lib/send-push';
 /**
  * Hero "Persoonlijk advies" tool submit endpoint.
  *
- * Receives JSON only — photos are uploaded directly from the browser to
+ * Receives JSON only - photos are uploaded directly from the browser to
  * Vercel Blob via /api/advies/upload-url, and we get back their URLs here.
  * Sends a single notification email to the brand's admin inbox.
  * No customer confirmation email is sent.
@@ -90,7 +90,7 @@ const roomSchema = z.object({
   type: z.string().min(1).max(80),
   meters: z.string().max(40).optional(),
   notes: z.string().max(1000).optional(),
-  // No per-room photo cap — users can upload as many as they want per room.
+  // No per-room photo cap - users can upload as many as they want per room.
   // Loose upper bound just to keep payloads sane against a runaway client.
   photos: z.array(photoSchema).max(200),
 });
@@ -101,11 +101,14 @@ const adviesSchema = z.object({
   email: z.string().email('Ongeldig e-mailadres').max(200),
   telefoon: z.string().min(6, 'Telefoonnummer is verplicht').max(40),
   bericht: z.string().max(5000).optional(),
+  // Locked from a city landing page (e.g. "Amsterdam"). Optional so the
+  // generic homepage form keeps working without it.
+  city: z.string().max(80).optional(),
   projectType: z.string().max(80).optional(),
   tijdpad: z.string().max(80).optional(),
   budget: z.string().max(80).optional(),
   stijl: z.string().max(80).optional(),
-  // No hard ceiling on rooms either — users can describe whole houses.
+  // No hard ceiling on rooms either - users can describe whole houses.
   // Loose upper bound for sanity.
   rooms: z.array(roomSchema).min(1, 'Selecteer minimaal 1 kamer').max(50),
   website: z.string().optional(), // honeypot
@@ -140,6 +143,7 @@ export async function POST(request: Request) {
         naam: data.naam,
         email: data.email,
         telefoon: data.telefoon,
+        stad: data.city,
         bericht: data.bericht,
         type: data.projectType,
         advies: {
@@ -152,13 +156,13 @@ export async function POST(request: Request) {
       });
       sendPushToAll({
         title: `Nieuwe aanvraag persoonlijk advies`,
-        body: `${data.naam} via ${brandNaam} — ${data.rooms.length} kamer${data.rooms.length === 1 ? '' : 's'}, ${totalPhotos} foto${totalPhotos === 1 ? '' : "'s"}`,
+        body: `${data.naam} via ${brandNaam}${data.city ? ` (${data.city})` : ''} - ${data.rooms.length} kamer${data.rooms.length === 1 ? '' : 's'}, ${totalPhotos} foto${totalPhotos === 1 ? '' : "'s"}`,
       }).catch((e) => console.warn('[advies][push] mislukt:', e));
     } catch (e) {
       console.warn('[advies] Submission opslaan mislukt:', e);
     }
 
-    // Email admin only — no customer confirmation per spec
+    // Email admin only - no customer confirmation per spec
     const transporter = await createTransporter();
     if (transporter) {
       const to = recipientFor(data.brand);
@@ -178,11 +182,12 @@ export async function POST(request: Request) {
       });
 
       const textLines = [
-        `Nieuwe aanvraag — Persoonlijk advies (${brandNaam})`,
+        `Nieuwe aanvraag - Persoonlijk advies (${brandNaam})`,
         '',
         `Naam: ${data.naam}`,
         `E-mail: ${data.email}`,
         `Telefoon: ${data.telefoon}`,
+        data.city ? `Plaats: ${data.city}` : null,
         data.projectType ? `Project: ${data.projectType}` : null,
         data.tijdpad ? `Tijdpad: ${data.tijdpad}` : null,
         data.budget ? `Budget: ${data.budget}` : null,
@@ -204,7 +209,7 @@ export async function POST(request: Request) {
         from: `"${brandNaam} Website" <${fromEmail}>`,
         to,
         replyTo: data.email,
-        subject: `Persoonlijk advies — ${data.naam} (${data.rooms.length} kamer${data.rooms.length === 1 ? '' : 's'})`,
+        subject: `Persoonlijk advies - ${data.naam} (${data.rooms.length} kamer${data.rooms.length === 1 ? '' : 's'})`,
         html,
         text: textLines,
       });

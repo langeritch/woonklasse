@@ -6,7 +6,7 @@ import { motion } from 'framer-motion';
 import { ArrowRight, Phone } from 'lucide-react';
 import type { WoonklasseCity } from '@/data/woonklasse-cities';
 import { CONTACT } from '@/data/contact';
-import OfferteFormEmbed from '@/components/woonklasse/OfferteFormEmbed';
+import HeroAdviesTool from '@/components/HeroAdviesTool';
 
 // Interieurfoto's uit het gedeelde woonklasse-portfolio. Niet per stad
 // uniek - we tonen bewust het bestaande portfolio (zoals op de homepage).
@@ -73,7 +73,7 @@ export default function AmsterdamPage({
   return (
     <main className="min-h-screen bg-woon-light text-woon-dark overflow-x-hidden">
       {/* ═══════════════ HERO ═══════════════ */}
-      <section className="relative h-[80vh] min-h-[560px] flex items-end overflow-hidden bg-woon-dark">
+      <section className="relative min-h-[640px] md:min-h-[760px] flex items-center overflow-hidden bg-woon-dark py-24 md:py-28">
         <Image
           src={heroImage}
           alt={`Aannemer voor verbouwing en renovatie in ${city.name}`}
@@ -82,33 +82,41 @@ export default function AmsterdamPage({
           className="object-cover"
           sizes="100vw"
         />
-        <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-black/20 to-black/80" />
-        <div className="relative z-10 w-full px-6 md:px-12 lg:px-20 pb-16 md:pb-24 max-w-[1600px] mx-auto">
-          <span className="inline-flex items-center gap-3 text-[11px] tracking-[0.4em] uppercase text-woon-accent mb-6 font-medium">
-            <span className="w-8 h-px bg-woon-accent/60" />
-            {city.province}
-          </span>
-          <h1 className="font-display text-[clamp(2.75rem,8vw,7.5rem)] font-light leading-[1.02] tracking-tight text-white">
-            Aannemer in {city.name}
-          </h1>
-          <p className="mt-6 text-white/80 text-lg md:text-xl font-light max-w-xl">
-            Meer uit je vierkante meter
-          </p>
-          <div className="mt-10 flex flex-col sm:flex-row gap-4">
-            <Link
-              href="#offerte"
-              className="group inline-flex items-center justify-center gap-3 bg-woon-accent text-woon-dark text-sm font-medium px-8 py-4 rounded-full hover:scale-[1.02] hover:shadow-lg hover:shadow-woon-accent/20 transition-all"
-            >
-              Vraag offerte aan voor {city.name}
-              <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-            </Link>
-            <a
-              href={CONTACT.telefoonLink}
-              className="inline-flex items-center justify-center gap-3 border border-white/40 text-white text-sm font-medium px-8 py-4 rounded-full hover:bg-white/10 transition-colors"
-            >
-              <Phone className="w-4 h-4" />
-              {CONTACT.telefoon}
-            </a>
+        <div className="absolute inset-0 bg-gradient-to-b from-black/55 via-black/35 to-black/85" />
+        <div className="relative z-10 w-full px-6 md:px-12 lg:px-20 max-w-[1600px] mx-auto grid grid-cols-1 lg:grid-cols-[1.1fr_1fr] gap-10 lg:gap-16 items-center">
+          {/* Left - hero copy */}
+          <div>
+            <span className="inline-flex items-center gap-3 text-[11px] tracking-[0.4em] uppercase text-woon-accent mb-6 font-medium">
+              <span className="w-8 h-px bg-woon-accent/60" />
+              {city.province}
+            </span>
+            <h1 className="font-display text-[clamp(2.75rem,8vw,7.5rem)] font-light leading-[1.02] tracking-tight text-white">
+              Aannemer in {city.name}
+            </h1>
+            <p className="mt-6 text-white/80 text-lg md:text-xl font-light max-w-xl">
+              Meer uit je vierkante meter
+            </p>
+            <div className="mt-10 flex flex-col sm:flex-row gap-4">
+              <Link
+                href="#offerte"
+                className="group inline-flex items-center justify-center gap-3 bg-woon-accent text-woon-dark text-sm font-medium px-8 py-4 rounded-full hover:scale-[1.02] hover:shadow-lg hover:shadow-woon-accent/20 transition-all"
+              >
+                Vraag offerte aan voor {city.name}
+                <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+              </Link>
+              <a
+                href={CONTACT.telefoonLink}
+                className="inline-flex items-center justify-center gap-3 border border-white/40 text-white text-sm font-medium px-8 py-4 rounded-full hover:bg-white/10 transition-colors"
+              >
+                <Phone className="w-4 h-4" />
+                {CONTACT.telefoon}
+              </a>
+            </div>
+          </div>
+          {/* Right - homepage project form. On mobile this stacks BELOW the
+              hero copy (single column); side-by-side from lg up. */}
+          <div className="w-full max-w-xl lg:ml-auto">
+            <HeroAdviesTool brand="woonklasse" city={city.name} />
           </div>
         </div>
       </section>
@@ -231,7 +239,7 @@ export default function AmsterdamPage({
             </a>
           </FadeIn>
           <FadeIn delay={0.15}>
-            <OfferteFormEmbed defaultStad={city.name} />
+            <HeroAdviesTool brand="woonklasse" city={city.name} />
           </FadeIn>
         </div>
       </section>

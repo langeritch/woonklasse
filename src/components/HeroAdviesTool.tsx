@@ -24,6 +24,12 @@ interface Props {
   brand: Brand;
   /** Tailwind classes for the outer card so it can sit on dark hero bgs */
   className?: string;
+  /**
+   * Optional city. When set (city landing pages), it is locked into the
+   * submission payload so every lead carries its origin city. There is no
+   * visible city field, so the value cannot be changed by the user.
+   */
+  city?: string;
 }
 
 const PROJECT_TYPES_WOON = ['Totaal renovatie', 'Nieuwbouw', 'Sanitair / badkamer', 'Onderhoud', 'Anders'];
@@ -32,12 +38,12 @@ const PROJECT_TYPES_BADK = ['Complete renovatie', 'Uitbreiding', 'Aanpassing', '
 const ROOM_TYPES_WOON = ['Woonkamer', 'Keuken', 'Badkamer', 'Slaapkamer', 'Hal / entree', 'Hele woning', 'Anders'];
 const ROOM_TYPES_BADK = ['Hoofdbadkamer', 'Tweede badkamer', 'Toilet / gastenruimte', 'Wellness / spa', 'Anders'];
 
-const TIJDPAD = ['Zo snel mogelijk', '1 — 3 maanden', '3 — 6 maanden', '6+ maanden', 'Nog oriënterend'];
+const TIJDPAD = ['Zo snel mogelijk', '1 - 3 maanden', '3 - 6 maanden', '6+ maanden', 'Nog oriënterend'];
 const STIJL = ['Modern', 'Klassiek', 'Industrieel', 'Natuurlijk / warm', 'Strak / minimalistisch', 'Geen voorkeur'];
-const BUDGET_WOON = ['< €25.000', '€25.000 — €75.000', '€75.000 — €150.000', '€150.000+', 'Onbekend'];
-const BUDGET_BADK = ['< €10.000', '€10.000 — €25.000', '€25.000 — €50.000', '€50.000+', 'Onbekend'];
+const BUDGET_WOON = ['< €25.000', '€25.000 - €75.000', '€75.000 - €150.000', '€150.000+', 'Onbekend'];
+const BUDGET_BADK = ['< €10.000', '€10.000 - €25.000', '€25.000 - €50.000', '€50.000+', 'Onbekend'];
 
-// No hard caps — users can upload as many photos and add as many rooms as
+// No hard caps - users can upload as many photos and add as many rooms as
 // they want. Sanity caps live server-side in /api/advies.
 
 function uid(): string {
@@ -48,7 +54,7 @@ function emptyRoom(): RoomState {
   return { id: uid(), type: '', meters: '', notes: '', photos: [], uploading: {} };
 }
 
-export default function HeroAdviesTool({ brand, className = '' }: Props) {
+export default function HeroAdviesTool({ brand, className = '', city }: Props) {
   const router = useRouter();
   const [step, setStep] = useState<1 | 2 | 3>(1);
   const [roomCount, setRoomCount] = useState<number | null>(null);
@@ -107,7 +113,7 @@ export default function HeroAdviesTool({ brand, className = '' }: Props) {
         return;
       }
 
-      // Upload in parallel — each file gets its own state slot.
+      // Upload in parallel - each file gets its own state slot.
       await Promise.all(
         accepted.map(async (file) => {
           const uploadKey = `${file.name}-${Date.now()}-${Math.random()}`;
@@ -194,6 +200,7 @@ export default function HeroAdviesTool({ brand, className = '' }: Props) {
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
           brand,
+          city,
           naam,
           email,
           telefoon,
@@ -238,7 +245,7 @@ export default function HeroAdviesTool({ brand, className = '' }: Props) {
           Persoonlijk advies &middot; in 3 stappen
         </p>
         <h3 className="font-display text-2xl md:text-3xl font-light leading-tight">
-          Vertel ons over je {isBadk ? 'badkamer' : 'project'} &mdash;
+          Vertel ons over je {isBadk ? 'badkamer' : 'project'},
           <span className={`italic ${accentText}`}> wij denken met je mee</span>
         </h3>
 
@@ -437,7 +444,7 @@ export default function HeroAdviesTool({ brand, className = '' }: Props) {
 
               <details className="text-sm">
                 <summary className={`cursor-pointer ${accentText} font-medium`}>
-                  Extra informatie (optioneel) &mdash; klap uit
+                  Extra informatie (optioneel), klap uit
                 </summary>
                 <div className="mt-4 space-y-4">
                   <SelectRow label="Tijdpad" options={TIJDPAD} value={tijdpad} onChange={setTijdpad} accentBg={accentBg} accentBorder={accentBorder} onAccentText={onAccentText} />
