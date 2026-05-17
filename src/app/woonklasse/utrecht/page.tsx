@@ -11,7 +11,7 @@ const city = getWoonklasseCityBySlug(SLUG);
 const heroPath = city?.heroImage ?? '/woonklasse/villa-bergen-1.jpg';
 
 export const metadata: Metadata = {
-  title: 'Aannemer Utrecht voor verbouwing, renovatie & onderhoud | Woonklasse',
+  title: 'Aannemer Utrecht voor verbouwing, renovatie & onderhoud',
   description:
     'Aannemer in Utrecht voor verbouwingen, renovaties, aanbouw en woningonderhoud. Eigen vakmensen, vaste prijs vooraf en één projectleider. Vraag een vrijblijvende offerte aan.',
   alternates: { canonical: `${SITE_URL}/${SLUG}` },

@@ -8,7 +8,7 @@ const SITE_URL = 'https://woonklasse.nl';
 const SLUG = 'amsterdam';
 
 export const metadata: Metadata = {
-  title: 'Aannemer Amsterdam voor verbouwing, renovatie & onderhoud | Woonklasse',
+  title: 'Aannemer Amsterdam voor verbouwing, renovatie & onderhoud',
   description:
     'Aannemer in Amsterdam voor verbouwingen, renovaties, aanbouw en woningonderhoud. Eigen vakmensen, vaste prijs vooraf en één projectleider. Vraag een vrijblijvende offerte aan.',
   alternates: { canonical: `${SITE_URL}/${SLUG}` },
