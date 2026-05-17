@@ -57,12 +57,21 @@ export const WOONKLASSE_CITIES: WoonklasseCity[] = [
     name: 'Den Haag',
     slug: 'den-haag',
     province: 'Zuid-Holland',
+    // BLOK 2 (city-specifiek): bewijs plus reden om te bellen.
+    // Andere insteek dan Amsterdam, Rotterdam en Utrecht.
     description:
-      'Den Haag verzamelt herenhuizen, residentiële villa\'s, internationale appartementen en de zilte uitdagingen van Scheveningen. Wij verbouwen met respect voor karakteristieke lijsten, plafondornamenten en stucprofielen - én met de techniek die bewoners vandaag verwachten.',
+      'Van het restaureren van een stucplafond tot een complete uitbouw aan de tuinzijde, in Den Haag hebben we het al vaak gedaan. Kom langs of laat ons komen voor een vrijblijvende opname, dan hoor je precies wat haalbaar is.',
     context:
       'herenhuis-renovaties, restauratie van originele details, kelderverbouwingen en isolatieprojecten',
     areas: ['Statenkwartier', 'Benoordenhout', 'Scheveningen', 'Bezuidenhout', 'Archipelbuurt'],
     nearby: ['rijswijk', 'delft', 'zoetermeer', 'leiden'],
+    // Hero volgt de stadsconventie. Zet het bestand neer als
+    // public/woonklasse/DenHaag.avif, dan laadt de hero vanzelf.
+    heroImage: '/woonklasse/DenHaag.avif',
+    // BLOK 1 (city-specifiek): één belofte, klantgericht.
+    // Andere insteek dan Amsterdam, Rotterdam en Utrecht.
+    intro:
+      'Een herenhuis in het Statenkwartier verdient een andere hand dan een appartement vlak bij zee. Wat je vooral wil is rust: een ploeg die het werk kent en zich aan de planning houdt. Wij houden de originele details intact en leveren netjes op.',
   },
   {
     name: 'Utrecht',
