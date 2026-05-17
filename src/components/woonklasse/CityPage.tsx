@@ -12,42 +12,42 @@ import { CONTACT } from '@/data/contact';
 const SERVICES = [
   {
     title: 'Totaal renovatie & nieuwbouw',
-    desc: 'Complete renovaties en nieuwbouw van casco tot oplevering — één aanspreekpunt, één planning, één eindverantwoordelijke.',
+    desc: 'Complete renovaties en nieuwbouw van casco tot oplevering: één aanspreekpunt, één planning, één eindverantwoordelijke.',
     image: '/woonklasse/canal-residence-1.jpg',
   },
   {
     title: 'Sanitair specialist',
-    desc: 'Eigen sanitair specialisten — complete badkamers, leidingwerk en design afwerking uit één hand.',
+    desc: 'Eigen sanitair specialisten voor complete badkamers, leidingwerk en design afwerking uit één hand.',
     image: '/woonklasse/apartment-amsterdam-2.jpg',
   },
   {
     title: 'Woningonderhoud',
-    desc: 'Periodiek onderhoud, schade-herstel en preventief werk dat uw woning in topconditie houdt.',
+    desc: 'Periodiek onderhoud, schadeherstel en preventief werk dat uw woning in topconditie houdt.',
     image: '/woonklasse/villa-bergen-2.jpg',
   },
   {
     title: 'Keukens',
-    desc: 'Maatwerk keukens met sloop, leidingwerk, tegelwerk en montage — alles uit één hand zonder gedoe.',
+    desc: 'Maatwerk keukens met sloop, leidingwerk, tegelwerk en montage, alles uit één hand zonder gedoe.',
     image: '/woonklasse/penthouse-amsterdam-3.jpg',
   },
   {
     title: 'Dakwerk',
-    desc: 'Dakvernieuwing, dakkapellen, dakisolatie en goten — wind- en waterdicht door eigen dakdekkers.',
+    desc: 'Dakvernieuwing, dakkapellen, dakisolatie en goten, wind en water dicht door eigen dakdekkers.',
     image: '/woonklasse/villa-bergen-3.jpg',
   },
   {
     title: 'Schilderwerk',
-    desc: 'Binnen- en buitenschilderwerk dat jaren mee gaat — voorbehandeling, plamuren en twee lagen op maat.',
+    desc: 'Schilderwerk binnen en buiten dat jaren meegaat, met voorbehandeling, plamuren en twee lagen op maat.',
     image: '/woonklasse/canal-residence-4.jpg',
   },
   {
     title: 'Loodgieterwerk',
-    desc: 'Sanitair, leidingwerk, vloerverwarming en lekkages — opgelost door erkende loodgieters in vaste dienst.',
+    desc: 'Sanitair, leidingwerk, vloerverwarming en lekkages, opgelost door erkende loodgieters in vaste dienst.',
     image: '/woonklasse/apartment-amsterdam-4.jpg',
   },
   {
     title: 'Elektra',
-    desc: 'Groepenkasten, bedrading, slimme verlichting en data-aansluitingen — uitgevoerd volgens NEN 1010.',
+    desc: 'Groepenkasten, bedrading, slimme verlichting en data aansluitingen, uitgevoerd volgens NEN 1010.',
     image: '/woonklasse/penthouse-zoetermeer-4.jpg',
   },
 ];
@@ -55,58 +55,58 @@ const SERVICES = [
 const USPS = [
   {
     title: 'Eigen vakmensen',
-    desc: 'Wij werken niet met losse onderaannemers. Onze timmerlieden, loodgieters en elektriciens zitten allemaal in vaste dienst — dat houdt de kwaliteit en de planning in eigen hand.',
+    desc: 'Wij werken niet met losse onderaannemers. Onze timmerlieden, loodgieters en elektriciens zitten allemaal in vaste dienst, zodat de kwaliteit en de planning in eigen hand blijven.',
   },
   {
     title: 'Vaste prijs vooraf',
-    desc: 'Een complete offerte met alle materialen, arbeid en bouwkundige posten. Geen meerwerk-verrassingen achteraf — wat we afspreken staat vast.',
+    desc: 'Een complete offerte met alle materialen, arbeid en bouwkundige posten. Geen verrassingen op het gebied van meerwerk achteraf, wat we afspreken staat vast.',
   },
   {
     title: 'Eén projectleider',
-    desc: 'Eén vaste contactpersoon van eerste opname tot oplevering. U weet altijd wie u belt — en die persoon weet altijd waar uw project staat.',
+    desc: 'Eén vaste contactpersoon van eerste opname tot oplevering. U weet altijd wie u belt, en die persoon weet altijd waar uw project staat.',
   },
   {
     title: 'Garantie tot 10 jaar',
-    desc: 'Tot 10 jaar garantie op constructief werk en 5 jaar op installaties. Wij komen terug als dat nodig is — zonder gedoe.',
+    desc: 'Tot 10 jaar garantie op constructief werk en 5 jaar op installaties. Wij komen terug als dat nodig is, zonder gedoe.',
   },
 ];
 
 const PRICE_TIERS = [
   {
     label: 'Budget',
-    range: '€8.000 — €25.000',
-    desc: 'Doelgerichte aanpak voor één ruimte of klus — bijvoorbeeld een keukenrenovatie, badkamer of dakkapel.',
+    range: 'Tussen €8.000 en €25.000',
+    desc: 'Doelgerichte aanpak voor één ruimte of klus, bijvoorbeeld een keukenrenovatie, badkamer of dakkapel.',
     highlights: [
       'Eén ruimte of vakgebied',
       'Standaard materialen',
-      'Heldere planning van 2 — 4 weken',
+      'Heldere planning van 2 tot 4 weken',
     ],
   },
   {
     label: 'Standaard',
-    range: '€25.000 — €60.000',
-    desc: 'Meerdere ruimtes of een aanbouw — denk aan keuken plus woonkamer, of een uitbouw met dakopbouw.',
+    range: 'Tussen €25.000 en €60.000',
+    desc: 'Meerdere ruimtes of een aanbouw, denk aan keuken plus woonkamer, of een uitbouw met dakopbouw.',
     highlights: [
       'Meerdere vakgebieden gecombineerd',
       'Doordacht ontwerp en materiaaladvies',
-      'Doorlooptijd 6 — 12 weken',
+      'Doorlooptijd 6 tot 12 weken',
     ],
     featured: true,
   },
   {
     label: 'Premium',
-    range: '€60.000 — €150.000',
+    range: 'Tussen €60.000 en €150.000',
     desc: 'Complete verbouwing met aanbouw, dakopbouw of grootschalige indelingsverandering.',
     highlights: [
       'Volledige verbouwing van een woonlaag of casco',
       'Hoogwaardige materialen en installaties',
-      'Doorlooptijd 3 — 6 maanden',
+      'Doorlooptijd 3 tot 6 maanden',
     ],
   },
   {
     label: 'Maatwerk',
     range: '€150.000+',
-    desc: 'Sleutelklare verbouwing of nieuwbouw op maat — van fundering tot oplevering, alles uit één hand.',
+    desc: 'Sleutelklare verbouwing of nieuwbouw op maat, van fundering tot oplevering, alles uit één hand.',
     highlights: [
       'Architect, constructeur en aannemer in één traject',
       'Topafwerking en exclusieve materialen',
@@ -119,7 +119,7 @@ function buildFaqs(city: WoonklasseCity) {
   return [
     {
       q: `Hoe lang duurt een verbouwing in ${city.name}?`,
-      a: `Een gerichte verbouwing in ${city.name} — bijvoorbeeld een keuken of badkamer — duurt 2 tot 4 weken. Een complete woningverbouwing met aanbouw of dakopbouw zit doorgaans op 3 tot 6 maanden. Tijdens de eerste opname maken we een realistische planning op maat.`,
+      a: `Een gerichte verbouwing in ${city.name}, bijvoorbeeld een keuken of badkamer, duurt 2 tot 4 weken. Een complete woningverbouwing met aanbouw of dakopbouw zit doorgaans op 3 tot 6 maanden. Tijdens de eerste opname maken we een realistische planning op maat.`,
     },
     {
       q: `Wat kost een verbouwing in ${city.name}?`,
@@ -127,19 +127,19 @@ function buildFaqs(city: WoonklasseCity) {
     },
     {
       q: `Werken jullie ook in ${city.areas[0]} en omliggende wijken?`,
-      a: `Ja, Woonklasse werkt in heel ${city.name} — inclusief ${city.areas.slice(0, 4).join(', ')} en de omliggende dorpen. Ons team rijdt vanuit Amsterdam-Duivendrecht naar uw locatie zonder reiskosten in rekening te brengen.`,
+      a: `Ja, Woonklasse werkt in heel ${city.name}, inclusief ${city.areas.slice(0, 4).join(', ')} en de omliggende dorpen. Ons team rijdt vanuit Amsterdam Duivendrecht naar uw locatie zonder reiskosten in rekening te brengen.`,
     },
     {
       q: `Verzorgen jullie ook de vergunning in ${city.name}?`,
-      a: `Voor projecten waarvoor een omgevingsvergunning nodig is, werken wij samen met een vaste architect en constructeur. Wij verzorgen de tekeningen, indienen bij de gemeente ${city.name} en de communicatie tot aan de verlening — zodat u er geen omkijken naar heeft.`,
+      a: `Voor projecten waarvoor een omgevingsvergunning nodig is, werken wij samen met een vaste architect en constructeur. Wij verzorgen de tekeningen, indienen bij de gemeente ${city.name} en de communicatie tot aan de verlening, zodat u er geen omkijken naar heeft.`,
     },
     {
       q: 'Krijg ik een vaste prijs of werken jullie op nacalculatie?',
-      a: 'Standaard werken wij met een vaste aanneemsom. Na de opname en het ontwerp ontvangt u een complete offerte met alle materialen, arbeid en bouwkundige posten. Wijzigingen tijdens het project worden vooraf schriftelijk afgestemd — geen verrassingen achteraf.',
+      a: 'Standaard werken wij met een vaste aanneemsom. Na de opname en het ontwerp ontvangt u een complete offerte met alle materialen, arbeid en bouwkundige posten. Wijzigingen tijdens het project worden vooraf schriftelijk afgestemd, zo zijn er geen verrassingen achteraf.',
     },
     {
       q: 'Kan ik in de woning blijven wonen tijdens de verbouwing?',
-      a: `Bij een gerichte ruimte (keuken, badkamer) is dat in ${city.name} meestal goed te doen — wij richten een tijdelijke voorziening in. Bij een complete verbouwing adviseren we om enkele weken elders te verblijven. We bespreken het scenario tijdens de opname.`,
+      a: `Bij een gerichte ruimte (keuken, badkamer) is dat in ${city.name} meestal goed te doen, wij richten een tijdelijke voorziening in. Bij een complete verbouwing adviseren we om enkele weken elders te verblijven. We bespreken het scenario tijdens de opname.`,
     },
     {
       q: 'Welke garantie geven jullie op het werk?',
@@ -182,7 +182,7 @@ export default function WoonklasseCityPage({
       <section className="relative h-[90vh] min-h-[640px] flex items-end overflow-hidden bg-woon-dark">
         <div className="absolute inset-0">
           <Image
-            src="/woonklasse/villa-bergen-1.jpg"
+            src={city.heroImage ?? '/woonklasse/villa-bergen-1.jpg'}
             alt={`Verbouwing en woningonderhoud in ${city.name}`}
             fill
             priority
@@ -208,8 +208,8 @@ export default function WoonklasseCityPage({
             transition={{ duration: 0.8, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
             className="font-display text-[clamp(2.5rem,7vw,7rem)] font-light leading-[1.02] tracking-tight text-white max-w-5xl"
           >
-            Verbouwingen &amp;<br />
-            <span className="italic text-woon-accent">onderhoud in {city.name}</span>
+            Aannemer in {city.name}<br />
+            <span className="italic text-woon-accent">voor verbouwing &amp; onderhoud</span>
           </motion.h1>
           <motion.p
             initial={{ opacity: 0, y: 16 }}
@@ -217,7 +217,7 @@ export default function WoonklasseCityPage({
             transition={{ duration: 0.8, delay: 0.3 }}
             className="mt-8 max-w-2xl text-white/80 text-base md:text-lg leading-relaxed font-light"
           >
-            Complete verbouwingen, aanbouwen, dakwerk en woningonderhoud — uitgevoerd door eigen vakmensen, met een vaste prijs vooraf en één projectleider als aanspreekpunt.
+            Complete verbouwingen, aanbouwen, dakwerk en woningonderhoud, uitgevoerd door eigen vakmensen, met een vaste prijs vooraf en één projectleider als aanspreekpunt.
           </motion.p>
           <motion.div
             initial={{ opacity: 0, y: 16 }}
@@ -229,7 +229,7 @@ export default function WoonklasseCityPage({
               href="/woonklasse/offerte"
               className="group inline-flex items-center justify-center gap-3 bg-woon-accent text-woon-dark text-sm font-medium px-8 py-4 rounded-full hover:scale-[1.02] hover:shadow-lg hover:shadow-woon-accent/20 transition-all"
             >
-              Vraag vrijblijvend offerte aan
+              Plan een vrijblijvend gesprek
               <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
             </Link>
             <a
@@ -264,11 +264,13 @@ export default function WoonklasseCityPage({
             className="space-y-6"
           >
             <p className="font-display text-xl md:text-2xl lg:text-[1.65rem] font-light leading-[1.5] text-woon-dark/85">
-              {city.description}
+              {city.intro ?? city.description}
             </p>
-            <p className="text-woon-secondary text-base leading-relaxed">
-              Specialisaties in deze regio: {city.context}.
-            </p>
+            {!city.intro && (
+              <p className="text-woon-secondary text-base leading-relaxed">
+                Specialisaties in deze regio: {city.context}.
+              </p>
+            )}
           </motion.div>
         </div>
       </section>
@@ -308,7 +310,7 @@ export default function WoonklasseCityPage({
                 <div className="aspect-[4/5] relative overflow-hidden rounded-xl mb-5 bg-woon-cream">
                   <Image
                     src={service.image}
-                    alt={`${service.title} — ${city.name}`}
+                    alt={`${service.title} in ${city.name}`}
                     fill
                     className="object-cover group-hover:scale-105 transition-transform duration-700"
                     sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
@@ -467,14 +469,14 @@ export default function WoonklasseCityPage({
               <span className="not-italic font-medium text-woon-accent">{city.name} te verbouwen?</span>
             </h2>
             <p className="text-woon-secondary text-base md:text-lg leading-relaxed mb-10 max-w-lg">
-              Vraag een vrijblijvende opname aan. Wij komen langs in {city.name}, luisteren naar uw plannen en sturen binnen 10 werkdagen een complete offerte met vaste prijs.
+              Plan een vrijblijvende opname. Wij komen langs in {city.name}, luisteren naar uw plannen en sturen binnen 10 werkdagen een maatwerk voorstel met vaste prijs.
             </p>
             <div className="flex flex-col sm:flex-row gap-4">
               <Link
                 href="/woonklasse/offerte"
                 className="group inline-flex items-center justify-center gap-3 bg-woon-accent text-woon-dark text-sm font-medium px-8 py-4 rounded-full hover:scale-[1.02] hover:shadow-lg hover:shadow-woon-accent/20 transition-all"
               >
-                Offerte aanvragen
+                Plan een vrijblijvend gesprek
                 <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
               </Link>
               <Link
