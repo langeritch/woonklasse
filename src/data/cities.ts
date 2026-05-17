@@ -115,6 +115,10 @@ export const CITIES: City[] = [
       'Almere staat voor moderne nieuwbouw met ruime indelingen en hoge plafonds. Wij benutten die ruimte ten volle: vrijstaande baden, dubbele wastafels en luxe inloopdouches die jouw badkamer transformeren tot privé spa.',
     areas: ['Almere Stad', 'Almere Buiten', 'Almere Haven'],
     nearby: ['lelystad', 'amsterdam', 'amstelveen', 'hilversum'],
+    landingIntro:
+      'Een ruime nieuwbouwwoning in Almere Buiten geeft je vaak meer m2 dan een oudere stadswoning elders: plek voor een vrijstaand bad naast de inloopdouche, dubbele wastafels en grootformaat tegels. Wij meten de ruimte in, tekenen de indeling in 3D en voeren sloop, leidingwerk, tegelwerk en sanitair uit met onze eigen tegelzetters en loodgieters. Doordachte indeling, slim opbergwerk en een afwerking die klopt tot in de laatste voeg.',
+    landingOutro:
+      'Weet je nog niet welke kant je op wilt qua stijl of indeling? Plan een vrijblijvend adviesgesprek, dan denken wij mee. We komen langs, nemen de ruimte op en geven een vaste prijs en planning, zonder verrassingen achteraf. Eén vast aanspreekpunt begeleidt je van de eerste schets tot de oplevering, zodat je altijd weet waar je aan toe bent.',
   },
   {
     name: 'Breda',
