@@ -141,6 +141,10 @@ export const CITIES: City[] = [
       'Als oudste stad van Nederland heeft Nijmegen een rijke woningvoorraad - van vooroorlogse panden in Nijmegen-Oost tot nieuwbouw in Lent. Wij respecteren het karakter van elk huis en ontwerpen badkamers die naadloos aansluiten bij de bestaande stijl.',
     areas: ['Nijmegen-Oost', 'Hees', 'Lent'],
     nearby: ['arnhem', 'ede', 'oss', 'apeldoorn'],
+    landingIntro:
+      'Een vooroorlogs herenhuis in Nijmegen-Oost vraagt om andere keuzes dan een nieuwbouwwoning in Lent: ornamenten en glas-in-lood die je wilt sparen tegenover strakke wanden en gloednieuwe leidingen. Wij meten de ruimte in, tekenen de indeling in 3D en voeren sloop, leidingwerk, tegelwerk en sanitair uit met onze eigen tegelzetters en loodgieters. Nijmeegse karaktertegels naast moderne sanitair-merken, met een afwerking die klopt tot in de laatste voeg.',
+    landingOutro:
+      'Twijfel je nog tussen een gerichte opfris en een complete renovatie? Vraag een vrijblijvend adviesgesprek aan. We komen langs, nemen de ruimte op en geven een vaste prijs en planning, zonder verrassingen achteraf. Eén vast aanspreekpunt begeleidt je van de eerste schets tot de oplevering, zodat je altijd weet waar je aan toe bent.',
   },
   {
     name: 'Apeldoorn',
