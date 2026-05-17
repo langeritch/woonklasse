@@ -76,6 +76,10 @@ export const CITIES: City[] = [
       'Als designhoofdstad van Nederland verdient Eindhoven badkamers die de nieuwste materialen en innovaties omarmen. Van Strijp-S tot de villa\'s in Tongelre - wij brengen Brabantse gastvrijheid en strak design samen in een persoonlijk eindresultaat.',
     areas: ['Strijp', 'Tongelre', 'Stratum'],
     nearby: ['tilburg', 'den-bosch', 'oss', 'breda'],
+    landingIntro:
+      'Een loft in Strijp-S vraagt om een ander plan dan een jaren-30 villa in Tongelre: strak beton en zichtleidingen tegenover hoge plafonds en oude schachten. Wij meten de ruimte in, tekenen de indeling in 3D en voeren sloop, leidingwerk, tegelwerk en sanitair uit met onze eigen tegelzetters en loodgieters. Strak design of warm en natuurlijk, met grootformaat tegels, doordacht licht en een afwerking die klopt tot in de laatste voeg.',
+    landingOutro:
+      'Wil je weten wat er kan en wat het gaat kosten? Plan een vrijblijvend adviesgesprek. We komen langs, nemen de ruimte op en geven een vaste prijs met een heldere planning, geen meerwerk dat je niet zag aankomen. Van de eerste schets tot de oplevering werk je met hetzelfde aanspreekpunt, zodat je altijd weet waar het project staat.',
   },
   {
     name: 'Groningen',
