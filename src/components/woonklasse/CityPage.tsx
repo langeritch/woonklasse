@@ -10,9 +10,8 @@ import type { BlogPost } from '@/data/blog/index';
 import { CONTACT } from '@/data/contact';
 import HeroAdviesTool from '@/components/HeroAdviesTool';
 
-// Vier vaste beloftes, identiek aan AmsterdamPage zodat het [city]-template
-// dezelfde garantiecopy toont. Bewust gedupliceerd: vier regels zijn
-// goedkoper dan een gedeelde module.
+// Vier vaste beloftes, identiek voor elke stad. Bewust hier gehouden:
+// vier regels zijn goedkoper dan een gedeelde module.
 const GUARANTEES = [
   {
     Icon: UserRound,
