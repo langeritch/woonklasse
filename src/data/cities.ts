@@ -180,6 +180,10 @@ export const CITIES: City[] = [
       'Modestad Arnhem staat voor een fijn oog voor stijl en materiaal. Van groene heuvels in Schaarsbergen tot stadse appartementen in Klarendal - wij vertalen jouw smaak naar een badkamer die net zo persoonlijk is als jouw garderobe.',
     areas: ['Schaarsbergen', 'Klarendal', 'Rijkerswoerd'],
     nearby: ['nijmegen', 'ede', 'apeldoorn', 'deventer'],
+    landingIntro:
+      'Een villa op de bosrand bij Schaarsbergen vraagt om andere keuzes dan een stadsappartement in het bruisende Klarendal: ruime kamers met uitzicht op groen tegenover compacte plattegronden waarin elke centimeter telt. We nemen de ruimte ter plekke op, werken de indeling in 3D uit en voeren sloop, leidingwerk, tegelwerk en sanitair uit met onze eigen tegelzetters en loodgieters. Een badkamer die net zo goed gekozen is als een goed zittend pak, afgewerkt tot in de laatste voeg.',
+    landingOutro:
+      'Heb je een uitgesproken stijl voor ogen en wil je weten of het past binnen je budget? Vraag een vrijblijvend adviesgesprek aan. We komen langs, nemen de ruimte op en geven een vaste prijs en een planning zonder verrassingen achteraf. Eén vast aanspreekpunt loodst je van de eerste schets tot de oplevering, zodat je altijd weet waar je aan toe bent.',
   },
   {
     name: 'Enschede',
@@ -189,6 +193,10 @@ export const CITIES: City[] = [
       'Twentse degelijkheid en nuchterheid kenmerken Enschede. Onze badkamers in deze regio combineren robuuste materialen met verfijnde details - ontworpen om generaties mee te gaan, zoals het hoort in deze hardwerkende stad.',
     areas: ['Glanerbrug', 'Boswinkel', "'t Ribbelt"],
     nearby: ['almelo', 'deventer', 'zwolle', 'oldenzaal'],
+    landingIntro:
+      'Een ruime jaren-30 woning in \'t Ribbelt vraagt om iets anders dan een naoorlogs huis in Glanerbrug: hoge plafonds en oude leidingschachten tegenover praktische, compacte indelingen. We meten de ruimte in, tekenen de plattegrond in 3D en voeren sloop, leidingwerk, tegelwerk en sanitair uit met onze eigen tegelzetters en loodgieters. Robuuste materialen en een afwerking die een generatie meegaat, zoals het hoort in deze nuchtere Twentse stad.',
+    landingOutro:
+      'Wil je een badkamer die je nooit meer opnieuw hoeft te doen? Plan een vrijblijvend adviesgesprek. We komen langs, nemen de ruimte op en geven een vaste prijs met een heldere planning, zonder meerwerk dat je niet zag aankomen. Van het eerste gesprek tot de oplevering hou je hetzelfde aanspreekpunt, zodat je nooit hoeft te vragen hoe het ervoor staat.',
   },
   {
     name: 'Amersfoort',
@@ -198,6 +206,10 @@ export const CITIES: City[] = [
       'Amersfoort verbindt middeleeuwse muren met moderne wijken als Vathorst. Wij brengen die balans tussen oud en nieuw terug in elke badkamer - natuursteen die ouderdom uitstraalt, gecombineerd met de nieuwste douche- en lichttechniek.',
     areas: ['Vathorst', 'Soesterkwartier', 'Kruiskamp'],
     nearby: ['utrecht', 'hilversum', 'barneveld', 'ede'],
+    landingIntro:
+      'Een pand in de middeleeuwse binnenstad vraagt om andere keuzes dan een gezinswoning in Vathorst: scheve muren en smalle trappen tegenover strakke wanden en gloednieuwe leidingen. We meten de ruimte in, tekenen de indeling in 3D en voeren sloop, leidingwerk, tegelwerk en sanitair uit met onze eigen tegelzetters en loodgieters. Natuursteen die ouderdom uitstraalt naast de nieuwste douche- en lichttechniek, met een afwerking die klopt tot in de laatste voeg.',
+    landingOutro:
+      'Twijfel je tussen oud karakter behouden of juist alles strak en nieuw? Vraag een vrijblijvend adviesgesprek aan, dan denken wij mee. We nemen de ruimte op en zetten een vaste prijs en planning zwart op wit, zonder kleine lettertjes. Eén vast aanspreekpunt begeleidt je van de eerste schets tot de oplevering, zodat je altijd weet waar je aan toe bent.',
   },
   {
     name: 'Zaanstad',
@@ -207,6 +219,10 @@ export const CITIES: City[] = [
       'De Zaanse traditie van houtbouw en ambacht zit in ons DNA. Wij ontwerpen badkamers met warm Zaans hout, donkere accenten en klassieke proporties - net zo karakteristiek als de gevels langs de Zaan.',
     areas: ['Zaandam', 'Krommenie', 'Wormerveer'],
     nearby: ['amsterdam', 'purmerend', 'haarlem', 'alkmaar'],
+    landingIntro:
+      'Een karakteristiek Zaans houten huis in Wormerveer vraagt om andere oplossingen dan een ruime woning in Zaandam: krappe schachten en houten vloeren die meebewegen tegenover een vlakke, moderne indeling. We meten de ruimte in, tekenen de plattegrond in 3D en voeren sloop, leidingwerk, tegelwerk en sanitair uit met onze eigen tegelzetters en loodgieters. Warm hout en donkere accenten met klassieke proporties, net zo karakteristiek als de gevels langs de Zaan, afgewerkt tot in de laatste voeg.',
+    landingOutro:
+      'Wil je dat het Zaanse karakter terugkomt in je badkamer zonder in te leveren op comfort? Vraag een vrijblijvend adviesgesprek aan. We komen langs, nemen de ruimte op en geven een vaste prijs en planning, zonder verrassingen achteraf. Eén vast aanspreekpunt begeleidt je van de eerste schets tot de oplevering, zodat je altijd weet waar je aan toe bent.',
   },
   {
     name: 'Den Bosch',
@@ -216,6 +232,10 @@ export const CITIES: City[] = [
       "'s-Hertogenbosch ademt Bourgondische allure. Of je woont in een monumentaal pand binnen de vesting of in moderne nieuwbouw aan de Maas - wij ontwerpen badkamers met theatrale verlichting, rijke materialen en een hint van decadentie.",
     areas: ['Vughterpoort', 'Boschveld', 'Maaspoort'],
     nearby: ['oss', 'tilburg', 'eindhoven', 'nijmegen'],
+    landingIntro:
+      'Een monumentaal pand binnen de vesting bij de Vughterpoort vraagt om andere keuzes dan nieuwbouw aan het water in Maaspoort: dikke oude muren en historische details tegenover ruime, strakke plattegronden. We meten de ruimte in, tekenen de indeling in 3D en voeren sloop, leidingwerk, tegelwerk en sanitair uit met onze eigen tegelzetters en loodgieters. Bourgondische allure met theatrale verlichting en rijke materialen, een hint van decadentie, afgewerkt tot in de laatste voeg.',
+    landingOutro:
+      'Wil je een badkamer met sfeer en lef die toch nuchter geprijsd is? Vraag een vrijblijvend adviesgesprek aan. We komen langs, nemen de ruimte op en geven een vaste prijs en planning, zonder verrassingen achteraf. Eén vast aanspreekpunt begeleidt je van de eerste schets tot de oplevering, zodat je altijd weet waar je aan toe bent.',
   },
   {
     name: 'Haarlemmermeer',
@@ -225,6 +245,10 @@ export const CITIES: City[] = [
       'Hoofddorp en Nieuw-Vennep groeien hard met moderne nieuwbouw en ruime kavels. Wij gebruiken die schaal voor genereuze badkamers met dubbele wastafels, ruime inloopdouches en doordacht ontworpen indelingen die optimaal gebruik maken van licht.',
     areas: ['Hoofddorp', 'Nieuw-Vennep', 'Badhoevedorp'],
     nearby: ['amsterdam', 'haarlem', 'amstelveen', 'leiden'],
+    landingIntro:
+      'Een ruime nieuwbouwwoning in Hoofddorp of Nieuw-Vennep geeft je vaak meer vierkante meters dan een stadswoning elders: plek voor een vrijstaand bad naast de inloopdouche, dubbele wastafels en grootformaat tegels. We meten de ruimte in, tekenen de indeling in 3D en voeren sloop, leidingwerk, tegelwerk en sanitair uit met onze eigen tegelzetters en loodgieters. We benutten de schaal van de polder met een doordachte indeling, veel licht en een afwerking die klopt tot in de laatste voeg.',
+    landingOutro:
+      'Wil je optimaal gebruikmaken van die extra ruimte zonder dat het leeg aanvoelt? Plan een vrijblijvend adviesgesprek, dan denken wij mee over indeling en licht. We nemen de ruimte ter plekke op en geven een vaste prijs en planning, zonder verrassingen achteraf. Eén vast aanspreekpunt begeleidt je van de eerste schets tot de oplevering, zodat je altijd weet waar je aan toe bent.',
   },
   {
     name: 'Zoetermeer',
@@ -234,6 +258,10 @@ export const CITIES: City[] = [
       'De moderne wijken van Zoetermeer - Rokkeveen, Oosterheem, Buytenwegh - zijn ideaal voor doordachte hedendaagse badkamerontwerpen. Wij maximaliseren ruimte en licht en zorgen voor een resultaat dat aanvoelt als hotel-luxe in eigen huis.',
     areas: ['Rokkeveen', 'Oosterheem', 'Buytenwegh'],
     nearby: ['den-haag', 'gouda', 'leiden', 'rijswijk'],
+    landingIntro:
+      'De planmatige wijken van Zoetermeer, van Rokkeveen tot Oosterheem en Buytenwegh, hebben woningen die sterk op elkaar lijken, dus we weten meestal al precies hoe jouw badkamer is opgebouwd. We meten de ruimte in, tekenen de indeling in 3D en voeren sloop, leidingwerk, tegelwerk en sanitair uit met onze eigen tegelzetters en loodgieters. Dat maakt de planning voorspelbaar en geeft ruimte voor hotelluxe in eigen huis, met een afwerking die klopt tot in de laatste voeg.',
+    landingOutro:
+      'Wil je weten wat een doordachte renovatie voor jouw woningtype gaat kosten? Plan een vrijblijvend adviesgesprek. We komen langs, nemen de ruimte op en geven een vaste prijs en een scherpe planning, zonder verrassingen achteraf. Eén vast aanspreekpunt begeleidt je van de eerste schets tot de oplevering, zodat je altijd weet waar je aan toe bent.',
   },
   {
     name: 'Zwolle',
@@ -243,6 +271,10 @@ export const CITIES: City[] = [
       'Hanzestad Zwolle blinkt uit in de combinatie van monumentale binnenstad en moderne uitbreidingen als Stadshagen. Onze badkamers respecteren het karakter van elk huis - van strakke loft-stijl tot klassieke proporties met natuursteen.',
     areas: ['Stadshagen', 'Assendorp', 'Aa-Landen'],
     nearby: ['deventer', 'kampen', 'apeldoorn', 'almelo'],
+    landingIntro:
+      'Een vooroorlogse woning in Assendorp vraagt om andere keuzes dan een nieuwbouwhuis in Stadshagen: oude balklagen en krappe schachten tegenover strakke wanden en ruime plattegronden. We meten de ruimte in, tekenen de indeling in 3D en voeren sloop, leidingwerk, tegelwerk en sanitair uit met onze eigen tegelzetters en loodgieters. Strakke loft-stijl of klassieke proporties met natuursteen, altijd passend bij het karakter van de woning en afgewerkt tot in de laatste voeg.',
+    landingOutro:
+      'Wil je weten wat verstandig is voor jouw huis en wat het realistisch kost? Vraag een vrijblijvend adviesgesprek aan. We komen langs, nemen de ruimte op en geven een vaste prijs en planning, zonder verrassingen achteraf. Eén vast aanspreekpunt begeleidt je van de eerste schets tot de oplevering, zodat je altijd weet waar je aan toe bent.',
   },
   {
     name: 'Leiden',
@@ -252,6 +284,10 @@ export const CITIES: City[] = [
       'Leiden is een universiteitsstad met grachten, hofjes en historische gevels. Wij ontwerpen badkamers met klassieke verfijning - denk aan witte tegels in visgraat, messing accenten en doordachte details die passen bij de eeuwenoude binnenstad.',
     areas: ['Roomburg', 'Stevenshof', 'Burgemeesterswijk'],
     nearby: ['den-haag', 'alphen-aan-den-rijn', 'haarlemmermeer', 'zoetermeer'],
+    landingIntro:
+      'Een monumentaal grachtenpand in het centrum vraagt om andere keuzes dan een ruime gezinswoning in de Stevenshof: smalle stoepen, krappe toegang en buren dichtbij tegenover een vlakke, makkelijk bereikbare indeling. We meten de ruimte in, tekenen de plattegrond in 3D en voeren sloop, leidingwerk, tegelwerk en sanitair uit met onze eigen tegelzetters en loodgieters. Klassieke verfijning met witte visgraattegels en messing accenten, netjes en precies uitgevoerd tot in de laatste voeg.',
+    landingOutro:
+      'Werk je in een oud pand waar de toegang krap is en wil je dat het zonder gedoe met de straat verloopt? Vraag een vrijblijvend adviesgesprek aan. We nemen de ruimte ter plekke op en geven een vaste prijs en planning, zonder verrassingen achteraf. Eén vast aanspreekpunt begeleidt je van de eerste schets tot de oplevering, zodat je altijd weet waar je aan toe bent.',
   },
   {
     name: 'Maastricht',
@@ -261,6 +297,10 @@ export const CITIES: City[] = [
       'Maastricht ademt Bourgondische sfeer en internationale invloeden. Wij ontwerpen badkamers met een vleugje zuidelijke decadentie - Carrara marmer, gepolijst beton en sfeerverlichting die de Mediterrane levensstijl naar Limburg brengen.',
     areas: ['Wijck', 'Sint Pieter', 'Heer'],
     nearby: ['heerlen', 'venlo', 'eindhoven', 'breda'],
+    landingIntro:
+      'Een statig stadspand in Wijck vraagt om andere keuzes dan een ruime woning aan de voet van de Sint-Pietersberg: hoge plafonds en oude gewelven tegenover een lichte, eigentijdse indeling. We meten de ruimte in, tekenen de plattegrond in 3D en voeren sloop, leidingwerk, tegelwerk en sanitair uit met onze eigen tegelzetters en loodgieters. Een vleugje zuidelijke decadentie met Carrara marmer, gepolijst beton en sfeerverlichting, afgewerkt tot in de laatste voeg.',
+    landingOutro:
+      'Wil je die Bourgondische sfeer terug in je badkamer met een prijs die vooraf vaststaat? Vraag een vrijblijvend adviesgesprek aan. We komen langs, nemen de ruimte op en geven een vaste prijs en planning, zonder verrassingen achteraf. Eén vast aanspreekpunt begeleidt je van de eerste schets tot de oplevering, zodat je altijd weet waar je aan toe bent.',
   },
   {
     name: 'Dordrecht',
@@ -270,6 +310,10 @@ export const CITIES: City[] = [
       'Dordrecht is de oudste stad van Holland en draagt dat karakter trots. Onze badkamers in monumentale woningen aan de kades combineren historische details met de comfort en techniek die je vandaag verwacht.',
     areas: ['Dubbeldam', 'Sterrenburg', 'Krispijn'],
     nearby: ['rotterdam', 'breda', 'schiedam', 'vlaardingen'],
+    landingIntro:
+      'Een monumentaal pand aan de Dordtse kades vraagt om andere keuzes dan een naoorlogse gezinswoning in Sterrenburg: historische details en oude vloeren tegenover een praktische, ruime indeling. We meten de ruimte in, tekenen de plattegrond in 3D en voeren sloop, leidingwerk, tegelwerk en sanitair uit met onze eigen tegelzetters en loodgieters. Historisch karakter gecombineerd met het comfort en de techniek die je vandaag verwacht, afgewerkt tot in de laatste voeg.',
+    landingOutro:
+      'Woon je in een ouder pand en wil je weten wat behouden kan blijven en wat vernieuwd moet? Vraag een vrijblijvend adviesgesprek aan. We komen langs, nemen de ruimte op en geven een vaste prijs en planning, zonder verrassingen achteraf. Eén vast aanspreekpunt begeleidt je van de eerste schets tot de oplevering, zodat je altijd weet waar je aan toe bent.',
   },
   {
     name: 'Ede',
@@ -279,6 +323,10 @@ export const CITIES: City[] = [
       'Aan de rand van de Veluwe vind je in Ede ruime woningen met groene tuinen. Wij gebruiken die rust en ruimte voor warme, natuurlijke badkamers - hout, leisteen en grote ramen die het bos voelbaar maken.',
     areas: ['Ede-Wageningen', 'Bennekom', 'Lunteren'],
     nearby: ['arnhem', 'veenendaal', 'barneveld', 'apeldoorn'],
+    landingIntro:
+      'Een ruime woning met grote tuin in Bennekom of Lunteren leent zich vaak voor een royale badkamer met uitzicht op groen: plek voor een ligbad bij het raam, een aparte inloopdouche en natuurlijke materialen. We meten de ruimte in, tekenen de indeling in 3D en voeren sloop, leidingwerk, tegelwerk en sanitair uit met onze eigen tegelzetters en loodgieters. Hout, leisteen en grote ramen die het bos voelbaar maken, met een afwerking die klopt tot in de laatste voeg.',
+    landingOutro:
+      'Wil je de rust van de Veluwe terug in je badkamer met warme, natuurlijke materialen? Plan een vrijblijvend adviesgesprek. We komen langs, nemen de ruimte op en geven een vaste prijs en planning, zonder verrassingen achteraf. Eén vast aanspreekpunt begeleidt je van de eerste schets tot de oplevering, zodat je altijd weet waar je aan toe bent.',
   },
   {
     name: 'Alphen aan den Rijn',
@@ -288,6 +336,10 @@ export const CITIES: City[] = [
       'In het Groene Hart staat Alphen voor ruimtelijke nieuwbouw en doordachte gezinswoningen. Wij ontwerpen badkamers die de open polderlucht en het waterrijke landschap weerspiegelen - licht, rustig en tijdloos.',
     areas: ['Kerk en Zanen', 'Ridderveld', 'Boskoop'],
     nearby: ['leiden', 'gouda', 'woerden', 'zoetermeer'],
+    landingIntro:
+      'Een ruime nieuwbouwwoning in Kerk en Zanen vraagt om andere keuzes dan een oudere woning in Ridderveld of een dorpshuis in Boskoop: strakke wanden en nieuwe leidingen tegenover een indeling die om maatwerk vraagt. We meten de ruimte in, tekenen de plattegrond in 3D en voeren sloop, leidingwerk, tegelwerk en sanitair uit met onze eigen tegelzetters en loodgieters. Licht, rustig en tijdloos, in lijn met de open polderlucht van het Groene Hart en afgewerkt tot in de laatste voeg.',
+    landingOutro:
+      'Wil je een rustige, tijdloze badkamer met een prijs die vooraf vaststaat? Vraag een vrijblijvend adviesgesprek aan. We komen langs, nemen de ruimte op en geven een vaste prijs en planning, zonder verrassingen achteraf. Eén vast aanspreekpunt begeleidt je van de eerste schets tot de oplevering, zodat je altijd weet waar je aan toe bent.',
   },
   {
     name: 'Emmen',
@@ -297,6 +349,10 @@ export const CITIES: City[] = [
       'Drentse rust en ruime erven kenmerken Emmen. Onze badkamers hier zijn vaak royaal opgezet - met aparte douche en bad, sauna-mogelijkheden en materialen die de natuurlijke omgeving terugbrengen in huis.',
     areas: ['Bargeres', 'Angelslo', 'Emmer-Compascuum'],
     nearby: ['groningen', 'leeuwarden', 'zwolle', 'almelo'],
+    landingIntro:
+      'Een woning op een ruim erf in Emmer-Compascuum vraagt om andere keuzes dan een rijwoning in Bargeres of Angelslo: alle ruimte voor een royale opzet tegenover een compactere, slimme indeling. We meten de ruimte in, tekenen de plattegrond in 3D en voeren sloop, leidingwerk, tegelwerk en sanitair uit met onze eigen tegelzetters en loodgieters. Een aparte douche en bad, sauna-mogelijkheden en materialen die de Drentse natuur naar binnen halen, afgewerkt tot in de laatste voeg.',
+    landingOutro:
+      'Heb je de ruimte voor een royale badkamer en wil je weten wat er allemaal kan? Plan een vrijblijvend adviesgesprek, dan denken wij mee. We nemen de ruimte ter plekke op en geven een vaste prijs en planning, zonder verrassingen achteraf. Eén vast aanspreekpunt begeleidt je van de eerste schets tot de oplevering, zodat je altijd weet waar je aan toe bent.',
   },
   {
     name: 'Westland',
@@ -306,6 +362,10 @@ export const CITIES: City[] = [
       'Tussen kassen en kust ligt het Westland - met ruime kavels en moderne villa\'s. Wij ontwerpen badkamers met grote raampartijen, lichte tinten en open verbinding naar buiten, zodat de Hollandse hemel onderdeel wordt van de ervaring.',
     areas: ['Naaldwijk', 'Wateringen', 'Monster'],
     nearby: ['den-haag', 'rijswijk', 'delft', 'vlaardingen'],
+    landingIntro:
+      'Een moderne villa op een ruime kavel in Naaldwijk of Wateringen leent zich vaak voor een lichte badkamer met verbinding naar buiten: grote raampartijen, lichte tinten en een open opzet. We meten de ruimte in, tekenen de indeling in 3D en voeren sloop, leidingwerk, tegelwerk en sanitair uit met onze eigen tegelzetters en loodgieters. Materialen die de zilte kustlucht aankunnen, zodat de Hollandse hemel onderdeel wordt van de ervaring en de afwerking klopt tot in de laatste voeg.',
+    landingOutro:
+      'Wil je veel licht en buitengevoel in je badkamer met materialen die de kust aankunnen? Vraag een vrijblijvend adviesgesprek aan. We komen langs, nemen de ruimte op en geven een vaste prijs en planning, zonder verrassingen achteraf. Eén vast aanspreekpunt begeleidt je van de eerste schets tot de oplevering, zodat je altijd weet waar je aan toe bent.',
   },
   {
     name: 'Delft',
@@ -315,6 +375,10 @@ export const CITIES: City[] = [
       'Delft staat voor blauwwit aardewerk, technische precisie en historische grachten. Wij ontwerpen badkamers waarin ambacht en techniek elkaar ontmoeten - fijne tegelpatronen, perfect afgesteld leidingwerk en een vleugje delfts blauw waar gewenst.',
     areas: ['Tanthof', 'Voorhof', 'Binnenstad'],
     nearby: ['rotterdam', 'den-haag', 'rijswijk', 'schiedam'],
+    landingIntro:
+      'Een grachtenpand in de Delftse binnenstad vraagt om andere keuzes dan een gezinswoning in Tanthof of Voorhof: krappe schachten en oude vloeren tegenover een ruime, vlakke indeling. We meten de ruimte in, tekenen de plattegrond in 3D en voeren sloop, leidingwerk, tegelwerk en sanitair uit met onze eigen tegelzetters en loodgieters. Ambacht en techniek die elkaar ontmoeten, met fijne tegelpatronen, perfect afgesteld leidingwerk en een afwerking die klopt tot in de laatste voeg.',
+    landingOutro:
+      'Hecht je aan precisie en een strak afgewerkt resultaat? Vraag een vrijblijvend adviesgesprek aan. We komen langs, nemen de ruimte op en geven een vaste prijs en planning, zonder verrassingen achteraf. Eén vast aanspreekpunt begeleidt je van de eerste schets tot de oplevering, zodat je altijd weet waar je aan toe bent.',
   },
   {
     name: 'Deventer',
@@ -324,6 +388,10 @@ export const CITIES: City[] = [
       'Hanzestad Deventer aan de IJssel heeft een prachtige monumentale kern. Wij renoveren badkamers in karakteristieke panden met respect voor de oorspronkelijke architectuur - en voegen comfort toe waar generaties dat misten.',
     areas: ['Colmschate', 'Borgele', 'Voorstad'],
     nearby: ['zwolle', 'apeldoorn', 'almelo', 'arnhem'],
+    landingIntro:
+      'Een karakteristiek pand in de monumentale kern vraagt om andere keuzes dan een ruime woning in Colmschate: oude balklagen en historische details tegenover strakke wanden en een praktische indeling. We meten de ruimte in, tekenen de plattegrond in 3D en voeren sloop, leidingwerk, tegelwerk en sanitair uit met onze eigen tegelzetters en loodgieters. We herstellen met respect voor de oorspronkelijke architectuur en voegen het comfort toe dat generaties misten, afgewerkt tot in de laatste voeg.',
+    landingOutro:
+      'Woon je in een ouder pand en wil je comfort toevoegen zonder het karakter te verliezen? Vraag een vrijblijvend adviesgesprek aan. We komen langs, nemen de ruimte op en geven een vaste prijs en planning, zonder verrassingen achteraf. Eén vast aanspreekpunt begeleidt je van de eerste schets tot de oplevering, zodat je altijd weet waar je aan toe bent.',
   },
   {
     name: 'Leeuwarden',
@@ -333,6 +401,10 @@ export const CITIES: City[] = [
       'De Friese hoofdstad combineert klassieke woningen met culturele vooruitgang. Wij ontwerpen badkamers met Friese degelijkheid en elegantie - donkere houttinten, vakmanschap tot in de naden, en materialen die het noordelijke licht oppakken.',
     areas: ['Aldlân', 'Camminghaburen', 'Bilgaard'],
     nearby: ['groningen', 'emmen', 'zwolle', 'hoorn'],
+    landingIntro:
+      'Een klassieke woning in de binnenstad vraagt om andere keuzes dan een ruim huis in Aldlân of Camminghaburen: oude details en krappe schachten tegenover een vlakke, moderne indeling. We meten de ruimte in, tekenen de plattegrond in 3D en voeren sloop, leidingwerk, tegelwerk en sanitair uit met onze eigen tegelzetters en loodgieters. Friese degelijkheid en elegantie met donkere houttinten en vakmanschap tot in de naden, met materialen die het noordelijke licht oppakken.',
+    landingOutro:
+      'Wil je kwaliteit die blijft, afgemaakt tot in de naden? Vraag een vrijblijvend adviesgesprek aan. We komen langs, nemen de ruimte op en geven een vaste prijs en planning, zonder verrassingen achteraf. Eén vast aanspreekpunt begeleidt je van de eerste schets tot de oplevering, zodat je altijd weet waar je aan toe bent.',
   },
   {
     name: 'Alkmaar',
@@ -342,6 +414,10 @@ export const CITIES: City[] = [
       'De kaasstad ademt Hollandse charme. Van karakteristieke woningen rond de Waag tot moderne wijken in De Mare - wij ontwerpen badkamers die zowel passen in een 17e-eeuws pand als in een ruime nieuwbouwwoning, altijd met oog voor licht en proportie.',
     areas: ['Overdie', 'Oudorp', 'De Mare'],
     nearby: ['hoorn', 'haarlem', 'zaanstad', 'purmerend'],
+    landingIntro:
+      'Een 17e-eeuws pand rond de Waag vraagt om andere keuzes dan een ruime nieuwbouwwoning in De Mare: lage plafonds en oude details tegenover een open, eigentijdse indeling. We meten de ruimte in, tekenen de plattegrond in 3D en voeren sloop, leidingwerk, tegelwerk en sanitair uit met onze eigen tegelzetters en loodgieters. Altijd met oog voor licht en proportie, zodat het resultaat klopt in zowel een monumentaal als een modern huis, afgewerkt tot in de laatste voeg.',
+    landingOutro:
+      'Wil je weten wat past bij jouw type woning binnen je budget? Plan een vrijblijvend adviesgesprek. We komen langs, nemen de ruimte op en geven een vaste prijs en planning, zonder verrassingen achteraf. Eén vast aanspreekpunt begeleidt je van de eerste schets tot de oplevering, zodat je altijd weet waar je aan toe bent.',
   },
   {
     name: 'Venlo',
@@ -351,6 +427,10 @@ export const CITIES: City[] = [
       'Venlo profiteert van zijn ligging tegen de Duitse grens - met internationale invloed in stijl en materiaal. Onze badkamers hier zijn vaak een mix van Limburgse warmte en strak Duits design, met natuursteen en zorgvuldig gekozen sanitair.',
     areas: ['Blerick', 'Tegelen', 'Velden'],
     nearby: ['maastricht', 'eindhoven', 'heerlen', 'oss'],
+    landingIntro:
+      'Een vooroorlogse woning in Blerick vraagt om andere keuzes dan een moderne woning in Tegelen of Velden: oude leidingen en gemetselde muren tegenover een strakke, vlakke indeling. We meten de ruimte in, tekenen de plattegrond in 3D en voeren sloop, leidingwerk, tegelwerk en sanitair uit met onze eigen tegelzetters en loodgieters. Limburgse warmte en strak Duits design naast elkaar, met natuursteen en zorgvuldig gekozen sanitair, afgewerkt tot in de laatste voeg.',
+    landingOutro:
+      'Wil je het beste van Limburgse warmte en Duitse strakheid in één badkamer? Vraag een vrijblijvend adviesgesprek aan. We komen langs, nemen de ruimte op en geven een vaste prijs en planning, zonder verrassingen achteraf. Eén vast aanspreekpunt begeleidt je van de eerste schets tot de oplevering, zodat je altijd weet waar je aan toe bent.',
   },
   {
     name: 'Hilversum',
@@ -360,6 +440,10 @@ export const CITIES: City[] = [
       'Hilversum, de mediastad, herbergt prachtige jaren-dertig villa\'s en Dudok-architectuur. Wij ontwerpen badkamers met respect voor die rijke bouwgeschiedenis - strakke lijnen, art-deco accenten en luxueuze materialen die het tijdperk eren.',
     areas: ['Trompenberg', 'Kerkelanden', 'Astoria'],
     nearby: ['amersfoort', 'utrecht', 'amstelveen', 'almere'],
+    landingIntro:
+      'Een jaren-30 villa op de Trompenberg of een Dudok-woning vraagt om andere keuzes dan een naoorlogs huis in Kerkelanden: strakke baksteendetails en bijzondere proporties die je wilt sparen tegenover een eenvoudiger, praktische opzet. We meten de ruimte in, tekenen de plattegrond in 3D en voeren sloop, leidingwerk, tegelwerk en sanitair uit met onze eigen tegelzetters en loodgieters. Strakke lijnen, art-deco accenten en luxueuze materialen die het tijdperk eren, afgewerkt tot in de laatste voeg.',
+    landingOutro:
+      'Wil je dat de rijke bouwgeschiedenis van je woning intact blijft? Vraag een vrijblijvend adviesgesprek aan. We komen langs, nemen de ruimte op en geven een vaste prijs en planning, zonder verrassingen achteraf. Eén vast aanspreekpunt begeleidt je van de eerste schets tot de oplevering, zodat je altijd weet waar je aan toe bent.',
   },
   {
     name: 'Amstelveen',
@@ -369,6 +453,10 @@ export const CITIES: City[] = [
       'Amstelveen biedt de groene, ruime tegenhanger van Amsterdam - met villa\'s, internationale invloeden en een verfijnde smaak. Wij ontwerpen badkamers met internationale luxe - van Italiaanse marmer tot Duits design - voor wie het beste van twee werelden wil.',
     areas: ['Westwijk', 'Bovenkerk', 'Patrimonium'],
     nearby: ['amsterdam', 'haarlemmermeer', 'hilversum', 'almere'],
+    landingIntro:
+      'Een ruime villa in het groene Bovenkerk vraagt om andere keuzes dan een verfijnd appartement in Westwijk: alle ruimte voor een dubbele wastafel en vrijstaand bad tegenover een compacte indeling waarin elke keuze telt. We meten de ruimte in, tekenen de plattegrond in 3D en voeren sloop, leidingwerk, tegelwerk en sanitair uit met onze eigen tegelzetters en loodgieters. Internationale luxe van Italiaans marmer tot Duits design, voor wie het beste van twee werelden wil, afgewerkt tot in de laatste voeg.',
+    landingOutro:
+      'Zoek je internationale luxe met een strakke uitvoering en een prijs die vaststaat? Vraag een vrijblijvend adviesgesprek aan. We komen langs, nemen de ruimte op en geven een vaste prijs en planning, zonder verrassingen achteraf. Eén vast aanspreekpunt begeleidt je van de eerste schets tot de oplevering, zodat je altijd weet waar je aan toe bent.',
   },
   {
     name: 'Oss',
@@ -378,6 +466,10 @@ export const CITIES: City[] = [
       'Oss ontwikkelt zich snel met nieuwe wijken en gerenoveerde stadskernen. Onze badkamers hier zijn vaak een mix van Brabantse warmte en moderne strakheid - een uitnodigende ruimte waar je tot rust komt na een dag werken.',
     areas: ['Ruwaard', 'Schadewijk', 'Krinkelhoek'],
     nearby: ['den-bosch', 'nijmegen', 'eindhoven', 'breda'],
+    landingIntro:
+      'Een gerenoveerde woning in de oude stadskern vraagt om andere keuzes dan een huis in een nieuwe wijk als de Ruwaard: bestaande structuren waar je rekening mee houdt tegenover strakke wanden en nieuwe leidingen. We meten de ruimte in, tekenen de plattegrond in 3D en voeren sloop, leidingwerk, tegelwerk en sanitair uit met onze eigen tegelzetters en loodgieters. Brabantse warmte met moderne strakheid, een uitnodigende ruimte om in tot rust te komen, afgewerkt tot in de laatste voeg.',
+    landingOutro:
+      'Wil je een uitnodigende badkamer met een prijs die vooraf vaststaat? Vraag een vrijblijvend adviesgesprek aan. We komen langs, nemen de ruimte op en geven een vaste prijs en planning, zonder verrassingen achteraf. Eén vast aanspreekpunt begeleidt je van de eerste schets tot de oplevering, zodat je altijd weet waar je aan toe bent.',
   },
   {
     name: 'Schiedam',
@@ -387,6 +479,10 @@ export const CITIES: City[] = [
       'Schiedam heeft een rijk jeneververleden en industriële architectuur. Onze badkamers hier omarmen die ruwe charme - met staal, donker hout en gepolijst beton, gecombineerd met de zachte materialen en lichte tinten die een badkamer warmte geven.',
     areas: ['Groenoord', 'Nieuwland', 'Kethel'],
     nearby: ['rotterdam', 'vlaardingen', 'delft', 'dordrecht'],
+    landingIntro:
+      'Een woning in een oude jeneverpakhuisbuurt vraagt om andere keuzes dan een naoorlogs huis in Groenoord of Nieuwland: industriële details en stevige muren tegenover een praktische, vlakke indeling. We meten de ruimte in, tekenen de plattegrond in 3D en voeren sloop, leidingwerk, tegelwerk en sanitair uit met onze eigen tegelzetters en loodgieters. Staal, donker hout en gepolijst beton, in balans gebracht met zachte materialen en lichte tinten die warmte geven, afgewerkt tot in de laatste voeg.',
+    landingOutro:
+      'Wil je industriële charme zonder dat het koel aanvoelt? Vraag een vrijblijvend adviesgesprek aan. We komen langs, nemen de ruimte op en geven een vaste prijs en planning, zonder verrassingen achteraf. Eén vast aanspreekpunt begeleidt je van de eerste schets tot de oplevering, zodat je altijd weet waar je aan toe bent.',
   },
   {
     name: 'Heerlen',
@@ -396,6 +492,10 @@ export const CITIES: City[] = [
       'Heerlen, hart van Parkstad, heeft een uniek mijnverleden en architectonische erfgoed. Wij ontwerpen badkamers waarin Limburgse warmte centraal staat - donkere natuursteen, sfeerverlichting en een vleugje retro die past bij het karakter van de regio.',
     areas: ['Heerlerheide', 'Hoensbroek', 'Welten'],
     nearby: ['maastricht', 'venlo', 'eindhoven', 'breda'],
+    landingIntro:
+      'Een karakteristieke mijnwerkerswoning in Hoensbroek vraagt om andere keuzes dan een ruimer huis in Welten: compacte plattegronden en oude leidingen tegenover meer speling en vlakke wanden. We meten de ruimte in, tekenen de plattegrond in 3D en voeren sloop, leidingwerk, tegelwerk en sanitair uit met onze eigen tegelzetters en loodgieters. Limburgse warmte met donkere natuursteen, sfeerverlichting en een vleugje retro dat bij het mijnverleden past, afgewerkt tot in de laatste voeg.',
+    landingOutro:
+      'Wil je een badkamer met warmte en karakter die past bij de regio? Vraag een vrijblijvend adviesgesprek aan. We komen langs, nemen de ruimte op en geven een vaste prijs en planning, zonder verrassingen achteraf. Eén vast aanspreekpunt begeleidt je van de eerste schets tot de oplevering, zodat je altijd weet waar je aan toe bent.',
   },
   {
     name: 'Purmerend',
@@ -405,6 +505,10 @@ export const CITIES: City[] = [
       'Aan de rand van Waterland combineert Purmerend ruime gezinswoningen met dorpse rust. Wij ontwerpen badkamers die functioneel én ruim zijn - met aparte regendouche, ligbad en slimme opbergruimte voor het hele gezin.',
     areas: ['Weidevenne', 'Overwhere', 'Wheermolen'],
     nearby: ['zaanstad', 'hoorn', 'alkmaar', 'amsterdam'],
+    landingIntro:
+      'Een ruime gezinswoning in de nieuwere Weidevenne vraagt om andere keuzes dan een jaren-60 huis in Overwhere of Wheermolen: een vlakke indeling met nieuwe leidingen tegenover compactere plattegronden met aanpassingen. We meten de ruimte in, tekenen de plattegrond in 3D en voeren sloop, leidingwerk, tegelwerk en sanitair uit met onze eigen tegelzetters en loodgieters. Functioneel en ruim tegelijk, met een aparte regendouche, ligbad en slimme opbergruimte voor het hele gezin, afgewerkt tot in de laatste voeg.',
+    landingOutro:
+      'Wil je een badkamer die voor het hele gezin werkt zonder concessies? Plan een vrijblijvend adviesgesprek. We komen langs, nemen de ruimte op en geven een vaste prijs en planning, zonder verrassingen achteraf. Eén vast aanspreekpunt begeleidt je van de eerste schets tot de oplevering, zodat je altijd weet waar je aan toe bent.',
   },
   {
     name: 'Roosendaal',
@@ -414,6 +518,10 @@ export const CITIES: City[] = [
       'Roosendaal in West-Brabant biedt ruime woningen en een gemoedelijke sfeer. Onze badkamers hier ademen Brabantse gastvrijheid - warme houttinten, zachte verlichting en materialen die uitnodigen om er lang te blijven.',
     areas: ['Tolberg', 'Kortendijk', 'Westrand'],
     nearby: ['breda', 'tilburg', 'dordrecht', 'schiedam'],
+    landingIntro:
+      'Een ruime woning met tuin in Tolberg vraagt om andere keuzes dan een compacter huis in Kortendijk of Westrand: alle ruimte voor een royale opzet tegenover een indeling waarin je slim met meters omgaat. We meten de ruimte in, tekenen de plattegrond in 3D en voeren sloop, leidingwerk, tegelwerk en sanitair uit met onze eigen tegelzetters en loodgieters. Brabantse gastvrijheid met warme houttinten en zachte verlichting die uitnodigt om er lang te blijven, afgewerkt tot in de laatste voeg.',
+    landingOutro:
+      'Wil je een warme, uitnodigende badkamer met een prijs die vaststaat? Vraag een vrijblijvend adviesgesprek aan. We komen langs, nemen de ruimte op en geven een vaste prijs en planning, zonder verrassingen achteraf. Eén vast aanspreekpunt begeleidt je van de eerste schets tot de oplevering, zodat je altijd weet waar je aan toe bent.',
   },
   {
     name: 'Hoorn',
@@ -423,6 +531,10 @@ export const CITIES: City[] = [
       'Hoorn met zijn VOC-verleden heeft een prachtige historische binnenstad en pittoreske haven. Wij ontwerpen badkamers met klassieke verhoudingen, donkere houtaccenten en messing details - een eerbetoon aan het zeevaardige verleden van de stad.',
     areas: ['Risdam', 'Kersenboogerd', 'Zwaag'],
     nearby: ['alkmaar', 'purmerend', 'zaanstad', 'leeuwarden'],
+    landingIntro:
+      'Een monumentaal pand in de historische binnenstad bij de haven vraagt om andere keuzes dan een gezinswoning in Risdam of Kersenboogerd: oude balklagen en klassieke verhoudingen tegenover een ruime, vlakke indeling. We meten de ruimte in, tekenen de plattegrond in 3D en voeren sloop, leidingwerk, tegelwerk en sanitair uit met onze eigen tegelzetters en loodgieters. Klassieke proporties, donkere houtaccenten en messing details, een eerbetoon aan het zeevaardige verleden, afgewerkt tot in de laatste voeg.',
+    landingOutro:
+      'Wil je een badkamer met klassieke verhoudingen die het karakter van je woning eert? Vraag een vrijblijvend adviesgesprek aan. We komen langs, nemen de ruimte op en geven een vaste prijs en planning, zonder verrassingen achteraf. Eén vast aanspreekpunt begeleidt je van de eerste schets tot de oplevering, zodat je altijd weet waar je aan toe bent.',
   },
   {
     name: 'Vlaardingen',
@@ -432,6 +544,10 @@ export const CITIES: City[] = [
       'Aan de Nieuwe Maas combineert Vlaardingen havenkarakter met rustige woonwijken. Onze badkamers hier weerspiegelen die balans - robuust waar het kan, verfijnd waar het moet, met materialen die de zilte zeelucht weerstaan.',
     areas: ['Holy', 'Westwijk', 'Ambacht'],
     nearby: ['schiedam', 'rotterdam', 'delft', 'dordrecht'],
+    landingIntro:
+      'Een vooroorlogse woning in Ambacht vraagt om andere keuzes dan een naoorlogs huis in Holy of Westwijk: oude leidingen en gemetselde muren tegenover een vlakke, ruime indeling. We meten de ruimte in, tekenen de plattegrond in 3D en voeren sloop, leidingwerk, tegelwerk en sanitair uit met onze eigen tegelzetters en loodgieters. Robuust waar het kan en verfijnd waar het moet, met materialen die de zilte zeelucht weerstaan, afgewerkt tot in de laatste voeg.',
+    landingOutro:
+      'Wil je een badkamer die het lang volhoudt langs de Nieuwe Maas? Vraag een vrijblijvend adviesgesprek aan. We komen langs, nemen de ruimte op en geven een vaste prijs en planning, zonder verrassingen achteraf. Eén vast aanspreekpunt begeleidt je van de eerste schets tot de oplevering, zodat je altijd weet waar je aan toe bent.',
   },
   {
     name: 'Gouda',
@@ -441,6 +557,10 @@ export const CITIES: City[] = [
       'Gouda staat voor ambacht - kaas, kaarsen en stroopwafels. Wij brengen dat ambacht naar je badkamer met handgemaakte tegels, op maat gezaagde natuursteen en details die alleen door echt vakmanschap mogelijk zijn.',
     areas: ['Goverwelle', 'Bloemendaal', 'Korte Akkeren'],
     nearby: ['rotterdam', 'alphen-aan-den-rijn', 'woerden', 'zoetermeer'],
+    landingIntro:
+      'Een smal stadspand in Korte Akkeren vraagt om andere keuzes dan een ruimere gezinswoning in Goverwelle: krappe schachten en weinig speling tegenover een vlakke, makkelijk indeelbare plattegrond. We meten de ruimte in, tekenen de plattegrond in 3D en voeren sloop, leidingwerk, tegelwerk en sanitair uit met onze eigen tegelzetters en loodgieters. Ambacht zoals deze stad het kent, met handgemaakte tegels, op maat gezaagde natuursteen en details die alleen echt vakmanschap oplevert, afgewerkt tot in de laatste voeg.',
+    landingOutro:
+      'Hecht je aan echt ambacht en zichtbaar handwerk? Vraag een vrijblijvend adviesgesprek aan. We komen langs, nemen de ruimte op en geven een vaste prijs en planning, zonder verrassingen achteraf. Eén vast aanspreekpunt begeleidt je van de eerste schets tot de oplevering, zodat je altijd weet waar je aan toe bent.',
   },
   {
     name: 'Lelystad',
@@ -450,6 +570,10 @@ export const CITIES: City[] = [
       'Lelystad is een moderne polderstad met ruime kavels en heldere architectuur. Wij ontwerpen badkamers die optimaal gebruik maken van die ruimte - met grote inloopdouches, vrijstaande baden en raampartijen die het brede Flevolandse uitzicht binnenhalen.',
     areas: ['Atolwijk', 'Boswijk', 'Zuiderzeewijk'],
     nearby: ['almere', 'zwolle', 'kampen', 'hilversum'],
+    landingIntro:
+      'Een ruime kavelwoning in de Boswijk geeft je vaak meer m2 dan een stadswoning elders: plek voor een grote inloopdouche, een vrijstaand bad en raampartijen die het brede Flevolandse uitzicht binnenhalen. We meten de ruimte in, tekenen de plattegrond in 3D en voeren sloop, leidingwerk, tegelwerk en sanitair uit met onze eigen tegelzetters en loodgieters. Heldere, strakke architectuur die de polderruimte optimaal benut, afgewerkt tot in de laatste voeg.',
+    landingOutro:
+      'Wil je die ruimte slim benutten met een strak ontwerp? Plan een vrijblijvend adviesgesprek, dan denken wij mee. We komen langs, nemen de ruimte op en geven een vaste prijs en planning, zonder verrassingen achteraf. Eén vast aanspreekpunt begeleidt je van de eerste schets tot de oplevering, zodat je altijd weet waar je aan toe bent.',
   },
   {
     name: 'Almelo',
@@ -459,6 +583,10 @@ export const CITIES: City[] = [
       'Twentse industriestad Almelo ademt nuchterheid en kwaliteit. Onze badkamers hier zijn gebouwd om generaties mee te gaan - robuuste materialen, doordachte techniek en een afwerking die net zo trots is als de mensen die er wonen.',
     areas: ['Aalderinkshoek', 'Ossenkoppelerhoek', 'Schelfhorst'],
     nearby: ['enschede', 'deventer', 'zwolle', 'emmen'],
+    landingIntro:
+      'Een degelijke jaren-30 woning in de Ossenkoppelerhoek vraagt om andere keuzes dan een naoorlogs huis in de Schelfhorst: hoge plafonds en oude schachten tegenover een praktische, compacte indeling. We meten de ruimte in, tekenen de plattegrond in 3D en voeren sloop, leidingwerk, tegelwerk en sanitair uit met onze eigen tegelzetters en loodgieters. Gebouwd om generaties mee te gaan, met robuuste materialen, doordachte techniek en een afwerking die net zo trots is als de mensen die er wonen.',
+    landingOutro:
+      'Wil je een badkamer die je niet snel meer hoeft te vervangen? Vraag een vrijblijvend adviesgesprek aan. We komen langs, nemen de ruimte op en geven een vaste prijs en planning, zonder verrassingen achteraf. Eén vast aanspreekpunt begeleidt je van de eerste schets tot de oplevering, zodat je altijd weet waar je aan toe bent.',
   },
   {
     name: 'Woerden',
@@ -468,6 +596,10 @@ export const CITIES: City[] = [
       'Woerden in het Groene Hart combineert kaasstadhistorie met rustig dorps wonen. Wij ontwerpen badkamers met landelijke warmte - natuursteen, witte schrootjes en authentieke details die passen bij de polderse omgeving.',
     areas: ['Snel en Polanen', 'Schilderskwartier', 'Molenvliet'],
     nearby: ['utrecht', 'gouda', 'alphen-aan-den-rijn', 'zeist'],
+    landingIntro:
+      'Een woning in de oude kaasstadkern vraagt om andere keuzes dan een nieuwbouwhuis in Snel en Polanen: krappe schachten en oude details tegenover strakke wanden en nieuwe leidingen. We meten de ruimte in, tekenen de plattegrond in 3D en voeren sloop, leidingwerk, tegelwerk en sanitair uit met onze eigen tegelzetters en loodgieters. Landelijke warmte met natuursteen, witte schrootjes en authentieke details die passen bij de polderse omgeving, afgewerkt tot in de laatste voeg.',
+    landingOutro:
+      'Wil je een badkamer met landelijke rust die past bij het Groene Hart? Vraag een vrijblijvend adviesgesprek aan. We komen langs, nemen de ruimte op en geven een vaste prijs en planning, zonder verrassingen achteraf. Eén vast aanspreekpunt begeleidt je van de eerste schets tot de oplevering, zodat je altijd weet waar je aan toe bent.',
   },
   {
     name: 'Veenendaal',
@@ -477,6 +609,10 @@ export const CITIES: City[] = [
       'Tegen de Utrechtse Heuvelrug aan staan in Veenendaal ruime gezinswoningen met grote tuinen. Wij gebruiken die ruimte voor genereuze badkamers - met aparte was- en stortzones, ruim ligbad en een sfeer die de natuurlijke omgeving eert.',
     areas: ['Veenendaal-Oost', 'Dragonder', 'Petenbos'],
     nearby: ['ede', 'amersfoort', 'zeist', 'barneveld'],
+    landingIntro:
+      'Een ruime gezinswoning met grote tuin in Veenendaal-Oost leent zich vaak voor een royale badkamer: een aparte was- en stortzone, een ruim ligbad en veel daglicht. We meten de ruimte in, tekenen de plattegrond in 3D en voeren sloop, leidingwerk, tegelwerk en sanitair uit met onze eigen tegelzetters en loodgieters. Een sfeer die de natuurlijke omgeving tegen de Utrechtse Heuvelrug eert, met natuurlijke materialen en een afwerking die klopt tot in de laatste voeg.',
+    landingOutro:
+      'Heb je de ruimte voor een royale badkamer en wil je weten wat er kan? Plan een vrijblijvend adviesgesprek, dan denken wij mee. We komen langs, nemen de ruimte op en geven een vaste prijs en planning, zonder verrassingen achteraf. Eén vast aanspreekpunt begeleidt je van de eerste schets tot de oplevering, zodat je altijd weet waar je aan toe bent.',
   },
   {
     name: 'Zeist',
@@ -486,6 +622,10 @@ export const CITIES: City[] = [
       'Zeist is bosrijk, lommerrijk en bekend om zijn statige villa\'s. Onze badkamers hier zijn even royaal als de woningen waar ze in komen - met ruime indelingen, hoogwaardig natuursteen en een tijdloze elegantie die past bij de bosrijke omgeving.',
     areas: ['Den Dolder', 'Austerlitz', 'Kerckebosch'],
     nearby: ['utrecht', 'amersfoort', 'woerden', 'veenendaal'],
+    landingIntro:
+      'Een statige villa in het lommerrijke Kerckebosch vraagt om andere keuzes dan een woning in het bosdorp Austerlitz: ruime kamers met hoge plafonds tegenover een knussere, compacte opzet. We meten de ruimte in, tekenen de plattegrond in 3D en voeren sloop, leidingwerk, tegelwerk en sanitair uit met onze eigen tegelzetters en loodgieters. Een even royale aanpak met ruime indelingen, hoogwaardig natuursteen en tijdloze elegantie die past bij de bosrijke omgeving, afgewerkt tot in de laatste voeg.',
+    landingOutro:
+      'Wil je klasse die blijft, passend bij een statige woning? Vraag een vrijblijvend adviesgesprek aan. We komen langs, nemen de ruimte op en geven een vaste prijs en planning, zonder verrassingen achteraf. Eén vast aanspreekpunt begeleidt je van de eerste schets tot de oplevering, zodat je altijd weet waar je aan toe bent.',
   },
   {
     name: 'Barneveld',
@@ -495,6 +635,10 @@ export const CITIES: City[] = [
       'Aan de Veluwerand combineert Barneveld dorpse rust met moderne nieuwbouw. Wij ontwerpen badkamers met landelijke charme - warme houttinten, zachte verlichting en natuurlijke materialen die het bosrijke karakter naar binnen halen.',
     areas: ['Voorthuizen', 'Kootwijkerbroek', 'Garderen'],
     nearby: ['ede', 'amersfoort', 'apeldoorn', 'veenendaal'],
+    landingIntro:
+      'Een ruime woning met erf in Kootwijkerbroek of Garderen vraagt om andere keuzes dan een nieuwbouwhuis in Voorthuizen: alle ruimte voor een landelijke opzet tegenover strakke wanden en nieuwe leidingen. We meten de ruimte in, tekenen de plattegrond in 3D en voeren sloop, leidingwerk, tegelwerk en sanitair uit met onze eigen tegelzetters en loodgieters. Landelijke charme met warme houttinten, zachte verlichting en natuurlijke materialen die het bosrijke karakter naar binnen halen, afgewerkt tot in de laatste voeg.',
+    landingOutro:
+      'Wil je een landelijke, warme badkamer met een prijs die vaststaat? Vraag een vrijblijvend adviesgesprek aan. We komen langs, nemen de ruimte op en geven een vaste prijs en planning, zonder verrassingen achteraf. Eén vast aanspreekpunt begeleidt je van de eerste schets tot de oplevering, zodat je altijd weet waar je aan toe bent.',
   },
   {
     name: 'Kampen',
@@ -504,6 +648,10 @@ export const CITIES: City[] = [
       'Hanzestad Kampen aan de IJssel met zijn beroemde kerktorens vraagt om badkamers met klassieke proporties en ambachtelijke afwerking. Wij realiseren tijdloze ontwerpen die net zo lang meegaan als de monumentale binnenstad.',
     areas: ['IJsselmuiden', 'Brunnepe', 'Stationskwartier'],
     nearby: ['zwolle', 'lelystad', 'deventer', 'almelo'],
+    landingIntro:
+      'Een monumentaal pand in de oude binnenstad bij de kerktorens vraagt om andere keuzes dan een woning in IJsselmuiden of het Stationskwartier: oude balklagen en klassieke verhoudingen tegenover een ruime, vlakke indeling. We meten de ruimte in, tekenen de plattegrond in 3D en voeren sloop, leidingwerk, tegelwerk en sanitair uit met onze eigen tegelzetters en loodgieters. Tijdloze ontwerpen met klassieke proporties en ambachtelijke afwerking die net zo lang meegaan als de Hanzekern, afgewerkt tot in de laatste voeg.',
+    landingOutro:
+      'Wil je een tijdloze badkamer die het karakter van je woning eert? Vraag een vrijblijvend adviesgesprek aan. We komen langs, nemen de ruimte op en geven een vaste prijs en planning, zonder verrassingen achteraf. Eén vast aanspreekpunt begeleidt je van de eerste schets tot de oplevering, zodat je altijd weet waar je aan toe bent.',
   },
   {
     name: 'Rijswijk',
@@ -513,6 +661,10 @@ export const CITIES: City[] = [
       'Rijswijk biedt moderne hoogbouw én karakteristieke jaren-dertig wijken naast Den Haag. Wij ontwerpen badkamers die werken in beide werelden - strak en hedendaags voor appartementen, klassiek en gedetailleerd voor de oudere woningen.',
     areas: ['Hoornwijck', 'Steenvoorde', 'Te Werve'],
     nearby: ['den-haag', 'delft', 'westland', 'zoetermeer'],
+    landingIntro:
+      'Een modern appartement in de hoogbouw vraagt om andere keuzes dan een jaren-30 woning in Te Werve: betonvloeren en lange leidingtrajecten tegenover oude schachten en authentieke details. We meten de ruimte in, tekenen de plattegrond in 3D en voeren sloop, leidingwerk, tegelwerk en sanitair uit met onze eigen tegelzetters en loodgieters. Strak en hedendaags voor appartementen of klassiek en gedetailleerd voor de oudere woningen, altijd afgewerkt tot in de laatste voeg.',
+    landingOutro:
+      'Woon je in een appartement of juist een vooroorlogs huis en wil je weten wat past? Vraag een vrijblijvend adviesgesprek aan. We komen langs, nemen de ruimte op en geven een vaste prijs en planning, zonder verrassingen achteraf. Eén vast aanspreekpunt begeleidt je van de eerste schets tot de oplevering, zodat je altijd weet waar je aan toe bent.',
   },
 ];
 

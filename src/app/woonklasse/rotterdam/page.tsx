@@ -2,7 +2,15 @@ import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import { getWoonklasseCityBySlug } from '@/data/woonklasse-cities';
 import { CONTACT } from '@/data/contact';
-import AmsterdamPage from '@/components/AmsterdamPage';
+import { WOONKLASSE_POSTS } from '@/data/blog/index';
+import WoonklasseCityPage from '@/components/woonklasse/CityPage';
+
+// Drie funderende gidsen die op elke stadspagina terugkomen.
+const RELATED_GUIDE_SLUGS = [
+  'huis-verbouwen-kosten-2026',
+  'verbouwing-vergunning-nodig',
+  'aannemer-kiezen-tips',
+];
 
 const SITE_URL = 'https://woonklasse.nl';
 const SLUG = 'rotterdam';
@@ -31,6 +39,14 @@ export const metadata: Metadata = {
 export default function Page() {
   const city = getWoonklasseCityBySlug(SLUG);
   if (!city) notFound();
+
+  const nearbyCities = city.nearby
+    .map((s) => getWoonklasseCityBySlug(s))
+    .filter((c): c is NonNullable<typeof c> => Boolean(c));
+
+  const relatedPosts = RELATED_GUIDE_SLUGS
+    .map((s) => WOONKLASSE_POSTS.find((p) => p.slug === s))
+    .filter((p): p is NonNullable<typeof p> => Boolean(p));
 
   const pageUrl = `${SITE_URL}/${city.slug}`;
 
@@ -81,7 +97,7 @@ export default function Page() {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }}
       />
-      <AmsterdamPage city={city} ctaHref="/woonklasse/offerte" />
+      <WoonklasseCityPage city={city} nearbyCities={nearbyCities} relatedPosts={relatedPosts} />
     </>
   );
 }
