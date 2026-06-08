@@ -6,13 +6,10 @@ export default function robots(): MetadataRoute.Robots {
       {
         userAgent: '*',
         allow: '/',
-        disallow: ['/admin/', '/api/', '/maintenance', '/woonklasse-showcase'],
+        disallow: ['/admin/', '/api/', '/maintenance'],
       },
     ],
-    sitemap: [
-      'https://woonklasse.nl/sitemap.xml',
-      'https://badkamerstijl.nl/sitemap.xml',
-    ],
-    host: 'https://woonklasse.nl',
+    sitemap: ['https://badkamerstijl.nl/sitemap.xml'],
+    host: 'https://badkamerstijl.nl',
   };
 }

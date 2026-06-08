@@ -1,7 +1,5 @@
 import type { Metadata } from 'next';
 import { Poppins, Cormorant_Garamond } from 'next/font/google';
-import Navigation from '@/components/Navigation';
-import Footer from '@/components/Footer';
 import SmoothScroll from '@/components/SmoothScroll';
 import WhatsAppFab from '@/components/WhatsAppFab';
 import { CONTACT } from '@/data/contact';
@@ -23,12 +21,12 @@ const cormorantGaramond = Cormorant_Garamond({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL('https://woonklasse.nl'),
+  metadataBase: new URL('https://badkamerstijl.nl'),
   title: {
-    default: 'Woonklasse & Badkamerstijl | Jouw Droomwoning',
-    template: '%s | Woonklasse & Badkamerstijl',
+    default: 'Badkamerstijl | Luxe badkamers op maat',
+    template: '%s | Badkamerstijl',
   },
-  description: 'Van complete verbouwingen en veranda\'s tot luxe droombadkamers op maat. Woonklasse voor verbouwingen en veranda\'s, Badkamerstijl voor luxe badkamers.',
+  description: 'Badkamerstijl ontwerpt en realiseert luxe badkamers op maat. Van 3D-ontwerp tot oplevering door eigen vakmensen, met vaste aanneemsom en installatiegarantie.',
   icons: {
     icon: [
       { url: '/favicon-32.png', sizes: '32x32', type: 'image/png' },
@@ -42,15 +40,15 @@ export const metadata: Metadata = {
   openGraph: {
     type: 'website',
     locale: 'nl_NL',
-    siteName: 'Woonklasse & Badkamerstijl',
-    title: 'Woonklasse & Badkamerstijl | Jouw Droomwoning',
-    description: 'Van complete verbouwingen en veranda\'s tot luxe droombadkamers op maat.',
-    images: [{ url: '/og-image.png', width: 1200, height: 630, alt: 'Woonklasse & Badkamerstijl' }],
+    siteName: 'Badkamerstijl',
+    title: 'Badkamerstijl | Luxe badkamers op maat',
+    description: 'Luxe badkamers op maat, van 3D-ontwerp tot oplevering door eigen vakmensen.',
+    images: [{ url: '/og-image.png', width: 1200, height: 630, alt: 'Badkamerstijl' }],
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Woonklasse & Badkamerstijl | Jouw Droomwoning',
-    description: 'Van complete verbouwingen en veranda\'s tot luxe droombadkamers op maat.',
+    title: 'Badkamerstijl | Luxe badkamers op maat',
+    description: 'Luxe badkamers op maat, van 3D-ontwerp tot oplevering door eigen vakmensen.',
     images: ['/og-image.png'],
   },
 };
@@ -58,8 +56,8 @@ export const metadata: Metadata = {
 const jsonLd = {
   '@context': 'https://schema.org',
   '@type': 'Organization',
-  name: 'Woonklasse & Badkamerstijl',
-  description: 'Van complete verbouwingen en veranda\'s tot luxe droombadkamers op maat.',
+  name: 'Badkamerstijl',
+  description: 'Luxe badkamers op maat, van 3D-ontwerp tot oplevering door eigen vakmensen.',
   address: {
     '@type': 'PostalAddress',
     streetAddress: CONTACT.adres.straat,
@@ -96,9 +94,7 @@ export default function RootLayout({
           Ga naar inhoud
         </a>
         <SmoothScroll>
-          <Navigation />
           <main id="main-content">{children}</main>
-          <Footer />
           <WhatsAppFab />
         </SmoothScroll>
         {/* Amaso Dashboard Alt+Click inspector bridge - dev-only, self-contained. */}

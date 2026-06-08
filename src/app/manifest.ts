@@ -2,9 +2,9 @@ import type { MetadataRoute } from 'next';
 
 export default function manifest(): MetadataRoute.Manifest {
   return {
-    name: 'Woonklasse & Badkamerstijl',
-    short_name: 'Woonklasse',
-    description: 'Verbouwingen, veranda\'s en luxe droombadkamers op maat',
+    name: 'Badkamerstijl | Luxe badkamers op maat',
+    short_name: 'Badkamerstijl',
+    description: 'Luxe badkamers op maat, van 3D-ontwerp tot oplevering door eigen vakmensen',
     start_url: '/',
     display: 'standalone',
     background_color: '#0a0a0a',

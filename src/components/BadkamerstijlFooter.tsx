@@ -80,17 +80,6 @@ export default function BadkamerstijlFooter() {
                 {CONTACT_BADKAMERSTIJL.adres.plaats}
               </li>
             </ul>
-            <div className="mt-8 pt-6 border-t border-white/10">
-              <p className="text-[10px] tracking-[0.2em] uppercase text-white/35 mb-2">
-                Zusterbedrijf
-              </p>
-              <Link
-                href="/woonklasse"
-                className="text-xs tracking-[0.2em] uppercase text-bsv2-teal hover:opacity-70 transition-opacity"
-              >
-                Woonklasse verbouwingen &rarr;
-              </Link>
-            </div>
           </div>
         </div>
       </div>

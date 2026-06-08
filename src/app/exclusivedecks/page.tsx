@@ -617,7 +617,6 @@ export default function ExclusiveDecksPage() {
           <div>
             <div className="text-[10px] tracking-[0.3em] uppercase text-deck-accent mb-4">Sister brands</div>
             <div className="space-y-2 text-sm font-light">
-              <Link href="/woonklasse" className="block text-deck-light/60 hover:text-deck-accent transition-colors">Woonklasse</Link>
               <Link href="/badkamerstijl" className="block text-deck-light/60 hover:text-deck-accent transition-colors">Badkamerstijl</Link>
             </div>
           </div>

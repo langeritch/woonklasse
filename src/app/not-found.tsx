@@ -2,7 +2,7 @@ import Link from 'next/link';
 import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
-  title: 'Pagina niet gevonden | Woonklasse & Badkamerstijl',
+  title: 'Pagina niet gevonden | Badkamerstijl',
 };
 
 export default function NotFound() {
@@ -13,20 +13,12 @@ export default function NotFound() {
       <p className="text-white/60 max-w-md mb-12">
         De pagina die je zoekt bestaat niet of is verplaatst.
       </p>
-      <div className="flex flex-col sm:flex-row gap-4">
-        <Link
-          href="/woonklasse"
-          className="px-8 py-3 bg-woon-accent text-woon-dark text-sm tracking-[0.15em] uppercase font-semibold hover:bg-woon-accent/90 transition-colors"
-        >
-          Woonklasse
-        </Link>
-        <Link
-          href="/badkamerstijl"
-          className="px-8 py-3 border border-badkamer-pink text-badkamer-pink text-sm tracking-[0.15em] uppercase font-semibold hover:bg-badkamer-pink hover:text-white transition-colors"
-        >
-          Badkamerstijl
-        </Link>
-      </div>
+      <Link
+        href="/badkamerstijl"
+        className="px-8 py-3 bg-white text-black text-sm tracking-[0.15em] uppercase font-semibold hover:bg-white/90 transition-colors"
+      >
+        Naar de homepage
+      </Link>
     </div>
   );
 }
