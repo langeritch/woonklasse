@@ -243,14 +243,18 @@ export default function BadkamerstijlHome() {
             </Link>
           </motion.div>
 
-          {/* Center image */}
-          <motion.div {...reveal} className="aspect-[4/5] relative overflow-hidden rounded-[18px]">
-            <Image
-              src="/badkamerstijl/2200xxs(29).jpg"
-              alt="Detail van een luxe badkamer"
-              fill
-              className="object-cover"
-              sizes="(max-width: 1024px) 100vw, 40vw"
+          {/* Center video - autoplay, muted, loop */}
+          <motion.div {...reveal} className="aspect-[4/5] relative overflow-hidden rounded-[18px] bg-bs26-ink">
+            <video
+              className="absolute inset-0 w-full h-full object-cover"
+              src="/badkamerstijl/badkamer-video.mp4"
+              poster="/badkamerstijl/badkamer-video-poster.jpg"
+              autoPlay
+              muted
+              loop
+              playsInline
+              preload="metadata"
+              aria-label="Badkamer door Badkamerstijl in beeld"
             />
           </motion.div>
 
