@@ -12,7 +12,7 @@ export async function middleware(request: NextRequest) {
   if (
     pathname.startsWith('/_next') ||
     pathname.startsWith('/api') ||
-    pathname.match(/\.(ico|png|jpg|jpeg|svg|gif|webp|avif|css|js|woff2?|ttf|eot|txt|xml|webmanifest)$/)
+    pathname.match(/\.(ico|png|jpg|jpeg|svg|gif|webp|avif|mp4|webm|mov|m4v|css|js|woff2?|ttf|eot|txt|xml|webmanifest)$/)
   ) {
     return NextResponse.next();
   }
