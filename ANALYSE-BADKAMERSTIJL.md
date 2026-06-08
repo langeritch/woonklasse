@@ -6,6 +6,14 @@ Deze lijst is geprioriteerd. Bovenaan staat wat in deze sessie al is opgelost, d
 
 ---
 
+## Al opgelost (ronde 2)
+
+- **Cookie-consent (AVG)**: Google Analytics en Clarity laden nu pas na toestemming, via een consent-banner. Keuze wordt onthouden.
+- **Reduced-motion afgerond**: Lenis smooth-scroll en de hero-video respecteren nu ook `prefers-reduced-motion`.
+- **Broodkruimels**: redundante/geredirecte `/badkamerstijl`-laag verwijderd op diensten, prijzen, kosten.
+- **Openingstijden-schema**: verlopende `validThrough`-datum verwijderd.
+- **Stijlen-carousel**: aria-labels, betere alt-teksten en een trailing spacer voor mobiel.
+
 ## Al opgelost in deze sessie
 
 - **Video scherper en kleiner.** Opnieuw geencodeerd op hoge kwaliteit (crf 18) en kleiner getoond (max 340px breed), zodat hij niet meer pixelig oogt op retina-schermen.
