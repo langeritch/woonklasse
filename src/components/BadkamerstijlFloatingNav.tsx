@@ -12,7 +12,6 @@ const navLinks = [
   { title: 'Portfolio', path: '/portfolio' },
   { title: 'Diensten', path: '/diensten' },
   { title: 'Prijzen', path: '/prijzen' },
-  { title: 'Kosten', path: '/kosten' },
   { title: 'Blog', path: '/blog' },
   { title: 'Contact', path: '/adviesgesprek' },
 ];

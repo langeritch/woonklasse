@@ -3,6 +3,7 @@ import ScrollToTop from '@/components/ScrollToTop';
 import BadkamerstijlTransition from '@/components/BadkamerstijlTransition';
 import BadkamerstijlFooter from '@/components/BadkamerstijlFooter';
 import { CONTACT_BADKAMERSTIJL } from '@/data/contact';
+import { BADKAMERSTIJL_FAQS } from '@/data/badkamerstijl-faq';
 
 const SITE_URL = 'https://badkamerstijl.nl';
 
@@ -158,6 +159,18 @@ const websiteJsonLd = {
   publisher: { '@id': `${SITE_URL}#localbusiness` },
 };
 
+// FAQPage schema, gebouwd uit dezelfde data als de zichtbare FAQ op de homepage.
+const faqJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  '@id': `${SITE_URL}#faq`,
+  mainEntity: BADKAMERSTIJL_FAQS.map((f) => ({
+    '@type': 'Question',
+    name: f.q,
+    acceptedAnswer: { '@type': 'Answer', text: f.a },
+  })),
+};
+
 export default function BadkamerstijlLayout({ children }: { children: React.ReactNode }) {
   return (
     <>
@@ -172,6 +185,10 @@ export default function BadkamerstijlLayout({ children }: { children: React.Reac
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteJsonLd) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }}
       />
       <script
         type="text/javascript"

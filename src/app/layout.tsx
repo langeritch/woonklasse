@@ -56,7 +56,9 @@ export const metadata: Metadata = {
 const jsonLd = {
   '@context': 'https://schema.org',
   '@type': 'Organization',
+  '@id': 'https://badkamerstijl.nl#localbusiness',
   name: 'Badkamerstijl',
+  url: 'https://badkamerstijl.nl',
   description: 'Luxe badkamers op maat, van 3D-ontwerp tot oplevering door eigen vakmensen.',
   address: {
     '@type': 'PostalAddress',
@@ -66,7 +68,7 @@ const jsonLd = {
     addressCountry: 'NL',
   },
   telephone: '+31302072388',
-  email: CONTACT.email,
+  email: 'info@badkamerstijl.nl',
 };
 
 export default function RootLayout({

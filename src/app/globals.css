@@ -26,7 +26,7 @@
   --color-bs26-charcoal: #1A1D1F;    /* primary text - near-black */
   --color-bs26-gold: #51666A;        /* accent on light bg: eyebrows, links, hover */
   --color-bs26-gold-soft: #93A7A9;   /* accent on dark bg: eyebrows, numbers, stars */
-  --color-bs26-grey: #7E878A;        /* muted body text */
+  --color-bs26-grey: #5F6669;        /* muted body text - WCAG AA (~5.4:1 on cream) */
   --color-bs26-grey-light: #AEB6B7;  /* faint text on dark */
 
   /* Woonklasse Palette - calm beige base + three restrained accents.
@@ -315,4 +315,18 @@ a:focus-visible {
   font-size: 0.6875rem;
   letter-spacing: 0.28em;
   text-transform: uppercase;
+}
+
+/* Respecteer prefers-reduced-motion: neutraliseer animaties en smooth-scroll
+   voor gebruikers die dat instellen (WCAG 2.3.3). Framer Motion wordt apart
+   afgehandeld via <MotionConfig reducedMotion="user">. */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
 }

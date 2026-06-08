@@ -1,12 +1,13 @@
 'use client';
 
-import { motion } from 'framer-motion';
+import { motion, MotionConfig } from 'framer-motion';
 import { useState } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import { ArrowRight, ArrowUpRight, Plus, Minus, Star, Check, Phone } from 'lucide-react';
 import BadkamerstijlFloatingNav from '@/components/BadkamerstijlFloatingNav';
 import HeroAdviesTool from '@/components/HeroAdviesTool';
+import { BADKAMERSTIJL_FAQS as faqs } from '@/data/badkamerstijl-faq';
 
 /* ──────────────────────────── DATA ──────────────────────────── */
 
@@ -67,33 +68,6 @@ const pakketten = [
   },
 ];
 
-const faqs = [
-  {
-    q: 'Wat kost een complete badkamer renovatie?',
-    a: 'Dat hangt af van de grootte en de afwerking. Een nette renovatie start rond € 5.000, een gemiddelde badkamer op maat ligt tussen € 12.000 en € 22.000 en voor een luxe badkamer met natuursteen en designmerken reken je vanaf € 35.000. Je krijgt vooraf een vaste aanneemsom, dus geen verrassingen achteraf.',
-  },
-  {
-    q: 'Hoe lang duurt het om mijn badkamer te realiseren?',
-    a: 'Een gemiddelde badkamer realiseren we in twee tot drie weken op locatie. De voorbereiding, het ontwerp en de materiaalkeuze gaan daaraan vooraf. We plannen alles strak, zodat je niet langer dan nodig zonder badkamer zit.',
-  },
-  {
-    q: 'Werken jullie met een vaste prijs?',
-    a: 'Ja. Op basis van een gedetailleerd 3D-ontwerp krijg je een vaste aanneemsom. Daarin zit alles: sloop, leidingwerk, tegels, sanitair, vloerverwarming, ventilatie en alle arbeid. Wat we afspreken, dat betaal je.',
-  },
-  {
-    q: 'Doen jullie alles zelf of werken jullie met onderaannemers?',
-    a: 'We werken met onze eigen vakmensen, van tegelzetter tot loodgieter en monteur. Eén aanspreekpunt, één team dat verantwoordelijk is voor het hele resultaat.',
-  },
-  {
-    q: 'Kan ik eerst een ontwerp zien voordat ik beslis?',
-    a: 'Zeker. We maken een 3D-ontwerp van jouw badkamer met de gekozen materialen, kleuren en indeling. Zo zie je precies hoe het wordt voordat we ook maar één tegel plaatsen.',
-  },
-  {
-    q: 'Werken jullie door heel Nederland?',
-    a: 'Ja, we realiseren luxe badkamers door heel Nederland. Tijdens het adviesgesprek bespreken we jouw locatie en planning.',
-  },
-];
-
 /* ──────────────────── REVEAL HELPER ──────────────────── */
 
 const reveal = {
@@ -134,7 +108,8 @@ export default function BadkamerstijlHome() {
   const [openFaq, setOpenFaq] = useState<number | null>(0);
 
   return (
-    <main className="bs26 overflow-x-hidden">
+    <MotionConfig reducedMotion="user">
+    <div className="bs26 overflow-x-hidden">
       <BadkamerstijlFloatingNav />
 
       {/* ═══════════════════════ 1. HERO ═══════════════════════ */}
@@ -157,19 +132,18 @@ export default function BadkamerstijlHome() {
           </motion.div>
           <div className="absolute inset-0 bg-gradient-to-b from-black/55 via-black/25 to-black/75" />
 
-          {/* Eyebrow top-left */}
-          <motion.div
-            initial={{ opacity: 0, y: -8 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.2, duration: 0.8 }}
-            className="absolute top-7 md:top-10 left-6 md:left-10 z-20 flex items-center gap-3 text-white/80"
-          >
-            <span className="w-8 h-px bg-bs26-gold-soft" />
-            <span className="bs26-eyebrow text-white/75">Luxe badkamers op maat</span>
-          </motion.div>
-
           {/* Center content */}
-          <div className="absolute inset-0 z-10 flex flex-col items-center justify-center text-center px-6">
+          <div className="absolute inset-0 z-10 flex flex-col items-center justify-center text-center px-6 pt-16">
+            <motion.div
+              initial={{ opacity: 0, y: -8 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.2, duration: 0.8 }}
+              className="flex items-center gap-3 mb-6"
+            >
+              <span className="w-8 h-px bg-bs26-gold-soft" />
+              <span className="bs26-eyebrow text-white/75">Luxe badkamers op maat</span>
+              <span className="w-8 h-px bg-bs26-gold-soft" />
+            </motion.div>
             <motion.h1
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
@@ -244,7 +218,7 @@ export default function BadkamerstijlHome() {
           </motion.div>
 
           {/* Center video - autoplay, muted, loop */}
-          <motion.div {...reveal} className="aspect-[4/5] relative overflow-hidden rounded-[18px] bg-bs26-ink">
+          <motion.div {...reveal} className="aspect-[4/5] relative overflow-hidden rounded-[18px] bg-bs26-ink w-full max-w-[340px] mx-auto">
             <video
               className="absolute inset-0 w-full h-full object-cover"
               src="/badkamerstijl/badkamer-video.mp4"
@@ -254,7 +228,7 @@ export default function BadkamerstijlHome() {
               loop
               playsInline
               preload="metadata"
-              aria-label="Badkamer door Badkamerstijl in beeld"
+              aria-label="Sfeerbeeld van een door Badkamerstijl gerealiseerde luxe badkamer op maat"
             />
           </motion.div>
 
@@ -374,7 +348,7 @@ export default function BadkamerstijlHome() {
               <div className="sm:w-44 lg:w-52 shrink-0 aspect-[4/3] sm:aspect-auto relative overflow-hidden rounded-[12px]">
                 <Image
                   src={p.image}
-                  alt={`${p.name} badkamer`}
+                  alt={`${p.name} badkamer op maat door Badkamerstijl, ${p.price}`}
                   fill
                   className="object-cover group-hover:scale-105 transition-transform duration-700"
                   sizes="(max-width: 640px) 100vw, 13rem"
@@ -499,6 +473,8 @@ export default function BadkamerstijlHome() {
                     onClick={() => setOpenFaq(isOpen ? null : i)}
                     className="w-full flex items-center justify-between gap-4 py-5 text-left group"
                     aria-expanded={isOpen}
+                    aria-controls={`faq-panel-${i}`}
+                    id={`faq-button-${i}`}
                   >
                     <span className="font-display text-lg md:text-xl font-medium group-hover:text-bs26-gold transition-colors">
                       {faq.q}
@@ -507,7 +483,12 @@ export default function BadkamerstijlHome() {
                       {isOpen ? <Minus className="w-4 h-4" /> : <Plus className="w-4 h-4" />}
                     </span>
                   </button>
-                  <div className={`grid transition-all duration-300 ease-out ${isOpen ? 'grid-rows-[1fr] opacity-100' : 'grid-rows-[0fr] opacity-0'}`}>
+                  <div
+                    id={`faq-panel-${i}`}
+                    role="region"
+                    aria-labelledby={`faq-button-${i}`}
+                    className={`grid transition-all duration-300 ease-out ${isOpen ? 'grid-rows-[1fr] opacity-100' : 'grid-rows-[0fr] opacity-0'}`}
+                  >
                     <div className="overflow-hidden">
                       <p className="font-body text-bs26-grey text-[15px] leading-relaxed pb-6 pr-10">{faq.a}</p>
                     </div>
@@ -558,6 +539,7 @@ export default function BadkamerstijlHome() {
           </motion.div>
         </div>
       </section>
-    </main>
+    </div>
+    </MotionConfig>
   );
 }
