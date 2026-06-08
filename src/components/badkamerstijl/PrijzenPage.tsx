@@ -1,6 +1,6 @@
 'use client';
 
-import { motion } from 'framer-motion';
+import { motion, MotionConfig } from 'framer-motion';
 import { useState, useMemo } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
@@ -229,82 +229,77 @@ export default function PrijzenPage() {
   }, [size, finish, complexity]);
 
   return (
-    <main className="bsv2-page bg-bsv2-cream text-bsv2-charcoal overflow-x-hidden">
+    <MotionConfig reducedMotion="user">
+    <main className="bs26 overflow-x-hidden">
       <BadkamerstijlFloatingNav />
 
-      <nav
-        aria-label="Kruimelpad"
-        className="absolute top-6 md:top-10 left-6 md:left-12 lg:left-20 z-30 hidden md:flex items-center gap-2 text-[11px] tracking-[0.15em] uppercase text-white/70"
-      >
-        <Link href="/" className="hover:text-white transition-colors">Home</Link>
-        <span className="text-white/30">/</span>
-        <Link href="/badkamerstijl" className="hover:text-white transition-colors">Badkamerstijl</Link>
-        <span className="text-white/30">/</span>
-        <span className="text-white">Prijzen</span>
-      </nav>
-
       {/* HERO */}
-      <section className="relative h-[80vh] min-h-[600px] flex items-end overflow-hidden bg-black">
-        <div className="absolute inset-0">
+      <section className="px-3 md:px-5 pt-3 md:pt-5">
+        <div className="relative h-[80vh] min-h-[560px] w-full overflow-hidden rounded-[20px] md:rounded-[28px] bg-bs26-ink flex items-end">
           <Image
             src="/badkamerstijl/2200xxs(30).jpg"
-            alt="Luxe badkamer renovatie prijzen"
+            alt="Luxe badkamer renovatie, prijzen en pakketten van Badkamerstijl"
             fill
             priority
             className="object-cover"
             sizes="100vw"
           />
-        </div>
-        <div className="absolute inset-0 z-10 bg-gradient-to-b from-black/55 via-black/25 to-black/85" />
+          <div className="absolute inset-0 bg-gradient-to-b from-black/55 via-black/25 to-black/85" />
 
-        <div className="relative z-20 w-full px-6 md:px-12 lg:px-20 pb-16 md:pb-24 max-w-[1600px] mx-auto">
-          <motion.span
-            initial={{ opacity: 0, y: 12 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-            className="inline-flex items-center gap-3 text-[11px] tracking-[0.3em] uppercase text-white/70 mb-6"
-          >
-            <span className="w-8 h-px bg-white/60" />
-            Transparante prijzen
-          </motion.span>
-          <motion.h1
-            initial={{ opacity: 0, y: 24 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
-            className="font-cormorant text-[clamp(2.5rem,7vw,7rem)] font-light leading-[1.02] tracking-[-0.02em] text-white max-w-5xl"
-          >
-            Wat kost een
-            <br />
-            <span className="italic">badkamer renovatie?</span>
-          </motion.h1>
-          <motion.p
-            initial={{ opacity: 0, y: 16 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.3 }}
-            className="mt-8 max-w-2xl text-white/80 text-base md:text-lg leading-relaxed"
-          >
-            Een complete badkamer renovatie kost in Nederland tussen de € 5.000 en € 60.000+. Hieronder lees je precies wat je voor welk budget krijgt - eerlijk, gespecificeerd en zonder verborgen kosten.
-          </motion.p>
-          <motion.div
-            initial={{ opacity: 0, y: 16 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.45 }}
-            className="mt-10 flex flex-col sm:flex-row gap-4"
-          >
-            <Link
-              href="/adviesgesprek"
-              className="group inline-flex items-center justify-center gap-3 bg-white text-bsv2-charcoal text-sm font-medium px-8 py-4 rounded-full hover:bg-bsv2-teal hover:text-white transition-colors"
+          <div className="relative z-20 w-full px-6 md:px-12 lg:px-16 pb-14 md:pb-20 max-w-[1500px] mx-auto">
+            <nav aria-label="Kruimelpad" className="flex items-center gap-2 text-[11px] tracking-[0.18em] uppercase text-white/65 mb-6">
+              <Link href="/" className="hover:text-white transition-colors">Home</Link>
+              <span className="text-white/30">/</span>
+              <span className="text-white">Prijzen</span>
+            </nav>
+            <motion.span
+              initial={{ opacity: 0, y: 12 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6 }}
+              className="inline-flex items-center gap-3 mb-5"
             >
-              Gratis offerte aanvragen
-              <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-            </Link>
-            <a
-              href="#calculator"
-              className="inline-flex items-center justify-center gap-3 border border-white/40 text-white text-sm font-medium px-8 py-4 rounded-full hover:bg-white/10 transition-colors"
+              <span className="w-8 h-px bg-bs26-gold-soft" />
+              <span className="bs26-eyebrow text-white/75">Transparante prijzen</span>
+            </motion.span>
+            <motion.h1
+              initial={{ opacity: 0, y: 24 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
+              className="font-display text-[clamp(2.5rem,7vw,7rem)] font-light leading-[1.0] tracking-[0.01em] text-white max-w-5xl"
             >
-              Direct naar prijscalculator
-            </a>
-          </motion.div>
+              Wat kost een
+              <br />
+              <span className="italic">badkamer renovatie?</span>
+            </motion.h1>
+            <motion.p
+              initial={{ opacity: 0, y: 16 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.3 }}
+              className="font-body mt-7 max-w-2xl text-white/80 text-base md:text-lg leading-relaxed"
+            >
+              Een complete badkamer renovatie kost in Nederland tussen de € 5.000 en € 60.000+. Hieronder lees je precies wat je voor welk budget krijgt, eerlijk, gespecificeerd en zonder verborgen kosten.
+            </motion.p>
+            <motion.div
+              initial={{ opacity: 0, y: 16 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.45 }}
+              className="mt-9 flex flex-col sm:flex-row gap-4"
+            >
+              <Link
+                href="/adviesgesprek"
+                className="group inline-flex items-center justify-center gap-3 bg-white text-bs26-ink text-sm font-medium px-8 py-4 rounded-full hover:bg-bs26-gold hover:text-white transition-colors"
+              >
+                Gratis offerte aanvragen
+                <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+              </Link>
+              <a
+                href="#calculator"
+                className="inline-flex items-center justify-center gap-3 border border-white/35 text-white text-sm font-medium px-8 py-4 rounded-full hover:bg-white/10 transition-colors"
+              >
+                Direct naar prijscalculator
+              </a>
+            </motion.div>
+          </div>
         </div>
       </section>
 
@@ -312,10 +307,8 @@ export default function PrijzenPage() {
       <section className="py-24 md:py-32 px-6 md:px-12 lg:px-20 max-w-[1400px] mx-auto">
         <div className="grid grid-cols-1 lg:grid-cols-[1fr_1.4fr] gap-12 lg:gap-20 items-start">
           <div>
-            <span className="text-bsv2-grey text-[11px] tracking-[0.15em] lowercase mb-6 block">
-              (Onze prijsfilosofie)
-            </span>
-            <h2 className="font-cormorant text-3xl md:text-4xl lg:text-5xl font-light leading-[1.15]">
+            <span className="bs26-eyebrow text-bs26-gold mb-5 block">Onze prijsfilosofie</span>
+            <h2 className="font-display text-3xl md:text-4xl lg:text-5xl font-light leading-[1.1]">
               Eerlijke prijs,
               <br />
               <span className="italic">geen verrassingen</span>
@@ -326,169 +319,136 @@ export default function PrijzenPage() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.8 }}
-            className="space-y-6 text-bsv2-charcoal/85 text-lg md:text-xl leading-[1.6]"
+            className="space-y-6"
           >
-            <p className="font-cormorant text-xl md:text-2xl lg:text-[1.75rem] font-light leading-[1.5]">
+            <p className="font-display text-xl md:text-2xl lg:text-[1.75rem] font-light leading-[1.5] text-bs26-charcoal">
               Wij geloven in volledige transparantie. Je krijgt vooraf een gespecificeerde offerte met daarin elk onderdeel: van sloopwerk en leidingen tot tegels, sanitair en afwerking.
             </p>
-            <p className="text-base md:text-lg text-bsv2-grey leading-relaxed">
-              De vier pakketten op deze pagina zijn richtprijzen, gebaseerd op honderden gerealiseerde projecten. Tijdens het gratis adviesgesprek vertalen we jouw wensen naar een vaste aanneemsom - geen nacalculatie, geen verborgen kosten.
-            </p>
-            <p className="text-base md:text-lg text-bsv2-grey leading-relaxed">
-              Wil je eerst een uitleg over wat een badkamer renovatie kost en welke factoren de prijs bepalen? Lees onze <Link href="/kosten" className="text-bsv2-charcoal underline underline-offset-2 hover:text-bsv2-teal transition-colors">kostengids voor 2026</Link>.
+            <p className="font-body text-base md:text-lg text-bs26-grey leading-relaxed">
+              De vier pakketten op deze pagina zijn richtprijzen, gebaseerd op honderden gerealiseerde projecten. Tijdens het gratis adviesgesprek vertalen we jouw wensen naar een vaste aanneemsom, geen nacalculatie, geen verborgen kosten.
             </p>
           </motion.div>
         </div>
       </section>
 
       {/* TIERS */}
-      <section className="py-24 md:py-32 px-6 md:px-12 lg:px-20 bg-white">
-        <div className="max-w-[1400px] mx-auto">
-          <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-6 mb-16">
-            <div>
-              <span className="text-bsv2-grey text-[11px] tracking-[0.15em] lowercase mb-4 block">
-                (Pakketten)
-              </span>
-              <h2 className="font-cormorant text-4xl md:text-5xl lg:text-6xl font-light leading-[1.1]">
-                Van Basis tot
-                <br />
-                <span className="italic">Luxe op maat</span>
-              </h2>
-            </div>
-            <p className="text-bsv2-grey text-sm max-w-md leading-relaxed">
-              Alle pakketten zijn inclusief eigen vakmensen, vaste aanneemsom en uitgebreide installatiegarantie. Materialen zijn op maat aan te passen.
-            </p>
+      <section className="py-4 md:py-8 px-6 md:px-12 lg:px-20 max-w-[1500px] mx-auto">
+        <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-6 mb-12 md:mb-16">
+          <div>
+            <span className="bs26-eyebrow text-bs26-gold mb-4 block">Pakketten</span>
+            <h2 className="font-display text-4xl md:text-5xl lg:text-6xl font-light leading-[1.05]">
+              Van Basis tot
+              <br />
+              <span className="italic">Luxe op maat</span>
+            </h2>
           </div>
+          <p className="font-body text-bs26-grey text-sm max-w-md leading-relaxed">
+            Alle pakketten zijn inclusief eigen vakmensen, vaste aanneemsom en uitgebreide installatiegarantie. Materialen zijn op maat aan te passen.
+          </p>
+        </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8">
-            {TIERS.map((tier, i) => (
-              <motion.article
-                key={tier.id}
-                initial={{ opacity: 0, y: 24 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, margin: '-50px' }}
-                transition={{ duration: 0.6, delay: (i % 2) * 0.1 }}
-                className={`relative rounded-2xl overflow-hidden flex flex-col ${
-                  tier.featured ? 'bg-bsv2-charcoal text-white' : 'bg-bsv2-cream text-bsv2-charcoal'
-                }`}
-              >
-                {tier.featured && (
-                  <span className="absolute top-6 right-6 z-10 text-[10px] tracking-[0.2em] uppercase bg-bsv2-pink text-bsv2-charcoal px-3 py-1 rounded-full">
-                    Populair
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-5 md:gap-6">
+          {TIERS.map((tier, i) => (
+            <motion.article
+              key={tier.id}
+              initial={{ opacity: 0, y: 24 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: '-50px' }}
+              transition={{ duration: 0.6, delay: (i % 2) * 0.1 }}
+              className={`relative rounded-[18px] overflow-hidden flex flex-col ${
+                tier.featured ? 'bg-bs26-ink text-white' : 'bg-bs26-paper text-bs26-charcoal'
+              }`}
+            >
+              {tier.featured && (
+                <span className="absolute top-6 right-6 z-10 text-[10px] tracking-[0.2em] uppercase bg-bs26-gold-soft text-bs26-ink px-3 py-1 rounded-full">
+                  Populair
+                </span>
+              )}
+              <div className="aspect-[16/9] relative">
+                <Image
+                  src={tier.image}
+                  alt={`Badkamer pakket ${tier.label} door Badkamerstijl, ${tier.range}`}
+                  fill
+                  className="object-cover"
+                  sizes="(max-width: 768px) 100vw, 50vw"
+                />
+              </div>
+              <div className="p-8 md:p-10 flex flex-col flex-1">
+                <div className="flex items-baseline justify-between mb-4 gap-4">
+                  <h3 className="font-display text-3xl md:text-4xl font-light">{tier.label}</h3>
+                  <span className={`text-[11px] tracking-[0.15em] uppercase ${tier.featured ? 'text-white/50' : 'text-bs26-grey'}`}>
+                    {tier.duration}
                   </span>
-                )}
-                <div className="aspect-[16/9] relative">
-                  <Image
-                    src={tier.image}
-                    alt={`Badkamer ${tier.label}`}
-                    fill
-                    className="object-cover"
-                    sizes="(max-width: 768px) 100vw, 50vw"
-                  />
                 </div>
-                <div className="p-8 md:p-10 flex flex-col flex-1">
-                  <div className="flex items-baseline justify-between mb-4 gap-4">
-                    <h3 className="font-cormorant text-3xl md:text-4xl font-light">{tier.label}</h3>
-                    <span
-                      className={`text-[11px] tracking-[0.15em] uppercase ${
-                        tier.featured ? 'text-white/50' : 'text-bsv2-grey'
-                      }`}
+                <p className="font-display text-2xl md:text-[1.75rem] font-light mb-5 leading-tight">
+                  {tier.range}
+                </p>
+                <p className={`font-body text-sm leading-relaxed mb-8 ${tier.featured ? 'text-white/75' : 'text-bs26-grey'}`}>
+                  {tier.summary}
+                </p>
+                <ul className="space-y-3 mb-8">
+                  {tier.includes.map((item) => (
+                    <li
+                      key={item}
+                      className={`font-body flex items-start gap-3 text-sm leading-relaxed ${tier.featured ? 'text-white/85' : 'text-bs26-charcoal/85'}`}
                     >
-                      {tier.duration}
-                    </span>
-                  </div>
-                  <p className="font-cormorant text-2xl md:text-[1.75rem] font-light mb-5 leading-tight">
-                    {tier.range}
-                  </p>
-                  <p
-                    className={`text-sm leading-relaxed mb-8 ${
-                      tier.featured ? 'text-white/75' : 'text-bsv2-grey'
-                    }`}
-                  >
-                    {tier.summary}
-                  </p>
-                  <ul className="space-y-3 mb-8">
-                    {tier.includes.map((item) => (
-                      <li
-                        key={item}
-                        className={`flex items-start gap-3 text-sm leading-relaxed ${
-                          tier.featured ? 'text-white/85' : 'text-bsv2-charcoal/85'
-                        }`}
-                      >
-                        <Check
-                          className={`w-4 h-4 mt-[3px] flex-shrink-0 ${
-                            tier.featured ? 'text-bsv2-pink' : 'text-bsv2-teal'
-                          }`}
-                        />
-                        <span>{item}</span>
-                      </li>
-                    ))}
-                  </ul>
-                  <Link
-                    href="/adviesgesprek"
-                    className={`mt-auto inline-flex items-center justify-center gap-2 text-sm font-medium px-6 py-3.5 rounded-full transition-colors ${
-                      tier.featured
-                        ? 'bg-bsv2-pink text-bsv2-charcoal hover:bg-white'
-                        : 'bg-bsv2-teal text-white hover:bg-bsv2-charcoal'
-                    }`}
-                  >
-                    Offerte voor {tier.label}
-                    <ArrowUpRight className="w-4 h-4" />
-                  </Link>
-                </div>
-              </motion.article>
-            ))}
-          </div>
+                      <Check className={`w-4 h-4 mt-[3px] flex-shrink-0 ${tier.featured ? 'text-bs26-gold-soft' : 'text-bs26-gold'}`} />
+                      <span>{item}</span>
+                    </li>
+                  ))}
+                </ul>
+                <Link
+                  href="/adviesgesprek"
+                  className={`mt-auto inline-flex items-center justify-center gap-2 text-sm font-medium px-6 py-3.5 rounded-full transition-colors ${
+                    tier.featured
+                      ? 'bg-white text-bs26-ink hover:bg-bs26-gold hover:text-white'
+                      : 'bg-bs26-ink text-white hover:bg-bs26-gold'
+                  }`}
+                >
+                  Offerte voor {tier.label}
+                  <ArrowUpRight className="w-4 h-4" />
+                </Link>
+              </div>
+            </motion.article>
+          ))}
         </div>
       </section>
 
       {/* CALCULATOR */}
-      <section
-        id="calculator"
-        className="py-24 md:py-32 px-6 md:px-12 lg:px-20 bg-bsv2-cream scroll-mt-24"
-      >
+      <section id="calculator" className="py-24 md:py-32 px-6 md:px-12 lg:px-20 scroll-mt-24">
         <div className="max-w-[1200px] mx-auto">
           <div className="grid grid-cols-1 lg:grid-cols-[1fr_1.2fr] gap-12 lg:gap-20 items-start">
             <div>
-              <span className="text-bsv2-grey text-[11px] tracking-[0.15em] lowercase mb-6 block">
-                (Prijscalculator)
-              </span>
-              <h2 className="font-cormorant text-4xl md:text-5xl lg:text-6xl font-light leading-[1.1] mb-6">
+              <span className="bs26-eyebrow text-bs26-gold mb-5 block">Prijscalculator</span>
+              <h2 className="font-display text-4xl md:text-5xl lg:text-6xl font-light leading-[1.05] mb-6">
                 Bereken jouw
                 <br />
                 <span className="italic">indicatieve prijs</span>
               </h2>
-              <p className="text-bsv2-grey text-base md:text-lg leading-relaxed max-w-md">
+              <p className="font-body text-bs26-grey text-base md:text-lg leading-relaxed max-w-md">
                 Een snelle inschatting op basis van afmeting, afwerking en leidingwerk. Voor een exacte prijs maken we tijdens het adviesgesprek een offerte op maat.
               </p>
             </div>
 
-            <div className="bg-white rounded-2xl p-8 md:p-10 border border-bsv2-charcoal/[0.06]">
+            <div className="bg-bs26-paper rounded-[18px] p-8 md:p-10 border border-bs26-charcoal/[0.06] shadow-[0_24px_60px_-30px_rgba(34,31,26,0.35)]">
               {/* Size */}
               <fieldset className="mb-8">
-                <legend className="text-[11px] tracking-[0.15em] uppercase text-bsv2-grey mb-4 block">
-                  Afmeting badkamer
-                </legend>
+                <legend className="text-[11px] tracking-[0.15em] uppercase text-bs26-grey mb-4 block">Afmeting badkamer</legend>
                 <div className="grid grid-cols-2 gap-3">
                   {SIZES.map((s) => (
                     <button
                       key={s.id}
                       type="button"
                       onClick={() => setSize(s.id)}
+                      aria-pressed={size === s.id}
                       className={`text-left px-5 py-4 rounded-xl border transition-colors ${
                         size === s.id
-                          ? 'border-bsv2-charcoal bg-bsv2-charcoal text-white'
-                          : 'border-bsv2-charcoal/15 hover:border-bsv2-charcoal/40 text-bsv2-charcoal'
+                          ? 'border-bs26-ink bg-bs26-ink text-white'
+                          : 'border-bs26-charcoal/15 hover:border-bs26-charcoal/40 text-bs26-charcoal'
                       }`}
                     >
-                      <span className="block font-cormorant text-lg">{s.label}</span>
-                      <span
-                        className={`block text-xs mt-0.5 ${
-                          size === s.id ? 'text-white/60' : 'text-bsv2-grey'
-                        }`}
-                      >
-                        {s.sub}
-                      </span>
+                      <span className="block font-display text-lg">{s.label}</span>
+                      <span className={`block text-xs mt-0.5 ${size === s.id ? 'text-white/60' : 'text-bs26-grey'}`}>{s.sub}</span>
                     </button>
                   ))}
                 </div>
@@ -496,19 +456,18 @@ export default function PrijzenPage() {
 
               {/* Finish */}
               <fieldset className="mb-8">
-                <legend className="text-[11px] tracking-[0.15em] uppercase text-bsv2-grey mb-4 block">
-                  Afwerkingsniveau
-                </legend>
+                <legend className="text-[11px] tracking-[0.15em] uppercase text-bs26-grey mb-4 block">Afwerkingsniveau</legend>
                 <div className="grid grid-cols-2 sm:grid-cols-4 gap-2">
                   {FINISHES.map((f) => (
                     <button
                       key={f.id}
                       type="button"
                       onClick={() => setFinish(f.id)}
+                      aria-pressed={finish === f.id}
                       className={`px-4 py-3 rounded-xl text-sm font-medium border transition-colors ${
                         finish === f.id
-                          ? 'border-bsv2-teal bg-bsv2-teal text-white'
-                          : 'border-bsv2-charcoal/15 hover:border-bsv2-charcoal/40 text-bsv2-charcoal'
+                          ? 'border-bs26-ink bg-bs26-ink text-white'
+                          : 'border-bs26-charcoal/15 hover:border-bs26-charcoal/40 text-bs26-charcoal'
                       }`}
                     >
                       {f.label}
@@ -519,50 +478,41 @@ export default function PrijzenPage() {
 
               {/* Complexity */}
               <fieldset className="mb-10">
-                <legend className="text-[11px] tracking-[0.15em] uppercase text-bsv2-grey mb-4 block">
-                  Leidingwerk
-                </legend>
+                <legend className="text-[11px] tracking-[0.15em] uppercase text-bs26-grey mb-4 block">Leidingwerk</legend>
                 <div className="space-y-2">
                   {COMPLEXITIES.map((c) => (
                     <button
                       key={c.id}
                       type="button"
                       onClick={() => setComplexity(c.id)}
+                      aria-pressed={complexity === c.id}
                       className={`w-full text-left px-5 py-4 rounded-xl border transition-colors ${
                         complexity === c.id
-                          ? 'border-bsv2-charcoal bg-bsv2-charcoal text-white'
-                          : 'border-bsv2-charcoal/15 hover:border-bsv2-charcoal/40 text-bsv2-charcoal'
+                          ? 'border-bs26-ink bg-bs26-ink text-white'
+                          : 'border-bs26-charcoal/15 hover:border-bs26-charcoal/40 text-bs26-charcoal'
                       }`}
                     >
                       <span className="block text-sm font-medium">{c.label}</span>
-                      <span
-                        className={`block text-xs mt-0.5 ${
-                          complexity === c.id ? 'text-white/60' : 'text-bsv2-grey'
-                        }`}
-                      >
-                        {c.sub}
-                      </span>
+                      <span className={`block text-xs mt-0.5 ${complexity === c.id ? 'text-white/60' : 'text-bs26-grey'}`}>{c.sub}</span>
                     </button>
                   ))}
                 </div>
               </fieldset>
 
               {/* Output */}
-              <div className="border-t border-bsv2-charcoal/10 pt-8">
-                <span className="text-[11px] tracking-[0.15em] uppercase text-bsv2-grey block mb-3">
-                  Indicatieve aanneemsom
-                </span>
-                <p className="font-cormorant text-3xl md:text-[2.5rem] font-light leading-tight">
+              <div className="border-t border-bs26-charcoal/10 pt-8">
+                <span className="text-[11px] tracking-[0.15em] uppercase text-bs26-grey block mb-3">Indicatieve aanneemsom</span>
+                <p className="font-display text-3xl md:text-[2.5rem] font-light leading-tight">
                   {formatEuro(estimate.low)}
-                  <span className="text-bsv2-grey mx-3 text-2xl md:text-3xl">-</span>
+                  <span className="text-bs26-grey mx-3 text-2xl md:text-3xl">-</span>
                   {formatEuro(estimate.high)}
                 </p>
-                <p className="text-xs text-bsv2-grey mt-3 leading-relaxed">
+                <p className="font-body text-xs text-bs26-grey mt-3 leading-relaxed">
                   Indicatie inclusief sloop, materiaal en montage. Definitieve prijs na opname op locatie.
                 </p>
                 <Link
                   href="/adviesgesprek"
-                  className="group mt-6 inline-flex items-center gap-2 bg-bsv2-teal text-white text-sm font-medium px-6 py-3.5 rounded-full hover:bg-bsv2-charcoal transition-colors"
+                  className="group mt-6 inline-flex items-center gap-2 bg-bs26-ink text-white text-sm font-medium px-6 py-3.5 rounded-full hover:bg-bs26-gold transition-colors"
                 >
                   Vraag offerte op maat
                   <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
@@ -574,66 +524,56 @@ export default function PrijzenPage() {
       </section>
 
       {/* FACTORS */}
-      <section className="py-24 md:py-32 px-6 md:px-12 lg:px-20 bg-white">
-        <div className="max-w-[1400px] mx-auto">
-          <span className="text-bsv2-grey text-[11px] tracking-[0.15em] lowercase mb-6 block">
-            (Wat bepaalt de prijs)
-          </span>
-          <h2 className="font-cormorant text-4xl md:text-5xl lg:text-6xl font-light leading-[1.1] mb-14 max-w-3xl">
-            Factoren die de
-            <br />
-            <span className="italic">prijs beïnvloeden</span>
-          </h2>
+      <section className="py-20 md:py-28 px-6 md:px-12 lg:px-20 max-w-[1500px] mx-auto">
+        <span className="bs26-eyebrow text-bs26-gold mb-5 block">Wat bepaalt de prijs</span>
+        <h2 className="font-display text-4xl md:text-5xl lg:text-6xl font-light leading-[1.05] mb-14 max-w-3xl">
+          Factoren die de
+          <br />
+          <span className="italic">prijs beïnvloeden</span>
+        </h2>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-y-12 gap-x-10">
-            {FACTORS.map((factor, i) => (
-              <motion.div
-                key={factor.title}
-                initial={{ opacity: 0, y: 16 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: (i % 4) * 0.06 }}
-                className="border-t border-bsv2-charcoal/15 pt-6"
-              >
-                <span className="text-bsv2-grey text-[11px] tracking-[0.15em] mb-3 block">
-                  0{i + 1}
-                </span>
-                <h3 className="font-cormorant text-xl md:text-2xl font-light mb-3 leading-tight">
-                  {factor.title}
-                </h3>
-                <p className="text-bsv2-grey text-sm leading-relaxed">{factor.desc}</p>
-              </motion.div>
-            ))}
-          </div>
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-y-12 gap-x-10">
+          {FACTORS.map((factor, i) => (
+            <motion.div
+              key={factor.title}
+              initial={{ opacity: 0, y: 16 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5, delay: (i % 4) * 0.06 }}
+              className="border-t border-bs26-charcoal/15 pt-6"
+            >
+              <span className="font-display text-bs26-gold text-2xl block mb-2">0{i + 1}</span>
+              <h3 className="font-display text-xl md:text-2xl font-light mb-3 leading-tight">{factor.title}</h3>
+              <p className="font-body text-bs26-grey text-sm leading-relaxed">{factor.desc}</p>
+            </motion.div>
+          ))}
         </div>
       </section>
 
       {/* SERVICES CTA */}
-      <section className="py-24 md:py-32 px-6 md:px-12 lg:px-20 bg-bsv2-cream">
-        <div className="max-w-[1400px] mx-auto grid grid-cols-1 lg:grid-cols-[1.2fr_1fr] gap-12 lg:gap-20 items-center">
+      <section className="py-20 md:py-28 px-6 md:px-12 lg:px-20 max-w-[1500px] mx-auto">
+        <div className="grid grid-cols-1 lg:grid-cols-[1.2fr_1fr] gap-12 lg:gap-20 items-center">
           <div>
-            <span className="text-bsv2-grey text-[11px] tracking-[0.15em] lowercase mb-6 block">
-              (Wat we leveren)
-            </span>
-            <h2 className="font-cormorant text-4xl md:text-5xl lg:text-6xl font-light leading-[1.1] mb-8">
+            <span className="bs26-eyebrow text-bs26-gold mb-5 block">Wat we leveren</span>
+            <h2 className="font-display text-4xl md:text-5xl lg:text-6xl font-light leading-[1.05] mb-8">
               Voor elk pakket:
               <br />
               <span className="italic">eigen vakmensen</span>
             </h2>
-            <p className="text-bsv2-grey text-base md:text-lg leading-relaxed mb-8 max-w-2xl">
-              Wij werken niet met onderaannemers. Onze monteurs, tegelzetters en loodgieters zijn in vaste dienst - daardoor leveren we consistente kwaliteit, ongeacht het pakket dat je kiest.
+            <p className="font-body text-bs26-grey text-base md:text-lg leading-relaxed mb-8 max-w-2xl">
+              Wij werken niet met onderaannemers. Onze monteurs, tegelzetters en loodgieters zijn in vaste dienst, daardoor leveren we consistente kwaliteit, ongeacht het pakket dat je kiest.
             </p>
             <div className="flex flex-col sm:flex-row gap-4">
               <Link
                 href="/diensten"
-                className="inline-flex items-center justify-center gap-3 bg-bsv2-teal text-white text-sm font-medium px-8 py-4 rounded-full hover:bg-bsv2-charcoal transition-colors"
+                className="inline-flex items-center justify-center gap-3 bg-bs26-ink text-white text-sm font-medium px-8 py-4 rounded-full hover:bg-bs26-gold transition-colors"
               >
                 Bekijk alle diensten
                 <ArrowUpRight className="w-4 h-4" />
               </Link>
               <Link
                 href="/portfolio"
-                className="inline-flex items-center justify-center gap-3 border border-bsv2-charcoal text-bsv2-charcoal text-sm font-medium px-8 py-4 rounded-full hover:bg-bsv2-charcoal hover:text-white transition-colors"
+                className="inline-flex items-center justify-center gap-3 border border-bs26-charcoal/40 text-bs26-charcoal text-sm font-medium px-8 py-4 rounded-full hover:bg-bs26-ink hover:text-white hover:border-bs26-ink transition-colors"
               >
                 Bekijk portfolio
               </Link>
@@ -644,11 +584,11 @@ export default function PrijzenPage() {
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.8 }}
-            className="aspect-[4/5] relative overflow-hidden"
+            className="aspect-[4/5] relative overflow-hidden rounded-[18px]"
           >
             <Image
               src="/badkamerstijl/2200xxs(43).jpg"
-              alt="Eigen vakmensen aan het werk"
+              alt="Eigen vakmensen van Badkamerstijl aan het werk in een badkamer"
               fill
               className="object-cover"
               sizes="(max-width: 1024px) 100vw, 40vw"
@@ -658,110 +598,104 @@ export default function PrijzenPage() {
       </section>
 
       {/* FAQ */}
-      <section className="py-24 md:py-32 px-6 md:px-12 lg:px-20 bg-white">
-        <div className="max-w-[1100px] mx-auto">
-          <span className="text-bsv2-grey text-[11px] tracking-[0.15em] lowercase mb-6 block">
-            (Veelgestelde vragen)
-          </span>
-          <h2 className="font-cormorant text-4xl md:text-5xl lg:text-6xl font-light leading-[1.1] mb-14">
-            Vragen over
-            <br />
-            <span className="italic">prijzen en betaling</span>
-          </h2>
+      <section className="py-20 md:py-28 px-6 md:px-12 lg:px-20 max-w-[1100px] mx-auto">
+        <span className="bs26-eyebrow text-bs26-gold mb-5 block">Veelgestelde vragen</span>
+        <h2 className="font-display text-4xl md:text-5xl lg:text-6xl font-light leading-[1.05] mb-12">
+          Vragen over
+          <br />
+          <span className="italic">prijzen en betaling</span>
+        </h2>
 
-          <div className="divide-y divide-bsv2-charcoal/10 border-y border-bsv2-charcoal/10">
-            {FAQS.map((faq, i) => {
-              const open = openFaq === i;
-              return (
-                <div key={faq.q}>
-                  <button
-                    type="button"
-                    onClick={() => setOpenFaq(open ? null : i)}
-                    aria-expanded={open}
-                    className="w-full flex items-start justify-between gap-6 py-7 text-left group"
-                  >
-                    <span className="font-cormorant text-xl md:text-2xl font-light leading-snug pr-6 group-hover:text-bsv2-teal transition-colors">
-                      {faq.q}
-                    </span>
-                    <span className="flex-shrink-0 mt-1 w-9 h-9 rounded-full border border-bsv2-charcoal/20 flex items-center justify-center group-hover:bg-bsv2-charcoal group-hover:text-white group-hover:border-bsv2-charcoal transition-colors">
-                      {open ? <Minus className="w-4 h-4" /> : <Plus className="w-4 h-4" />}
-                    </span>
-                  </button>
-                  <motion.div
-                    initial={false}
-                    animate={{ height: open ? 'auto' : 0, opacity: open ? 1 : 0 }}
-                    transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
-                    className="overflow-hidden"
-                  >
-                    <p className="pb-7 text-bsv2-grey text-base leading-relaxed max-w-3xl">
-                      {faq.a}
-                    </p>
-                  </motion.div>
+        <div className="flex flex-col">
+          {FAQS.map((faq, i) => {
+            const open = openFaq === i;
+            return (
+              <div key={faq.q} className="border-b border-bs26-charcoal/12 first:border-t">
+                <button
+                  type="button"
+                  onClick={() => setOpenFaq(open ? null : i)}
+                  aria-expanded={open}
+                  aria-controls={`prijzen-faq-panel-${i}`}
+                  id={`prijzen-faq-button-${i}`}
+                  className="w-full flex items-start justify-between gap-6 py-6 text-left group"
+                >
+                  <span className="font-display text-xl md:text-2xl font-medium leading-snug pr-6 group-hover:text-bs26-gold transition-colors">
+                    {faq.q}
+                  </span>
+                  <span className="flex-shrink-0 mt-1 w-9 h-9 rounded-full border border-bs26-charcoal/20 flex items-center justify-center text-bs26-ink group-hover:bg-bs26-ink group-hover:text-white group-hover:border-bs26-ink transition-colors">
+                    {open ? <Minus className="w-4 h-4" /> : <Plus className="w-4 h-4" />}
+                  </span>
+                </button>
+                <div
+                  id={`prijzen-faq-panel-${i}`}
+                  role="region"
+                  aria-labelledby={`prijzen-faq-button-${i}`}
+                  className={`grid transition-all duration-300 ease-out ${open ? 'grid-rows-[1fr] opacity-100' : 'grid-rows-[0fr] opacity-0'}`}
+                >
+                  <div className="overflow-hidden">
+                    <p className="font-body pb-6 text-bs26-grey text-base leading-relaxed max-w-3xl">{faq.a}</p>
+                  </div>
                 </div>
-              );
-            })}
-          </div>
+              </div>
+            );
+          })}
         </div>
       </section>
 
       {/* CITY LINKS */}
-      <section className="py-20 md:py-28 px-6 md:px-12 lg:px-20 bg-bsv2-cream border-t border-bsv2-charcoal/[0.06]">
-        <div className="max-w-[1400px] mx-auto">
-          <span className="text-bsv2-grey text-[11px] tracking-[0.15em] lowercase mb-6 block">
-            (Lokaal actief)
-          </span>
-          <h2 className="font-cormorant text-3xl md:text-4xl lg:text-5xl font-light leading-[1.15] mb-10 max-w-3xl">
-            Badkamer renovatie in
-            <br />
-            <span className="italic">heel Nederland</span>
-          </h2>
-          <div className="flex flex-wrap gap-3">
-            {CITY_LINKS.map((c) => (
-              <Link
-                key={c.slug}
-                href={`/badkamerstijl/${c.slug}`}
-                className="inline-flex items-center gap-2 bg-white text-bsv2-charcoal text-sm px-5 py-3 rounded-full border border-bsv2-charcoal/[0.08] hover:bg-bsv2-charcoal hover:text-white transition-colors"
-              >
-                Prijzen in {c.name}
-                <ArrowUpRight className="w-3.5 h-3.5" />
-              </Link>
-            ))}
-          </div>
+      <section className="py-16 md:py-24 px-6 md:px-12 lg:px-20 max-w-[1500px] mx-auto border-t border-bs26-charcoal/[0.08]">
+        <span className="bs26-eyebrow text-bs26-gold mb-5 block">Lokaal actief</span>
+        <h2 className="font-display text-3xl md:text-4xl lg:text-5xl font-light leading-[1.1] mb-10 max-w-3xl">
+          Badkamer renovatie in
+          <br />
+          <span className="italic">heel Nederland</span>
+        </h2>
+        <div className="flex flex-wrap gap-3">
+          {CITY_LINKS.map((c) => (
+            <Link
+              key={c.slug}
+              href={`/${c.slug}`}
+              className="inline-flex items-center gap-2 bg-bs26-paper text-bs26-charcoal text-sm px-5 py-3 rounded-full border border-bs26-charcoal/[0.1] hover:bg-bs26-ink hover:text-white hover:border-bs26-ink transition-colors"
+            >
+              Prijzen in {c.name}
+              <ArrowUpRight className="w-3.5 h-3.5" />
+            </Link>
+          ))}
         </div>
       </section>
 
       {/* FINAL CTA */}
-      <section className="py-24 md:py-32 px-6 md:px-12 lg:px-20 bg-bsv2-charcoal text-white">
-        <div className="max-w-[1100px] mx-auto text-center">
-          <span className="text-white/40 text-[11px] tracking-[0.15em] lowercase mb-6 block">
-            (Volgende stap)
-          </span>
-          <h2 className="font-cormorant text-4xl md:text-5xl lg:text-6xl font-light leading-[1.1] mb-8">
-            Een offerte op maat,
-            <br />
-            <span className="italic">binnen 5 werkdagen</span>
-          </h2>
-          <p className="text-white/70 text-base md:text-lg leading-relaxed mb-10 max-w-2xl mx-auto">
-            Plan een vrijblijvend adviesgesprek. Wij komen langs, meten op, bespreken jouw wensen en sturen binnen 5 werkdagen een gespecificeerde offerte met vaste prijs.
-          </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Link
-              href="/adviesgesprek"
-              className="group inline-flex items-center justify-center gap-3 bg-bsv2-pink text-bsv2-charcoal text-sm font-medium px-8 py-4 rounded-full hover:bg-white transition-colors"
-            >
-              Gratis offerte aanvragen
-              <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-            </Link>
-            <Link
-              href="/portfolio"
-              className="inline-flex items-center justify-center gap-3 border border-white/40 text-white text-sm font-medium px-8 py-4 rounded-full hover:bg-white/10 transition-colors"
-            >
-              Eerst portfolio bekijken
-            </Link>
+      <section className="px-3 md:px-5 py-12 md:py-20">
+        <div className="bg-bs26-ink text-white rounded-[20px] md:rounded-[28px] py-20 md:py-28 px-6 md:px-16">
+          <div className="max-w-[1100px] mx-auto text-center">
+            <span className="bs26-eyebrow text-bs26-gold-soft mb-5 block">Volgende stap</span>
+            <h2 className="font-display text-4xl md:text-5xl lg:text-6xl font-light leading-[1.05] mb-7">
+              Een offerte op maat,
+              <br />
+              <span className="italic">binnen 5 werkdagen</span>
+            </h2>
+            <p className="font-body text-white/70 text-base md:text-lg leading-relaxed mb-10 max-w-2xl mx-auto">
+              Plan een vrijblijvend adviesgesprek. Wij komen langs, meten op, bespreken jouw wensen en sturen binnen 5 werkdagen een gespecificeerde offerte met vaste prijs.
+            </p>
+            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+              <Link
+                href="/adviesgesprek"
+                className="group inline-flex items-center justify-center gap-3 bg-white text-bs26-ink text-sm font-medium px-8 py-4 rounded-full hover:bg-bs26-gold hover:text-white transition-colors"
+              >
+                Gratis offerte aanvragen
+                <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+              </Link>
+              <Link
+                href="/portfolio"
+                className="inline-flex items-center justify-center gap-3 border border-white/40 text-white text-sm font-medium px-8 py-4 rounded-full hover:bg-white/10 transition-colors"
+              >
+                Eerst portfolio bekijken
+              </Link>
+            </div>
           </div>
         </div>
       </section>
-
     </main>
+    </MotionConfig>
   );
 }
