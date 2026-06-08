@@ -64,9 +64,9 @@ export default function CookieConsent() {
       role="dialog"
       aria-label="Cookie-toestemming"
       aria-live="polite"
-      className="bs26 fixed bottom-4 left-4 right-4 md:left-auto md:right-6 md:bottom-6 z-[70] md:max-w-md bg-bs26-ink text-white rounded-2xl shadow-[0_24px_60px_-20px_rgba(0,0,0,0.6)] border border-white/10 p-6"
+      className="fixed bottom-4 left-4 right-4 md:left-auto md:right-6 md:bottom-6 z-[70] md:max-w-md bg-bs26-ink text-white rounded-2xl shadow-[0_24px_60px_-20px_rgba(0,0,0,0.6)] border border-white/10 p-6"
     >
-      <h2 className="font-display text-xl font-light mb-2">Cookies</h2>
+      <h2 className="text-xl font-light mb-2" style={{ fontFamily: 'var(--font-display)' }}>Cookies</h2>
       <p className="font-body text-white/70 text-sm leading-relaxed mb-5">
         We gebruiken analytische cookies om de site te verbeteren. Die plaatsen we
         alleen met jouw toestemming. Lees meer in ons{' '}
