@@ -73,11 +73,11 @@ export default function HeroAdviesTool({ brand, className = '', city }: Props) {
 
   // brand-aware palette + copy ------------------------------------
   const isBadk = brand === 'badkamerstijl';
-  const accent = isBadk ? 'bsv2-teal' : 'woon-accent';
-  const accentBg = isBadk ? 'bg-bsv2-teal' : 'bg-woon-accent';
-  const accentBorder = isBadk ? 'border-bsv2-teal' : 'border-woon-accent';
-  const accentText = isBadk ? 'text-bsv2-teal' : 'text-woon-accent';
-  const accentHoverBg = isBadk ? 'hover:bg-bsv2-teal' : 'hover:bg-woon-accent';
+  const accent = isBadk ? 'bs26-gold' : 'woon-accent';
+  const accentBg = isBadk ? 'bg-bs26-ink' : 'bg-woon-accent';
+  const accentBorder = isBadk ? 'border-bs26-gold' : 'border-woon-accent';
+  const accentText = isBadk ? 'text-bs26-gold' : 'text-woon-accent';
+  const accentHoverBg = isBadk ? 'hover:bg-bs26-gold' : 'hover:bg-woon-accent';
   const onAccentText = isBadk ? 'text-white' : 'text-woon-dark';
 
   const projectTypes = isBadk ? PROJECT_TYPES_BADK : PROJECT_TYPES_WOON;

@@ -33,7 +33,7 @@ export default function BlogArticle({
   const readingTime = calculateReadingTime(post.content);
 
   return (
-    <main className="bsv2-page bg-bsv2-cream text-bsv2-charcoal overflow-x-hidden">
+    <main className="bs26 bg-bs26-cream text-bs26-charcoal overflow-x-hidden">
       <BadkamerstijlFloatingNav />
 
       {/* Breadcrumb (over hero) */}
@@ -76,7 +76,7 @@ export default function BlogArticle({
             initial={{ opacity: 0, y: 24 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
-            className="font-cormorant text-[clamp(2rem,5.5vw,5.5rem)] font-light leading-[1.05] tracking-[-0.015em] text-white max-w-4xl"
+            className="font-display text-[clamp(2rem,5.5vw,5.5rem)] font-light leading-[1.05] tracking-[-0.015em] text-white max-w-4xl"
           >
             {post.title}
           </motion.h1>
@@ -105,18 +105,18 @@ export default function BlogArticle({
           <aside className="lg:sticky lg:top-28 self-start space-y-10">
             {headings.length > 0 && (
               <nav aria-label="Inhoudsopgave">
-                <span className="text-bsv2-grey text-[11px] tracking-[0.15em] lowercase mb-5 block">
+                <span className="text-bs26-grey text-[11px] tracking-[0.15em] lowercase mb-5 block">
                   (Inhoud)
                 </span>
-                <ul className="space-y-2.5 border-l border-bsv2-charcoal/15 pl-5">
+                <ul className="space-y-2.5 border-l border-bs26-charcoal/15 pl-5">
                   {headings.map((h) => (
                     <li key={h.id} className={h.level === 3 ? 'pl-4' : ''}>
                       <a
                         href={`#${h.id}`}
-                        className={`block text-bsv2-charcoal/70 hover:text-bsv2-teal transition-colors ${
+                        className={`block text-bs26-charcoal/70 hover:text-bs26-gold transition-colors ${
                           h.level === 2
                             ? 'text-sm font-medium'
-                            : 'text-[13px] text-bsv2-charcoal/55'
+                            : 'text-[13px] text-bs26-charcoal/55'
                         }`}
                       >
                         {h.text}
@@ -130,24 +130,24 @@ export default function BlogArticle({
 
           {/* ARTICLE */}
           <article className="max-w-[720px]">
-            <p className="font-cormorant text-2xl md:text-[1.75rem] font-light leading-[1.4] text-bsv2-charcoal mb-12 pb-12 border-b border-bsv2-charcoal/10">
+            <p className="font-display text-2xl md:text-[1.75rem] font-light leading-[1.4] text-bs26-charcoal mb-12 pb-12 border-b border-bs26-charcoal/10">
               {post.excerpt}
             </p>
 
             <BlogContent content={post.content} />
 
             {/* Mid-article CTA */}
-            <div className="my-16 p-8 md:p-10 bg-bsv2-charcoal text-white rounded-2xl">
+            <div className="my-16 p-8 md:p-10 bg-bs26-ink text-white rounded-2xl">
               <span className="text-white/40 text-[11px] tracking-[0.15em] uppercase mb-4 block">
                 Klaar om te starten?
               </span>
-              <p className="font-cormorant text-2xl md:text-3xl font-light leading-[1.3] mb-6 max-w-lg">
+              <p className="font-display text-2xl md:text-3xl font-light leading-[1.3] mb-6 max-w-lg">
                 Vraag een gratis offerte aan en ontdek wat jouw badkamer kan kosten.
               </p>
               <div className="flex flex-col sm:flex-row gap-3">
                 <Link
                   href="/adviesgesprek"
-                  className="group inline-flex items-center justify-center gap-2 bg-bsv2-pink text-bsv2-charcoal text-sm font-medium px-6 py-3.5 rounded-full hover:bg-white transition-colors"
+                  className="group inline-flex items-center justify-center gap-2 bg-bs26-gold-soft text-bs26-charcoal text-sm font-medium px-6 py-3.5 rounded-full hover:bg-white transition-colors"
                 >
                   Gratis offerte
                   <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
@@ -162,10 +162,10 @@ export default function BlogArticle({
             </div>
 
             {/* Back to blog */}
-            <div className="mt-12 pt-10 border-t border-bsv2-charcoal/10">
+            <div className="mt-12 pt-10 border-t border-bs26-charcoal/10">
               <Link
                 href="/blog"
-                className="inline-flex items-center gap-2 text-bsv2-teal text-sm font-medium hover:gap-3 transition-all"
+                className="inline-flex items-center gap-2 text-bs26-gold text-sm font-medium hover:gap-3 transition-all"
               >
                 <ArrowLeft className="w-4 h-4" />
                 Terug naar het overzicht
@@ -177,14 +177,14 @@ export default function BlogArticle({
 
       {/* RELATED POSTS */}
       {relatedPosts.length > 0 && (
-        <section className="px-6 md:px-12 lg:px-20 py-20 md:py-28 bg-white border-t border-bsv2-charcoal/[0.06]">
+        <section className="px-6 md:px-12 lg:px-20 py-20 md:py-28 bg-white border-t border-bs26-charcoal/[0.06]">
           <div className="max-w-[1400px] mx-auto">
             <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-6 mb-12">
               <div>
-                <span className="text-bsv2-grey text-[11px] tracking-[0.15em] lowercase mb-4 block">
+                <span className="text-bs26-grey text-[11px] tracking-[0.15em] lowercase mb-4 block">
                   (Verder lezen)
                 </span>
-                <h2 className="font-cormorant text-3xl md:text-4xl lg:text-5xl font-light leading-[1.1]">
+                <h2 className="font-display text-3xl md:text-4xl lg:text-5xl font-light leading-[1.1]">
                   Gerelateerde
                   <br />
                   <span className="italic">artikelen</span>
@@ -192,7 +192,7 @@ export default function BlogArticle({
               </div>
               <Link
                 href="/blog"
-                className="inline-flex items-center gap-2 text-bsv2-teal text-sm font-medium hover:gap-3 transition-all"
+                className="inline-flex items-center gap-2 text-bs26-gold text-sm font-medium hover:gap-3 transition-all"
               >
                 Alle artikelen <ArrowRight className="w-4 h-4" />
               </Link>
@@ -217,16 +217,16 @@ export default function BlogArticle({
                         sizes="(max-width: 768px) 100vw, 33vw"
                       />
                     </div>
-                    <span className="text-[11px] tracking-[0.2em] uppercase text-bsv2-teal mb-3 block">
+                    <span className="text-[11px] tracking-[0.2em] uppercase text-bs26-gold mb-3 block">
                       {CATEGORY_LABEL[related.category]}
                     </span>
-                    <h3 className="font-cormorant text-xl md:text-2xl font-light leading-[1.25] mb-3 group-hover:text-bsv2-teal transition-colors">
+                    <h3 className="font-display text-xl md:text-2xl font-light leading-[1.25] mb-3 group-hover:text-bs26-gold transition-colors">
                       {related.title}
                     </h3>
-                    <p className="text-bsv2-grey text-sm leading-relaxed line-clamp-2 mb-3">
+                    <p className="text-bs26-grey text-sm leading-relaxed line-clamp-2 mb-3">
                       {related.excerpt}
                     </p>
-                    <span className="text-xs text-bsv2-grey">
+                    <span className="text-xs text-bs26-grey">
                       {formatDate(related.date)} · {calculateReadingTime(related.content)} min lezen
                     </span>
                   </Link>

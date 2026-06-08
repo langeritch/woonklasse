@@ -48,7 +48,7 @@ export default function BlogIndex({
   const grid = featured ? posts.slice(1) : posts;
 
   return (
-    <main className="bsv2-page bg-bsv2-cream text-bsv2-charcoal overflow-x-hidden min-h-screen">
+    <main className="bs26 bg-bs26-cream text-bs26-charcoal overflow-x-hidden min-h-screen">
       <BadkamerstijlFloatingNav />
 
       <nav
@@ -87,7 +87,7 @@ export default function BlogIndex({
             initial={{ opacity: 0, y: 24 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
-            className="font-cormorant text-[clamp(2.5rem,6.5vw,6.5rem)] font-light leading-[1.02] tracking-[-0.02em] text-white max-w-4xl"
+            className="font-display text-[clamp(2.5rem,6.5vw,6.5rem)] font-light leading-[1.02] tracking-[-0.02em] text-white max-w-4xl"
           >
             Verhalen, tips en
             <br />
@@ -105,7 +105,7 @@ export default function BlogIndex({
       </section>
 
       {/* CATEGORY TABS */}
-      <section className="sticky top-0 z-30 bg-bsv2-cream/95 backdrop-blur-md border-b border-bsv2-charcoal/[0.07]">
+      <section className="sticky top-0 z-30 bg-bs26-cream/95 backdrop-blur-md border-b border-bs26-charcoal/[0.07]">
         <div className="max-w-[1400px] mx-auto px-6 md:px-12 lg:px-20 py-5">
           <div className="flex items-center gap-2 md:gap-3 overflow-x-auto no-scrollbar">
             <Link
@@ -113,8 +113,8 @@ export default function BlogIndex({
               scroll={false}
               className={`flex-shrink-0 px-5 py-2.5 rounded-full text-sm font-medium border transition-colors ${
                 category === 'all'
-                  ? 'bg-bsv2-charcoal text-white border-bsv2-charcoal'
-                  : 'bg-transparent text-bsv2-charcoal border-bsv2-charcoal/15 hover:border-bsv2-charcoal/40'
+                  ? 'bg-bs26-ink text-white border-bs26-charcoal'
+                  : 'bg-transparent text-bs26-charcoal border-bs26-charcoal/15 hover:border-bs26-charcoal/40'
               }`}
             >
               Alle artikelen
@@ -126,8 +126,8 @@ export default function BlogIndex({
                 scroll={false}
                 className={`flex-shrink-0 px-5 py-2.5 rounded-full text-sm font-medium border transition-colors ${
                   category === c.id
-                    ? 'bg-bsv2-charcoal text-white border-bsv2-charcoal'
-                    : 'bg-transparent text-bsv2-charcoal border-bsv2-charcoal/15 hover:border-bsv2-charcoal/40'
+                    ? 'bg-bs26-ink text-white border-bs26-charcoal'
+                    : 'bg-transparent text-bs26-charcoal border-bs26-charcoal/15 hover:border-bs26-charcoal/40'
                 }`}
               >
                 {c.label}
@@ -139,7 +139,7 @@ export default function BlogIndex({
 
       {/* RESULTS HEADER */}
       <section className="px-6 md:px-12 lg:px-20 max-w-[1400px] mx-auto pt-14 md:pt-20 pb-4">
-        <span className="text-bsv2-grey text-[11px] tracking-[0.15em] lowercase block">
+        <span className="text-bs26-grey text-[11px] tracking-[0.15em] lowercase block">
           ({totalPosts} {totalPosts === 1 ? 'artikel' : 'artikelen'}
           {category !== 'all' ? ` · ${CATEGORY_LABEL[category]}` : ''})
         </span>
@@ -169,21 +169,21 @@ export default function BlogIndex({
               />
             </motion.div>
             <div>
-              <span className="text-[11px] tracking-[0.2em] uppercase text-bsv2-teal mb-4 block">
+              <span className="text-[11px] tracking-[0.2em] uppercase text-bs26-gold mb-4 block">
                 Uitgelicht · {CATEGORY_LABEL[featured.category]}
               </span>
-              <h2 className="font-cormorant text-3xl md:text-4xl lg:text-5xl font-light leading-[1.1] mb-5 group-hover:text-bsv2-teal transition-colors">
+              <h2 className="font-display text-3xl md:text-4xl lg:text-5xl font-light leading-[1.1] mb-5 group-hover:text-bs26-gold transition-colors">
                 {featured.title}
               </h2>
-              <p className="text-bsv2-grey text-base md:text-lg leading-relaxed mb-6 max-w-xl">
+              <p className="text-bs26-grey text-base md:text-lg leading-relaxed mb-6 max-w-xl">
                 {featured.excerpt}
               </p>
-              <div className="flex items-center gap-4 text-xs text-bsv2-grey mb-6">
+              <div className="flex items-center gap-4 text-xs text-bs26-grey mb-6">
                 <time>{formatDate(featured.date)}</time>
                 <span>·</span>
                 <span>{calculateReadingTime(featured.content)} min lezen</span>
               </div>
-              <span className="inline-flex items-center gap-2 text-bsv2-teal text-sm font-medium group-hover:gap-3 transition-all">
+              <span className="inline-flex items-center gap-2 text-bs26-gold text-sm font-medium group-hover:gap-3 transition-all">
                 Lees artikel <ArrowRight className="w-4 h-4" />
               </span>
             </div>
@@ -195,12 +195,12 @@ export default function BlogIndex({
       <section className="px-6 md:px-12 lg:px-20 max-w-[1400px] mx-auto py-12 md:py-16">
         {grid.length === 0 ? (
           <div className="text-center py-20">
-            <p className="font-cormorant text-2xl text-bsv2-charcoal/70 mb-4">
+            <p className="font-display text-2xl text-bs26-charcoal/70 mb-4">
               Nog geen artikelen in deze categorie.
             </p>
             <Link
               href={buildHref('all', 1)}
-              className="inline-flex items-center gap-2 text-bsv2-teal text-sm font-medium hover:gap-3 transition-all"
+              className="inline-flex items-center gap-2 text-bs26-gold text-sm font-medium hover:gap-3 transition-all"
             >
               Bekijk alle artikelen <ArrowRight className="w-4 h-4" />
             </Link>
@@ -225,16 +225,16 @@ export default function BlogIndex({
                       sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
                     />
                   </div>
-                  <span className="text-[11px] tracking-[0.2em] uppercase text-bsv2-teal mb-3 block">
+                  <span className="text-[11px] tracking-[0.2em] uppercase text-bs26-gold mb-3 block">
                     {CATEGORY_LABEL[post.category]}
                   </span>
-                  <h3 className="font-cormorant text-xl md:text-2xl font-light mb-3 leading-[1.25] group-hover:text-bsv2-teal transition-colors">
+                  <h3 className="font-display text-xl md:text-2xl font-light mb-3 leading-[1.25] group-hover:text-bs26-gold transition-colors">
                     {post.title}
                   </h3>
-                  <p className="text-bsv2-grey text-sm leading-relaxed mb-4 line-clamp-3">
+                  <p className="text-bs26-grey text-sm leading-relaxed mb-4 line-clamp-3">
                     {post.excerpt}
                   </p>
-                  <div className="flex items-center gap-3 text-xs text-bsv2-grey">
+                  <div className="flex items-center gap-3 text-xs text-bs26-grey">
                     <time>{formatDate(post.date)}</time>
                     <span>·</span>
                     <span>{calculateReadingTime(post.content)} min lezen</span>
@@ -253,12 +253,12 @@ export default function BlogIndex({
             {page > 1 ? (
               <Link
                 href={buildHref(category, page - 1)}
-                className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full border border-bsv2-charcoal/15 text-sm hover:border-bsv2-charcoal/40 transition-colors"
+                className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full border border-bs26-charcoal/15 text-sm hover:border-bs26-charcoal/40 transition-colors"
               >
                 <ChevronLeft className="w-4 h-4" /> Vorige
               </Link>
             ) : (
-              <span className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full border border-bsv2-charcoal/10 text-sm text-bsv2-grey/60">
+              <span className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full border border-bs26-charcoal/10 text-sm text-bs26-grey/60">
                 <ChevronLeft className="w-4 h-4" /> Vorige
               </span>
             )}
@@ -273,8 +273,8 @@ export default function BlogIndex({
                     href={buildHref(category, p)}
                     className={`w-9 h-9 rounded-full flex items-center justify-center text-sm transition-colors ${
                       active
-                        ? 'bg-bsv2-charcoal text-white'
-                        : 'text-bsv2-charcoal hover:bg-bsv2-charcoal/[0.05]'
+                        ? 'bg-bs26-ink text-white'
+                        : 'text-bs26-charcoal hover:bg-bs26-gold/[0.05]'
                     }`}
                     aria-current={active ? 'page' : undefined}
                   >
@@ -287,26 +287,26 @@ export default function BlogIndex({
             {page < totalPages ? (
               <Link
                 href={buildHref(category, page + 1)}
-                className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full border border-bsv2-charcoal/15 text-sm hover:border-bsv2-charcoal/40 transition-colors"
+                className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full border border-bs26-charcoal/15 text-sm hover:border-bs26-charcoal/40 transition-colors"
               >
                 Volgende <ChevronRight className="w-4 h-4" />
               </Link>
             ) : (
-              <span className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full border border-bsv2-charcoal/10 text-sm text-bsv2-grey/60">
+              <span className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full border border-bs26-charcoal/10 text-sm text-bs26-grey/60">
                 Volgende <ChevronRight className="w-4 h-4" />
               </span>
             )}
           </div>
-          <p className="text-center text-xs text-bsv2-grey mt-4">
+          <p className="text-center text-xs text-bs26-grey mt-4">
             Pagina {page} van {totalPages} · {pageSize} per pagina
           </p>
         </section>
       )}
 
       {/* CTA */}
-      <section className="py-24 md:py-32 px-6 md:px-12 lg:px-20 bg-bsv2-charcoal text-white border-t border-bsv2-charcoal/[0.06]">
+      <section className="py-24 md:py-32 px-6 md:px-12 lg:px-20 bg-bs26-ink text-white border-t border-bs26-charcoal/[0.06]">
         <div className="max-w-[1100px] mx-auto text-center">
-          <h2 className="font-cormorant text-4xl md:text-5xl lg:text-6xl font-light leading-[1.1] mb-8">
+          <h2 className="font-display text-4xl md:text-5xl lg:text-6xl font-light leading-[1.1] mb-8">
             Klaar voor jouw eigen
             <br />
             <span className="italic">droombadkamer?</span>
@@ -317,7 +317,7 @@ export default function BlogIndex({
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link
               href="/adviesgesprek"
-              className="group inline-flex items-center justify-center gap-3 bg-bsv2-pink text-bsv2-charcoal text-sm font-medium px-8 py-4 rounded-full hover:bg-white transition-colors"
+              className="group inline-flex items-center justify-center gap-3 bg-bs26-gold-soft text-bs26-charcoal text-sm font-medium px-8 py-4 rounded-full hover:bg-white transition-colors"
             >
               Gratis adviesgesprek <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
             </Link>

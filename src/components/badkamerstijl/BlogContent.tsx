@@ -21,7 +21,7 @@ function renderInline(text: string): ReactNode[] {
     const tok = match[0];
     if (tok.startsWith('**')) {
       out.push(
-        <strong key={`b-${key++}`} className="font-medium text-bsv2-charcoal">
+        <strong key={`b-${key++}`} className="font-medium text-bs26-charcoal">
           {tok.slice(2, -2)}
         </strong>,
       );
@@ -32,7 +32,7 @@ function renderInline(text: string): ReactNode[] {
           <Link
             key={`l-${key++}`}
             href={linkMatch[2]}
-            className="text-bsv2-teal underline underline-offset-[3px] decoration-bsv2-teal/30 hover:decoration-bsv2-teal transition-colors"
+            className="text-bs26-gold underline underline-offset-[3px] decoration-bs26-gold/30 hover:decoration-bs26-gold transition-colors"
           >
             {linkMatch[1]}
           </Link>,
@@ -132,14 +132,14 @@ export default function BlogContent({ content }: { content: string }) {
   const blocks = parseBlocks(content);
 
   return (
-    <div className="prose-bsv2">
+    <div className="prose-bs26">
       {blocks.map((block, i) => {
         if (block.type === 'h2') {
           return (
             <h2
               key={i}
               id={block.id}
-              className="font-cormorant text-3xl md:text-4xl lg:text-[2.75rem] font-light text-bsv2-charcoal mt-16 mb-6 leading-[1.15] scroll-mt-32"
+              className="font-display text-3xl md:text-4xl lg:text-[2.75rem] font-light text-bs26-charcoal mt-16 mb-6 leading-[1.15] scroll-mt-32"
             >
               {block.text}
             </h2>
@@ -150,7 +150,7 @@ export default function BlogContent({ content }: { content: string }) {
             <h3
               key={i}
               id={block.id}
-              className="font-cormorant text-2xl md:text-[1.65rem] font-light text-bsv2-charcoal mt-10 mb-4 leading-[1.25] scroll-mt-32"
+              className="font-display text-2xl md:text-[1.65rem] font-light text-bs26-charcoal mt-10 mb-4 leading-[1.25] scroll-mt-32"
             >
               {block.text}
             </h3>
@@ -160,7 +160,7 @@ export default function BlogContent({ content }: { content: string }) {
           return (
             <p
               key={i}
-              className="text-bsv2-charcoal/80 text-base md:text-lg leading-[1.75] mb-6"
+              className="text-bs26-charcoal/80 text-base md:text-lg leading-[1.75] mb-6"
             >
               {renderInline(block.text)}
             </p>
@@ -170,11 +170,11 @@ export default function BlogContent({ content }: { content: string }) {
           return (
             <ul
               key={i}
-              className="space-y-3 mb-8 text-bsv2-charcoal/80 text-base md:text-lg leading-[1.7]"
+              className="space-y-3 mb-8 text-bs26-charcoal/80 text-base md:text-lg leading-[1.7]"
             >
               {block.items.map((item, j) => (
                 <li key={j} className="flex items-start gap-3 pl-1">
-                  <span className="mt-[10px] w-1.5 h-1.5 rounded-full bg-bsv2-teal flex-shrink-0" />
+                  <span className="mt-[10px] w-1.5 h-1.5 rounded-full bg-bs26-ink flex-shrink-0" />
                   <span>{renderInline(item)}</span>
                 </li>
               ))}
@@ -183,10 +183,10 @@ export default function BlogContent({ content }: { content: string }) {
         }
         if (block.type === 'ol') {
           return (
-            <ol key={i} className="space-y-4 mb-8 text-bsv2-charcoal/80 text-base md:text-lg leading-[1.7] counter-reset-blog">
+            <ol key={i} className="space-y-4 mb-8 text-bs26-charcoal/80 text-base md:text-lg leading-[1.7] counter-reset-blog">
               {block.items.map((item, j) => (
                 <li key={j} className="flex items-start gap-4">
-                  <span className="font-cormorant text-bsv2-teal text-xl font-medium tabular-nums leading-none mt-1 w-5 flex-shrink-0">
+                  <span className="font-display text-bs26-gold text-xl font-medium tabular-nums leading-none mt-1 w-5 flex-shrink-0">
                     {j + 1}.
                   </span>
                   <span>{renderInline(item)}</span>
@@ -200,11 +200,11 @@ export default function BlogContent({ content }: { content: string }) {
             <div key={i} className="my-10 overflow-x-auto">
               <table className="w-full border-collapse text-sm md:text-base">
                 <thead>
-                  <tr className="border-b border-bsv2-charcoal/20">
+                  <tr className="border-b border-bs26-charcoal/20">
                     {block.headers.map((h, j) => (
                       <th
                         key={j}
-                        className="text-left font-cormorant text-lg font-medium text-bsv2-charcoal py-4 pr-6"
+                        className="text-left font-display text-lg font-medium text-bs26-charcoal py-4 pr-6"
                       >
                         {h}
                       </th>
@@ -213,11 +213,11 @@ export default function BlogContent({ content }: { content: string }) {
                 </thead>
                 <tbody>
                   {block.rows.map((row, j) => (
-                    <tr key={j} className="border-b border-bsv2-charcoal/10">
+                    <tr key={j} className="border-b border-bs26-charcoal/10">
                       {row.map((cell, k) => (
                         <td
                           key={k}
-                          className="py-4 pr-6 text-bsv2-charcoal/80 leading-relaxed"
+                          className="py-4 pr-6 text-bs26-charcoal/80 leading-relaxed"
                         >
                           {renderInline(cell)}
                         </td>
