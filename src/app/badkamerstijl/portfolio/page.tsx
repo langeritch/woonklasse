@@ -1,7 +1,6 @@
 'use client';
 
-import { motion } from 'framer-motion';
-import { useEffect } from 'react';
+import { motion, MotionConfig } from 'framer-motion';
 import Link from 'next/link';
 import Image from 'next/image';
 import { ArrowRight } from 'lucide-react';
@@ -22,94 +21,73 @@ const portfolioImages = [
   { src: '/badkamerstijl/2200xxs(44).jpg', caption: 'Vakmanschap in elk detail', style: 'Warm Natuurlijk' },
 ];
 
+const reveal = {
+  initial: { opacity: 0, y: 28 },
+  whileInView: { opacity: 1, y: 0 },
+  viewport: { once: true, margin: '-80px' },
+  transition: { duration: 0.7, ease: [0.16, 1, 0.3, 1] as const },
+};
+
 export default function PortfolioPage() {
-  useEffect(() => {
-    let ctx: { revert: () => void } | undefined;
-
-    Promise.all([
-      import('gsap'),
-      import('gsap/ScrollTrigger'),
-    ]).then(([gsapModule, stModule]) => {
-      const gsap = gsapModule.default;
-      const { ScrollTrigger } = stModule;
-      gsap.registerPlugin(ScrollTrigger);
-
-      ctx = gsap.context(() => {
-        gsap.utils.toArray<HTMLElement>('.sx-reveal').forEach((el) => {
-          gsap.fromTo(el,
-            { clipPath: 'inset(100% 0 0 0)' },
-            {
-              clipPath: 'inset(0% 0 0 0)',
-              duration: 1.2,
-              ease: 'power3.out',
-              scrollTrigger: { trigger: el, start: 'top 85%', toggleActions: 'play none none none' },
-            },
-          );
-        });
-      });
-    });
-
-    return () => { ctx?.revert(); };
-  }, []);
-
   return (
-    <main className="bsv2-page bg-bsv2-cream text-bsv2-charcoal overflow-x-hidden">
+    <MotionConfig reducedMotion="user">
+    <main className="bs26 overflow-x-hidden">
       <BadkamerstijlFloatingNav />
 
       {/* Hero */}
-      <section className="relative h-[70vh] md:h-[80vh] flex items-end overflow-hidden">
-        <div className="absolute inset-0">
+      <section className="px-3 md:px-5 pt-3 md:pt-5">
+        <div className="relative h-[70vh] md:h-[80vh] min-h-[520px] w-full overflow-hidden rounded-[20px] md:rounded-[28px] bg-bs26-ink flex items-end">
           <Image
             src="/badkamerstijl/2200xxs(7).jpg"
-            alt="Badkamerstijl portfolio"
+            alt="Portfolio van gerealiseerde badkamers door Badkamerstijl"
             fill
             className="object-cover"
             priority
             sizes="100vw"
           />
-        </div>
-        <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent z-10" />
+          <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent" />
 
-        <div className="relative z-20 px-6 md:px-12 lg:px-20 pb-16 md:pb-24 max-w-[1600px] mx-auto w-full">
-          <motion.span
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 0.2 }}
-            className="text-white/40 text-[11px] tracking-[0.15em] lowercase mb-6 block"
-          >
-            (Portfolio)
-          </motion.span>
-          <motion.h1
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.3, duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-            className="font-cormorant text-4xl sm:text-5xl md:text-7xl lg:text-8xl font-light text-white"
-          >
-            Ons werk
-            <br />
-            <span className="italic">spreekt</span>
-          </motion.h1>
+          <div className="relative z-20 px-6 md:px-12 lg:px-16 pb-14 md:pb-20 max-w-[1500px] mx-auto w-full">
+            <nav aria-label="Kruimelpad" className="flex items-center gap-2 text-[11px] tracking-[0.18em] uppercase text-white/65 mb-6">
+              <Link href="/" className="hover:text-white transition-colors">Home</Link>
+              <span className="text-white/30">/</span>
+              <span className="text-white">Portfolio</span>
+            </nav>
+            <motion.span
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ delay: 0.2 }}
+              className="inline-flex items-center gap-3 mb-5"
+            >
+              <span className="w-8 h-px bg-bs26-gold-soft" />
+              <span className="bs26-eyebrow text-white/75">Portfolio</span>
+            </motion.span>
+            <motion.h1
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.3, duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+              className="font-display text-4xl sm:text-5xl md:text-7xl lg:text-8xl font-light text-white leading-[1.0]"
+            >
+              Ons werk
+              <br />
+              <span className="italic">spreekt</span>
+            </motion.h1>
+          </div>
         </div>
       </section>
 
       {/* Intro */}
-      <section className="py-24 md:py-32 px-6 md:px-12 lg:px-20 max-w-[1600px] mx-auto">
-        <motion.p
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.8 }}
-          className="font-cormorant text-2xl md:text-3xl lg:text-[2.5rem] font-light leading-[1.4] max-w-4xl"
-        >
+      <section className="py-24 md:py-32 px-6 md:px-12 lg:px-20 max-w-[1500px] mx-auto">
+        <motion.p {...reveal} className="font-display text-2xl md:text-3xl lg:text-[2.5rem] font-light leading-[1.4] max-w-4xl">
           Een selectie van onze meest recente projecten. Elke badkamer is uniek ontworpen
           en gerealiseerd met de hoogste standaard van vakmanschap.
         </motion.p>
       </section>
 
-      {/* Gallery grid — asymmetric masonry-like layout */}
+      {/* Gallery grid, asymmetric masonry-like layout */}
       <section className="px-6 md:px-12 lg:px-20 pb-24 md:pb-36">
-        <div className="max-w-[1600px] mx-auto">
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
+        <div className="max-w-[1500px] mx-auto">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 md:gap-6">
             {portfolioImages.map((img, i) => {
               const tall = i % 3 === 0;
               return (
@@ -119,20 +97,20 @@ export default function PortfolioPage() {
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ delay: (i % 3) * 0.1, duration: 0.6 }}
-                  className={`group cursor-pointer ${tall ? 'md:row-span-2' : ''}`}
+                  className={`group ${tall ? 'md:row-span-2' : ''}`}
                 >
-                  <div className={`sx-reveal relative overflow-hidden ${tall ? 'aspect-[3/5]' : 'aspect-[4/3]'}`}>
+                  <div className={`relative overflow-hidden rounded-[16px] ${tall ? 'aspect-[3/5]' : 'aspect-[4/3]'}`}>
                     <Image
                       src={img.src}
-                      alt={img.caption}
+                      alt={`${img.caption}, badkamer in ${img.style} stijl door Badkamerstijl`}
                       fill
                       className="object-cover group-hover:scale-105 transition-transform duration-700"
                       sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
                     />
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
                     <div className="absolute bottom-0 left-0 right-0 p-6 translate-y-4 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-500">
-                      <p className="font-cormorant text-lg text-white font-light">{img.caption}</p>
-                      <p className="text-white/60 text-xs tracking-[0.1em] uppercase mt-1">{img.style}</p>
+                      <p className="font-display text-lg text-white font-light">{img.caption}</p>
+                      <p className="text-white/70 text-xs tracking-[0.1em] uppercase mt-1">{img.style}</p>
                     </div>
                   </div>
                 </motion.div>
@@ -143,42 +121,38 @@ export default function PortfolioPage() {
       </section>
 
       {/* CTA */}
-      <section className="py-24 md:py-32 px-6 md:px-12 lg:px-20 bg-white">
-        <div className="max-w-[1400px] mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
+      <section className="py-8 md:py-12 px-6 md:px-12 lg:px-20 max-w-[1500px] mx-auto">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
           <motion.div
             initial={{ opacity: 0, x: -30 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.8 }}
-            className="aspect-[4/5] relative overflow-hidden"
+            className="aspect-[4/5] relative overflow-hidden rounded-[18px]"
           >
             <Image
               src="/badkamerstijl/2200xxsxm(28).jpg"
-              alt="Badkamerstijl detail"
+              alt="Detail van een door Badkamerstijl gerealiseerde badkamer"
               fill
               className="object-cover"
               sizes="(max-width: 1024px) 100vw, 50vw"
             />
           </motion.div>
 
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.8, delay: 0.1 }}
-          >
-            <h2 className="font-cormorant text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-light mb-8">
+          <motion.div {...reveal}>
+            <span className="bs26-eyebrow text-bs26-gold mb-5 block">Volgende stap</span>
+            <h2 className="font-display text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-light mb-8">
               Jouw project kan
               <br />
               <span className="italic">het volgende</span> zijn
             </h2>
-            <p className="text-bsv2-grey text-base leading-relaxed mb-10 max-w-lg">
+            <p className="font-body text-bs26-grey text-base leading-relaxed mb-10 max-w-lg">
               Elk project begint met een gesprek. Vertel ons over jouw droombadkamer en
               wij maken er werkelijkheid van.
             </p>
             <Link
               href="/adviesgesprek"
-              className="bg-bsv2-teal text-white text-sm font-medium px-8 py-3.5 rounded-full hover:bg-bsv2-charcoal transition-colors duration-300 inline-flex items-center gap-2"
+              className="bg-bs26-ink text-white text-sm font-medium px-8 py-4 rounded-full hover:bg-bs26-gold transition-colors duration-300 inline-flex items-center gap-2"
             >
               Adviesgesprek plannen
               <ArrowRight className="w-4 h-4" />
@@ -187,5 +161,6 @@ export default function PortfolioPage() {
         </div>
       </section>
     </main>
+    </MotionConfig>
   );
 }
