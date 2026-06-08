@@ -6,7 +6,7 @@ const PAGE_URL = `${SITE_URL}/prijzen`;
 
 const TITLE = 'Wat kost een badkamer renovatie? | Prijzen | Badkamerstijl';
 const DESCRIPTION =
-  'Wat kost een badkamer renovatie? Vier transparante pakketten van € 5.000 tot € 60.000+, met inbegrepen materialen, sanitair en arbeid. Vraag een gratis offerte aan.';
+  'Wat kost een badkamer renovatie? Drie transparante pakketten vanaf € 5.000, met inbegrepen materialen, sanitair en arbeid. Vraag een gratis offerte aan.';
 
 export const metadata: Metadata = {
   title: TITLE,
@@ -36,25 +36,18 @@ const PRICING_TIERS = [
     highPrice: '12000',
   },
   {
-    name: 'Standaard',
-    description:
-      'De populairste keuze. Designsanitair, grootformaat tegels en designkranen — een badkamer met topafwerking.',
-    lowPrice: '12000',
-    highPrice: '22000',
-  },
-  {
     name: 'Premium',
     description:
-      'Topmerken, vrijstaand bad en maatwerk meubels. Een badkamer met hotel-allure waar elk element bewust is gekozen.',
-    lowPrice: '22000',
-    highPrice: '35000',
+      'De populairste keuze. Designsanitair, grootformaat tegels, vrijstaand bad en maatwerk meubels. Een badkamer met hotel-allure.',
+    lowPrice: '12000',
+    highPrice: '18000',
   },
   {
     name: 'Luxe',
     description:
       'Volledig op maat ontworpen droombadkamer met natuursteen, designmerken en bijzondere extra\'s als sauna of stoomdouche.',
-    lowPrice: '35000',
-    highPrice: '60000',
+    lowPrice: '18000',
+    highPrice: '40000',
   },
 ];
 
@@ -70,8 +63,8 @@ const productJsonLd = {
     '@type': 'AggregateOffer',
     priceCurrency: 'EUR',
     lowPrice: '5000',
-    highPrice: '60000',
-    offerCount: '4',
+    highPrice: '40000',
+    offerCount: '3',
     availability: 'https://schema.org/InStock',
     url: PAGE_URL,
     seller: { '@type': 'Organization', name: 'Badkamerstijl' },

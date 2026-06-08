@@ -40,52 +40,31 @@ const TIERS: Tier[] = [
     ],
   },
   {
-    id: 'standaard',
-    label: 'Standaard',
-    range: '€ 12.000 - € 22.000',
+    id: 'premium',
+    label: 'Premium',
+    range: '€ 12.000 - € 18.000',
     summary:
-      'De populairste keuze. Ruime materiaalkeuze, grootformaat tegels en designkranen - een badkamer die voelt als die van een nieuwbouwhuis in topafwerking.',
-    duration: '2,5 - 3,5 weken',
+      'De populairste keuze. Designsanitair, grootformaat tegels, een vrijstaand bad en maatwerk meubels. Een badkamer met hotel-allure waar elk element bewust is gekozen.',
+    duration: '2,5 - 4 weken',
     image: '/badkamerstijl/2200xxs(29).jpg',
     featured: true,
     includes: [
       'Alles uit Basis, plus:',
       'Designsanitair (Villeroy & Boch, Duravit of vergelijkbaar)',
       'Grootformaat tegels (60×120 of 30×120 visgraat)',
-      'Inloopdouche met glaspaneel en regendouche set',
-      'Wastafelmeubel op maat 80–120 cm met dubbele lade',
-      'Geberit hangtoilet met soft-close zitting',
       'Designkraanwerk Grohe of Hansgrohe (chroom of mat zwart)',
       'LED-spiegel met dimfunctie en demist',
-      'Elektrische vloerverwarming met klokthermostaat',
-      'Sfeerverlichting met aparte schakelgroep',
-    ],
-  },
-  {
-    id: 'premium',
-    label: 'Premium',
-    range: '€ 22.000 - € 35.000',
-    summary:
-      'Topmerken, een vrijstaand bad en maatwerk meubels. Een badkamer met hotel-allure waar elk element bewust is gekozen.',
-    duration: '3 - 4 weken',
-    image: '/badkamerstijl/2200xxs(25).jpg',
-    includes: [
-      'Alles uit Standaard, plus:',
-      'Topmerken: Hansgrohe AXOR, Duravit, Geberit AquaClean',
       'Vrijstaand bad in acryl of composiet',
       'Maatwerk meubels in fineer of mat gelakt MDF',
-      'Natuursteen-look porselein groot formaat (90×90 of 120×280)',
       'Inloopdouche met thermostaat, regendouche én handdouche',
-      'Geberit AquaClean douche-WC',
-      'Hydraulische vloerverwarming op CV',
-      'Inbouwnis met indirecte LED-verlichting',
+      'Elektrische vloerverwarming met klokthermostaat',
       '3D-ontwerp en materiaaladvies door eigen ontwerper',
     ],
   },
   {
     id: 'luxe',
     label: 'Luxe',
-    range: '€ 35.000 - € 60.000+',
+    range: 'vanaf € 18.000',
     summary:
       'Volledig op maat ontworpen droombadkamer met echte natuursteen, designmerken en bijzondere extra\'s als sauna of stoomdouche.',
     duration: '4 - 6 weken',
@@ -277,7 +256,7 @@ export default function PrijzenPage() {
               transition={{ duration: 0.8, delay: 0.3 }}
               className="font-body mt-7 max-w-2xl text-white/80 text-base md:text-lg leading-relaxed"
             >
-              Een complete badkamer renovatie kost in Nederland tussen de € 5.000 en € 60.000+. Hieronder lees je precies wat je voor welk budget krijgt, eerlijk, gespecificeerd en zonder verborgen kosten.
+              Een complete badkamer renovatie kost bij ons vanaf € 5.000. Hieronder lees je precies wat je voor welk budget krijgt, eerlijk, gespecificeerd en zonder verborgen kosten.
             </motion.p>
             <motion.div
               initial={{ opacity: 0, y: 16 }}
@@ -325,7 +304,7 @@ export default function PrijzenPage() {
               Wij geloven in volledige transparantie. Je krijgt vooraf een gespecificeerde offerte met daarin elk onderdeel: van sloopwerk en leidingen tot tegels, sanitair en afwerking.
             </p>
             <p className="font-body text-base md:text-lg text-bs26-grey leading-relaxed">
-              De vier pakketten op deze pagina zijn richtprijzen, gebaseerd op honderden gerealiseerde projecten. Tijdens het gratis adviesgesprek vertalen we jouw wensen naar een vaste aanneemsom, geen nacalculatie, geen verborgen kosten.
+              De drie pakketten op deze pagina zijn richtprijzen, gebaseerd op honderden gerealiseerde projecten. Tijdens het gratis adviesgesprek vertalen we jouw wensen naar een vaste aanneemsom, geen nacalculatie, geen verborgen kosten.
             </p>
           </motion.div>
         </div>
@@ -347,16 +326,18 @@ export default function PrijzenPage() {
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-5 md:gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-5 md:gap-6">
           {TIERS.map((tier, i) => (
             <motion.article
               key={tier.id}
               initial={{ opacity: 0, y: 24 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: '-50px' }}
-              transition={{ duration: 0.6, delay: (i % 2) * 0.1 }}
+              transition={{ duration: 0.6, delay: i * 0.1 }}
               className={`relative rounded-[18px] overflow-hidden flex flex-col ${
-                tier.featured ? 'bg-bs26-ink text-white' : 'bg-bs26-paper text-bs26-charcoal'
+                tier.featured
+                  ? 'bg-bs26-ink text-white md:shadow-[0_30px_70px_-30px_rgba(34,31,26,0.5)]'
+                  : 'bg-bs26-paper text-bs26-charcoal'
               }`}
             >
               {tier.featured && (
