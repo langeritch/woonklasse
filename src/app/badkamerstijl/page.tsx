@@ -4,16 +4,14 @@ import { motion } from 'framer-motion';
 import { useState } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
-import { ArrowRight, ArrowUpRight, Plus, Minus, Star, Check } from 'lucide-react';
+import { ArrowRight, ArrowUpRight, Plus, Minus, Star, Check, Phone } from 'lucide-react';
 import BadkamerstijlFloatingNav from '@/components/BadkamerstijlFloatingNav';
 import HeroAdviesTool from '@/components/HeroAdviesTool';
 
 /* ──────────────────────────── DATA ──────────────────────────── */
 
-const heroStats = [
-  { value: '3D', label: 'Ontwerp vooraf, geen verrassingen' },
-  { value: 'A-Z', label: 'Eigen vakmensen, van sloop tot oplevering' },
-];
+const TEL = '+31302072388';
+const TEL_DISPLAY = '+31 30 207 23 88';
 
 const pillars = [
   {
@@ -105,6 +103,31 @@ const reveal = {
   transition: { duration: 0.7, ease: [0.16, 1, 0.3, 1] as const },
 };
 
+/* ──────────────────── ADVIES BLOCK (twice on page) ──────────────────── */
+
+function AdviesBlock({ id }: { id: string }) {
+  return (
+    <section id={id} className="px-3 md:px-5 scroll-mt-24">
+      <div className="bg-bs26-sand/50 rounded-[20px] md:rounded-[28px] px-6 md:px-14 lg:px-20 py-20 md:py-24">
+        <div className="max-w-5xl mx-auto grid lg:grid-cols-[1fr_1.05fr] gap-10 lg:gap-16 items-center">
+          <div>
+            <span className="bs26-eyebrow text-bs26-gold">Persoonlijk advies</span>
+            <h2 className="font-display text-[clamp(2rem,4.5vw,3.5rem)] font-light leading-[1.1] mt-4 mb-5">
+              Vertel ons over jouw <span className="italic">droombadkamer</span>
+            </h2>
+            <p className="font-body text-bs26-grey text-[15px] leading-relaxed max-w-md">
+              In 3 stappen krijg je persoonlijk advies van ons team. Upload eventueel foto&apos;s van je huidige situatie, dan denken wij gericht met je mee.
+            </p>
+          </div>
+          <div className="w-full">
+            <HeroAdviesTool brand="badkamerstijl" />
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
 /* ──────────────────────────── PAGE ──────────────────────────── */
 
 export default function BadkamerstijlHome() {
@@ -124,7 +147,7 @@ export default function BadkamerstijlHome() {
             className="absolute inset-0"
           >
             <Image
-              src="/badkamerstijl/2200xxs(24).jpg"
+              src="/badkamerstijl/2200xxs(37).jpg"
               alt="Luxe badkamer op maat door Badkamerstijl"
               fill
               priority
@@ -132,7 +155,7 @@ export default function BadkamerstijlHome() {
               sizes="100vw"
             />
           </motion.div>
-          <div className="absolute inset-0 bg-gradient-to-b from-black/50 via-black/20 to-black/75" />
+          <div className="absolute inset-0 bg-gradient-to-b from-black/55 via-black/25 to-black/75" />
 
           {/* Eyebrow top-left */}
           <motion.div
@@ -178,36 +201,24 @@ export default function BadkamerstijlHome() {
                 Krijg persoonlijk advies
                 <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform duration-300" />
               </a>
-              <Link
-                href="/portfolio"
-                className="inline-flex items-center gap-2 text-white/85 text-sm font-medium px-6 py-3.5 rounded-full border border-white/30 hover:bg-white/10 transition-colors duration-300"
+              <a
+                href={`tel:${TEL}`}
+                className="inline-flex items-center gap-2 text-white/90 text-sm font-medium px-6 py-3.5 rounded-full border border-white/35 hover:bg-white/10 transition-colors duration-300"
               >
-                Bekijk portfolio
-              </Link>
+                <Phone className="w-4 h-4" />
+                Bel ons direct
+              </a>
             </motion.div>
           </div>
-
-          {/* Stat callouts bottom */}
-          <motion.div
-            initial={{ opacity: 0, y: 16 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 1, duration: 0.8 }}
-            className="absolute bottom-6 md:bottom-8 left-0 right-0 z-20 px-6 md:px-10 hidden sm:flex flex-row gap-3 justify-between items-end"
-          >
-            {heroStats.map((s) => (
-              <div
-                key={s.value}
-                className="flex items-center gap-4 bg-white/10 backdrop-blur-md border border-white/15 rounded-2xl px-5 py-3.5 max-w-xs"
-              >
-                <span className="font-display text-3xl md:text-4xl text-bs26-gold-soft leading-none">{s.value}</span>
-                <span className="font-body text-white/80 text-xs leading-snug">{s.label}</span>
-              </div>
-            ))}
-          </motion.div>
         </div>
       </section>
 
-      {/* ═══════════════════════ 2. EXCELLENCE ═══════════════════════ */}
+      {/* ═══════════════════════ 2. ADVIES FORM (onder hero) ═══════════════════════ */}
+      <div className="pt-12 md:pt-16">
+        <AdviesBlock id="advies" />
+      </div>
+
+      {/* ═══════════════════════ 3. EXCELLENCE ═══════════════════════ */}
       <section className="px-6 md:px-12 lg:px-20 py-24 md:py-32 max-w-[1500px] mx-auto">
         <motion.div {...reveal} className="text-center max-w-3xl mx-auto mb-16 md:mb-20">
           <span className="bs26-eyebrow text-bs26-gold">Vakmanschap in elke badkamer</span>
@@ -259,7 +270,7 @@ export default function BadkamerstijlHome() {
         </div>
       </section>
 
-      {/* ═══════════════════════ 3. TRUST PILLARS (DARK) ═══════════════════════ */}
+      {/* ═══════════════════════ 4. TRUST PILLARS (DARK) ═══════════════════════ */}
       <section className="px-3 md:px-5">
         <div className="bg-bs26-ink text-white rounded-[20px] md:rounded-[28px] px-6 md:px-14 lg:px-20 py-20 md:py-28">
           <div className="max-w-[1400px] mx-auto">
@@ -288,7 +299,7 @@ export default function BadkamerstijlHome() {
         </div>
       </section>
 
-      {/* ═══════════════════════ 4. STIJLEN CAROUSEL ═══════════════════════ */}
+      {/* ═══════════════════════ 5. STIJLEN CAROUSEL ═══════════════════════ */}
       <section className="py-24 md:py-32">
         <div className="px-6 md:px-12 lg:px-20 max-w-[1500px] mx-auto">
           <motion.div {...reveal} className="flex flex-col md:flex-row md:items-end md:justify-between gap-6 mb-12 md:mb-16">
@@ -336,7 +347,7 @@ export default function BadkamerstijlHome() {
         </div>
       </section>
 
-      {/* ═══════════════════════ 5. PAKKETTEN GRID ═══════════════════════ */}
+      {/* ═══════════════════════ 6. PAKKETTEN GRID ═══════════════════════ */}
       <section className="px-6 md:px-12 lg:px-20 pb-24 md:pb-32 max-w-[1500px] mx-auto">
         <motion.div {...reveal} className="text-center max-w-2xl mx-auto mb-14 md:mb-16">
           <span className="bs26-eyebrow text-bs26-gold">Onze pakketten</span>
@@ -400,7 +411,7 @@ export default function BadkamerstijlHome() {
         </motion.div>
       </section>
 
-      {/* ═══════════════════════ 6. INSIGHTS / TESTIMONIAL (DARK) ═══════════════════════ */}
+      {/* ═══════════════════════ 7. INSIGHTS / TESTIMONIAL (DARK) ═══════════════════════ */}
       <section className="px-3 md:px-5">
         <div className="bg-bs26-ink text-white rounded-[20px] md:rounded-[28px] px-6 md:px-14 lg:px-20 py-20 md:py-28">
           <div className="max-w-[1400px] mx-auto">
@@ -454,7 +465,7 @@ export default function BadkamerstijlHome() {
         </div>
       </section>
 
-      {/* ═══════════════════════ 7. FAQ ═══════════════════════ */}
+      {/* ═══════════════════════ 8. FAQ ═══════════════════════ */}
       <section className="px-6 md:px-12 lg:px-20 py-24 md:py-32 max-w-[1200px] mx-auto">
         <div className="grid grid-cols-1 lg:grid-cols-[0.8fr_1.2fr] gap-12 lg:gap-20">
           <motion.div {...reveal}>
@@ -504,27 +515,10 @@ export default function BadkamerstijlHome() {
         </div>
       </section>
 
-      {/* ═══════════════════════ 8. ADVIES FORM ═══════════════════════ */}
-      <section id="advies" className="px-3 md:px-5">
-        <div className="bg-bs26-sand/50 rounded-[20px] md:rounded-[28px] px-6 md:px-14 lg:px-20 py-20 md:py-24">
-          <div className="max-w-5xl mx-auto grid lg:grid-cols-[1fr_1.05fr] gap-10 lg:gap-16 items-center">
-            <div>
-              <span className="bs26-eyebrow text-bs26-gold">Persoonlijk advies</span>
-              <h2 className="font-display text-[clamp(2rem,4.5vw,3.5rem)] font-light leading-[1.1] mt-4 mb-5">
-                Vertel ons over jouw <span className="italic">droombadkamer</span>
-              </h2>
-              <p className="font-body text-bs26-grey text-[15px] leading-relaxed max-w-md">
-                In 3 stappen krijg je persoonlijk advies van ons team. Upload eventueel foto&apos;s van je huidige situatie, dan denken wij gericht met je mee.
-              </p>
-            </div>
-            <div className="w-full">
-              <HeroAdviesTool brand="badkamerstijl" />
-            </div>
-          </div>
-        </div>
-      </section>
+      {/* ═══════════════════════ 9. ADVIES FORM (onderaan) ═══════════════════════ */}
+      <AdviesBlock id="advies-onder" />
 
-      {/* ═══════════════════════ 9. CLOSING CTA ═══════════════════════ */}
+      {/* ═══════════════════════ 10. CLOSING CTA ═══════════════════════ */}
       <section className="px-3 md:px-5 py-12 md:py-20">
         <div className="relative overflow-hidden rounded-[20px] md:rounded-[28px] min-h-[420px] md:min-h-[520px] flex items-center">
           <Image
@@ -549,12 +543,13 @@ export default function BadkamerstijlHome() {
                 Adviesgesprek plannen
                 <ArrowRight className="w-4 h-4" />
               </Link>
-              <Link
-                href="/adviesgesprek"
+              <a
+                href={`tel:${TEL}`}
                 className="inline-flex items-center justify-center gap-2 border border-white/40 text-white text-sm font-medium px-8 py-4 rounded-full hover:bg-white/10 transition-colors duration-300"
               >
-                Bel ons direct
-              </Link>
+                <Phone className="w-4 h-4" />
+                Bel {TEL_DISPLAY}
+              </a>
             </div>
           </motion.div>
         </div>
