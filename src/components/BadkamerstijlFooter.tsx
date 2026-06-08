@@ -2,6 +2,7 @@
 
 import Link from 'next/link';
 import { CONTACT_BADKAMERSTIJL } from '@/data/contact';
+import BadkamerstijlLogo from '@/components/BadkamerstijlLogo';
 
 const navLinks = [
   { title: 'Home', path: '/' },
@@ -24,9 +25,7 @@ export default function BadkamerstijlFooter() {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-12 md:gap-8">
           {/* Brand */}
           <div>
-            <h3 className="font-cormorant text-2xl font-light tracking-wide mb-4">
-              Badkamerstijl
-            </h3>
+            <BadkamerstijlLogo className="h-12 text-bs26-cream mb-5" />
             <p className="text-white/40 text-sm leading-relaxed max-w-xs">
               Luxe badkamers op maat, van ontwerp in 3D tot oplevering door
               eigen vakmensen.

@@ -4,6 +4,7 @@ import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { motion, AnimatePresence } from 'framer-motion';
 import { ArrowRight } from 'lucide-react';
+import BadkamerstijlLogo from '@/components/BadkamerstijlLogo';
 
 const navLinks = [
   { title: 'Home', path: '/' },
@@ -40,10 +41,8 @@ export default function BadkamerstijlFloatingNav() {
           <div className="max-w-[1600px] mx-auto px-6 md:px-12 lg:px-20">
             <div className="flex items-center justify-between h-16 md:h-20">
               {/* Brand - back to the home portal */}
-              <Link href="/" className="flex-shrink-0">
-                <span className="font-cormorant text-xl md:text-2xl font-light text-bs26-charcoal tracking-wide">
-                  Badkamerstijl
-                </span>
+              <Link href="/" className="flex-shrink-0" aria-label="Badkamerstijl home">
+                <BadkamerstijlLogo className="h-10 md:h-12 text-bs26-charcoal" />
               </Link>
 
               {/* Right - Menu + Contact */}
