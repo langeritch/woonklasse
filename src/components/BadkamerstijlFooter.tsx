@@ -30,6 +30,15 @@ export default function BadkamerstijlFooter() {
               Luxe badkamers op maat, van ontwerp in 3D tot oplevering door
               eigen vakmensen.
             </p>
+            <a
+              href="https://woonklasse.nl"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-1.5 mt-6 text-xs tracking-[0.15em] uppercase text-white/45 hover:text-white transition-colors"
+            >
+              Zusterbedrijf: Woonklasse
+              <span aria-hidden="true">&rarr;</span>
+            </a>
           </div>
 
           {/* Navigatie */}
