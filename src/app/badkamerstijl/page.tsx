@@ -1,754 +1,557 @@
 'use client';
 
-import { motion, useScroll, useTransform, AnimatePresence } from 'framer-motion';
-import { useRef, useEffect, useState } from 'react';
+import { motion } from 'framer-motion';
+import { useState } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
-import { ArrowRight, ArrowUpRight } from 'lucide-react';
+import { ArrowRight, ArrowUpRight, Plus, Minus, Star, Check } from 'lucide-react';
 import BadkamerstijlFloatingNav from '@/components/BadkamerstijlFloatingNav';
 import HeroAdviesTool from '@/components/HeroAdviesTool';
 
 /* ──────────────────────────── DATA ──────────────────────────── */
 
-const processSteps = [
+const heroStats = [
+  { value: '3D', label: 'Ontwerp vooraf, geen verrassingen' },
+  { value: 'A-Z', label: 'Eigen vakmensen, van sloop tot oplevering' },
+];
+
+const pillars = [
   {
-    number: '01',
-    title: 'Advies',
-    desc: 'We luisteren naar jouw wensen, bespreken stijlen en brengen de mogelijkheden in kaart.',
-    image: '/badkamerstijl/2200xxs(24).jpg',
+    title: 'Eigen vakmensen',
+    desc: 'Geen onderaannemers. Onze eigen tegelzetters, loodgieters en monteurs realiseren jouw badkamer van begin tot eind.',
   },
   {
-    number: '02',
-    title: 'Ontwerp',
-    desc: 'We vertalen jouw visie naar een doordacht totaalconcept met materialen, kleuren en indelingen.',
-    image: '/badkamerstijl/2200xxs(25).jpg',
+    title: 'Vaste aanneemsom',
+    desc: 'Vooraf een heldere prijs op basis van een gedetailleerd ontwerp. Wat we afspreken, dat betaal je.',
   },
   {
-    number: '03',
-    title: 'Realisatie',
-    desc: 'Onze vakmensen voeren het ontwerp uit met precisie, van leidingwerk tot de laatste tegel.',
-    image: '/badkamerstijl/2200xxs(43).jpg',
-  },
-  {
-    number: '04',
-    title: 'Oplevering',
-    desc: 'We controleren elk detail en leveren jouw droombadkamer op, klaar om van te genieten.',
-    image: '/badkamerstijl/2200xxs(46).jpg',
+    title: 'Uitgebreide garantie',
+    desc: 'Installatiegarantie op al het werk dat we leveren, plus de fabrieksgaranties van topmerken.',
   },
 ];
 
-const portfolioItems = [
-  { name: 'Modern Minimalistisch', location: 'AMS', slug: 'modern' },
-  { name: 'Warm Natuurlijk', location: 'UTR', slug: 'warm-natuurlijk' },
-  { name: 'Industrieel Chic', location: 'RTD', slug: 'industrieel' },
-  { name: 'Klassiek Luxe', location: 'AMS', slug: 'klassiek' },
-  { name: 'Boutique Hotel', location: 'NH', slug: 'boutique' },
+const stijlen = [
+  { name: 'Modern Minimalistisch', tag: 'Strak, rust, grootformaat tegels', image: '/badkamerstijl/2200xxs(30).jpg', slug: 'modern' },
+  { name: 'Klassiek Luxe', tag: 'Marmer, messing en tijdloze elegantie', image: '/badkamerstijl/2200xxs(44).jpg', slug: 'klassiek' },
+  { name: 'Industrieel Chic', tag: 'Beton, staal en warme accenten', image: '/badkamerstijl/industrieel-chic.jpg', slug: 'industrieel' },
+  { name: 'Warm Natuurlijk', tag: 'Hout, natuursteen en zacht licht', image: '/badkamerstijl/2200xxs(25).jpg', slug: 'warm-natuurlijk' },
+  { name: 'Scandinavisch', tag: 'Licht, helder en functioneel', image: '/badkamerstijl/2200xxs(31).jpg', slug: 'scandinavisch' },
 ];
 
-const blogPosts = [
+const pakketten = [
   {
-    title: 'De kunst van materiaalcombinaties in de badkamer',
-    date: '15 Maart 2025',
-    excerpt: 'Hoe marmer, hout en beton samen een luxe en warm geheel vormen in modern badkamerontwerp.',
+    name: 'Basis',
+    image: '/badkamerstijl/2200xxs(4).jpg',
+    price: 'vanaf € 5.000',
+    desc: 'Nette renovatie met betrouwbaar middensegment sanitair.',
+    specs: ['Compleet', 'Incl. montage', 'Vaste prijs'],
+  },
+  {
+    name: 'Standaard',
     image: '/badkamerstijl/2200xxs(27).jpg',
+    price: '€ 12.000 - € 22.000',
+    desc: 'Designsanitair en grootformaat tegels voor een eigentijdse look.',
+    specs: ['Designsanitair', 'Grootformaat tegels', '3D-ontwerp'],
   },
   {
-    title: 'Lichtontwerp als fundament van badkamerbeleving',
-    date: '2 Februari 2025',
-    excerpt: 'Waarom verlichting het verschil maakt in elke badkamer en hoe wij dit benaderen.',
-    image: '/badkamerstijl/2200xxs(28).jpg',
-  },
-  {
-    title: 'Duurzaam renoveren zonder concessies aan stijl',
-    date: '18 Januari 2025',
-    excerpt: 'Onze aanpak voor ecologisch verantwoord badkamerontwerp dat generaties meegaat.',
-    image: '/badkamerstijl/2200xxs(32).jpg',
-  },
-];
-
-const partners = [
-  'Hansgrohe',
-  'Dornbracht',
-  'Villeroy & Boch',
-  'Duravit',
-  'Geberit',
-  'Grohe',
-  'Porcelanosa',
-  'Vola',
-];
-
-/* ─────────────────────── HERO SLIDES ─────────────────────── */
-
-type HeroWord = { text: string; italic: boolean };
-type HeroSlide = { image: string; words: HeroWord[] };
-
-const heroSlides: HeroSlide[] = [
-  {
-    image: '/badkamerstijl/2200xxs(24).jpg',
-    words: [
-      { text: 'Wij', italic: false },
-      { text: 'ontwerpen', italic: false },
-      { text: 'luxe', italic: false },
-      { text: 'badkamers', italic: true },
-      { text: 'voor', italic: false },
-      { text: 'wie', italic: false },
-      { text: 'droomt', italic: true },
-      { text: 'van', italic: false },
-      { text: 'perfectie.', italic: true },
-    ],
-  },
-  {
+    name: 'Premium',
     image: '/badkamerstijl/2200xxs(43).jpg',
-    words: [
-      { text: 'Waar', italic: false },
-      { text: 'ambacht', italic: true },
-      { text: 'en', italic: false },
-      { text: 'elegantie', italic: true },
-      { text: 'elkaar', italic: false },
-      { text: 'ontmoeten.', italic: false },
-    ],
+    price: '€ 22.000 - € 35.000',
+    desc: 'Topmerken, vrijstaand bad en maatwerk meubels.',
+    specs: ['Topmerken', 'Vrijstaand bad', 'Maatwerk'],
   },
   {
-    image: '/badkamerstijl/2200xxs(37).jpg',
-    words: [
-      { text: 'Jouw', italic: false },
-      { text: 'privé', italic: true },
-      { text: 'spa,', italic: true },
-      { text: 'elke', italic: false },
-      { text: 'dag', italic: false },
-      { text: 'opnieuw.', italic: false },
-    ],
-  },
-  {
-    image: '/badkamerstijl/2200xxs(30).jpg',
-    words: [
-      { text: 'Tijdloze', italic: true },
-      { text: 'luxe,', italic: true },
-      { text: 'tot', italic: false },
-      { text: 'in', italic: false },
-      { text: 'het', italic: false },
-      { text: 'kleinste', italic: false },
-      { text: 'detail.', italic: true },
-    ],
-  },
-  {
+    name: 'Luxe',
     image: '/badkamerstijl/2200xxs(46).jpg',
-    words: [
-      { text: 'Een', italic: false },
-      { text: 'badkamer', italic: true },
-      { text: 'die', italic: false },
-      { text: 'voelt', italic: true },
-      { text: 'als', italic: false },
-      { text: 'thuiskomen.', italic: true },
-    ],
+    price: 'vanaf € 35.000',
+    desc: 'Volledig op maat met natuursteen en exclusieve designmerken.',
+    specs: ['Natuursteen', 'Volledig op maat', 'Designmerken'],
   },
 ];
+
+const faqs = [
+  {
+    q: 'Wat kost een complete badkamer renovatie?',
+    a: 'Dat hangt af van de grootte en de afwerking. Een nette renovatie start rond € 5.000, een gemiddelde badkamer op maat ligt tussen € 12.000 en € 22.000 en voor een luxe badkamer met natuursteen en designmerken reken je vanaf € 35.000. Je krijgt vooraf een vaste aanneemsom, dus geen verrassingen achteraf.',
+  },
+  {
+    q: 'Hoe lang duurt het om mijn badkamer te realiseren?',
+    a: 'Een gemiddelde badkamer realiseren we in twee tot drie weken op locatie. De voorbereiding, het ontwerp en de materiaalkeuze gaan daaraan vooraf. We plannen alles strak, zodat je niet langer dan nodig zonder badkamer zit.',
+  },
+  {
+    q: 'Werken jullie met een vaste prijs?',
+    a: 'Ja. Op basis van een gedetailleerd 3D-ontwerp krijg je een vaste aanneemsom. Daarin zit alles: sloop, leidingwerk, tegels, sanitair, vloerverwarming, ventilatie en alle arbeid. Wat we afspreken, dat betaal je.',
+  },
+  {
+    q: 'Doen jullie alles zelf of werken jullie met onderaannemers?',
+    a: 'We werken met onze eigen vakmensen, van tegelzetter tot loodgieter en monteur. Eén aanspreekpunt, één team dat verantwoordelijk is voor het hele resultaat.',
+  },
+  {
+    q: 'Kan ik eerst een ontwerp zien voordat ik beslis?',
+    a: 'Zeker. We maken een 3D-ontwerp van jouw badkamer met de gekozen materialen, kleuren en indeling. Zo zie je precies hoe het wordt voordat we ook maar één tegel plaatsen.',
+  },
+  {
+    q: 'Werken jullie door heel Nederland?',
+    a: 'Ja, we realiseren luxe badkamers door heel Nederland. Tijdens het adviesgesprek bespreken we jouw locatie en planning.',
+  },
+];
+
+/* ──────────────────── REVEAL HELPER ──────────────────── */
+
+const reveal = {
+  initial: { opacity: 0, y: 28 },
+  whileInView: { opacity: 1, y: 0 },
+  viewport: { once: true, margin: '-80px' },
+  transition: { duration: 0.7, ease: [0.16, 1, 0.3, 1] as const },
+};
 
 /* ──────────────────────────── PAGE ──────────────────────────── */
 
 export default function BadkamerstijlHome() {
-  const heroRef = useRef<HTMLElement>(null);
-  const fullwidthRef = useRef<HTMLElement>(null);
-  const processSectionRef = useRef<HTMLElement>(null);
-  const processScrollRef = useRef<HTMLDivElement>(null);
-  const [heroIndex, setHeroIndex] = useState(0);
-
-  /* Auto-advance hero slideshow - resets when heroIndex changes */
-  useEffect(() => {
-    const id = setTimeout(() => {
-      setHeroIndex((i) => (i + 1) % heroSlides.length);
-    }, 5500);
-    return () => clearTimeout(id);
-  }, [heroIndex]);
-
-  /* Fullwidth image parallax */
-  const { scrollYProgress: fwScroll } = useScroll({
-    target: fullwidthRef,
-    offset: ['start end', 'end start'],
-  });
-  const fwY = useTransform(fwScroll, [0, 1], ['-8%', '8%']);
-
-  /* GSAP - horizontal scroll + image reveals */
-  useEffect(() => {
-    let ctx: { revert: () => void } | undefined;
-
-    Promise.all([
-      import('gsap'),
-      import('gsap/ScrollTrigger'),
-    ]).then(([gsapModule, stModule]) => {
-      const gsap = gsapModule.default;
-      const { ScrollTrigger } = stModule;
-      gsap.registerPlugin(ScrollTrigger);
-
-      ctx = gsap.context(() => {
-        /* Horizontal scroll - desktop only */
-        if (window.innerWidth >= 768) {
-          const section = processSectionRef.current;
-          const container = processScrollRef.current;
-          if (section && container) {
-            const totalWidth = container.scrollWidth;
-            const viewWidth = window.innerWidth;
-            gsap.to(container, {
-              x: -(totalWidth - viewWidth),
-              ease: 'none',
-              scrollTrigger: {
-                trigger: section,
-                start: 'top top',
-                end: () => `+=${totalWidth - viewWidth}`,
-                pin: true,
-                scrub: 1,
-                invalidateOnRefresh: true,
-              },
-            });
-          }
-        }
-
-        /* Image clip-path reveals */
-        gsap.utils.toArray<HTMLElement>('.sx-reveal').forEach((el) => {
-          gsap.fromTo(
-            el,
-            { clipPath: 'inset(100% 0 0 0)' },
-            {
-              clipPath: 'inset(0% 0 0 0)',
-              duration: 1.2,
-              ease: 'power3.out',
-              scrollTrigger: {
-                trigger: el,
-                start: 'top 85%',
-                toggleActions: 'play none none none',
-              },
-            },
-          );
-        });
-
-        /* Section labels fade in */
-        gsap.utils.toArray<HTMLElement>('.sx-label').forEach((el) => {
-          gsap.fromTo(el, { opacity: 0 }, {
-            opacity: 1,
-            duration: 0.8,
-            scrollTrigger: { trigger: el, start: 'top 90%' },
-          });
-        });
-
-        /* Subtle image scale on scroll */
-        gsap.utils.toArray<HTMLElement>('.sx-scale').forEach((el) => {
-          gsap.fromTo(
-            el,
-            { scale: 1 },
-            {
-              scale: 1.05,
-              ease: 'none',
-              scrollTrigger: {
-                trigger: el,
-                start: 'top bottom',
-                end: 'bottom top',
-                scrub: true,
-              },
-            },
-          );
-        });
-      });
-    });
-
-    return () => { ctx?.revert(); };
-  }, []);
+  const [openFaq, setOpenFaq] = useState<number | null>(0);
 
   return (
-    <main className="bsv2-page bg-bsv2-cream text-bsv2-charcoal overflow-x-hidden">
+    <main className="bs26 overflow-x-hidden">
       <BadkamerstijlFloatingNav />
 
       {/* ═══════════════════════ 1. HERO ═══════════════════════ */}
-      <section
-        ref={heroRef}
-        className="relative h-screen flex items-center justify-center overflow-hidden bg-black"
-      >
-        {/* Image crossfade slideshow with Ken Burns */}
-        <AnimatePresence mode="sync">
+      <section className="px-3 md:px-5 pt-3 md:pt-5">
+        <div className="relative h-[88vh] min-h-[600px] w-full overflow-hidden rounded-[20px] md:rounded-[28px] bg-bs26-ink">
           <motion.div
-            key={heroIndex}
-            initial={{ opacity: 0, scale: 1.08 }}
-            animate={{ opacity: 1, scale: 1.18 }}
-            exit={{ opacity: 0, scale: 1.22 }}
-            transition={{
-              opacity: { duration: 1.8, ease: [0.4, 0, 0.2, 1] },
-              scale: { duration: 7.5, ease: 'linear' },
-            }}
+            initial={{ scale: 1.12 }}
+            animate={{ scale: 1 }}
+            transition={{ duration: 8, ease: 'easeOut' }}
             className="absolute inset-0"
           >
             <Image
-              src={heroSlides[heroIndex].image}
-              alt="Luxe badkamer interieur"
+              src="/badkamerstijl/2200xxs(24).jpg"
+              alt="Luxe badkamer op maat door Badkamerstijl"
               fill
+              priority
               className="object-cover"
-              priority={heroIndex === 0}
               sizes="100vw"
             />
           </motion.div>
-        </AnimatePresence>
+          <div className="absolute inset-0 bg-gradient-to-b from-black/50 via-black/20 to-black/75" />
 
-        {/* Cinematic gradient overlay */}
-        <div className="absolute inset-0 z-10 bg-gradient-to-b from-black/50 via-black/25 to-black/80" />
-
-        {/* Subtle grain */}
-        <div
-          className="absolute inset-0 z-10 opacity-[0.07] mix-blend-overlay pointer-events-none"
-          style={{
-            backgroundImage:
-              "url(\"data:image/svg+xml;utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E\")",
-          }}
-        />
-
-        {/* Top-left brand marker */}
-        <motion.div
-          initial={{ opacity: 0, y: -8 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.2, duration: 0.8 }}
-          className="absolute top-10 md:top-12 left-6 md:left-12 lg:left-20 z-20 hidden md:flex items-center gap-3"
-        >
-          <span className="w-6 lg:w-8 h-px bg-white/60" />
-          <span className="text-[10px] tracking-[0.3em] uppercase text-white/70 whitespace-nowrap">
-            Luxe op maat
-          </span>
-        </motion.div>
-
-        {/* Top-right slide indicators */}
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 0.4, duration: 0.8 }}
-          className="absolute top-6 md:top-10 right-6 md:right-12 lg:right-20 z-30 flex items-center gap-1"
-        >
-          <span className="text-[10px] tracking-[0.2em] text-white/60 tabular-nums mr-4 hidden xl:inline-block">
-            {String(heroIndex + 1).padStart(2, '0')} / {String(heroSlides.length).padStart(2, '0')}
-          </span>
-          {heroSlides.map((_, i) => (
-            <button
-              key={i}
-              type="button"
-              onClick={() => setHeroIndex(i)}
-              className="group relative px-2 py-5 cursor-pointer"
-              aria-label={`Afbeelding ${i + 1} tonen`}
-              aria-current={i === heroIndex}
-            >
-              <span
-                className={`block h-[2px] rounded-full transition-all duration-700 ease-out ${
-                  i === heroIndex
-                    ? 'w-12 bg-white'
-                    : 'w-6 bg-white/40 group-hover:w-10 group-hover:bg-white'
-                }`}
-              />
-            </button>
-          ))}
-        </motion.div>
-
-        {/* Center content */}
-        <div className="relative z-20 text-center px-6 max-w-6xl mx-auto">
-          <h1 className="text-[clamp(2.5rem,7.2vw,9.5rem)] font-light leading-[1.02] tracking-[-0.025em] text-white">
-            {heroSlides[heroIndex].words.map((word, i) => (
-              <motion.span
-                key={`${heroIndex}-${i}`}
-                initial={{ opacity: 0, y: 30 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{
-                  delay: 0.15 + i * 0.07,
-                  duration: 0.7,
-                  ease: [0.16, 1, 0.3, 1],
-                }}
-                className={`inline-block mr-[0.25em] ${word.italic ? 'italic' : ''}`}
-              >
-                {word.text}
-              </motion.span>
-            ))}
-          </h1>
-
-          {/* CTA buttons */}
+          {/* Eyebrow top-left */}
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
+            initial={{ opacity: 0, y: -8 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 1.1, duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-            className="mt-10 md:mt-14 flex flex-col sm:flex-row items-center justify-center gap-5"
+            transition={{ delay: 0.2, duration: 0.8 }}
+            className="absolute top-7 md:top-10 left-6 md:left-10 z-20 flex items-center gap-3 text-white/80"
           >
-            <a
-              href="#advies"
-              className="group inline-flex items-center gap-3 bg-white text-bsv2-charcoal text-sm font-medium px-8 py-4 rounded-full hover:bg-bsv2-teal hover:text-white transition-all duration-300"
-            >
-              Krijg persoonlijk advies
-              <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform duration-300" />
-            </a>
-            <Link
-              href="/portfolio"
-              className="text-white/80 text-sm font-medium tracking-wide hover:text-white transition-colors underline underline-offset-[6px] decoration-white/30 hover:decoration-white"
-            >
-              Bekijk portfolio
-            </Link>
+            <span className="w-8 h-px bg-bs26-gold-soft" />
+            <span className="bs26-eyebrow text-white/75">Luxe badkamers op maat</span>
           </motion.div>
-        </div>
 
-        {/* Bottom-left tagline */}
-        <motion.div
-          initial={{ opacity: 0, y: 8 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 1.5, duration: 0.8 }}
-          className="absolute bottom-10 left-6 md:left-12 lg:left-20 z-20 hidden md:block"
-        >
-          <p className="text-[10px] tracking-[0.25em] uppercase text-white/55 leading-[2]">
-            Ontwerp · Ambacht
-            <br />
-            Realisatie van A tot Z
-          </p>
-        </motion.div>
-
-      </section>
-
-      {/* ═══════════════ 1B. PERSOONLIJK ADVIES (FORM) ═══════════════ */}
-      <section
-        id="advies"
-        className="relative py-20 md:py-24 px-6 md:px-12 lg:px-20 bg-bsv2-cream"
-      >
-        <div className="max-w-5xl mx-auto grid lg:grid-cols-[1fr_1.05fr] gap-10 lg:gap-16 items-center">
-          <div>
-            <span className="text-bsv2-grey text-[11px] tracking-[0.15em] lowercase mb-6 block">
-              (Persoonlijk advies)
-            </span>
-            <h2 className="font-cormorant text-3xl md:text-5xl font-light leading-[1.15] mb-5">
-              Vertel ons over jouw <span className="italic text-bsv2-teal">droombadkamer</span>
-            </h2>
-            <p className="text-bsv2-grey text-base leading-relaxed max-w-md">
-              In 3 stappen krijg je persoonlijk advies van ons team. Upload eventueel foto&apos;s van je huidige situatie, dan denken wij gericht met je mee.
-            </p>
-          </div>
-          <div className="w-full">
-            <HeroAdviesTool brand="badkamerstijl" />
-          </div>
-        </div>
-      </section>
-
-      {/* ═══════════════════ 2. OVER ONS ═══════════════════ */}
-      <section className="py-24 md:py-32 lg:py-44 px-6 md:px-12 lg:px-20 max-w-[1600px] mx-auto">
-        <span className="sx-label text-bsv2-grey text-[11px] tracking-[0.15em] lowercase mb-12 block">
-          (Over ons)
-        </span>
-
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-start">
-          {/* Left - tall image */}
-          <div className="sx-reveal aspect-[3/4] relative overflow-hidden">
-            <div className="sx-scale w-full h-full relative">
-              <Image
-                src="/badkamerstijl/2200xxs(25).jpg"
-                alt="Luxe badkamer detail"
-                fill
-                className="object-cover"
-                sizes="(max-width: 1024px) 100vw, 50vw"
-              />
-            </div>
-          </div>
-
-          {/* Right - text + small offset image */}
-          <div className="flex flex-col">
-            <motion.p
+          {/* Center content */}
+          <div className="absolute inset-0 z-10 flex flex-col items-center justify-center text-center px-6">
+            <motion.h1
               initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.8 }}
-              className="font-cormorant text-2xl md:text-3xl lg:text-[2.5rem] font-light leading-[1.4] mb-8"
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.25, duration: 0.9, ease: [0.16, 1, 0.3, 1] }}
+              className="font-display text-white font-light leading-[0.92] tracking-[0.01em] text-[clamp(3rem,10vw,9rem)]"
             >
-              Badkamerstijl ontwerpt en realiseert badkamers die de essentie van
-              luxe vangen. Met oog voor detail, ambachtelijk vakmanschap en een
-              diep begrip van materiaal en licht.
-            </motion.p>
-
+              Jouw droombadkamer,
+              <br />
+              <span className="italic">vakkundig gerealiseerd</span>
+            </motion.h1>
             <motion.p
               initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.8, delay: 0.1 }}
-              className="text-bsv2-grey text-base leading-relaxed mb-12 max-w-lg"
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.55, duration: 0.8 }}
+              className="font-body text-white/80 text-base md:text-lg max-w-xl mt-7 leading-relaxed"
             >
-              Jij droomt het, wij bouwen hem. Van het eerste adviesgesprek tot de
-              laatste tegel: onze aanpak is persoonlijk, onze standaard
-              oncompromitterend. Specialist in badkamerontwerp, renovatie en
-              montage.
+              Van persoonlijk 3D-ontwerp tot oplevering door eigen vakmensen. Eén team, vaste prijs, door heel Nederland.
             </motion.p>
-
-            {/* CTA */}
             <motion.div
               initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6, delay: 0.2 }}
-              className="flex items-center gap-4"
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.75, duration: 0.8 }}
+              className="mt-9 flex flex-col sm:flex-row items-center gap-4"
             >
-              <Link
-                href="/stijlen"
-                className="group inline-flex items-center gap-3"
+              <a
+                href="#advies"
+                className="group inline-flex items-center gap-3 bg-white text-bs26-ink text-sm font-medium px-7 py-3.5 rounded-full hover:bg-bs26-gold hover:text-white transition-colors duration-300"
               >
-                <span className="bg-bsv2-teal text-white text-sm font-medium px-7 py-3 rounded-full group-hover:bg-bsv2-charcoal transition-colors duration-300">
-                  Ontdek onze stijlen
-                </span>
-              </Link>
+                Krijg persoonlijk advies
+                <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform duration-300" />
+              </a>
               <Link
-                href="/stijlen"
-                className="w-12 h-12 rounded-full border-2 border-bsv2-teal text-bsv2-teal flex items-center justify-center hover:bg-bsv2-teal hover:text-white transition-all duration-300"
+                href="/portfolio"
+                className="inline-flex items-center gap-2 text-white/85 text-sm font-medium px-6 py-3.5 rounded-full border border-white/30 hover:bg-white/10 transition-colors duration-300"
               >
-                <ArrowRight className="w-4 h-4" />
+                Bekijk portfolio
               </Link>
             </motion.div>
-
-            {/* Small offset image */}
-            <div className="sx-reveal mt-20 ml-auto w-48 md:w-64 aspect-[4/3] relative overflow-hidden">
-              <Image
-                src="/badkamerstijl/2200xxsxm(26).jpg"
-                alt="Badkamer detail"
-                fill
-                className="object-cover"
-                sizes="256px"
-              />
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* ═══════════════ 3. STIJLEN (DARK) ═══════════════ */}
-      <section className="relative min-h-screen flex items-center overflow-hidden py-32">
-        <div className="absolute inset-0">
-          <Image
-            src="/badkamerstijl/2200xxs(37).jpg"
-            alt="Luxe badkamer"
-            fill
-            className="object-cover"
-            sizes="100vw"
-          />
-        </div>
-        <div className="absolute inset-0 bg-black/70 z-10" />
-
-        <div className="relative z-20 w-full px-6 md:px-12 lg:px-20">
-          <span className="text-white/30 text-[11px] tracking-[0.15em] lowercase mb-16 block">
-            (Stijlen)
-          </span>
-
-          <div className="space-y-4 md:space-y-6">
-            {portfolioItems.map((item, i) => {
-              const offsets = [0, 15, 8, 20, 5];
-              return (
-                <motion.div
-                  key={item.slug}
-                  initial={{ opacity: 0 }}
-                  whileInView={{ opacity: 1 }}
-                  viewport={{ once: true }}
-                  transition={{ delay: i * 0.08, duration: 0.6 }}
-                  className="md:pl-[var(--offset)]"
-                  style={{ '--offset': `${offsets[i] || 0}%` } as React.CSSProperties}
-                >
-                  <Link href={`/stijlen#${item.slug}`} className="group inline-block">
-                    <h3 className="font-cormorant text-3xl sm:text-4xl md:text-[clamp(2rem,5vw,6rem)] font-light text-white/60 md:text-white/15 group-hover:text-white/90 transition-all duration-500 leading-none">
-                      {item.name}
-                      <span className="text-sm md:text-lg ml-2 align-top text-white/25 group-hover:text-bsv2-accent-soft transition-colors duration-500">
-                        ({item.location})
-                      </span>
-                    </h3>
-                  </Link>
-                </motion.div>
-              );
-            })}
-          </div>
-        </div>
-      </section>
-
-      {/* ═══════════════ 4. PROCES - Horizontal Scroll ═══════════════ */}
-      <section
-        ref={processSectionRef}
-        className="relative bg-bsv2-cream md:h-screen md:overflow-hidden"
-      >
-        <div
-          ref={processScrollRef}
-          className="flex flex-col md:flex-row md:items-stretch md:h-screen"
-        >
-          {/* Intro panel */}
-          <div className="flex-shrink-0 md:w-screen md:h-screen flex flex-col justify-center px-6 md:px-20 py-20 md:py-0">
-            <span className="sx-label text-bsv2-grey text-[11px] tracking-[0.15em] lowercase mb-8">
-              (Ons proces)
-            </span>
-            <h2 className="font-cormorant text-4xl sm:text-5xl md:text-7xl lg:text-8xl font-light mb-4">
-              Hoe wij
-              <br />
-              <span className="italic">werken</span>
-            </h2>
           </div>
 
-          {/* Steps */}
-          {processSteps.map((step) => (
-            <div
-              key={step.number}
-              className="flex-shrink-0 md:w-[50vw] lg:w-[40vw] md:h-screen flex flex-col justify-center px-6 md:px-16 py-16 md:py-0 border-t md:border-t-0 md:border-l border-bsv2-charcoal/10"
-            >
-              <span className="font-cormorant text-[72px] md:text-[140px] font-light text-bsv2-charcoal/[0.06] leading-none mb-2">
-                {step.number}
-              </span>
-              <h3 className="font-cormorant text-3xl md:text-4xl font-light mb-4">
-                {step.title}
-              </h3>
-              <p className="text-bsv2-grey text-base leading-relaxed mb-8 max-w-sm">
-                {step.desc}
-              </p>
-              <Link
-                href="/diensten"
-                className="inline-flex items-center gap-2 text-bsv2-teal text-sm font-medium hover:gap-3 transition-all duration-300"
-              >
-                Meer info <ArrowUpRight className="w-4 h-4" />
-              </Link>
-              <div className="mt-8 aspect-[16/10] relative overflow-hidden w-full max-w-sm">
-                <Image
-                  src={step.image}
-                  alt={step.title}
-                  fill
-                  className="object-cover"
-                  sizes="(max-width: 768px) 100vw, 40vw"
-                />
-              </div>
-            </div>
-          ))}
-        </div>
-      </section>
-
-      {/* ═══════════════ 5. PARTNER LOGOS ═══════════════ */}
-      <section className="py-24 md:py-32 bg-bsv2-cream px-6 md:px-12 lg:px-20">
-        <div className="max-w-[1400px] mx-auto">
-          <span className="sx-label text-bsv2-grey text-[11px] tracking-[0.15em] lowercase mb-14 block">
-            (Partners)
-          </span>
-
-          <div className="flex flex-wrap gap-4 md:gap-5">
-            {partners.map((partner, i) => {
-              const heights = [80, 96, 72, 88, 104, 76, 92, 84];
-              return (
-                <motion.div
-                  key={partner}
-                  initial={{ opacity: 0, y: 16 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ delay: i * 0.06, duration: 0.5 }}
-                  className="bg-white/50 backdrop-blur-sm px-8 rounded-xl text-bsv2-charcoal/60 font-cormorant text-lg tracking-wide flex items-center border border-bsv2-charcoal/[0.04] hover:bg-white/80 transition-colors duration-300"
-                  style={{ height: `${heights[i]}px` }}
-                >
-                  {partner}
-                </motion.div>
-              );
-            })}
-          </div>
-        </div>
-      </section>
-
-      {/* ═══════════════ 7. FULLWIDTH IMAGE ═══════════════ */}
-      <section ref={fullwidthRef} className="relative h-[60vh] md:h-[75vh] overflow-hidden">
-        <motion.div style={{ y: fwY }} className="absolute inset-[-10%] w-[120%] h-[120%]">
-          <Image
-            src="/badkamerstijl/2200xxs(30).jpg"
-            alt="Luxe badkamer interieur"
-            fill
-            className="object-cover"
-            sizes="100vw"
-          />
-        </motion.div>
-      </section>
-
-      {/* ═══════════════ 8. INSPIRATIE (BLOG) ═══════════════ */}
-      <section className="py-24 md:py-36 px-6 md:px-12 lg:px-20 bg-bsv2-cream">
-        <div className="max-w-[1400px] mx-auto">
-          <span className="sx-label text-bsv2-grey text-[11px] tracking-[0.15em] lowercase mb-14 block">
-            (Inspiratie)
-          </span>
-
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-10">
-            {blogPosts.map((post, i) => (
-              <motion.article
-                key={i}
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: i * 0.1, duration: 0.6 }}
-                className="group cursor-pointer"
-              >
-                <div className="sx-reveal aspect-[4/3] relative overflow-hidden mb-6">
-                  <Image
-                    src={post.image}
-                    alt={post.title}
-                    fill
-                    className="object-cover group-hover:scale-105 transition-transform duration-700"
-                    sizes="(max-width: 768px) 100vw, 33vw"
-                  />
-                </div>
-                <time className="text-bsv2-grey text-xs tracking-[0.05em]">
-                  {post.date}
-                </time>
-                <h3 className="font-cormorant text-xl md:text-2xl font-light mt-2 mb-3 group-hover:text-bsv2-teal transition-colors duration-300">
-                  {post.title}
-                </h3>
-                <p className="text-bsv2-grey text-sm leading-relaxed">
-                  {post.excerpt}
-                </p>
-              </motion.article>
-            ))}
-          </div>
-
-          <div className="text-center mt-16">
-            <Link
-              href="/portfolio"
-              className="bg-bsv2-teal text-white text-sm font-medium px-8 py-3.5 rounded-full hover:bg-bsv2-charcoal transition-colors duration-300 inline-flex items-center gap-2"
-            >
-              Bekijk ons portfolio
-              <ArrowRight className="w-4 h-4" />
-            </Link>
-          </div>
-        </div>
-      </section>
-
-      {/* ═══════════════ 9. FOOTER / CTA ═══════════════ */}
-      <section className="py-24 md:py-32 px-6 md:px-12 lg:px-20 bg-bsv2-cream border-t border-bsv2-charcoal/[0.06]">
-        <div className="max-w-[1400px] mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
-          {/* Left - artistic image */}
+          {/* Stat callouts bottom */}
           <motion.div
-            initial={{ opacity: 0, x: -30 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.8 }}
-            className="aspect-[4/5] relative overflow-hidden"
+            initial={{ opacity: 0, y: 16 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 1, duration: 0.8 }}
+            className="absolute bottom-6 md:bottom-8 left-0 right-0 z-20 px-6 md:px-10 hidden sm:flex flex-row gap-3 justify-between items-end"
           >
+            {heroStats.map((s) => (
+              <div
+                key={s.value}
+                className="flex items-center gap-4 bg-white/10 backdrop-blur-md border border-white/15 rounded-2xl px-5 py-3.5 max-w-xs"
+              >
+                <span className="font-display text-3xl md:text-4xl text-bs26-gold-soft leading-none">{s.value}</span>
+                <span className="font-body text-white/80 text-xs leading-snug">{s.label}</span>
+              </div>
+            ))}
+          </motion.div>
+        </div>
+      </section>
+
+      {/* ═══════════════════════ 2. EXCELLENCE ═══════════════════════ */}
+      <section className="px-6 md:px-12 lg:px-20 py-24 md:py-32 max-w-[1500px] mx-auto">
+        <motion.div {...reveal} className="text-center max-w-3xl mx-auto mb-16 md:mb-20">
+          <span className="bs26-eyebrow text-bs26-gold">Vakmanschap in elke badkamer</span>
+          <h2 className="font-display font-light text-[clamp(2.25rem,5vw,4.25rem)] leading-[1.05] mt-5">
+            Wij maken badkamers die je <span className="italic">elke dag</span> wilt gebruiken
+          </h2>
+        </motion.div>
+
+        <div className="grid grid-cols-1 lg:grid-cols-[1fr_1.15fr_1fr] gap-10 lg:gap-12 items-center">
+          {/* Left text */}
+          <motion.div {...reveal}>
+            <h3 className="font-display text-2xl md:text-3xl font-light mb-4">Jouw partner in jouw badkamer</h3>
+            <p className="font-body text-bs26-grey text-[15px] leading-relaxed mb-7">
+              Badkamerstijl ontwerpt en realiseert luxe badkamers op maat. We luisteren naar je wensen, vertalen die naar een doordacht totaalconcept en voeren het uit met oog voor elk detail.
+            </p>
+            <Link
+              href="/diensten"
+              className="inline-flex items-center gap-2 bg-bs26-ink text-white text-sm font-medium px-6 py-3 rounded-full hover:bg-bs26-gold transition-colors duration-300"
+            >
+              Over onze aanpak
+              <ArrowUpRight className="w-4 h-4" />
+            </Link>
+          </motion.div>
+
+          {/* Center image */}
+          <motion.div {...reveal} className="aspect-[4/5] relative overflow-hidden rounded-[18px]">
             <Image
-              src="/badkamerstijl/2200xxs(44).jpg"
-              alt="Luxe badkamer"
+              src="/badkamerstijl/2200xxs(29).jpg"
+              alt="Detail van een luxe badkamer"
               fill
               className="object-cover"
-              sizes="(max-width: 1024px) 100vw, 50vw"
+              sizes="(max-width: 1024px) 100vw, 40vw"
             />
           </motion.div>
 
-          {/* Right - CTA + nav + legal */}
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.8, delay: 0.1 }}
-            className="flex flex-col"
+          {/* Right features */}
+          <motion.div {...reveal} className="flex flex-col gap-8">
+            {[
+              { t: 'Persoonlijk ontwerp', d: 'Een 3D-ontwerp op maat, zodat je precies ziet wat je krijgt.' },
+              { t: 'Brede materiaalkeuze', d: 'Van designsanitair tot natuursteen, afgestemd op jouw stijl en budget.' },
+              { t: 'Reviews', d: 'Klanten waarderen ons werk met een gemiddelde van 4,9 sterren.' },
+            ].map((f, i) => (
+              <div key={f.t} className={i < 2 ? 'pb-7 border-b border-bs26-charcoal/10' : ''}>
+                <h4 className="font-display text-xl font-medium mb-2">{f.t}</h4>
+                <p className="font-body text-bs26-grey text-sm leading-relaxed">{f.d}</p>
+              </div>
+            ))}
+          </motion.div>
+        </div>
+      </section>
+
+      {/* ═══════════════════════ 3. TRUST PILLARS (DARK) ═══════════════════════ */}
+      <section className="px-3 md:px-5">
+        <div className="bg-bs26-ink text-white rounded-[20px] md:rounded-[28px] px-6 md:px-14 lg:px-20 py-20 md:py-28">
+          <div className="max-w-[1400px] mx-auto">
+            <motion.div {...reveal} className="max-w-2xl mb-14 md:mb-20">
+              <span className="bs26-eyebrow text-bs26-gold-soft">Waarom Badkamerstijl</span>
+              <h2 className="font-display font-light text-[clamp(2.25rem,5vw,4.5rem)] leading-[1.04] mt-5">
+                Eén team dat je <span className="italic">droombadkamer</span> waarmaakt
+              </h2>
+            </motion.div>
+
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-10 md:gap-14">
+              {pillars.map((p, i) => (
+                <motion.div
+                  key={p.title}
+                  {...reveal}
+                  transition={{ ...reveal.transition, delay: i * 0.1 }}
+                  className="border-t border-white/15 pt-7"
+                >
+                  <span className="font-display text-bs26-gold-soft text-4xl">{String(i + 1).padStart(2, '0')}</span>
+                  <h3 className="font-display text-2xl md:text-3xl font-light mt-3 mb-4">{p.title}</h3>
+                  <p className="font-body text-white/65 text-sm leading-relaxed">{p.desc}</p>
+                </motion.div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ═══════════════════════ 4. STIJLEN CAROUSEL ═══════════════════════ */}
+      <section className="py-24 md:py-32">
+        <div className="px-6 md:px-12 lg:px-20 max-w-[1500px] mx-auto">
+          <motion.div {...reveal} className="flex flex-col md:flex-row md:items-end md:justify-between gap-6 mb-12 md:mb-16">
+            <div>
+              <span className="bs26-eyebrow text-bs26-gold">Vind jouw stijl</span>
+              <h2 className="font-display font-light text-[clamp(2.25rem,5vw,4.25rem)] leading-[1.05] mt-4">
+                Ontdek wat bij <span className="italic">jou</span> past
+              </h2>
+            </div>
+            <p className="font-body text-bs26-grey text-[15px] leading-relaxed max-w-sm">
+              Van strak en modern tot klassiek en warm. Laat je inspireren door de stijlen die wij realiseren.
+            </p>
+          </motion.div>
+        </div>
+
+        {/* Scroll-snap carousel */}
+        <div className="flex gap-5 overflow-x-auto snap-x snap-mandatory px-6 md:px-12 lg:px-20 pb-4 [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden">
+          {stijlen.map((s) => (
+            <Link
+              key={s.slug}
+              href={`/stijlen#${s.slug}`}
+              className="group snap-start shrink-0 w-[78vw] sm:w-[46vw] lg:w-[31vw] xl:w-[26rem]"
+            >
+              <div className="aspect-[4/5] relative overflow-hidden rounded-[18px]">
+                <Image
+                  src={s.image}
+                  alt={s.name}
+                  fill
+                  className="object-cover group-hover:scale-105 transition-transform duration-700 ease-out"
+                  sizes="(max-width: 640px) 78vw, (max-width: 1024px) 46vw, 26rem"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/55 via-transparent to-transparent" />
+                <div className="absolute bottom-5 left-5 right-5 flex items-end justify-between gap-3">
+                  <div>
+                    <h3 className="font-display text-2xl md:text-3xl text-white font-light leading-tight">{s.name}</h3>
+                    <p className="font-body text-white/75 text-xs mt-1">{s.tag}</p>
+                  </div>
+                  <span className="shrink-0 w-10 h-10 rounded-full bg-white/15 backdrop-blur-md border border-white/25 flex items-center justify-center text-white group-hover:bg-bs26-gold group-hover:border-bs26-gold transition-colors duration-300">
+                    <ArrowUpRight className="w-4 h-4" />
+                  </span>
+                </div>
+              </div>
+            </Link>
+          ))}
+        </div>
+      </section>
+
+      {/* ═══════════════════════ 5. PAKKETTEN GRID ═══════════════════════ */}
+      <section className="px-6 md:px-12 lg:px-20 pb-24 md:pb-32 max-w-[1500px] mx-auto">
+        <motion.div {...reveal} className="text-center max-w-2xl mx-auto mb-14 md:mb-16">
+          <span className="bs26-eyebrow text-bs26-gold">Onze pakketten</span>
+          <h2 className="font-display font-light text-[clamp(2.25rem,5vw,4.25rem)] leading-[1.05] mt-4">
+            Een badkamer voor <span className="italic">elk budget</span>
+          </h2>
+          <p className="font-body text-bs26-grey text-[15px] leading-relaxed mt-5">
+            Heldere pakketten met een vaste aanneemsom. Alles inbegrepen, van sloop tot de laatste tegel.
+          </p>
+        </motion.div>
+
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-5 md:gap-6">
+          {pakketten.map((p, i) => (
+            <motion.div
+              key={p.name}
+              {...reveal}
+              transition={{ ...reveal.transition, delay: (i % 2) * 0.08 }}
+              className="group bg-bs26-paper rounded-[18px] p-3 flex flex-col sm:flex-row gap-5 hover:shadow-[0_20px_50px_-25px_rgba(34,31,26,0.4)] transition-shadow duration-500"
+            >
+              <div className="sm:w-44 lg:w-52 shrink-0 aspect-[4/3] sm:aspect-auto relative overflow-hidden rounded-[12px]">
+                <Image
+                  src={p.image}
+                  alt={`${p.name} badkamer`}
+                  fill
+                  className="object-cover group-hover:scale-105 transition-transform duration-700"
+                  sizes="(max-width: 640px) 100vw, 13rem"
+                />
+              </div>
+              <div className="flex flex-col flex-1 py-2 pr-3">
+                <h3 className="font-display text-2xl md:text-3xl font-light">{p.name}</h3>
+                <p className="font-body text-bs26-grey text-sm leading-relaxed mt-2 mb-4">{p.desc}</p>
+                <div className="flex flex-wrap gap-2 mb-5">
+                  {p.specs.map((spec) => (
+                    <span key={spec} className="inline-flex items-center gap-1.5 text-[11px] font-body text-bs26-charcoal/70 bg-bs26-sand/60 rounded-full px-3 py-1">
+                      <Check className="w-3 h-3 text-bs26-gold" /> {spec}
+                    </span>
+                  ))}
+                </div>
+                <div className="mt-auto flex items-center justify-between">
+                  <span className="font-display text-xl text-bs26-ink">{p.price}</span>
+                  <Link
+                    href="/prijzen"
+                    className="inline-flex items-center gap-2 text-bs26-gold text-sm font-medium hover:gap-3 transition-all duration-300"
+                  >
+                    Bekijk <ArrowRight className="w-4 h-4" />
+                  </Link>
+                </div>
+              </div>
+            </motion.div>
+          ))}
+        </div>
+
+        <motion.div {...reveal} className="text-center mt-12">
+          <Link
+            href="/prijzen"
+            className="inline-flex items-center gap-2 bg-bs26-ink text-white text-sm font-medium px-8 py-3.5 rounded-full hover:bg-bs26-gold transition-colors duration-300"
           >
-            <h2 className="font-cormorant text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-light mb-10">
+            Bekijk alle prijzen
+            <ArrowRight className="w-4 h-4" />
+          </Link>
+        </motion.div>
+      </section>
+
+      {/* ═══════════════════════ 6. INSIGHTS / TESTIMONIAL (DARK) ═══════════════════════ */}
+      <section className="px-3 md:px-5">
+        <div className="bg-bs26-ink text-white rounded-[20px] md:rounded-[28px] px-6 md:px-14 lg:px-20 py-20 md:py-28">
+          <div className="max-w-[1400px] mx-auto">
+            <motion.div {...reveal} className="flex flex-col md:flex-row md:items-end md:justify-between gap-6 mb-14">
+              <h2 className="font-display font-light text-[clamp(2.25rem,5vw,4.25rem)] leading-[1.04] max-w-2xl">
+                Inspiratie, ervaringen en <span className="italic">vakkennis</span>
+              </h2>
+              <Link href="/blog" className="inline-flex items-center gap-2 text-white/80 text-sm font-medium hover:text-white transition-colors shrink-0">
+                Lees onze blog <ArrowUpRight className="w-4 h-4" />
+              </Link>
+            </motion.div>
+
+            <div className="grid grid-cols-1 lg:grid-cols-[1.3fr_1fr] gap-6">
+              {/* Feature image card */}
+              <motion.div {...reveal} className="relative rounded-[18px] overflow-hidden min-h-[320px] lg:min-h-[420px]">
+                <Image
+                  src="/badkamerstijl/2200xxs(28).jpg"
+                  alt="Luxe badkamer met sfeerverlichting"
+                  fill
+                  className="object-cover"
+                  sizes="(max-width: 1024px) 100vw, 55vw"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent" />
+                <div className="absolute bottom-6 left-6 right-6">
+                  <span className="bs26-eyebrow text-bs26-gold-soft">Inspiratie</span>
+                  <h3 className="font-display text-2xl md:text-3xl font-light mt-2 max-w-md">
+                    Lichtontwerp als fundament van badkamerbeleving
+                  </h3>
+                </div>
+              </motion.div>
+
+              {/* Testimonial card */}
+              <motion.div {...reveal} className="bg-white/[0.04] border border-white/10 rounded-[18px] p-8 flex flex-col justify-between">
+                <div>
+                  <div className="flex gap-1 mb-6">
+                    {Array.from({ length: 5 }).map((_, i) => (
+                      <Star key={i} className="w-4 h-4 fill-bs26-gold-soft text-bs26-gold-soft" />
+                    ))}
+                  </div>
+                  <p className="font-display text-2xl md:text-[1.75rem] font-light leading-snug text-white/90">
+                    &ldquo;Van het eerste ontwerp tot de oplevering klopte alles. Eén team, heldere prijs en een badkamer die nog mooier werd dan op de tekening.&rdquo;
+                  </p>
+                </div>
+                <div className="mt-8 pt-6 border-t border-white/10">
+                  <p className="font-body font-medium text-white">Familie de Vries</p>
+                  <p className="font-body text-white/55 text-sm">Complete badkamer renovatie, Utrecht</p>
+                </div>
+              </motion.div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ═══════════════════════ 7. FAQ ═══════════════════════ */}
+      <section className="px-6 md:px-12 lg:px-20 py-24 md:py-32 max-w-[1200px] mx-auto">
+        <div className="grid grid-cols-1 lg:grid-cols-[0.8fr_1.2fr] gap-12 lg:gap-20">
+          <motion.div {...reveal}>
+            <span className="bs26-eyebrow text-bs26-gold">Veelgestelde vragen</span>
+            <h2 className="font-display font-light text-[clamp(2.25rem,4.5vw,3.75rem)] leading-[1.05] mt-4">
+              Goed om te <span className="italic">weten</span>
+            </h2>
+            <p className="font-body text-bs26-grey text-[15px] leading-relaxed mt-5 max-w-sm">
+              Staat jouw vraag er niet bij? Plan een vrijblijvend adviesgesprek, dan beantwoorden we alles persoonlijk.
+            </p>
+            <Link
+              href="/adviesgesprek"
+              className="inline-flex items-center gap-2 mt-7 bg-bs26-ink text-white text-sm font-medium px-6 py-3 rounded-full hover:bg-bs26-gold transition-colors duration-300"
+            >
+              Stel je vraag
+              <ArrowRight className="w-4 h-4" />
+            </Link>
+          </motion.div>
+
+          <motion.div {...reveal} className="flex flex-col">
+            {faqs.map((faq, i) => {
+              const isOpen = openFaq === i;
+              return (
+                <div key={faq.q} className="border-b border-bs26-charcoal/12">
+                  <button
+                    type="button"
+                    onClick={() => setOpenFaq(isOpen ? null : i)}
+                    className="w-full flex items-center justify-between gap-4 py-5 text-left group"
+                    aria-expanded={isOpen}
+                  >
+                    <span className="font-display text-lg md:text-xl font-medium group-hover:text-bs26-gold transition-colors">
+                      {faq.q}
+                    </span>
+                    <span className="shrink-0 w-8 h-8 rounded-full border border-bs26-charcoal/20 flex items-center justify-center text-bs26-ink">
+                      {isOpen ? <Minus className="w-4 h-4" /> : <Plus className="w-4 h-4" />}
+                    </span>
+                  </button>
+                  <div className={`grid transition-all duration-300 ease-out ${isOpen ? 'grid-rows-[1fr] opacity-100' : 'grid-rows-[0fr] opacity-0'}`}>
+                    <div className="overflow-hidden">
+                      <p className="font-body text-bs26-grey text-[15px] leading-relaxed pb-6 pr-10">{faq.a}</p>
+                    </div>
+                  </div>
+                </div>
+              );
+            })}
+          </motion.div>
+        </div>
+      </section>
+
+      {/* ═══════════════════════ 8. ADVIES FORM ═══════════════════════ */}
+      <section id="advies" className="px-3 md:px-5">
+        <div className="bg-bs26-sand/50 rounded-[20px] md:rounded-[28px] px-6 md:px-14 lg:px-20 py-20 md:py-24">
+          <div className="max-w-5xl mx-auto grid lg:grid-cols-[1fr_1.05fr] gap-10 lg:gap-16 items-center">
+            <div>
+              <span className="bs26-eyebrow text-bs26-gold">Persoonlijk advies</span>
+              <h2 className="font-display text-[clamp(2rem,4.5vw,3.5rem)] font-light leading-[1.1] mt-4 mb-5">
+                Vertel ons over jouw <span className="italic">droombadkamer</span>
+              </h2>
+              <p className="font-body text-bs26-grey text-[15px] leading-relaxed max-w-md">
+                In 3 stappen krijg je persoonlijk advies van ons team. Upload eventueel foto&apos;s van je huidige situatie, dan denken wij gericht met je mee.
+              </p>
+            </div>
+            <div className="w-full">
+              <HeroAdviesTool brand="badkamerstijl" />
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ═══════════════════════ 9. CLOSING CTA ═══════════════════════ */}
+      <section className="px-3 md:px-5 py-12 md:py-20">
+        <div className="relative overflow-hidden rounded-[20px] md:rounded-[28px] min-h-[420px] md:min-h-[520px] flex items-center">
+          <Image
+            src="/badkamerstijl/2200xxs(47).jpg"
+            alt="Luxe badkamer door Badkamerstijl"
+            fill
+            className="object-cover"
+            sizes="100vw"
+          />
+          <div className="absolute inset-0 bg-gradient-to-r from-black/75 via-black/45 to-black/25" />
+          <motion.div {...reveal} className="relative z-10 px-8 md:px-16 lg:px-24 max-w-2xl">
+            <h2 className="font-display font-light text-white text-[clamp(2.5rem,6vw,5rem)] leading-[1.02]">
               Laten we jouw
               <br />
-              <span className="italic">droombadkamer</span>
-              <br />
-              realiseren
+              <span className="italic">droombadkamer</span> realiseren
             </h2>
-
-            <div className="flex flex-col sm:flex-row gap-4 mb-16">
+            <div className="mt-9 flex flex-col sm:flex-row gap-4">
               <Link
                 href="/adviesgesprek"
-                className="bg-bsv2-teal text-white text-sm font-medium px-8 py-3.5 rounded-full hover:bg-bsv2-charcoal transition-colors duration-300 inline-flex items-center justify-center gap-2"
+                className="inline-flex items-center justify-center gap-2 bg-white text-bs26-ink text-sm font-medium px-8 py-4 rounded-full hover:bg-bs26-gold hover:text-white transition-colors duration-300"
               >
                 Adviesgesprek plannen
                 <ArrowRight className="w-4 h-4" />
               </Link>
               <Link
                 href="/adviesgesprek"
-                className="border border-bsv2-charcoal text-bsv2-charcoal text-sm font-medium px-8 py-3.5 rounded-full hover:bg-bsv2-charcoal hover:text-white transition-colors duration-300 inline-flex items-center justify-center gap-2"
+                className="inline-flex items-center justify-center gap-2 border border-white/40 text-white text-sm font-medium px-8 py-4 rounded-full hover:bg-white/10 transition-colors duration-300"
               >
                 Bel ons direct
               </Link>

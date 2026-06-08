@@ -1,5 +1,5 @@
 import type { Metadata } from 'next';
-import { Poppins } from 'next/font/google';
+import { Poppins, Cormorant_Garamond } from 'next/font/google';
 import Navigation from '@/components/Navigation';
 import Footer from '@/components/Footer';
 import SmoothScroll from '@/components/SmoothScroll';
@@ -10,7 +10,15 @@ import './globals.css';
 const poppins = Poppins({
   variable: '--font-poppins',
   subsets: ['latin'],
-  weight: ['700'],
+  weight: ['400', '500', '600', '700'],
+  style: ['normal', 'italic'],
+});
+
+// Badkamerstijl 2026 redesign - elegant high-contrast serif for display headings
+const cormorantGaramond = Cormorant_Garamond({
+  variable: '--font-cormorant-garamond',
+  subsets: ['latin'],
+  weight: ['300', '400', '500', '600'],
   style: ['normal', 'italic'],
 });
 
@@ -76,7 +84,7 @@ export default function RootLayout({
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
         />
       </head>
-      <body className={`${poppins.variable} antialiased flex flex-col min-h-screen`}>
+      <body className={`${poppins.variable} ${cormorantGaramond.variable} antialiased flex flex-col min-h-screen`}>
         <script dangerouslySetInnerHTML={{ __html: `
           window.addEventListener('message', (e) => {
             if (e.data.type === 'studio-scroll') {
