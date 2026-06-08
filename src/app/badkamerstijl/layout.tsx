@@ -116,8 +116,8 @@ const serviceJsonLd = {
     '@type': 'AggregateOffer',
     priceCurrency: 'EUR',
     lowPrice: '5000',
-    highPrice: '60000',
-    offerCount: '4',
+    highPrice: '40000',
+    offerCount: '3',
     url: `${SITE_URL}/prijzen`,
   },
   hasOfferCatalog: {
@@ -127,22 +127,17 @@ const serviceJsonLd = {
       {
         '@type': 'OfferCatalog',
         name: 'Basis badkamer',
-        description: 'Nette renovatie met betrouwbaar middensegment sanitair, vanaf € 5.000.',
-      },
-      {
-        '@type': 'OfferCatalog',
-        name: 'Standaard badkamer',
-        description: 'Designsanitair en grootformaat tegels, tussen € 12.000 en € 22.000.',
+        description: 'Nette renovatie met betrouwbaar middensegment sanitair, tussen € 5.000 en € 12.000.',
       },
       {
         '@type': 'OfferCatalog',
         name: 'Premium badkamer',
-        description: 'Topmerken, vrijstaand bad en maatwerk meubels, tussen € 22.000 en € 35.000.',
+        description: 'Designsanitair, grootformaat tegels, vrijstaand bad en maatwerk meubels, tussen € 12.000 en € 18.000.',
       },
       {
         '@type': 'OfferCatalog',
         name: 'Luxe badkamer',
-        description: 'Volledig op maat met natuursteen en designmerken, vanaf € 35.000.',
+        description: 'Volledig op maat met natuursteen en designmerken, vanaf € 18.000.',
       },
     ],
   },
