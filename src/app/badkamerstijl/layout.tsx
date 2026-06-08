@@ -4,6 +4,7 @@ import BadkamerstijlTransition from '@/components/BadkamerstijlTransition';
 import BadkamerstijlFooter from '@/components/BadkamerstijlFooter';
 import { CONTACT_BADKAMERSTIJL } from '@/data/contact';
 import { BADKAMERSTIJL_FAQS } from '@/data/badkamerstijl-faq';
+import CookieConsent from '@/components/CookieConsent';
 
 const SITE_URL = 'https://badkamerstijl.nl';
 
@@ -92,8 +93,6 @@ const localBusinessJsonLd = {
       dayOfWeek: 'Saturday',
       opens: '09:00',
       closes: '17:00',
-      validFrom: '2026-01-01',
-      validThrough: '2026-12-31',
     },
   ],
   sameAs: ['https://www.instagram.com/badkamerstijl'],
@@ -190,25 +189,8 @@ export default function BadkamerstijlLayout({ children }: { children: React.Reac
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }}
       />
-      <script
-        type="text/javascript"
-        dangerouslySetInnerHTML={{ __html: `
-    (function(c,l,a,r,i,t,y){
-        c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
-        t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
-        y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
-    })(window, document, "clarity", "script", "ws4ssoyhmg");
-` }}
-      />
-      <script async src="https://www.googletagmanager.com/gtag/js?id=G-XKXE96N9P7" />
-      <script
-        dangerouslySetInnerHTML={{ __html: `
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-  gtag('config', 'G-XKXE96N9P7');
-` }}
-      />
+      {/* Analytics (GA + Clarity) wordt pas geladen na cookie-toestemming. */}
+      <CookieConsent />
       <ScrollToTop />
       <BadkamerstijlTransition />
       {children}

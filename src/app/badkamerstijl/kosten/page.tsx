@@ -49,8 +49,7 @@ const breadcrumbJsonLd = {
   '@type': 'BreadcrumbList',
   itemListElement: [
     { '@type': 'ListItem', position: 1, name: 'Home', item: SITE_URL },
-    { '@type': 'ListItem', position: 2, name: 'Badkamerstijl', item: `${SITE_URL}/badkamerstijl` },
-    { '@type': 'ListItem', position: 3, name: 'Kosten', item: PAGE_URL },
+    { '@type': 'ListItem', position: 2, name: 'Kosten', item: PAGE_URL },
   ],
 };
 

@@ -1,6 +1,6 @@
 'use client';
 
-import { motion, MotionConfig } from 'framer-motion';
+import { motion, MotionConfig, useReducedMotion } from 'framer-motion';
 import { useState } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
@@ -106,6 +106,7 @@ function AdviesBlock({ id }: { id: string }) {
 
 export default function BadkamerstijlHome() {
   const [openFaq, setOpenFaq] = useState<number | null>(0);
+  const reduceMotion = useReducedMotion();
 
   return (
     <MotionConfig reducedMotion="user">
@@ -223,11 +224,12 @@ export default function BadkamerstijlHome() {
               className="absolute inset-0 w-full h-full object-cover"
               src="/badkamerstijl/badkamer-video.mp4"
               poster="/badkamerstijl/badkamer-video-poster.jpg"
-              autoPlay
+              autoPlay={!reduceMotion}
               muted
               loop
               playsInline
               preload="metadata"
+              controls={reduceMotion || undefined}
               aria-label="Sfeerbeeld van een door Badkamerstijl gerealiseerde luxe badkamer op maat"
             />
           </motion.div>
@@ -299,12 +301,13 @@ export default function BadkamerstijlHome() {
             <Link
               key={s.slug}
               href={`/stijlen#${s.slug}`}
+              aria-label={`Bekijk de stijl ${s.name}`}
               className="group snap-start shrink-0 w-[78vw] sm:w-[46vw] lg:w-[31vw] xl:w-[26rem]"
             >
               <div className="aspect-[4/5] relative overflow-hidden rounded-[18px]">
                 <Image
                   src={s.image}
-                  alt={s.name}
+                  alt={`Badkamer in ${s.name} stijl door Badkamerstijl`}
                   fill
                   className="object-cover group-hover:scale-105 transition-transform duration-700 ease-out"
                   sizes="(max-width: 640px) 78vw, (max-width: 1024px) 46vw, 26rem"
@@ -322,6 +325,8 @@ export default function BadkamerstijlHome() {
               </div>
             </Link>
           ))}
+          {/* Trailing spacer zodat de laatste kaart op mobiel netjes vrij komt */}
+          <div className="shrink-0 w-1 sm:hidden" aria-hidden="true" />
         </div>
       </section>
 

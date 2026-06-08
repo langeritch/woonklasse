@@ -11,6 +11,12 @@ export default function SmoothScroll({ children }: { children: React.ReactNode }
   useEffect(() => {
     if (!isBadkamer) return;
 
+    // Respecteer prefers-reduced-motion: geen smooth-scroll hijack.
+    if (typeof window !== 'undefined' &&
+        window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      return;
+    }
+
     let cancelled = false;
 
     // Dynamically import heavy libraries only when needed
