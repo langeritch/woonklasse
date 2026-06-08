@@ -6,6 +6,16 @@ Deze lijst is geprioriteerd. Bovenaan staat wat in deze sessie al is opgelost, d
 
 ---
 
+## Al opgelost (ronde 3)
+
+- **Alle kernpagina's herstyled naar de nieuwe bs26-look**: prijzen, diensten, stijlen, portfolio, adviesgesprek en de blog (index + artikel) zijn nu consistent met de homepage (koel palet, Cormorant serif, afgeronde kaarten, pill-knoppen). Het homepage-adviesformulier (HeroAdviesTool) is mee omgezet.
+- **Prijscalculator** behouden en werkend; FAQ's overal toegankelijk gemaakt (aria).
+- **Adres-bug gefixt**: adviesgesprek toonde nog het oude Amsterdamse adres (hardcoded), nu uit `CONTACT` (Leerdam).
+- **Linkfixes**: circulaire `/kosten`-link weg op prijzen, stadslinks naar schone `/<stad>`.
+- GSAP clip-path reveals vervangen door framer `whileInView` (reduced-motion-proof) op de herschreven pagina's.
+
+> Let op: de ~50 SEO-stadspagina's gebruiken nog bewust het oude `bsv2`-design (geparkeerd).
+
 ## Al opgelost (ronde 2)
 
 - **Cookie-consent (AVG)**: Google Analytics en Clarity laden nu pas na toestemming, via een consent-banner. Keuze wordt onthouden.
