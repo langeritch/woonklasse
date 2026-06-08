@@ -36,12 +36,12 @@ export default function BadkamerstijlFloatingNav() {
     <>
       {/* Persistent top header */}
       <header className="fixed top-0 left-0 w-full z-50">
-        <div className="bg-bsv2-cream/80 backdrop-blur-xl border-b border-bsv2-charcoal/10">
+        <div className="bg-bs26-cream/80 backdrop-blur-xl border-b border-bs26-charcoal/10">
           <div className="max-w-[1600px] mx-auto px-6 md:px-12 lg:px-20">
             <div className="flex items-center justify-between h-16 md:h-20">
               {/* Brand - back to the home portal */}
               <Link href="/" className="flex-shrink-0">
-                <span className="font-cormorant text-xl md:text-2xl font-light text-bsv2-charcoal tracking-wide">
+                <span className="font-cormorant text-xl md:text-2xl font-light text-bs26-charcoal tracking-wide">
                   Badkamerstijl
                 </span>
               </Link>
@@ -54,17 +54,17 @@ export default function BadkamerstijlFloatingNav() {
                   className="flex items-center gap-2 sm:gap-2.5 px-3 sm:px-4 py-2.5 rounded-full hover:bg-black/5 transition-colors"
                 >
                   <div className="flex flex-col gap-[4px] w-[18px]">
-                    <span className="block h-[1.5px] w-full bg-bsv2-charcoal rounded-full" />
-                    <span className="block h-[1.5px] w-full bg-bsv2-charcoal rounded-full" />
+                    <span className="block h-[1.5px] w-full bg-bs26-charcoal rounded-full" />
+                    <span className="block h-[1.5px] w-full bg-bs26-charcoal rounded-full" />
                   </div>
-                  <span className="text-xs font-medium tracking-[0.1em] uppercase text-bsv2-charcoal hidden sm:block">
+                  <span className="text-xs font-medium tracking-[0.1em] uppercase text-bs26-charcoal hidden sm:block">
                     Menu
                   </span>
                 </button>
 
                 <Link
                   href="/adviesgesprek"
-                  className="flex items-center gap-2 bg-bsv2-teal text-white text-xs font-medium tracking-[0.05em] px-4 sm:px-5 py-2.5 rounded-full hover:bg-bsv2-charcoal transition-colors duration-300"
+                  className="flex items-center gap-2 bg-bs26-ink text-white text-xs font-medium tracking-[0.05em] px-4 sm:px-5 py-2.5 rounded-full hover:bg-bs26-gold transition-colors duration-300"
                 >
                   Contact
                 </Link>
@@ -82,13 +82,13 @@ export default function BadkamerstijlFloatingNav() {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.5 }}
-            className="fixed inset-0 z-[60] bg-bsv2-cream flex flex-col"
+            className="fixed inset-0 z-[60] bg-bs26-cream flex flex-col"
           >
             {/* Close button */}
             <div className="flex justify-end px-8 md:px-16 pt-8">
               <button
                 onClick={() => setMenuOpen(false)}
-                className="flex items-center gap-2 text-bsv2-charcoal hover:text-bsv2-teal transition-colors"
+                className="flex items-center gap-2 text-bs26-charcoal hover:text-bs26-gold transition-colors"
               >
                 <span className="text-xs font-medium tracking-[0.1em] uppercase">Sluiten</span>
                 <div className="relative w-6 h-6">
@@ -111,7 +111,7 @@ export default function BadkamerstijlFloatingNav() {
                     <Link
                       href={link.path}
                       onClick={() => setMenuOpen(false)}
-                      className="block font-cormorant text-4xl sm:text-5xl md:text-7xl lg:text-8xl font-light text-bsv2-charcoal/40 hover:text-bsv2-charcoal transition-colors duration-300 py-1 md:py-2"
+                      className="block font-cormorant text-4xl sm:text-5xl md:text-7xl lg:text-8xl font-light text-bs26-charcoal/40 hover:text-bs26-charcoal transition-colors duration-300 py-1 md:py-2"
                     >
                       {link.title}
                     </Link>
@@ -127,7 +127,7 @@ export default function BadkamerstijlFloatingNav() {
                   <Link
                     href="/adviesgesprek"
                     onClick={() => setMenuOpen(false)}
-                    className="inline-flex items-center gap-3 bg-bsv2-teal text-white px-8 py-3.5 rounded-full text-sm font-medium tracking-wide hover:bg-bsv2-charcoal transition-colors duration-300"
+                    className="inline-flex items-center gap-3 bg-bs26-ink text-white px-8 py-3.5 rounded-full text-sm font-medium tracking-wide hover:bg-bs26-gold transition-colors duration-300"
                   >
                     Adviesgesprek plannen
                     <ArrowRight className="w-4 h-4" />
@@ -141,7 +141,7 @@ export default function BadkamerstijlFloatingNav() {
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ delay: 0.6 }}
-              className="px-8 md:px-16 pb-8 flex justify-between items-end text-xs text-bsv2-grey"
+              className="px-8 md:px-16 pb-8 flex justify-between items-end text-xs text-bs26-grey"
             >
               <span>info@badkamerstijl.nl</span>
               <span>+31 30 207 23 88</span>

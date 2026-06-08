@@ -19,7 +19,7 @@ const navLinks = [
 // inline footers were removed in favour of this one for visual consistency.
 export default function BadkamerstijlFooter() {
   return (
-    <footer className="bg-bsv2-charcoal text-bsv2-cream mt-auto border-t border-white/10">
+    <footer className="bg-bs26-ink text-bs26-cream mt-auto border-t border-white/10">
       <div className="max-w-[1600px] mx-auto px-6 md:px-12 lg:px-20 pt-20 pb-12">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-12 md:gap-8">
           {/* Brand */}

@@ -16,17 +16,18 @@
   --color-background: var(--background);
   --color-foreground: var(--foreground);
 
-  /* Badkamerstijl 2026 - warm editorial luxury (LeonHome/Luxira inspired):
-     dominant cream, deep near-black sections, single warm bronze accent. */
-  --color-bs26-cream: #F6F1EA;
-  --color-bs26-paper: #FBF8F2;
-  --color-bs26-sand: #EADFCF;
-  --color-bs26-ink: #16140F;
-  --color-bs26-charcoal: #221F1A;
-  --color-bs26-gold: #B0895B;
-  --color-bs26-gold-soft: #CBAC82;
-  --color-bs26-grey: #8B847A;
-  --color-bs26-grey-light: #B9B2A6;
+  /* Badkamerstijl 2026 - cool & clean minimalist:
+     light grey/white base, anthracite dark sections, single cool slate accent.
+     (Token names keep the bs26-gold/sand legacy names; values are now cool.) */
+  --color-bs26-cream: #F7F7F5;       /* page background - near-white cool grey */
+  --color-bs26-paper: #FFFFFF;       /* card surfaces - clean white */
+  --color-bs26-sand: #EBEEED;        /* chips / advies container - cool light grey */
+  --color-bs26-ink: #1E2326;         /* dark sections + primary buttons - cool charcoal */
+  --color-bs26-charcoal: #1A1D1F;    /* primary text - near-black */
+  --color-bs26-gold: #51666A;        /* accent on light bg: eyebrows, links, hover */
+  --color-bs26-gold-soft: #93A7A9;   /* accent on dark bg: eyebrows, numbers, stars */
+  --color-bs26-grey: #7E878A;        /* muted body text */
+  --color-bs26-grey-light: #AEB6B7;  /* faint text on dark */
 
   /* Woonklasse Palette - calm beige base + three restrained accents.
      Beige (light/cream/sand) stays dominant. Exactly one dark anchor
@@ -305,7 +306,7 @@ a:focus-visible {
   font-family: var(--font-body);
 }
 .bs26 ::selection {
-  background: rgba(176, 137, 91, 0.25);
+  background: rgba(107, 123, 126, 0.25);
 }
 /* Hairline label - small uppercase eyebrow used across sections */
 .bs26 .bs26-eyebrow {
