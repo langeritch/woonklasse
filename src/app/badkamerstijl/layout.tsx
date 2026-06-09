@@ -5,6 +5,7 @@ import BadkamerstijlFooter from '@/components/BadkamerstijlFooter';
 import { CONTACT_BADKAMERSTIJL } from '@/data/contact';
 import { BADKAMERSTIJL_FAQS } from '@/data/badkamerstijl-faq';
 import CookieConsent from '@/components/CookieConsent';
+import { I18nProvider } from '@/i18n/I18nProvider';
 
 const SITE_URL = 'https://badkamerstijl.nl';
 
@@ -187,9 +188,11 @@ export default function BadkamerstijlLayout({ children }: { children: React.Reac
       {/* Analytics (GA + Clarity) wordt pas geladen na cookie-toestemming. */}
       <CookieConsent />
       <ScrollToTop />
-      <BadkamerstijlTransition />
-      {children}
-      <BadkamerstijlFooter />
+      <I18nProvider>
+        <BadkamerstijlTransition />
+        {children}
+        <BadkamerstijlFooter />
+      </I18nProvider>
     </>
   );
 }
