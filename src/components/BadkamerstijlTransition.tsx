@@ -2,6 +2,7 @@
 
 import { usePathname, useRouter } from 'next/navigation';
 import { useEffect, useRef, useCallback } from 'react';
+import BadkamerstijlLogo from '@/components/BadkamerstijlLogo';
 
 const PATHS = {
   coverStart:  'M 0 0 V 0   Q 50 0   100 0   V 0   z',
@@ -15,8 +16,11 @@ const PATHS = {
 const LABELS: Record<string, string> = {
   '/': 'Home',
   '/stijlen': 'Stijlen',
+  '/saninet': 'Saninet 3D',
   '/portfolio': 'Portfolio',
   '/diensten': 'Diensten',
+  '/prijzen': 'Prijzen',
+  '/blog': 'Blog',
   '/adviesgesprek': 'Contact',
 };
 
@@ -32,6 +36,7 @@ export default function BadkamerstijlTransition() {
   const overlayRef = useRef<HTMLDivElement>(null);
   const pathRef = useRef<SVGPathElement>(null);
   const labelRef = useRef<HTMLSpanElement>(null);
+  const logoRef = useRef<HTMLDivElement>(null);
 
   /* Phase 1: cover the viewport, then navigate */
   const doCover = useCallback(async (href: string) => {
@@ -42,7 +47,8 @@ export default function BadkamerstijlTransition() {
     const overlay = overlayRef.current;
     const path = pathRef.current;
     const label = labelRef.current;
-    if (!overlay || !path || !label) {
+    const logo = logoRef.current;
+    if (!overlay || !path || !label || !logo) {
       phaseRef.current = 'idle';
       targetHrefRef.current = null;
       return;
@@ -66,10 +72,16 @@ export default function BadkamerstijlTransition() {
     tl.to(path, { attr: { d: PATHS.coverMid }, duration: 0.35, ease: 'power3.in' });
     tl.to(path, { attr: { d: PATHS.coverEnd }, duration: 0.35, ease: 'power3.out' });
     tl.fromTo(
+      logo,
+      { y: 24, opacity: 0 },
+      { y: 0, opacity: 1, duration: 0.35, ease: 'power3.out' },
+      '-=0.22',
+    );
+    tl.fromTo(
       label,
       { y: '100%', opacity: 0 },
       { y: '0%', opacity: 1, duration: 0.3, ease: 'power3.out' },
-      '-=0.2',
+      '-=0.28',
     );
   }, [pathname, router]);
 
@@ -83,7 +95,8 @@ export default function BadkamerstijlTransition() {
     const overlay = overlayRef.current;
     const path = pathRef.current;
     const label = labelRef.current;
-    if (!overlay || !path || !label) {
+    const logo = logoRef.current;
+    if (!overlay || !path || !label || !logo) {
       phaseRef.current = 'idle';
       targetHrefRef.current = null;
       return;
@@ -96,11 +109,12 @@ export default function BadkamerstijlTransition() {
           targetHrefRef.current = null;
           overlay.style.pointerEvents = 'none';
           gsap.set(path, { attr: { d: PATHS.coverStart } });
+          gsap.set([logo, label], { opacity: 0 });
         },
       });
 
-      tl.to(label, { y: '-80%', opacity: 0, duration: 0.25, ease: 'power3.in' });
-      tl.to(path, { attr: { d: PATHS.revealMid }, duration: 0.35, ease: 'power3.in' });
+      tl.to([logo, label], { y: '-=24', opacity: 0, duration: 0.25, ease: 'power3.in' });
+      tl.to(path, { attr: { d: PATHS.revealMid }, duration: 0.35, ease: 'power3.in' }, '-=0.1');
       tl.to(path, { attr: { d: PATHS.revealEnd }, duration: 0.35, ease: 'power3.out' });
     });
   }, [pathname]);
@@ -151,10 +165,14 @@ export default function BadkamerstijlTransition() {
         <path
           ref={pathRef}
           d={PATHS.coverStart}
-          fill="#332C27"
+          fill="#1E2326"
         />
       </svg>
-      <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
+      <div className="absolute inset-0 flex flex-col items-center justify-center gap-5 md:gap-7 pointer-events-none px-6">
+        {/* Site-logo boven het paginanaam-woord */}
+        <div ref={logoRef} className="opacity-0">
+          <BadkamerstijlLogo className="h-12 md:h-16 text-white" />
+        </div>
         <div className="overflow-hidden">
           <span
             ref={labelRef}
