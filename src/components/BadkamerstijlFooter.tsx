@@ -35,10 +35,20 @@ export default function BadkamerstijlFooter() {
               href="https://woonklasse.nl"
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-1.5 mt-6 text-xs tracking-[0.15em] uppercase text-white/45 hover:text-white transition-colors"
+              className="group inline-flex items-center gap-3 mt-6 text-white/45 hover:text-white transition-colors"
             >
-              {t('Zusterbedrijf: Woonklasse')}
-              <span aria-hidden="true">&rarr;</span>
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img
+                src="/woonklasse-logo-white.svg"
+                alt="Woonklasse logo"
+                width={36}
+                height={36}
+                className="h-9 w-9 shrink-0 opacity-70 group-hover:opacity-100 transition-opacity"
+              />
+              <span className="inline-flex items-center gap-1.5 text-xs tracking-[0.15em] uppercase">
+                {t('Zusterbedrijf: Woonklasse')}
+                <span aria-hidden="true">&rarr;</span>
+              </span>
             </a>
           </div>
 
