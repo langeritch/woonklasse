@@ -8,6 +8,7 @@ import { ArrowRight, ArrowUpRight, Plus, Minus, Star, Check, Phone } from 'lucid
 import BadkamerstijlFloatingNav from '@/components/BadkamerstijlFloatingNav';
 import HeroAdviesTool from '@/components/HeroAdviesTool';
 import { BADKAMERSTIJL_FAQS as faqs } from '@/data/badkamerstijl-faq';
+import { useI18n } from '@/i18n/I18nProvider';
 
 /* ──────────────────────────── DATA ──────────────────────────── */
 
@@ -80,17 +81,18 @@ const reveal = {
 /* ──────────────────── ADVIES BLOCK (twice on page) ──────────────────── */
 
 function AdviesBlock({ id }: { id: string }) {
+  const { t } = useI18n();
   return (
     <section id={id} className="px-3 md:px-5 scroll-mt-24">
       <div className="bg-bs26-sand/50 rounded-[20px] md:rounded-[28px] px-6 md:px-14 lg:px-20 py-20 md:py-24">
         <div className="max-w-5xl mx-auto grid lg:grid-cols-[1fr_1.05fr] gap-10 lg:gap-16 items-center">
           <div>
-            <span className="bs26-eyebrow text-bs26-gold">Persoonlijk advies</span>
+            <span className="bs26-eyebrow text-bs26-gold">{t('Persoonlijk advies')}</span>
             <h2 className="font-display text-[clamp(2rem,4.5vw,3.5rem)] font-light leading-[1.1] mt-4 mb-5">
-              Vertel ons over jouw <span className="italic">droombadkamer</span>
+              {t('Vertel ons over jouw')} <span className="italic">{t('droombadkamer')}</span>
             </h2>
             <p className="font-body text-bs26-grey text-[15px] leading-relaxed max-w-md">
-              In 3 stappen krijg je persoonlijk advies van ons team. Upload eventueel foto&apos;s van je huidige situatie, dan denken wij gericht met je mee.
+              {t("In 3 stappen krijg je persoonlijk advies van ons team. Upload eventueel foto's van je huidige situatie, dan denken wij gericht met je mee.")}
             </p>
           </div>
           <div className="w-full">
@@ -107,6 +109,7 @@ function AdviesBlock({ id }: { id: string }) {
 export default function BadkamerstijlHome() {
   const [openFaq, setOpenFaq] = useState<number | null>(0);
   const reduceMotion = useReducedMotion();
+  const { t } = useI18n();
 
   return (
     <MotionConfig reducedMotion="user">
@@ -142,7 +145,7 @@ export default function BadkamerstijlHome() {
               className="flex items-center gap-3 mb-6"
             >
               <span className="w-8 h-px bg-bs26-gold-soft" />
-              <span className="bs26-eyebrow text-white/75">Luxe badkamers op maat</span>
+              <span className="bs26-eyebrow text-white/75">{t('Luxe badkamers op maat')}</span>
               <span className="w-8 h-px bg-bs26-gold-soft" />
             </motion.div>
             <motion.h1
@@ -151,9 +154,9 @@ export default function BadkamerstijlHome() {
               transition={{ delay: 0.25, duration: 0.9, ease: [0.16, 1, 0.3, 1] }}
               className="font-display text-white font-light leading-[0.92] tracking-[0.01em] text-[clamp(3rem,10vw,9rem)]"
             >
-              Jouw droombadkamer,
+              {t('Jouw droombadkamer,')}
               <br />
-              <span className="italic">vakkundig gerealiseerd</span>
+              <span className="italic">{t('vakkundig gerealiseerd')}</span>
             </motion.h1>
             <motion.p
               initial={{ opacity: 0, y: 20 }}
@@ -161,7 +164,7 @@ export default function BadkamerstijlHome() {
               transition={{ delay: 0.55, duration: 0.8 }}
               className="font-body text-white/80 text-base md:text-lg max-w-xl mt-7 leading-relaxed"
             >
-              Van persoonlijk 3D-ontwerp tot oplevering door eigen vakmensen. Eén team, vaste prijs, door heel Nederland.
+              {t('Van persoonlijk 3D-ontwerp tot oplevering door eigen vakmensen. Eén team, vaste prijs, door heel Nederland.')}
             </motion.p>
             <motion.div
               initial={{ opacity: 0, y: 20 }}
@@ -173,7 +176,7 @@ export default function BadkamerstijlHome() {
                 href="#advies"
                 className="group inline-flex items-center gap-3 bg-white text-bs26-ink text-sm font-medium px-7 py-3.5 rounded-full hover:bg-bs26-gold hover:text-white transition-colors duration-300"
               >
-                Krijg persoonlijk advies
+                {t('Krijg persoonlijk advies')}
                 <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform duration-300" />
               </a>
               <a
@@ -181,7 +184,7 @@ export default function BadkamerstijlHome() {
                 className="inline-flex items-center gap-2 text-white/90 text-sm font-medium px-6 py-3.5 rounded-full border border-white/35 hover:bg-white/10 transition-colors duration-300"
               >
                 <Phone className="w-4 h-4" />
-                Bel ons direct
+                {t('Bel ons direct')}
               </a>
             </motion.div>
           </div>
@@ -196,24 +199,24 @@ export default function BadkamerstijlHome() {
       {/* ═══════════════════════ 3. EXCELLENCE ═══════════════════════ */}
       <section className="px-6 md:px-12 lg:px-20 py-24 md:py-32 max-w-[1500px] mx-auto">
         <motion.div {...reveal} className="text-center max-w-3xl mx-auto mb-16 md:mb-20">
-          <span className="bs26-eyebrow text-bs26-gold">Vakmanschap in elke badkamer</span>
+          <span className="bs26-eyebrow text-bs26-gold">{t('Vakmanschap in elke badkamer')}</span>
           <h2 className="font-display font-light text-[clamp(2.25rem,5vw,4.25rem)] leading-[1.05] mt-5">
-            Wij maken badkamers die je <span className="italic">elke dag</span> wilt gebruiken
+            {t('Wij maken badkamers die je')} <span className="italic">{t('elke dag')}</span> {t('wilt gebruiken')}
           </h2>
         </motion.div>
 
         <div className="grid grid-cols-1 lg:grid-cols-[1fr_1.15fr_1fr] gap-10 lg:gap-12 items-center">
           {/* Left text */}
           <motion.div {...reveal}>
-            <h3 className="font-display text-2xl md:text-3xl font-light mb-4">Jouw partner in jouw badkamer</h3>
+            <h3 className="font-display text-2xl md:text-3xl font-light mb-4">{t('Jouw partner in jouw badkamer')}</h3>
             <p className="font-body text-bs26-grey text-[15px] leading-relaxed mb-7">
-              Badkamerstijl ontwerpt en realiseert luxe badkamers op maat. We luisteren naar je wensen, vertalen die naar een doordacht totaalconcept en voeren het uit met oog voor elk detail.
+              {t('Badkamerstijl ontwerpt en realiseert luxe badkamers op maat. We luisteren naar je wensen, vertalen die naar een doordacht totaalconcept en voeren het uit met oog voor elk detail.')}
             </p>
             <Link
               href="/diensten"
               className="inline-flex items-center gap-2 bg-bs26-ink text-white text-sm font-medium px-6 py-3 rounded-full hover:bg-bs26-gold transition-colors duration-300"
             >
-              Over onze aanpak
+              {t('Over onze aanpak')}
               <ArrowUpRight className="w-4 h-4" />
             </Link>
           </motion.div>
@@ -242,8 +245,8 @@ export default function BadkamerstijlHome() {
               { t: 'Reviews', d: 'Klanten waarderen ons werk met een gemiddelde van 4,9 sterren.' },
             ].map((f, i) => (
               <div key={f.t} className={i < 2 ? 'pb-7 border-b border-bs26-charcoal/10' : ''}>
-                <h4 className="font-display text-xl font-medium mb-2">{f.t}</h4>
-                <p className="font-body text-bs26-grey text-sm leading-relaxed">{f.d}</p>
+                <h4 className="font-display text-xl font-medium mb-2">{t(f.t)}</h4>
+                <p className="font-body text-bs26-grey text-sm leading-relaxed">{t(f.d)}</p>
               </div>
             ))}
           </motion.div>
@@ -255,9 +258,9 @@ export default function BadkamerstijlHome() {
         <div className="bg-bs26-ink text-white rounded-[20px] md:rounded-[28px] px-6 md:px-14 lg:px-20 py-20 md:py-28">
           <div className="max-w-[1400px] mx-auto">
             <motion.div {...reveal} className="max-w-2xl mb-14 md:mb-20">
-              <span className="bs26-eyebrow text-bs26-gold-soft">Waarom Badkamerstijl</span>
+              <span className="bs26-eyebrow text-bs26-gold-soft">{t('Waarom Badkamerstijl')}</span>
               <h2 className="font-display font-light text-[clamp(2.25rem,5vw,4.5rem)] leading-[1.04] mt-5">
-                Eén team dat je <span className="italic">droombadkamer</span> waarmaakt
+                {t('Eén team dat je')} <span className="italic">{t('droombadkamer')}</span> {t('waarmaakt')}
               </h2>
             </motion.div>
 
@@ -270,8 +273,8 @@ export default function BadkamerstijlHome() {
                   className="border-t border-white/15 pt-7"
                 >
                   <span className="font-display text-bs26-gold-soft text-4xl">{String(i + 1).padStart(2, '0')}</span>
-                  <h3 className="font-display text-2xl md:text-3xl font-light mt-3 mb-4">{p.title}</h3>
-                  <p className="font-body text-white/65 text-sm leading-relaxed">{p.desc}</p>
+                  <h3 className="font-display text-2xl md:text-3xl font-light mt-3 mb-4">{t(p.title)}</h3>
+                  <p className="font-body text-white/65 text-sm leading-relaxed">{t(p.desc)}</p>
                 </motion.div>
               ))}
             </div>
@@ -282,12 +285,12 @@ export default function BadkamerstijlHome() {
       {/* ═══════════════════════ 4B. SANINET OP LOCATIE ═══════════════════════ */}
       <section className="py-24 md:py-32 px-6 md:px-12 lg:px-20 max-w-[1500px] mx-auto text-center">
         <motion.div {...reveal} className="max-w-3xl mx-auto mb-14 md:mb-16">
-          <span className="bs26-eyebrow text-bs26-gold">Saninet op locatie</span>
+          <span className="bs26-eyebrow text-bs26-gold">{t('Saninet op locatie')}</span>
           <h2 className="font-display font-light text-[clamp(2.25rem,5vw,4.25rem)] leading-[1.05] mt-5">
-            We ontwerpen je badkamer <span className="italic">waar jij wilt</span>
+            {t('We ontwerpen je badkamer')} <span className="italic">{t('waar jij wilt')}</span>
           </h2>
           <p className="font-body text-bs26-grey text-[15px] md:text-base leading-relaxed mt-6">
-            Onze specialist komt naar de locatie van jouw keuze, meet de ruimte exact op en bouwt samen met jou je nieuwe badkamer op in Saninet 3D. Van de eerste plattegrond tot een realistisch beeld: je ziet vooraf precies wat je krijgt, helemaal naar wens.
+            {t('Onze specialist komt naar de locatie van jouw keuze, meet de ruimte exact op en bouwt samen met jou je nieuwe badkamer op in Saninet 3D. Van de eerste plattegrond tot een realistisch beeld: je ziet vooraf precies wat je krijgt, helemaal naar wens.')}
           </p>
         </motion.div>
 
@@ -314,13 +317,13 @@ export default function BadkamerstijlHome() {
                   />
                 </div>
               </div>
-              <figcaption className="bs26-eyebrow text-bs26-charcoal mt-4">{card.caption}</figcaption>
+              <figcaption className="bs26-eyebrow text-bs26-charcoal mt-4">{t(card.caption)}</figcaption>
             </motion.figure>
           ))}
         </div>
 
         <motion.p {...reveal} className="font-body text-bs26-grey text-[15px] md:text-base leading-relaxed max-w-2xl mx-auto mt-14 mb-9">
-          Geen gokwerk en geen verrassingen. Je weet vooraf hoe je badkamer eruitziet, wat erin komt en wat het kost. Pas als het ontwerp helemaal naar wens is, gaan we aan de slag.
+          {t('Geen gokwerk en geen verrassingen. Je weet vooraf hoe je badkamer eruitziet, wat erin komt en wat het kost. Pas als het ontwerp helemaal naar wens is, gaan we aan de slag.')}
         </motion.p>
 
         <motion.div {...reveal} className="flex flex-col sm:flex-row gap-4 justify-center">
@@ -328,14 +331,14 @@ export default function BadkamerstijlHome() {
             href="/adviesgesprek"
             className="inline-flex items-center justify-center gap-2 bg-bs26-ink text-white text-sm font-medium px-8 py-4 rounded-full hover:bg-bs26-gold transition-colors duration-300"
           >
-            Plan je ontwerpsessie
+            {t('Plan je ontwerpsessie')}
             <ArrowRight className="w-4 h-4" />
           </Link>
           <Link
             href="/saninet"
             className="inline-flex items-center justify-center gap-2 border border-bs26-charcoal/40 text-bs26-charcoal text-sm font-medium px-8 py-4 rounded-full hover:bg-bs26-ink hover:text-white hover:border-bs26-ink transition-colors duration-300"
           >
-            Ontdek Saninet 3D
+            {t('Ontdek Saninet 3D')}
             <ArrowUpRight className="w-4 h-4" />
           </Link>
         </motion.div>
@@ -346,13 +349,13 @@ export default function BadkamerstijlHome() {
         <div className="px-6 md:px-12 lg:px-20 max-w-[1500px] mx-auto">
           <motion.div {...reveal} className="flex flex-col md:flex-row md:items-end md:justify-between gap-6 mb-12 md:mb-16">
             <div>
-              <span className="bs26-eyebrow text-bs26-gold">Vind jouw stijl</span>
+              <span className="bs26-eyebrow text-bs26-gold">{t('Vind jouw stijl')}</span>
               <h2 className="font-display font-light text-[clamp(2.25rem,5vw,4.25rem)] leading-[1.05] mt-4">
-                Ontdek wat bij <span className="italic">jou</span> past
+                {t('Ontdek wat bij')} <span className="italic">{t('jou')}</span> {t('past')}
               </h2>
             </div>
             <p className="font-body text-bs26-grey text-[15px] leading-relaxed max-w-sm">
-              Van strak en modern tot klassiek en warm. Laat je inspireren door de stijlen die wij realiseren.
+              {t('Van strak en modern tot klassiek en warm. Laat je inspireren door de stijlen die wij realiseren.')}
             </p>
           </motion.div>
         </div>
@@ -377,8 +380,8 @@ export default function BadkamerstijlHome() {
                 <div className="absolute inset-0 bg-gradient-to-t from-black/55 via-transparent to-transparent" />
                 <div className="absolute bottom-5 left-5 right-5 flex items-end justify-between gap-3">
                   <div>
-                    <h3 className="font-display text-2xl md:text-3xl text-white font-light leading-tight">{s.name}</h3>
-                    <p className="font-body text-white/75 text-xs mt-1">{s.tag}</p>
+                    <h3 className="font-display text-2xl md:text-3xl text-white font-light leading-tight">{t(s.name)}</h3>
+                    <p className="font-body text-white/75 text-xs mt-1">{t(s.tag)}</p>
                   </div>
                   <span className="shrink-0 w-10 h-10 rounded-full bg-white/15 backdrop-blur-md border border-white/25 flex items-center justify-center text-white group-hover:bg-bs26-gold group-hover:border-bs26-gold transition-colors duration-300">
                     <ArrowUpRight className="w-4 h-4" />
@@ -395,12 +398,12 @@ export default function BadkamerstijlHome() {
       {/* ═══════════════════════ 6. PAKKETTEN GRID ═══════════════════════ */}
       <section className="px-6 md:px-12 lg:px-20 pb-24 md:pb-32 max-w-[1500px] mx-auto">
         <motion.div {...reveal} className="text-center max-w-2xl mx-auto mb-14 md:mb-16">
-          <span className="bs26-eyebrow text-bs26-gold">Onze pakketten</span>
+          <span className="bs26-eyebrow text-bs26-gold">{t('Onze pakketten')}</span>
           <h2 className="font-display font-light text-[clamp(2.25rem,5vw,4.25rem)] leading-[1.05] mt-4">
-            Een badkamer voor <span className="italic">elk budget</span>
+            {t('Een badkamer voor')} <span className="italic">{t('elk budget')}</span>
           </h2>
           <p className="font-body text-bs26-grey text-[15px] leading-relaxed mt-5">
-            Heldere pakketten met een vaste aanneemsom. Alles inbegrepen, van sloop tot de laatste tegel.
+            {t('Heldere pakketten met een vaste aanneemsom. Alles inbegrepen, van sloop tot de laatste tegel.')}
           </p>
         </motion.div>
 
@@ -422,12 +425,12 @@ export default function BadkamerstijlHome() {
                 />
               </div>
               <div className="flex flex-col flex-1 py-2 pr-3">
-                <h3 className="font-display text-2xl md:text-3xl font-light">{p.name}</h3>
-                <p className="font-body text-bs26-grey text-sm leading-relaxed mt-2 mb-4">{p.desc}</p>
+                <h3 className="font-display text-2xl md:text-3xl font-light">{t(p.name)}</h3>
+                <p className="font-body text-bs26-grey text-sm leading-relaxed mt-2 mb-4">{t(p.desc)}</p>
                 <div className="flex flex-wrap gap-2 mb-5">
                   {p.specs.map((spec) => (
                     <span key={spec} className="inline-flex items-center gap-1.5 text-[11px] font-body text-bs26-charcoal/70 bg-bs26-sand/60 rounded-full px-3 py-1">
-                      <Check className="w-3 h-3 text-bs26-gold" /> {spec}
+                      <Check className="w-3 h-3 text-bs26-gold" /> {t(spec)}
                     </span>
                   ))}
                 </div>
@@ -437,7 +440,7 @@ export default function BadkamerstijlHome() {
                     href="/prijzen"
                     className="inline-flex items-center gap-2 text-bs26-gold text-sm font-medium hover:gap-3 transition-all duration-300"
                   >
-                    Bekijk <ArrowRight className="w-4 h-4" />
+                    {t('Bekijk')} <ArrowRight className="w-4 h-4" />
                   </Link>
                 </div>
               </div>
@@ -450,7 +453,7 @@ export default function BadkamerstijlHome() {
             href="/prijzen"
             className="inline-flex items-center gap-2 bg-bs26-ink text-white text-sm font-medium px-8 py-3.5 rounded-full hover:bg-bs26-gold transition-colors duration-300"
           >
-            Bekijk alle prijzen
+            {t('Bekijk alle prijzen')}
             <ArrowRight className="w-4 h-4" />
           </Link>
         </motion.div>
@@ -462,10 +465,10 @@ export default function BadkamerstijlHome() {
           <div className="max-w-[1400px] mx-auto">
             <motion.div {...reveal} className="flex flex-col md:flex-row md:items-end md:justify-between gap-6 mb-14">
               <h2 className="font-display font-light text-[clamp(2.25rem,5vw,4.25rem)] leading-[1.04] max-w-2xl">
-                Inspiratie, ervaringen en <span className="italic">vakkennis</span>
+                {t('Inspiratie, ervaringen en')} <span className="italic">{t('vakkennis')}</span>
               </h2>
               <Link href="/blog" className="inline-flex items-center gap-2 text-white/80 text-sm font-medium hover:text-white transition-colors shrink-0">
-                Lees onze blog <ArrowUpRight className="w-4 h-4" />
+                {t('Lees onze blog')} <ArrowUpRight className="w-4 h-4" />
               </Link>
             </motion.div>
 
@@ -481,9 +484,9 @@ export default function BadkamerstijlHome() {
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent" />
                 <div className="absolute bottom-6 left-6 right-6">
-                  <span className="bs26-eyebrow text-bs26-gold-soft">Inspiratie</span>
+                  <span className="bs26-eyebrow text-bs26-gold-soft">{t('Inspiratie')}</span>
                   <h3 className="font-display text-2xl md:text-3xl font-light mt-2 max-w-md">
-                    Lichtontwerp als fundament van badkamerbeleving
+                    {t('Lichtontwerp als fundament van badkamerbeleving')}
                   </h3>
                 </div>
               </motion.div>
@@ -497,12 +500,12 @@ export default function BadkamerstijlHome() {
                     ))}
                   </div>
                   <p className="font-display text-2xl md:text-[1.75rem] font-light leading-snug text-white/90">
-                    &ldquo;Van het eerste ontwerp tot de oplevering klopte alles. Eén team, heldere prijs en een badkamer die nog mooier werd dan op de tekening.&rdquo;
+                    &ldquo;{t('Van het eerste ontwerp tot de oplevering klopte alles. Eén team, heldere prijs en een badkamer die nog mooier werd dan op de tekening.')}&rdquo;
                   </p>
                 </div>
                 <div className="mt-8 pt-6 border-t border-white/10">
-                  <p className="font-body font-medium text-white">Familie de Vries</p>
-                  <p className="font-body text-white/55 text-sm">Complete badkamer renovatie, Utrecht</p>
+                  <p className="font-body font-medium text-white">{t('Familie de Vries')}</p>
+                  <p className="font-body text-white/55 text-sm">{t('Complete badkamer renovatie, Utrecht')}</p>
                 </div>
               </motion.div>
             </div>
@@ -514,18 +517,18 @@ export default function BadkamerstijlHome() {
       <section className="px-6 md:px-12 lg:px-20 py-24 md:py-32 max-w-[1200px] mx-auto">
         <div className="grid grid-cols-1 lg:grid-cols-[0.8fr_1.2fr] gap-12 lg:gap-20">
           <motion.div {...reveal}>
-            <span className="bs26-eyebrow text-bs26-gold">Veelgestelde vragen</span>
+            <span className="bs26-eyebrow text-bs26-gold">{t('Veelgestelde vragen')}</span>
             <h2 className="font-display font-light text-[clamp(2.25rem,4.5vw,3.75rem)] leading-[1.05] mt-4">
-              Goed om te <span className="italic">weten</span>
+              {t('Goed om te')} <span className="italic">{t('weten')}</span>
             </h2>
             <p className="font-body text-bs26-grey text-[15px] leading-relaxed mt-5 max-w-sm">
-              Staat jouw vraag er niet bij? Plan een vrijblijvend adviesgesprek, dan beantwoorden we alles persoonlijk.
+              {t('Staat jouw vraag er niet bij? Plan een vrijblijvend adviesgesprek, dan beantwoorden we alles persoonlijk.')}
             </p>
             <Link
               href="/adviesgesprek"
               className="inline-flex items-center gap-2 mt-7 bg-bs26-ink text-white text-sm font-medium px-6 py-3 rounded-full hover:bg-bs26-gold transition-colors duration-300"
             >
-              Stel je vraag
+              {t('Stel je vraag')}
               <ArrowRight className="w-4 h-4" />
             </Link>
           </motion.div>
@@ -544,7 +547,7 @@ export default function BadkamerstijlHome() {
                     id={`faq-button-${i}`}
                   >
                     <span className="font-display text-lg md:text-xl font-medium group-hover:text-bs26-gold transition-colors">
-                      {faq.q}
+                      {t(faq.q)}
                     </span>
                     <span className="shrink-0 w-8 h-8 rounded-full border border-bs26-charcoal/20 flex items-center justify-center text-bs26-ink">
                       {isOpen ? <Minus className="w-4 h-4" /> : <Plus className="w-4 h-4" />}
@@ -557,7 +560,7 @@ export default function BadkamerstijlHome() {
                     className={`grid transition-all duration-300 ease-out ${isOpen ? 'grid-rows-[1fr] opacity-100' : 'grid-rows-[0fr] opacity-0'}`}
                   >
                     <div className="overflow-hidden">
-                      <p className="font-body text-bs26-grey text-[15px] leading-relaxed pb-6 pr-10">{faq.a}</p>
+                      <p className="font-body text-bs26-grey text-[15px] leading-relaxed pb-6 pr-10">{t(faq.a)}</p>
                     </div>
                   </div>
                 </div>
@@ -583,16 +586,16 @@ export default function BadkamerstijlHome() {
           <div className="absolute inset-0 bg-gradient-to-r from-black/75 via-black/45 to-black/25" />
           <motion.div {...reveal} className="relative z-10 px-8 md:px-16 lg:px-24 max-w-2xl">
             <h2 className="font-display font-light text-white text-[clamp(2.5rem,6vw,5rem)] leading-[1.02]">
-              Laten we jouw
+              {t('Laten we jouw')}
               <br />
-              <span className="italic">droombadkamer</span> realiseren
+              <span className="italic">{t('droombadkamer')}</span> {t('realiseren')}
             </h2>
             <div className="mt-9 flex flex-col sm:flex-row gap-4">
               <Link
                 href="/adviesgesprek"
                 className="inline-flex items-center justify-center gap-2 bg-white text-bs26-ink text-sm font-medium px-8 py-4 rounded-full hover:bg-bs26-gold hover:text-white transition-colors duration-300"
               >
-                Adviesgesprek plannen
+                {t('Adviesgesprek plannen')}
                 <ArrowRight className="w-4 h-4" />
               </Link>
               <a
@@ -600,7 +603,7 @@ export default function BadkamerstijlHome() {
                 className="inline-flex items-center justify-center gap-2 border border-white/40 text-white text-sm font-medium px-8 py-4 rounded-full hover:bg-white/10 transition-colors duration-300"
               >
                 <Phone className="w-4 h-4" />
-                Bel {TEL_DISPLAY}
+                {t('Bel')} {TEL_DISPLAY}
               </a>
             </div>
           </motion.div>

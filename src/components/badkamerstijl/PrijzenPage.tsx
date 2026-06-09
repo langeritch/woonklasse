@@ -6,6 +6,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { ArrowRight, ArrowUpRight, Check, Plus, Minus } from 'lucide-react';
 import BadkamerstijlFloatingNav from '@/components/BadkamerstijlFloatingNav';
+import { useI18n } from '@/i18n/I18nProvider';
 
 type Tier = {
   id: string;
@@ -197,6 +198,7 @@ export default function PrijzenPage() {
   const [finish, setFinish] = useState<(typeof FINISHES)[number]['id']>('standaard');
   const [complexity, setComplexity] = useState<(typeof COMPLEXITIES)[number]['id']>('lichte');
   const [openFaq, setOpenFaq] = useState<number | null>(0);
+  const { t } = useI18n();
 
   const estimate = useMemo(() => {
     const sizeData = SIZES.find((s) => s.id === size)!;
@@ -227,9 +229,9 @@ export default function PrijzenPage() {
 
           <div className="relative z-20 w-full px-6 md:px-12 lg:px-16 pb-14 md:pb-20 max-w-[1500px] mx-auto">
             <nav aria-label="Kruimelpad" className="flex items-center gap-2 text-[11px] tracking-[0.18em] uppercase text-white/65 mb-6">
-              <Link href="/" className="hover:text-white transition-colors">Home</Link>
+              <Link href="/" className="hover:text-white transition-colors">{t('Home')}</Link>
               <span className="text-white/30">/</span>
-              <span className="text-white">Prijzen</span>
+              <span className="text-white">{t('Prijzen')}</span>
             </nav>
             <motion.span
               initial={{ opacity: 0, y: 12 }}
@@ -238,7 +240,7 @@ export default function PrijzenPage() {
               className="inline-flex items-center gap-3 mb-5"
             >
               <span className="w-8 h-px bg-bs26-gold-soft" />
-              <span className="bs26-eyebrow text-white/75">Transparante prijzen</span>
+              <span className="bs26-eyebrow text-white/75">{t('Transparante prijzen')}</span>
             </motion.span>
             <motion.h1
               initial={{ opacity: 0, y: 24 }}
@@ -246,9 +248,9 @@ export default function PrijzenPage() {
               transition={{ duration: 0.8, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
               className="font-display text-[clamp(2.5rem,7vw,7rem)] font-light leading-[1.0] tracking-[0.01em] text-white max-w-5xl"
             >
-              Wat kost een
+              {t('Wat kost een')}
               <br />
-              <span className="italic">badkamer renovatie?</span>
+              <span className="italic">{t('badkamer renovatie?')}</span>
             </motion.h1>
             <motion.p
               initial={{ opacity: 0, y: 16 }}
@@ -256,7 +258,7 @@ export default function PrijzenPage() {
               transition={{ duration: 0.8, delay: 0.3 }}
               className="font-body mt-7 max-w-2xl text-white/80 text-base md:text-lg leading-relaxed"
             >
-              Een complete badkamer renovatie kost bij ons vanaf € 5.000. Hieronder lees je precies wat je voor welk budget krijgt, eerlijk, gespecificeerd en zonder verborgen kosten.
+              {t('Een complete badkamer renovatie kost bij ons vanaf € 5.000. Hieronder lees je precies wat je voor welk budget krijgt, eerlijk, gespecificeerd en zonder verborgen kosten.')}
             </motion.p>
             <motion.div
               initial={{ opacity: 0, y: 16 }}
@@ -268,14 +270,14 @@ export default function PrijzenPage() {
                 href="/adviesgesprek"
                 className="group inline-flex items-center justify-center gap-3 bg-white text-bs26-ink text-sm font-medium px-8 py-4 rounded-full hover:bg-bs26-gold hover:text-white transition-colors"
               >
-                Gratis offerte aanvragen
+                {t('Gratis offerte aanvragen')}
                 <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
               </Link>
               <a
                 href="#calculator"
                 className="inline-flex items-center justify-center gap-3 border border-white/35 text-white text-sm font-medium px-8 py-4 rounded-full hover:bg-white/10 transition-colors"
               >
-                Direct naar prijscalculator
+                {t('Direct naar prijscalculator')}
               </a>
             </motion.div>
           </div>
@@ -286,11 +288,11 @@ export default function PrijzenPage() {
       <section className="py-24 md:py-32 px-6 md:px-12 lg:px-20 max-w-[1400px] mx-auto">
         <div className="grid grid-cols-1 lg:grid-cols-[1fr_1.4fr] gap-12 lg:gap-20 items-start">
           <div>
-            <span className="bs26-eyebrow text-bs26-gold mb-5 block">Onze prijsfilosofie</span>
+            <span className="bs26-eyebrow text-bs26-gold mb-5 block">{t('Onze prijsfilosofie')}</span>
             <h2 className="font-display text-3xl md:text-4xl lg:text-5xl font-light leading-[1.1]">
-              Eerlijke prijs,
+              {t('Eerlijke prijs,')}
               <br />
-              <span className="italic">geen verrassingen</span>
+              <span className="italic">{t('geen verrassingen')}</span>
             </h2>
           </div>
           <motion.div
@@ -301,10 +303,10 @@ export default function PrijzenPage() {
             className="space-y-6"
           >
             <p className="font-display text-xl md:text-2xl lg:text-[1.75rem] font-light leading-[1.5] text-bs26-charcoal">
-              Wij geloven in volledige transparantie. Je krijgt vooraf een gespecificeerde offerte met daarin elk onderdeel: van sloopwerk en leidingen tot tegels, sanitair en afwerking.
+              {t('Wij geloven in volledige transparantie. Je krijgt vooraf een gespecificeerde offerte met daarin elk onderdeel: van sloopwerk en leidingen tot tegels, sanitair en afwerking.')}
             </p>
             <p className="font-body text-base md:text-lg text-bs26-grey leading-relaxed">
-              De drie pakketten op deze pagina zijn richtprijzen, gebaseerd op honderden gerealiseerde projecten. Tijdens het gratis adviesgesprek vertalen we jouw wensen naar een vaste aanneemsom, geen nacalculatie, geen verborgen kosten.
+              {t('De drie pakketten op deze pagina zijn richtprijzen, gebaseerd op honderden gerealiseerde projecten. Tijdens het gratis adviesgesprek vertalen we jouw wensen naar een vaste aanneemsom, geen nacalculatie, geen verborgen kosten.')}
             </p>
           </motion.div>
         </div>
@@ -314,15 +316,15 @@ export default function PrijzenPage() {
       <section className="py-4 md:py-8 px-6 md:px-12 lg:px-20 max-w-[1500px] mx-auto">
         <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-6 mb-12 md:mb-16">
           <div>
-            <span className="bs26-eyebrow text-bs26-gold mb-4 block">Pakketten</span>
+            <span className="bs26-eyebrow text-bs26-gold mb-4 block">{t('Pakketten')}</span>
             <h2 className="font-display text-4xl md:text-5xl lg:text-6xl font-light leading-[1.05]">
-              Van Basis tot
+              {t('Van Basis tot')}
               <br />
-              <span className="italic">Luxe op maat</span>
+              <span className="italic">{t('Luxe op maat')}</span>
             </h2>
           </div>
           <p className="font-body text-bs26-grey text-sm max-w-md leading-relaxed">
-            Alle pakketten zijn inclusief eigen vakmensen, vaste aanneemsom en uitgebreide installatiegarantie. Materialen zijn op maat aan te passen.
+            {t('Alle pakketten zijn inclusief eigen vakmensen, vaste aanneemsom en uitgebreide installatiegarantie. Materialen zijn op maat aan te passen.')}
           </p>
         </div>
 
@@ -356,16 +358,16 @@ export default function PrijzenPage() {
               </div>
               <div className="p-8 md:p-10 flex flex-col flex-1">
                 <div className="flex items-baseline justify-between mb-4 gap-4">
-                  <h3 className="font-display text-3xl md:text-4xl font-light">{tier.label}</h3>
+                  <h3 className="font-display text-3xl md:text-4xl font-light">{t(tier.label)}</h3>
                   <span className={`text-[11px] tracking-[0.15em] uppercase ${tier.featured ? 'text-white/50' : 'text-bs26-grey'}`}>
-                    {tier.duration}
+                    {t(tier.duration)}
                   </span>
                 </div>
                 <p className="font-display text-2xl md:text-[1.75rem] font-light mb-5 leading-tight">
                   {tier.range}
                 </p>
                 <p className={`font-body text-sm leading-relaxed mb-8 ${tier.featured ? 'text-white/75' : 'text-bs26-grey'}`}>
-                  {tier.summary}
+                  {t(tier.summary)}
                 </p>
                 <ul className="space-y-3 mb-8">
                   {tier.includes.map((item) => (
@@ -374,7 +376,7 @@ export default function PrijzenPage() {
                       className={`font-body flex items-start gap-3 text-sm leading-relaxed ${tier.featured ? 'text-white/85' : 'text-bs26-charcoal/85'}`}
                     >
                       <Check className={`w-4 h-4 mt-[3px] flex-shrink-0 ${tier.featured ? 'text-bs26-gold-soft' : 'text-bs26-gold'}`} />
-                      <span>{item}</span>
+                      <span>{t(item)}</span>
                     </li>
                   ))}
                 </ul>
@@ -386,7 +388,7 @@ export default function PrijzenPage() {
                       : 'bg-bs26-ink text-white hover:bg-bs26-gold'
                   }`}
                 >
-                  Offerte voor {tier.label}
+                  {t('Offerte voor')} {t(tier.label)}
                   <ArrowUpRight className="w-4 h-4" />
                 </Link>
               </div>
@@ -400,21 +402,21 @@ export default function PrijzenPage() {
         <div className="max-w-[1200px] mx-auto">
           <div className="grid grid-cols-1 lg:grid-cols-[1fr_1.2fr] gap-12 lg:gap-20 items-start">
             <div>
-              <span className="bs26-eyebrow text-bs26-gold mb-5 block">Prijscalculator</span>
+              <span className="bs26-eyebrow text-bs26-gold mb-5 block">{t('Prijscalculator')}</span>
               <h2 className="font-display text-4xl md:text-5xl lg:text-6xl font-light leading-[1.05] mb-6">
-                Bereken jouw
+                {t('Bereken jouw')}
                 <br />
-                <span className="italic">indicatieve prijs</span>
+                <span className="italic">{t('indicatieve prijs')}</span>
               </h2>
               <p className="font-body text-bs26-grey text-base md:text-lg leading-relaxed max-w-md">
-                Een snelle inschatting op basis van afmeting, afwerking en leidingwerk. Voor een exacte prijs maken we tijdens het adviesgesprek een offerte op maat.
+                {t('Een snelle inschatting op basis van afmeting, afwerking en leidingwerk. Voor een exacte prijs maken we tijdens het adviesgesprek een offerte op maat.')}
               </p>
             </div>
 
             <div className="bg-bs26-paper rounded-[18px] p-8 md:p-10 border border-bs26-charcoal/[0.06] shadow-[0_24px_60px_-30px_rgba(34,31,26,0.35)]">
               {/* Size */}
               <fieldset className="mb-8">
-                <legend className="text-[11px] tracking-[0.15em] uppercase text-bs26-grey mb-4 block">Afmeting badkamer</legend>
+                <legend className="text-[11px] tracking-[0.15em] uppercase text-bs26-grey mb-4 block">{t('Afmeting badkamer')}</legend>
                 <div className="grid grid-cols-2 gap-3">
                   {SIZES.map((s) => (
                     <button
@@ -428,8 +430,8 @@ export default function PrijzenPage() {
                           : 'border-bs26-charcoal/15 hover:border-bs26-charcoal/40 text-bs26-charcoal'
                       }`}
                     >
-                      <span className="block font-display text-lg">{s.label}</span>
-                      <span className={`block text-xs mt-0.5 ${size === s.id ? 'text-white/60' : 'text-bs26-grey'}`}>{s.sub}</span>
+                      <span className="block font-display text-lg">{t(s.label)}</span>
+                      <span className={`block text-xs mt-0.5 ${size === s.id ? 'text-white/60' : 'text-bs26-grey'}`}>{t(s.sub)}</span>
                     </button>
                   ))}
                 </div>
@@ -437,7 +439,7 @@ export default function PrijzenPage() {
 
               {/* Finish */}
               <fieldset className="mb-8">
-                <legend className="text-[11px] tracking-[0.15em] uppercase text-bs26-grey mb-4 block">Afwerkingsniveau</legend>
+                <legend className="text-[11px] tracking-[0.15em] uppercase text-bs26-grey mb-4 block">{t('Afwerkingsniveau')}</legend>
                 <div className="grid grid-cols-2 sm:grid-cols-4 gap-2">
                   {FINISHES.map((f) => (
                     <button
@@ -451,7 +453,7 @@ export default function PrijzenPage() {
                           : 'border-bs26-charcoal/15 hover:border-bs26-charcoal/40 text-bs26-charcoal'
                       }`}
                     >
-                      {f.label}
+                      {t(f.label)}
                     </button>
                   ))}
                 </div>
@@ -459,7 +461,7 @@ export default function PrijzenPage() {
 
               {/* Complexity */}
               <fieldset className="mb-10">
-                <legend className="text-[11px] tracking-[0.15em] uppercase text-bs26-grey mb-4 block">Leidingwerk</legend>
+                <legend className="text-[11px] tracking-[0.15em] uppercase text-bs26-grey mb-4 block">{t('Leidingwerk')}</legend>
                 <div className="space-y-2">
                   {COMPLEXITIES.map((c) => (
                     <button
@@ -473,8 +475,8 @@ export default function PrijzenPage() {
                           : 'border-bs26-charcoal/15 hover:border-bs26-charcoal/40 text-bs26-charcoal'
                       }`}
                     >
-                      <span className="block text-sm font-medium">{c.label}</span>
-                      <span className={`block text-xs mt-0.5 ${complexity === c.id ? 'text-white/60' : 'text-bs26-grey'}`}>{c.sub}</span>
+                      <span className="block text-sm font-medium">{t(c.label)}</span>
+                      <span className={`block text-xs mt-0.5 ${complexity === c.id ? 'text-white/60' : 'text-bs26-grey'}`}>{t(c.sub)}</span>
                     </button>
                   ))}
                 </div>
@@ -482,20 +484,20 @@ export default function PrijzenPage() {
 
               {/* Output */}
               <div className="border-t border-bs26-charcoal/10 pt-8">
-                <span className="text-[11px] tracking-[0.15em] uppercase text-bs26-grey block mb-3">Indicatieve aanneemsom</span>
+                <span className="text-[11px] tracking-[0.15em] uppercase text-bs26-grey block mb-3">{t('Indicatieve aanneemsom')}</span>
                 <p className="font-display text-3xl md:text-[2.5rem] font-light leading-tight">
                   {formatEuro(estimate.low)}
                   <span className="text-bs26-grey mx-3 text-2xl md:text-3xl">-</span>
                   {formatEuro(estimate.high)}
                 </p>
                 <p className="font-body text-xs text-bs26-grey mt-3 leading-relaxed">
-                  Indicatie inclusief sloop, materiaal en montage. Definitieve prijs na opname op locatie.
+                  {t('Indicatie inclusief sloop, materiaal en montage. Definitieve prijs na opname op locatie.')}
                 </p>
                 <Link
                   href="/adviesgesprek"
                   className="group mt-6 inline-flex items-center gap-2 bg-bs26-ink text-white text-sm font-medium px-6 py-3.5 rounded-full hover:bg-bs26-gold transition-colors"
                 >
-                  Vraag offerte op maat
+                  {t('Vraag offerte op maat')}
                   <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
                 </Link>
               </div>
@@ -506,11 +508,11 @@ export default function PrijzenPage() {
 
       {/* FACTORS */}
       <section className="py-20 md:py-28 px-6 md:px-12 lg:px-20 max-w-[1500px] mx-auto">
-        <span className="bs26-eyebrow text-bs26-gold mb-5 block">Wat bepaalt de prijs</span>
+        <span className="bs26-eyebrow text-bs26-gold mb-5 block">{t('Wat bepaalt de prijs')}</span>
         <h2 className="font-display text-4xl md:text-5xl lg:text-6xl font-light leading-[1.05] mb-14 max-w-3xl">
-          Factoren die de
+          {t('Factoren die de')}
           <br />
-          <span className="italic">prijs beïnvloeden</span>
+          <span className="italic">{t('prijs beïnvloeden')}</span>
         </h2>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-y-12 gap-x-10">
@@ -524,8 +526,8 @@ export default function PrijzenPage() {
               className="border-t border-bs26-charcoal/15 pt-6"
             >
               <span className="font-display text-bs26-gold text-2xl block mb-2">0{i + 1}</span>
-              <h3 className="font-display text-xl md:text-2xl font-light mb-3 leading-tight">{factor.title}</h3>
-              <p className="font-body text-bs26-grey text-sm leading-relaxed">{factor.desc}</p>
+              <h3 className="font-display text-xl md:text-2xl font-light mb-3 leading-tight">{t(factor.title)}</h3>
+              <p className="font-body text-bs26-grey text-sm leading-relaxed">{t(factor.desc)}</p>
             </motion.div>
           ))}
         </div>
@@ -535,28 +537,28 @@ export default function PrijzenPage() {
       <section className="py-20 md:py-28 px-6 md:px-12 lg:px-20 max-w-[1500px] mx-auto">
         <div className="grid grid-cols-1 lg:grid-cols-[1.2fr_1fr] gap-12 lg:gap-20 items-center">
           <div>
-            <span className="bs26-eyebrow text-bs26-gold mb-5 block">Wat we leveren</span>
+            <span className="bs26-eyebrow text-bs26-gold mb-5 block">{t('Wat we leveren')}</span>
             <h2 className="font-display text-4xl md:text-5xl lg:text-6xl font-light leading-[1.05] mb-8">
-              Voor elk pakket:
+              {t('Voor elk pakket:')}
               <br />
-              <span className="italic">eigen vakmensen</span>
+              <span className="italic">{t('eigen vakmensen')}</span>
             </h2>
             <p className="font-body text-bs26-grey text-base md:text-lg leading-relaxed mb-8 max-w-2xl">
-              Wij werken niet met onderaannemers. Onze monteurs, tegelzetters en loodgieters zijn in vaste dienst, daardoor leveren we consistente kwaliteit, ongeacht het pakket dat je kiest.
+              {t('Wij werken niet met onderaannemers. Onze monteurs, tegelzetters en loodgieters zijn in vaste dienst, daardoor leveren we consistente kwaliteit, ongeacht het pakket dat je kiest.')}
             </p>
             <div className="flex flex-col sm:flex-row gap-4">
               <Link
                 href="/diensten"
                 className="inline-flex items-center justify-center gap-3 bg-bs26-ink text-white text-sm font-medium px-8 py-4 rounded-full hover:bg-bs26-gold transition-colors"
               >
-                Bekijk alle diensten
+                {t('Bekijk alle diensten')}
                 <ArrowUpRight className="w-4 h-4" />
               </Link>
               <Link
                 href="/portfolio"
                 className="inline-flex items-center justify-center gap-3 border border-bs26-charcoal/40 text-bs26-charcoal text-sm font-medium px-8 py-4 rounded-full hover:bg-bs26-ink hover:text-white hover:border-bs26-ink transition-colors"
               >
-                Bekijk portfolio
+                {t('Bekijk portfolio')}
               </Link>
             </div>
           </div>
@@ -580,11 +582,11 @@ export default function PrijzenPage() {
 
       {/* FAQ */}
       <section className="py-20 md:py-28 px-6 md:px-12 lg:px-20 max-w-[1100px] mx-auto">
-        <span className="bs26-eyebrow text-bs26-gold mb-5 block">Veelgestelde vragen</span>
+        <span className="bs26-eyebrow text-bs26-gold mb-5 block">{t('Veelgestelde vragen')}</span>
         <h2 className="font-display text-4xl md:text-5xl lg:text-6xl font-light leading-[1.05] mb-12">
-          Vragen over
+          {t('Vragen over')}
           <br />
-          <span className="italic">prijzen en betaling</span>
+          <span className="italic">{t('prijzen en betaling')}</span>
         </h2>
 
         <div className="flex flex-col">
@@ -601,7 +603,7 @@ export default function PrijzenPage() {
                   className="w-full flex items-start justify-between gap-6 py-6 text-left group"
                 >
                   <span className="font-display text-xl md:text-2xl font-medium leading-snug pr-6 group-hover:text-bs26-gold transition-colors">
-                    {faq.q}
+                    {t(faq.q)}
                   </span>
                   <span className="flex-shrink-0 mt-1 w-9 h-9 rounded-full border border-bs26-charcoal/20 flex items-center justify-center text-bs26-ink group-hover:bg-bs26-ink group-hover:text-white group-hover:border-bs26-ink transition-colors">
                     {open ? <Minus className="w-4 h-4" /> : <Plus className="w-4 h-4" />}
@@ -614,7 +616,7 @@ export default function PrijzenPage() {
                   className={`grid transition-all duration-300 ease-out ${open ? 'grid-rows-[1fr] opacity-100' : 'grid-rows-[0fr] opacity-0'}`}
                 >
                   <div className="overflow-hidden">
-                    <p className="font-body pb-6 text-bs26-grey text-base leading-relaxed max-w-3xl">{faq.a}</p>
+                    <p className="font-body pb-6 text-bs26-grey text-base leading-relaxed max-w-3xl">{t(faq.a)}</p>
                   </div>
                 </div>
               </div>
@@ -625,11 +627,11 @@ export default function PrijzenPage() {
 
       {/* CITY LINKS */}
       <section className="py-16 md:py-24 px-6 md:px-12 lg:px-20 max-w-[1500px] mx-auto border-t border-bs26-charcoal/[0.08]">
-        <span className="bs26-eyebrow text-bs26-gold mb-5 block">Lokaal actief</span>
+        <span className="bs26-eyebrow text-bs26-gold mb-5 block">{t('Lokaal actief')}</span>
         <h2 className="font-display text-3xl md:text-4xl lg:text-5xl font-light leading-[1.1] mb-10 max-w-3xl">
-          Badkamer renovatie in
+          {t('Badkamer renovatie in')}
           <br />
-          <span className="italic">heel Nederland</span>
+          <span className="italic">{t('heel Nederland')}</span>
         </h2>
         <div className="flex flex-wrap gap-3">
           {CITY_LINKS.map((c) => (
@@ -638,7 +640,7 @@ export default function PrijzenPage() {
               href={`/${c.slug}`}
               className="inline-flex items-center gap-2 bg-bs26-paper text-bs26-charcoal text-sm px-5 py-3 rounded-full border border-bs26-charcoal/[0.1] hover:bg-bs26-ink hover:text-white hover:border-bs26-ink transition-colors"
             >
-              Prijzen in {c.name}
+              {t('Prijzen in')} {c.name}
               <ArrowUpRight className="w-3.5 h-3.5" />
             </Link>
           ))}
@@ -649,28 +651,28 @@ export default function PrijzenPage() {
       <section className="px-3 md:px-5 py-12 md:py-20">
         <div className="bg-bs26-ink text-white rounded-[20px] md:rounded-[28px] py-20 md:py-28 px-6 md:px-16">
           <div className="max-w-[1100px] mx-auto text-center">
-            <span className="bs26-eyebrow text-bs26-gold-soft mb-5 block">Volgende stap</span>
+            <span className="bs26-eyebrow text-bs26-gold-soft mb-5 block">{t('Volgende stap')}</span>
             <h2 className="font-display text-4xl md:text-5xl lg:text-6xl font-light leading-[1.05] mb-7">
-              Een offerte op maat,
+              {t('Een offerte op maat,')}
               <br />
-              <span className="italic">binnen 5 werkdagen</span>
+              <span className="italic">{t('binnen 5 werkdagen')}</span>
             </h2>
             <p className="font-body text-white/70 text-base md:text-lg leading-relaxed mb-10 max-w-2xl mx-auto">
-              Plan een vrijblijvend adviesgesprek. Wij komen langs, meten op, bespreken jouw wensen en sturen binnen 5 werkdagen een gespecificeerde offerte met vaste prijs.
+              {t('Plan een vrijblijvend adviesgesprek. Wij komen langs, meten op, bespreken jouw wensen en sturen binnen 5 werkdagen een gespecificeerde offerte met vaste prijs.')}
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link
                 href="/adviesgesprek"
                 className="group inline-flex items-center justify-center gap-3 bg-white text-bs26-ink text-sm font-medium px-8 py-4 rounded-full hover:bg-bs26-gold hover:text-white transition-colors"
               >
-                Gratis offerte aanvragen
+                {t('Gratis offerte aanvragen')}
                 <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
               </Link>
               <Link
                 href="/portfolio"
                 className="inline-flex items-center justify-center gap-3 border border-white/40 text-white text-sm font-medium px-8 py-4 rounded-full hover:bg-white/10 transition-colors"
               >
-                Eerst portfolio bekijken
+                {t('Eerst portfolio bekijken')}
               </Link>
             </div>
           </div>

@@ -7,6 +7,7 @@ import Image from 'next/image';
 import { ArrowRight, ChevronDown } from 'lucide-react';
 import BadkamerstijlFloatingNav from '@/components/BadkamerstijlFloatingNav';
 import { CONTACT_BADKAMERSTIJL } from '@/data/contact';
+import { useI18n } from '@/i18n/I18nProvider';
 
 const faqs = [
   {
@@ -36,6 +37,7 @@ export default function AdviesgesprekPage() {
   const [contactStatus, setContactStatus] = useState<'idle' | 'loading' | 'success' | 'error'>('idle');
   const [contactError, setContactError] = useState('');
   const [openFaq, setOpenFaq] = useState<number | null>(null);
+  const { t } = useI18n();
 
   const handleContactChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     setContactForm((prev) => ({ ...prev, [e.target.name]: e.target.value }));
@@ -57,7 +59,7 @@ export default function AdviesgesprekPage() {
       setContactForm({ naam: '', email: '', telefoon: '', bericht: '', website: '' });
     } catch (err) {
       setContactStatus('error');
-      setContactError(err instanceof Error ? err.message : 'Er is iets misgegaan');
+      setContactError(err instanceof Error ? err.message : t('Er is iets misgegaan'));
     }
   };
 
@@ -84,9 +86,9 @@ export default function AdviesgesprekPage() {
 
           <div className="relative z-20 px-6 md:px-12 lg:px-16 pb-14 md:pb-20 max-w-[1500px] mx-auto w-full">
             <nav aria-label="Kruimelpad" className="flex items-center gap-2 text-[11px] tracking-[0.18em] uppercase text-white/65 mb-6">
-              <Link href="/" className="hover:text-white transition-colors">Home</Link>
+              <Link href="/" className="hover:text-white transition-colors">{t('Home')}</Link>
               <span className="text-white/30">/</span>
-              <span className="text-white">Adviesgesprek</span>
+              <span className="text-white">{t('Adviesgesprek')}</span>
             </nav>
             <motion.span
               initial={{ opacity: 0 }}
@@ -95,7 +97,7 @@ export default function AdviesgesprekPage() {
               className="inline-flex items-center gap-3 mb-5"
             >
               <span className="w-8 h-px bg-bs26-gold-soft" />
-              <span className="bs26-eyebrow text-white/75">Contact</span>
+              <span className="bs26-eyebrow text-white/75">{t('Contact')}</span>
             </motion.span>
             <motion.h1
               initial={{ opacity: 0, y: 30 }}
@@ -103,9 +105,9 @@ export default function AdviesgesprekPage() {
               transition={{ delay: 0.3, duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
               className="font-display text-4xl sm:text-5xl md:text-7xl lg:text-8xl font-light text-white leading-[1.0]"
             >
-              Laten we
+              {t('Laten we')}
               <br />
-              <span className="italic">praten</span>
+              <span className="italic">{t('praten')}</span>
             </motion.h1>
           </div>
         </div>
@@ -123,8 +125,7 @@ export default function AdviesgesprekPage() {
               transition={{ duration: 0.8 }}
               className="font-display text-xl sm:text-2xl md:text-3xl lg:text-[2.5rem] font-light leading-[1.4] mb-10"
             >
-              Vertel ons over jouw droombadkamer. Wij luisteren, denken mee
-              en maken het <span className="italic">werkelijkheid.</span>
+              {t('Vertel ons over jouw droombadkamer. Wij luisteren, denken mee en maken het ')}<span className="italic">{t('werkelijkheid.')}</span>
             </motion.p>
 
             <motion.div
@@ -134,10 +135,10 @@ export default function AdviesgesprekPage() {
               transition={{ duration: 0.8, delay: 0.1 }}
               className="font-body space-y-4 text-bs26-grey text-sm mb-12"
             >
-              <p><strong className="text-bs26-charcoal">Adres:</strong> {CONTACT_BADKAMERSTIJL.adres.volledig}</p>
-              <p><strong className="text-bs26-charcoal">Telefoon:</strong> <a href={CONTACT_BADKAMERSTIJL.telefoonLink} className="hover:text-bs26-gold transition-colors">{CONTACT_BADKAMERSTIJL.telefoon}</a></p>
-              <p><strong className="text-bs26-charcoal">E-mail:</strong> <a href={`mailto:${CONTACT_BADKAMERSTIJL.email}`} className="hover:text-bs26-gold transition-colors">{CONTACT_BADKAMERSTIJL.email}</a></p>
-              <p><strong className="text-bs26-charcoal">Openingstijden:</strong> {CONTACT_BADKAMERSTIJL.openingstijden}</p>
+              <p><strong className="text-bs26-charcoal">{t('Adres:')}</strong> {CONTACT_BADKAMERSTIJL.adres.volledig}</p>
+              <p><strong className="text-bs26-charcoal">{t('Telefoon:')}</strong> <a href={CONTACT_BADKAMERSTIJL.telefoonLink} className="hover:text-bs26-gold transition-colors">{CONTACT_BADKAMERSTIJL.telefoon}</a></p>
+              <p><strong className="text-bs26-charcoal">{t('E-mail:')}</strong> <a href={`mailto:${CONTACT_BADKAMERSTIJL.email}`} className="hover:text-bs26-gold transition-colors">{CONTACT_BADKAMERSTIJL.email}</a></p>
+              <p><strong className="text-bs26-charcoal">{t('Openingstijden:')}</strong> {CONTACT_BADKAMERSTIJL.openingstijden}</p>
             </motion.div>
 
             <motion.div
@@ -165,13 +166,13 @@ export default function AdviesgesprekPage() {
                 animate={{ opacity: 1, y: 0 }}
                 className="bg-bs26-paper border border-bs26-charcoal/10 rounded-[18px] p-10 text-center"
               >
-                <h3 className="font-display text-3xl font-light mb-3">Bedankt!</h3>
-                <p className="font-body text-bs26-grey text-base mb-6">We nemen zo snel mogelijk contact met je op voor het inplannen van je adviesgesprek.</p>
+                <h3 className="font-display text-3xl font-light mb-3">{t('Bedankt!')}</h3>
+                <p className="font-body text-bs26-grey text-base mb-6">{t('We nemen zo snel mogelijk contact met je op voor het inplannen van je adviesgesprek.')}</p>
                 <button
                   onClick={() => setContactStatus('idle')}
                   className="text-sm text-bs26-gold underline underline-offset-2"
                 >
-                  Nog een bericht versturen
+                  {t('Nog een bericht versturen')}
                 </button>
               </motion.div>
             ) : (
@@ -182,20 +183,20 @@ export default function AdviesgesprekPage() {
                 </div>
 
                 <div>
-                  <label htmlFor="naam" className="sr-only">Volledige naam</label>
-                  <input id="naam" type="text" name="naam" required placeholder="Volledige naam" value={contactForm.naam} onChange={handleContactChange} className={inputClass} />
+                  <label htmlFor="naam" className="sr-only">{t('Volledige naam')}</label>
+                  <input id="naam" type="text" name="naam" required placeholder={t('Volledige naam')} value={contactForm.naam} onChange={handleContactChange} className={inputClass} />
                 </div>
                 <div>
-                  <label htmlFor="email" className="sr-only">E-mailadres</label>
-                  <input id="email" type="email" name="email" required placeholder="E-mailadres" value={contactForm.email} onChange={handleContactChange} className={inputClass} />
+                  <label htmlFor="email" className="sr-only">{t('E-mailadres')}</label>
+                  <input id="email" type="email" name="email" required placeholder={t('E-mailadres')} value={contactForm.email} onChange={handleContactChange} className={inputClass} />
                 </div>
                 <div>
-                  <label htmlFor="telefoon" className="sr-only">Telefoonnummer</label>
-                  <input id="telefoon" type="tel" name="telefoon" required placeholder="Telefoonnummer" value={contactForm.telefoon} onChange={handleContactChange} className={inputClass} />
+                  <label htmlFor="telefoon" className="sr-only">{t('Telefoonnummer')}</label>
+                  <input id="telefoon" type="tel" name="telefoon" required placeholder={t('Telefoonnummer')} value={contactForm.telefoon} onChange={handleContactChange} className={inputClass} />
                 </div>
                 <div>
-                  <label htmlFor="bericht" className="sr-only">Je bericht</label>
-                  <textarea id="bericht" name="bericht" rows={4} placeholder="Vertel ons over je droombadkamer..." value={contactForm.bericht} onChange={handleContactChange} className={`${inputClass} resize-none`} />
+                  <label htmlFor="bericht" className="sr-only">{t('Je bericht')}</label>
+                  <textarea id="bericht" name="bericht" rows={4} placeholder={t('Vertel ons over je droombadkamer...')} value={contactForm.bericht} onChange={handleContactChange} className={`${inputClass} resize-none`} />
                 </div>
                 {contactStatus === 'error' && (
                   <p className="text-red-500 text-sm" role="alert">{contactError}</p>
@@ -205,7 +206,7 @@ export default function AdviesgesprekPage() {
                   disabled={contactStatus === 'loading'}
                   className="inline-flex items-center gap-3 bg-bs26-ink text-white font-medium px-10 py-4 rounded-full transition-colors hover:bg-bs26-gold text-sm tracking-wide disabled:opacity-50 disabled:cursor-not-allowed"
                 >
-                  {contactStatus === 'loading' ? 'Bezig met verzenden...' : 'Adviesgesprek aanvragen'}
+                  {contactStatus === 'loading' ? t('Bezig met verzenden...') : t('Adviesgesprek aanvragen')}
                   {contactStatus !== 'loading' && <ArrowRight className="w-4 h-4" />}
                 </button>
               </form>
@@ -219,11 +220,11 @@ export default function AdviesgesprekPage() {
         <div className="max-w-[1400px] mx-auto">
           <div className="grid grid-cols-1 lg:grid-cols-[1fr_2fr] gap-12 lg:gap-20">
             <div>
-              <span className="bs26-eyebrow text-bs26-gold mb-5 block">Veelgestelde vragen</span>
+              <span className="bs26-eyebrow text-bs26-gold mb-5 block">{t('Veelgestelde vragen')}</span>
               <h2 className="font-display text-3xl sm:text-4xl md:text-5xl font-light">
-                Alles wat je
+                {t('Alles wat je')}
                 <br />
-                <span className="italic">wilt weten</span>
+                <span className="italic">{t('wilt weten')}</span>
               </h2>
             </div>
 
@@ -239,7 +240,7 @@ export default function AdviesgesprekPage() {
                       id={`advies-faq-button-${i}`}
                       className="w-full flex items-center justify-between text-left gap-4 py-6 group"
                     >
-                      <span className="font-display text-xl md:text-2xl font-medium group-hover:text-bs26-gold transition-colors">{faq.question}</span>
+                      <span className="font-display text-xl md:text-2xl font-medium group-hover:text-bs26-gold transition-colors">{t(faq.question)}</span>
                       <ChevronDown className={`w-5 h-5 text-bs26-grey flex-shrink-0 transition-transform duration-300 ${open ? 'rotate-180' : ''}`} />
                     </button>
                     <div
@@ -249,7 +250,7 @@ export default function AdviesgesprekPage() {
                       className={`grid transition-all duration-300 ease-out ${open ? 'grid-rows-[1fr] opacity-100' : 'grid-rows-[0fr] opacity-0'}`}
                     >
                       <div className="overflow-hidden">
-                        <p className="font-body text-bs26-grey text-base leading-relaxed pb-6 max-w-2xl">{faq.answer}</p>
+                        <p className="font-body text-bs26-grey text-base leading-relaxed pb-6 max-w-2xl">{t(faq.answer)}</p>
                       </div>
                     </div>
                   </div>
@@ -263,17 +264,16 @@ export default function AdviesgesprekPage() {
       {/* Bottom CTA */}
       <section className="py-20 md:py-28 px-6 md:px-12 lg:px-20 max-w-[1400px] mx-auto text-center border-t border-bs26-charcoal/[0.08]">
         <h2 className="font-display text-3xl sm:text-4xl md:text-6xl font-light mb-6">
-          Liever direct <span className="italic">bellen?</span>
+          {t('Liever direct')} <span className="italic">{t('bellen?')}</span>
         </h2>
         <p className="font-body text-bs26-grey text-base mb-8">
-          Bel ons op <a href={CONTACT_BADKAMERSTIJL.telefoonLink} className="text-bs26-gold hover:underline">{CONTACT_BADKAMERSTIJL.telefoon}</a> of
-          mail naar <a href={`mailto:${CONTACT_BADKAMERSTIJL.email}`} className="text-bs26-gold hover:underline">{CONTACT_BADKAMERSTIJL.email}</a>
+          {t('Bel ons op')} <a href={CONTACT_BADKAMERSTIJL.telefoonLink} className="text-bs26-gold hover:underline">{CONTACT_BADKAMERSTIJL.telefoon}</a> {t('of mail naar')} <a href={`mailto:${CONTACT_BADKAMERSTIJL.email}`} className="text-bs26-gold hover:underline">{CONTACT_BADKAMERSTIJL.email}</a>
         </p>
         <Link
           href="/"
           className="border border-bs26-charcoal/40 text-bs26-charcoal text-sm font-medium px-8 py-4 rounded-full hover:bg-bs26-ink hover:text-white hover:border-bs26-ink transition-colors duration-300 inline-flex items-center gap-2"
         >
-          Terug naar home
+          {t('Terug naar home')}
         </Link>
       </section>
     </main>

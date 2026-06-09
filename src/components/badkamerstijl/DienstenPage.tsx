@@ -6,6 +6,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { ArrowRight, ArrowUpRight } from 'lucide-react';
 import BadkamerstijlFloatingNav from '@/components/BadkamerstijlFloatingNav';
+import { useI18n } from '@/i18n/I18nProvider';
 
 const services = [
   {
@@ -46,6 +47,7 @@ const reveal = {
 };
 
 export default function DienstenPage() {
+  const { t } = useI18n();
   const fullwidthRef = useRef<HTMLElement>(null);
   const { scrollYProgress: fwScroll } = useScroll({
     target: fullwidthRef,
@@ -73,9 +75,9 @@ export default function DienstenPage() {
 
           <div className="relative z-20 px-6 md:px-12 lg:px-16 pb-14 md:pb-20 max-w-[1500px] mx-auto w-full">
             <nav aria-label="Kruimelpad" className="flex items-center gap-2 text-[11px] tracking-[0.18em] uppercase text-white/65 mb-6">
-              <Link href="/" className="hover:text-white transition-colors">Home</Link>
+              <Link href="/" className="hover:text-white transition-colors">{t('Home')}</Link>
               <span className="text-white/30">/</span>
-              <span className="text-white">Diensten</span>
+              <span className="text-white">{t('Diensten')}</span>
             </nav>
             <motion.span
               initial={{ opacity: 0 }}
@@ -84,7 +86,7 @@ export default function DienstenPage() {
               className="inline-flex items-center gap-3 mb-5"
             >
               <span className="w-8 h-px bg-bs26-gold-soft" />
-              <span className="bs26-eyebrow text-white/75">Diensten</span>
+              <span className="bs26-eyebrow text-white/75">{t('Diensten')}</span>
             </motion.span>
             <motion.h1
               initial={{ opacity: 0, y: 30 }}
@@ -92,9 +94,9 @@ export default function DienstenPage() {
               transition={{ delay: 0.3, duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
               className="font-display text-4xl sm:text-5xl md:text-7xl lg:text-8xl font-light text-white leading-[1.0]"
             >
-              Wat wij
+              {t('Wat wij')}
               <br />
-              <span className="italic">doen</span>
+              <span className="italic">{t('doen')}</span>
             </motion.h1>
           </div>
         </div>
@@ -106,9 +108,7 @@ export default function DienstenPage() {
           {...reveal}
           className="font-display text-2xl md:text-3xl lg:text-[2.5rem] font-light leading-[1.4] max-w-4xl"
         >
-          Van het eerste idee tot de laatste afwerking, wij begeleiden je door het
-          hele traject. Met persoonlijke aandacht, vakmanschap en een oncompromitterende
-          standaard.
+          {t('Van het eerste idee tot de laatste afwerking, wij begeleiden je door het hele traject. Met persoonlijke aandacht, vakmanschap en een oncompromitterende standaard.')}
         </motion.p>
       </section>
 
@@ -139,20 +139,20 @@ export default function DienstenPage() {
                   {String(i + 1).padStart(2, '0')}
                 </span>
                 <motion.h2 {...reveal} className="font-display text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-light mb-3">
-                  {service.title}
+                  {t(service.title)}
                 </motion.h2>
                 <motion.p {...reveal} className="font-display text-xl italic text-bs26-grey mb-8">
-                  {service.subtitle}
+                  {t(service.subtitle)}
                 </motion.p>
                 <motion.p {...reveal} className="font-body text-bs26-grey text-base leading-relaxed mb-10 max-w-lg">
-                  {service.desc}
+                  {t(service.desc)}
                 </motion.p>
 
                 <motion.ul {...reveal} className="space-y-3 mb-10">
                   {service.details.map((detail) => (
                     <li key={detail} className="font-body flex items-center gap-3 text-sm text-bs26-charcoal/75">
                       <span className="w-1.5 h-1.5 rounded-full bg-bs26-gold flex-shrink-0" />
-                      {detail}
+                      {t(detail)}
                     </li>
                   ))}
                 </motion.ul>
@@ -162,7 +162,7 @@ export default function DienstenPage() {
                     href="/adviesgesprek"
                     className="inline-flex items-center gap-2 bg-bs26-ink text-white text-sm font-medium px-6 py-3 rounded-full hover:bg-bs26-gold transition-colors duration-300"
                   >
-                    Vraag een offerte aan <ArrowUpRight className="w-4 h-4" />
+                    {t('Vraag een offerte aan')} <ArrowUpRight className="w-4 h-4" />
                   </Link>
                 </motion.div>
               </div>
@@ -190,18 +190,18 @@ export default function DienstenPage() {
       <section className="px-3 md:px-5 py-12 md:py-20">
         <div className="bg-bs26-ink text-white rounded-[20px] md:rounded-[28px] py-20 md:py-28 px-6 md:px-16">
           <div className="max-w-[1100px] mx-auto text-center">
-            <span className="bs26-eyebrow text-bs26-gold-soft mb-5 block">Volgende stap</span>
+            <span className="bs26-eyebrow text-bs26-gold-soft mb-5 block">{t('Volgende stap')}</span>
             <motion.h2 {...reveal} className="font-display text-4xl md:text-6xl font-light mb-6">
-              Klaar om te <span className="italic">beginnen?</span>
+              {t('Klaar om te')} <span className="italic">{t('beginnen?')}</span>
             </motion.h2>
             <motion.p {...reveal} className="font-body text-white/70 text-base mb-10 max-w-xl mx-auto">
-              Plan een vrijblijvend adviesgesprek en ontdek wat wij voor jouw badkamer kunnen betekenen.
+              {t('Plan een vrijblijvend adviesgesprek en ontdek wat wij voor jouw badkamer kunnen betekenen.')}
             </motion.p>
             <Link
               href="/adviesgesprek"
               className="bg-white text-bs26-ink text-sm font-medium px-8 py-4 rounded-full hover:bg-bs26-gold hover:text-white transition-colors duration-300 inline-flex items-center gap-2"
             >
-              Adviesgesprek plannen
+              {t('Adviesgesprek plannen')}
               <ArrowRight className="w-4 h-4" />
             </Link>
           </div>

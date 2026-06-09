@@ -5,6 +5,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { ArrowRight, ArrowUpRight } from 'lucide-react';
 import BadkamerstijlFloatingNav from '@/components/BadkamerstijlFloatingNav';
+import { useI18n } from '@/i18n/I18nProvider';
 
 const styles = [
   {
@@ -65,6 +66,7 @@ const reveal = {
 };
 
 export default function StijlenPage() {
+  const { t } = useI18n();
   return (
     <MotionConfig reducedMotion="user">
     <main className="bs26 overflow-x-hidden">
@@ -85,9 +87,9 @@ export default function StijlenPage() {
 
           <div className="relative z-20 px-6 md:px-12 lg:px-16 pb-14 md:pb-20 max-w-[1500px] mx-auto w-full">
             <nav aria-label="Kruimelpad" className="flex items-center gap-2 text-[11px] tracking-[0.18em] uppercase text-white/65 mb-6">
-              <Link href="/" className="hover:text-white transition-colors">Home</Link>
+              <Link href="/" className="hover:text-white transition-colors">{t('Home')}</Link>
               <span className="text-white/30">/</span>
-              <span className="text-white">Stijlen</span>
+              <span className="text-white">{t('Stijlen')}</span>
             </nav>
             <motion.span
               initial={{ opacity: 0 }}
@@ -96,7 +98,7 @@ export default function StijlenPage() {
               className="inline-flex items-center gap-3 mb-5"
             >
               <span className="w-8 h-px bg-bs26-gold-soft" />
-              <span className="bs26-eyebrow text-white/75">Onze stijlen</span>
+              <span className="bs26-eyebrow text-white/75">{t('Onze stijlen')}</span>
             </motion.span>
             <motion.h1
               initial={{ opacity: 0, y: 30 }}
@@ -104,9 +106,9 @@ export default function StijlenPage() {
               transition={{ delay: 0.3, duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
               className="font-display text-4xl sm:text-5xl md:text-7xl lg:text-8xl font-light text-white leading-[1.0]"
             >
-              Zes stijlen,
+              {t('Zes stijlen,')}
               <br />
-              <span className="italic">één passie</span>
+              <span className="italic">{t('één passie')}</span>
             </motion.h1>
           </div>
         </div>
@@ -115,8 +117,7 @@ export default function StijlenPage() {
       {/* Intro text */}
       <section className="py-24 md:py-32 px-6 md:px-12 lg:px-20 max-w-[1500px] mx-auto">
         <motion.p {...reveal} className="font-display text-2xl md:text-3xl lg:text-[2.5rem] font-light leading-[1.4] max-w-4xl">
-          Elke badkamer vertelt een verhaal. Ontdek welke stijl bij jou past, of laat ons
-          een uniek concept op maat creëren.
+          {t('Elke badkamer vertelt een verhaal. Ontdek welke stijl bij jou past, of laat ons een uniek concept op maat creëren.')}
         </motion.p>
       </section>
 
@@ -148,20 +149,20 @@ export default function StijlenPage() {
                   {String(i + 1).padStart(2, '0')}
                 </span>
                 <motion.h2 {...reveal} className="font-display text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-light mb-4">
-                  {style.title}
+                  {t(style.title)}
                 </motion.h2>
                 <motion.p {...reveal} className="font-display text-xl italic text-bs26-grey mb-8">
-                  {style.subtitle}
+                  {t(style.subtitle)}
                 </motion.p>
                 <motion.p {...reveal} className="font-body text-bs26-grey text-base leading-relaxed mb-10 max-w-lg">
-                  {style.desc}
+                  {t(style.desc)}
                 </motion.p>
                 <motion.div {...reveal}>
                   <Link
                     href="/adviesgesprek"
                     className="inline-flex items-center gap-2 bg-bs26-ink text-white text-sm font-medium px-6 py-3 rounded-full hover:bg-bs26-gold transition-colors duration-300"
                   >
-                    Adviesgesprek plannen <ArrowUpRight className="w-4 h-4" />
+                    {t('Adviesgesprek plannen')} <ArrowUpRight className="w-4 h-4" />
                   </Link>
                 </motion.div>
 
@@ -187,26 +188,26 @@ export default function StijlenPage() {
       <section className="px-3 md:px-5 py-12 md:py-20">
         <div className="bg-bs26-ink text-white rounded-[20px] md:rounded-[28px] py-20 md:py-28 px-6 md:px-16">
           <div className="max-w-[1100px] mx-auto text-center">
-            <span className="bs26-eyebrow text-bs26-gold-soft mb-5 block">Maatwerk</span>
+            <span className="bs26-eyebrow text-bs26-gold-soft mb-5 block">{t('Maatwerk')}</span>
             <motion.h2 {...reveal} className="font-display text-4xl md:text-6xl font-light mb-6">
-              Jouw stijl, onze <span className="italic">expertise</span>
+              {t('Jouw stijl, onze')} <span className="italic">{t('expertise')}</span>
             </motion.h2>
             <motion.p {...reveal} className="font-body text-white/70 text-base mb-10 max-w-xl mx-auto">
-              Geen stijl die precies past? Wij combineren elementen tot een uniek concept dat volledig bij jou past.
+              {t('Geen stijl die precies past? Wij combineren elementen tot een uniek concept dat volledig bij jou past.')}
             </motion.p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link
                 href="/adviesgesprek"
                 className="bg-white text-bs26-ink text-sm font-medium px-8 py-4 rounded-full hover:bg-bs26-gold hover:text-white transition-colors duration-300 inline-flex items-center justify-center gap-2"
               >
-                Adviesgesprek plannen
+                {t('Adviesgesprek plannen')}
                 <ArrowRight className="w-4 h-4" />
               </Link>
               <Link
                 href="/portfolio"
                 className="border border-white/40 text-white text-sm font-medium px-8 py-4 rounded-full hover:bg-white/10 transition-colors duration-300 inline-flex items-center justify-center gap-2"
               >
-                Bekijk portfolio
+                {t('Bekijk portfolio')}
               </Link>
             </div>
           </div>

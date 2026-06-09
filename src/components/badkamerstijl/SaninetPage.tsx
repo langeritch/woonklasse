@@ -5,6 +5,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { ArrowRight, ArrowUpRight } from 'lucide-react';
 import BadkamerstijlFloatingNav from '@/components/BadkamerstijlFloatingNav';
+import { useI18n } from '@/i18n/I18nProvider';
 
 const steps = [
   {
@@ -45,6 +46,7 @@ const reveal = {
 };
 
 export default function SaninetPage() {
+  const { t } = useI18n();
   return (
     <MotionConfig reducedMotion="user">
     <main className="bs26 overflow-x-hidden">
@@ -65,9 +67,9 @@ export default function SaninetPage() {
 
           <div className="relative z-20 px-6 md:px-12 lg:px-16 pb-14 md:pb-20 max-w-[1500px] mx-auto w-full">
             <nav aria-label="Kruimelpad" className="flex items-center gap-2 text-[11px] tracking-[0.18em] uppercase text-white/65 mb-6">
-              <Link href="/" className="hover:text-white transition-colors">Home</Link>
+              <Link href="/" className="hover:text-white transition-colors">{t('Home')}</Link>
               <span className="text-white/30">/</span>
-              <span className="text-white">Saninet 3D</span>
+              <span className="text-white">{t('Saninet 3D')}</span>
             </nav>
             <motion.span
               initial={{ opacity: 0 }}
@@ -76,7 +78,7 @@ export default function SaninetPage() {
               className="inline-flex items-center gap-3 mb-5"
             >
               <span className="w-8 h-px bg-bs26-gold-soft" />
-              <span className="bs26-eyebrow text-white/75">Saninet · 3D Badkamerontwerp</span>
+              <span className="bs26-eyebrow text-white/75">{t('Saninet · 3D Badkamerontwerp')}</span>
             </motion.span>
             <motion.h1
               initial={{ opacity: 0, y: 30 }}
@@ -84,9 +86,9 @@ export default function SaninetPage() {
               transition={{ delay: 0.3, duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
               className="font-display text-4xl sm:text-5xl md:text-7xl lg:text-8xl font-light text-white leading-[1.0]"
             >
-              Zie je badkamer
+              {t('Zie je badkamer')}
               <br />
-              <span className="italic">voordat we beginnen</span>
+              <span className="italic">{t('voordat we beginnen')}</span>
             </motion.h1>
             <motion.p
               initial={{ opacity: 0, y: 16 }}
@@ -94,7 +96,7 @@ export default function SaninetPage() {
               transition={{ delay: 0.5, duration: 0.8 }}
               className="font-body mt-7 max-w-2xl text-white/80 text-base md:text-lg leading-relaxed"
             >
-              Samen ontwerpen we jouw badkamer in 3D, 100% naar wens en op de locatie van jouw keuze. Geen gokwerk, geen verrassingen.
+              {t('Samen ontwerpen we jouw badkamer in 3D, 100% naar wens en op de locatie van jouw keuze. Geen gokwerk, geen verrassingen.')}
             </motion.p>
             <motion.div
               initial={{ opacity: 0, y: 16 }}
@@ -106,7 +108,7 @@ export default function SaninetPage() {
                 href="/adviesgesprek"
                 className="group inline-flex items-center gap-3 bg-white text-bs26-ink text-sm font-medium px-8 py-4 rounded-full hover:bg-bs26-gold hover:text-white transition-colors"
               >
-                Plan een ontwerpsessie
+                {t('Plan een ontwerpsessie')}
                 <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
               </Link>
             </motion.div>
@@ -118,19 +120,19 @@ export default function SaninetPage() {
       <section className="py-24 md:py-32 px-6 md:px-12 lg:px-20 max-w-[1400px] mx-auto">
         <div className="grid grid-cols-1 lg:grid-cols-[1fr_1.4fr] gap-12 lg:gap-20 items-start">
           <div>
-            <span className="bs26-eyebrow text-bs26-gold mb-5 block">Wat is Saninet?</span>
+            <span className="bs26-eyebrow text-bs26-gold mb-5 block">{t('Wat is Saninet?')}</span>
             <h2 className="font-display text-3xl md:text-4xl lg:text-5xl font-light leading-[1.1]">
-              De standaard onder
+              {t('De standaard onder')}
               <br />
-              <span className="italic">badkamerspecialisten</span>
+              <span className="italic">{t('badkamerspecialisten')}</span>
             </h2>
           </div>
           <motion.div {...reveal} className="space-y-6">
             <p className="font-display text-xl md:text-2xl lg:text-[1.75rem] font-light leading-[1.5] text-bs26-charcoal">
-              Saninet is de 3D-ontwerpsoftware waarmee toonaangevende badkamerspecialisten in heel Europa werken. Met een bibliotheek van echte producten bouwen we jouw badkamer realistisch op, voordat er iets besteld wordt.
+              {t('Saninet is de 3D-ontwerpsoftware waarmee toonaangevende badkamerspecialisten in heel Europa werken. Met een bibliotheek van echte producten bouwen we jouw badkamer realistisch op, voordat er iets besteld wordt.')}
             </p>
             <p className="font-body text-base md:text-lg text-bs26-grey leading-relaxed">
-              Omdat we met onze eigen sanitairspecialisten en vaste leveranciers werken, lopen ontwerp en uitvoering naadloos in elkaar over. Het 3D-beeld is geen verkooppraatje, maar de blauwdruk van je nieuwe badkamer.
+              {t('Omdat we met onze eigen sanitairspecialisten en vaste leveranciers werken, lopen ontwerp en uitvoering naadloos in elkaar over. Het 3D-beeld is geen verkooppraatje, maar de blauwdruk van je nieuwe badkamer.')}
             </p>
           </motion.div>
         </div>
@@ -151,16 +153,16 @@ export default function SaninetPage() {
             </div>
           </motion.div>
           <motion.div {...reveal}>
-            <span className="bs26-eyebrow text-bs26-gold mb-5 block">Hoe het werkt</span>
+            <span className="bs26-eyebrow text-bs26-gold mb-5 block">{t('Hoe het werkt')}</span>
             <h2 className="font-display text-3xl sm:text-4xl md:text-5xl font-light mb-7">
-              Samen ontwerpen, <span className="italic">bij jou thuis</span>
+              {t('Samen ontwerpen,')} <span className="italic">{t('bij jou thuis')}</span>
             </h2>
             <div className="space-y-5 font-body text-bs26-grey text-base leading-relaxed">
               <p>
-                We ontwerpen je badkamer niet vóór je, maar mét je. Onze sanitairspecialist komt naar de locatie van jouw keuze, bij jou thuis of in onze showroom, en samen bouwen we jouw badkamer op in 3D. Jij ziet elke keuze direct terug. Een ander tegelpatroon, een vrijstaand bad in plaats van een douche, een wand die verschuift. Alles kan, en je ziet meteen wat het doet.
+                {t('We ontwerpen je badkamer niet vóór je, maar mét je. Onze sanitairspecialist komt naar de locatie van jouw keuze, bij jou thuis of in onze showroom, en samen bouwen we jouw badkamer op in 3D. Jij ziet elke keuze direct terug. Een ander tegelpatroon, een vrijstaand bad in plaats van een douche, een wand die verschuift. Alles kan, en je ziet meteen wat het doet.')}
               </p>
               <p>
-                Het resultaat is een ontwerp dat voor 100% klopt met wat jij wilt, voordat er ook maar één tegel wordt besteld. Zo weet je precies waar je aan toe bent: hoe het eruitziet, wat erin zit en wat het kost.
+                {t('Het resultaat is een ontwerp dat voor 100% klopt met wat jij wilt, voordat er ook maar één tegel wordt besteld. Zo weet je precies waar je aan toe bent: hoe het eruitziet, wat erin zit en wat het kost.')}
               </p>
             </div>
           </motion.div>
@@ -172,9 +174,9 @@ export default function SaninetPage() {
         <div className="bg-bs26-ink text-white rounded-[20px] md:rounded-[28px] px-6 md:px-14 lg:px-20 py-20 md:py-28">
           <div className="max-w-[1400px] mx-auto">
             <motion.div {...reveal} className="max-w-2xl mb-14 md:mb-20">
-              <span className="bs26-eyebrow text-bs26-gold-soft">Het traject</span>
+              <span className="bs26-eyebrow text-bs26-gold-soft">{t('Het traject')}</span>
               <h2 className="font-display font-light text-[clamp(2.25rem,5vw,4.25rem)] leading-[1.04] mt-5">
-                In vier stappen naar <span className="italic">je ontwerp</span>
+                {t('In vier stappen naar')} <span className="italic">{t('je ontwerp')}</span>
               </h2>
             </motion.div>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 md:gap-12">
@@ -186,8 +188,8 @@ export default function SaninetPage() {
                   className="border-t border-white/15 pt-7"
                 >
                   <span className="font-display text-bs26-gold-soft text-4xl">{String(i + 1).padStart(2, '0')}</span>
-                  <h3 className="font-display text-2xl font-light mt-3 mb-4">{step.title}</h3>
-                  <p className="font-body text-white/65 text-sm leading-relaxed">{step.body}</p>
+                  <h3 className="font-display text-2xl font-light mt-3 mb-4">{t(step.title)}</h3>
+                  <p className="font-body text-white/65 text-sm leading-relaxed">{t(step.body)}</p>
                 </motion.div>
               ))}
             </div>
@@ -198,12 +200,12 @@ export default function SaninetPage() {
       {/* Saninet cards */}
       <section className="py-24 md:py-32 px-6 md:px-12 lg:px-20 max-w-[1500px] mx-auto text-center">
         <motion.div {...reveal} className="max-w-3xl mx-auto mb-14 md:mb-16">
-          <span className="bs26-eyebrow text-bs26-gold">Saninet op locatie</span>
+          <span className="bs26-eyebrow text-bs26-gold">{t('Saninet op locatie')}</span>
           <h2 className="font-display font-light text-[clamp(2.25rem,5vw,4.25rem)] leading-[1.05] mt-5">
-            We ontwerpen je badkamer <span className="italic">waar jij wilt</span>
+            {t('We ontwerpen je badkamer')} <span className="italic">{t('waar jij wilt')}</span>
           </h2>
           <p className="font-body text-bs26-grey text-[15px] md:text-base leading-relaxed mt-6">
-            Van de eerste plattegrond met exacte maatvoering tot een realistisch 3D-beeld en de uiteindelijke badkamer: je ziet vooraf precies wat je krijgt.
+            {t('Van de eerste plattegrond met exacte maatvoering tot een realistisch 3D-beeld en de uiteindelijke badkamer: je ziet vooraf precies wat je krijgt.')}
           </p>
         </motion.div>
 
@@ -215,7 +217,7 @@ export default function SaninetPage() {
                   <Image src={card.img} alt={card.caption} fill className={card.contain ? 'object-contain' : 'object-cover'} sizes="(max-width: 768px) 100vw, 33vw" />
                 </div>
               </div>
-              <figcaption className="bs26-eyebrow text-bs26-charcoal mt-4">{card.caption}</figcaption>
+              <figcaption className="bs26-eyebrow text-bs26-charcoal mt-4">{t(card.caption)}</figcaption>
             </motion.figure>
           ))}
         </div>
@@ -224,16 +226,16 @@ export default function SaninetPage() {
       {/* Saninet in cijfers */}
       <section className="pb-24 md:pb-32 px-6 md:px-12 lg:px-20 max-w-[1500px] mx-auto">
         <motion.div {...reveal} className="text-center max-w-2xl mx-auto mb-14">
-          <span className="bs26-eyebrow text-bs26-gold">Saninet in cijfers</span>
+          <span className="bs26-eyebrow text-bs26-gold">{t('Saninet in cijfers')}</span>
           <h2 className="font-display font-light text-[clamp(2.25rem,5vw,4.25rem)] leading-[1.05] mt-4">
-            Bewezen <span className="italic">technologie</span>
+            {t('Bewezen')} <span className="italic">{t('technologie')}</span>
           </h2>
         </motion.div>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-10 md:gap-12">
           {stats.map((s, i) => (
             <motion.div key={s.value} {...reveal} transition={{ ...reveal.transition, delay: i * 0.1 }} className="text-center border-t border-bs26-charcoal/15 pt-8">
               <span className="font-display text-bs26-ink text-5xl md:text-6xl font-light block">{s.value}</span>
-              <p className="font-body text-bs26-grey text-sm leading-relaxed mt-4 max-w-xs mx-auto">{s.label}</p>
+              <p className="font-body text-bs26-grey text-sm leading-relaxed mt-4 max-w-xs mx-auto">{t(s.label)}</p>
             </motion.div>
           ))}
         </div>
@@ -251,26 +253,26 @@ export default function SaninetPage() {
           />
           <div className="absolute inset-0 bg-gradient-to-r from-black/80 via-black/50 to-black/30" />
           <motion.div {...reveal} className="relative z-10 px-8 md:px-16 lg:px-24 max-w-2xl">
-            <span className="bs26-eyebrow text-bs26-gold-soft mb-5 block">Van scherm naar werkelijkheid</span>
+            <span className="bs26-eyebrow text-bs26-gold-soft mb-5 block">{t('Van scherm naar werkelijkheid')}</span>
             <h2 className="font-display font-light text-white text-[clamp(2.25rem,5.5vw,4.5rem)] leading-[1.04]">
-              Wat je ziet, is <span className="italic">wat je krijgt</span>
+              {t('Wat je ziet, is')} <span className="italic">{t('wat je krijgt')}</span>
             </h2>
             <p className="font-body text-white/75 text-base md:text-lg leading-relaxed mt-6 max-w-xl">
-              Omdat we met onze eigen sanitairspecialisten en vaste leveranciers werken, lopen ontwerp en uitvoering naadloos in elkaar over. Het 3D-beeld is de blauwdruk van je nieuwe badkamer.
+              {t('Omdat we met onze eigen sanitairspecialisten en vaste leveranciers werken, lopen ontwerp en uitvoering naadloos in elkaar over. Het 3D-beeld is de blauwdruk van je nieuwe badkamer.')}
             </p>
             <div className="mt-9 flex flex-col sm:flex-row gap-4">
               <Link
                 href="/adviesgesprek"
                 className="inline-flex items-center justify-center gap-2 bg-white text-bs26-ink text-sm font-medium px-8 py-4 rounded-full hover:bg-bs26-gold hover:text-white transition-colors duration-300"
               >
-                Bespreek je project
+                {t('Bespreek je project')}
                 <ArrowRight className="w-4 h-4" />
               </Link>
               <Link
                 href="/portfolio"
                 className="inline-flex items-center justify-center gap-2 border border-white/40 text-white text-sm font-medium px-8 py-4 rounded-full hover:bg-white/10 transition-colors duration-300"
               >
-                Bekijk portfolio
+                {t('Bekijk portfolio')}
                 <ArrowUpRight className="w-4 h-4" />
               </Link>
             </div>
