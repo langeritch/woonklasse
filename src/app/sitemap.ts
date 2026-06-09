@@ -28,6 +28,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: BADKAMERSTIJL_URL, lastModified: now, changeFrequency: 'monthly', priority: 1 },
     { url: `${BADKAMERSTIJL_URL}/diensten`, lastModified: now, changeFrequency: 'monthly', priority: 0.8 },
     { url: `${BADKAMERSTIJL_URL}/stijlen`, lastModified: now, changeFrequency: 'monthly', priority: 0.8 },
+    { url: `${BADKAMERSTIJL_URL}/saninet`, lastModified: now, changeFrequency: 'monthly', priority: 0.85 },
     { url: `${BADKAMERSTIJL_URL}/portfolio`, lastModified: now, changeFrequency: 'weekly', priority: 0.8 },
     { url: `${BADKAMERSTIJL_URL}/prijzen`, lastModified: now, changeFrequency: 'monthly', priority: 0.95 },
     { url: `${BADKAMERSTIJL_URL}/blog`, lastModified: now, changeFrequency: 'weekly', priority: 0.85 },

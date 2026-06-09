@@ -279,6 +279,68 @@ export default function BadkamerstijlHome() {
         </div>
       </section>
 
+      {/* ═══════════════════════ 4B. SANINET OP LOCATIE ═══════════════════════ */}
+      <section className="py-24 md:py-32 px-6 md:px-12 lg:px-20 max-w-[1500px] mx-auto text-center">
+        <motion.div {...reveal} className="max-w-3xl mx-auto mb-14 md:mb-16">
+          <span className="bs26-eyebrow text-bs26-gold">Saninet op locatie</span>
+          <h2 className="font-display font-light text-[clamp(2.25rem,5vw,4.25rem)] leading-[1.05] mt-5">
+            We ontwerpen je badkamer <span className="italic">waar jij wilt</span>
+          </h2>
+          <p className="font-body text-bs26-grey text-[15px] md:text-base leading-relaxed mt-6">
+            Onze specialist komt naar de locatie van jouw keuze, meet de ruimte exact op en bouwt samen met jou je nieuwe badkamer op in Saninet 3D. Van de eerste plattegrond tot een realistisch beeld: je ziet vooraf precies wat je krijgt, helemaal naar wens.
+          </p>
+        </motion.div>
+
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8">
+          {[
+            { img: '/badkamerstijl/saninet-plattegrond.jpg', caption: 'Exacte plattegrond', contain: true },
+            { img: '/badkamerstijl/saninet-3d.jpg', caption: 'Jouw badkamer in 3D', contain: true },
+            { img: '/badkamerstijl/2200xxs(30).jpg', caption: 'Het eindresultaat', contain: false },
+          ].map((card, i) => (
+            <motion.figure
+              key={card.caption}
+              {...reveal}
+              transition={{ ...reveal.transition, delay: i * 0.1 }}
+              className="m-0"
+            >
+              <div className={`aspect-square rounded-[16px] overflow-hidden relative shadow-[0_18px_45px_-25px_rgba(34,31,26,0.4)] ${card.contain ? 'bg-white border border-bs26-charcoal/[0.06] p-4' : ''}`}>
+                <div className="relative w-full h-full">
+                  <Image
+                    src={card.img}
+                    alt={card.caption}
+                    fill
+                    className={card.contain ? 'object-contain' : 'object-cover'}
+                    sizes="(max-width: 768px) 100vw, 33vw"
+                  />
+                </div>
+              </div>
+              <figcaption className="bs26-eyebrow text-bs26-charcoal mt-4">{card.caption}</figcaption>
+            </motion.figure>
+          ))}
+        </div>
+
+        <motion.p {...reveal} className="font-body text-bs26-grey text-[15px] md:text-base leading-relaxed max-w-2xl mx-auto mt-14 mb-9">
+          Geen gokwerk en geen verrassingen. Je weet vooraf hoe je badkamer eruitziet, wat erin komt en wat het kost. Pas als het ontwerp helemaal naar wens is, gaan we aan de slag.
+        </motion.p>
+
+        <motion.div {...reveal} className="flex flex-col sm:flex-row gap-4 justify-center">
+          <Link
+            href="/adviesgesprek"
+            className="inline-flex items-center justify-center gap-2 bg-bs26-ink text-white text-sm font-medium px-8 py-4 rounded-full hover:bg-bs26-gold transition-colors duration-300"
+          >
+            Plan je ontwerpsessie
+            <ArrowRight className="w-4 h-4" />
+          </Link>
+          <Link
+            href="/saninet"
+            className="inline-flex items-center justify-center gap-2 border border-bs26-charcoal/40 text-bs26-charcoal text-sm font-medium px-8 py-4 rounded-full hover:bg-bs26-ink hover:text-white hover:border-bs26-ink transition-colors duration-300"
+          >
+            Ontdek Saninet 3D
+            <ArrowUpRight className="w-4 h-4" />
+          </Link>
+        </motion.div>
+      </section>
+
       {/* ═══════════════════════ 5. STIJLEN CAROUSEL ═══════════════════════ */}
       <section className="py-24 md:py-32">
         <div className="px-6 md:px-12 lg:px-20 max-w-[1500px] mx-auto">

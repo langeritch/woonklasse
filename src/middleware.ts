@@ -52,7 +52,7 @@ export async function middleware(request: NextRequest) {
   }
 
   // Clean Badkamerstijl paths → actual page routes
-  const CLEAN_BADKAMER_PATHS = ['/stijlen', '/portfolio', '/diensten', '/adviesgesprek', '/prijzen', '/bedankt'];
+  const CLEAN_BADKAMER_PATHS = ['/stijlen', '/portfolio', '/diensten', '/adviesgesprek', '/prijzen', '/saninet', '/bedankt'];
   if (CLEAN_BADKAMER_PATHS.includes(pathname)) {
     return NextResponse.rewrite(new URL(`/badkamerstijl${pathname}`, request.url));
   }

@@ -9,6 +9,7 @@ import BadkamerstijlLogo from '@/components/BadkamerstijlLogo';
 const navLinks = [
   { title: 'Home', path: '/' },
   { title: 'Stijlen', path: '/stijlen' },
+  { title: 'Saninet 3D', path: '/saninet' },
   { title: 'Portfolio', path: '/portfolio' },
   { title: 'Diensten', path: '/diensten' },
   { title: 'Prijzen', path: '/prijzen' },
