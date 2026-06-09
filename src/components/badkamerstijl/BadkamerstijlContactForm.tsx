@@ -97,32 +97,35 @@ export default function BadkamerstijlContactForm({
     }
   };
 
+  const fieldClass =
+    'w-full bg-transparent border-b border-bs26-charcoal/15 focus:border-bs26-gold pb-3 pt-2 text-bs26-charcoal placeholder:text-bs26-charcoal/30 outline-none transition-colors text-base';
+
   return (
-    <div className="bg-white rounded-2xl border border-bsv2-charcoal/[0.08] shadow-xl shadow-black/10 p-7 sm:p-9">
+    <div className="bs26 bg-bs26-paper rounded-[18px] border border-bs26-charcoal/10 shadow-[0_30px_70px_-40px_rgba(26,29,31,0.5)] p-7 sm:p-9">
       {contactStatus === 'success' ? (
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           className="text-center py-6"
         >
-          <h3 className="font-cormorant text-3xl font-light mb-3 text-bsv2-charcoal">Bedankt!</h3>
-          <p className="text-bsv2-grey text-base mb-6">
+          <h3 className="font-display text-3xl font-light mb-3 text-bs26-charcoal">Bedankt!</h3>
+          <p className="text-bs26-grey text-base mb-6">
             We nemen zo snel mogelijk contact met je op voor het inplannen van je adviesgesprek.
           </p>
           <button
             type="button"
             onClick={() => setContactStatus('idle')}
-            className="text-sm text-bsv2-teal underline"
+            className="text-sm text-bs26-gold underline"
           >
             Nog een bericht versturen
           </button>
         </motion.div>
       ) : (
         <>
-          <h3 className="font-cormorant text-2xl md:text-3xl font-light text-bsv2-charcoal leading-tight">
+          <h3 className="font-display text-2xl md:text-3xl font-light text-bs26-charcoal leading-tight">
             {heading}
           </h3>
-          <p className="text-bsv2-grey text-sm mt-3 mb-7 leading-relaxed">{intro}</p>
+          <p className="text-bs26-grey text-sm mt-3 mb-7 leading-relaxed">{intro}</p>
           <form className="space-y-6" onSubmit={handleContactSubmit}>
             {/* Honeypot */}
             <div aria-hidden="true" className="absolute opacity-0 h-0 overflow-hidden">
@@ -143,7 +146,7 @@ export default function BadkamerstijlContactForm({
               placeholder="Volledige naam"
               value={contactForm.naam}
               onChange={handleContactChange}
-              className="w-full bg-transparent border-b border-bsv2-charcoal/15 focus:border-bsv2-teal pb-3 pt-2 text-bsv2-charcoal placeholder:text-bsv2-charcoal/30 outline-none transition-colors text-base"
+              className={fieldClass}
             />
             <input
               type="email"
@@ -152,7 +155,7 @@ export default function BadkamerstijlContactForm({
               placeholder="E-mailadres"
               value={contactForm.email}
               onChange={handleContactChange}
-              className="w-full bg-transparent border-b border-bsv2-charcoal/15 focus:border-bsv2-teal pb-3 pt-2 text-bsv2-charcoal placeholder:text-bsv2-charcoal/30 outline-none transition-colors text-base"
+              className={fieldClass}
             />
             <input
               type="tel"
@@ -161,7 +164,7 @@ export default function BadkamerstijlContactForm({
               placeholder="Telefoonnummer"
               value={contactForm.telefoon}
               onChange={handleContactChange}
-              className="w-full bg-transparent border-b border-bsv2-charcoal/15 focus:border-bsv2-teal pb-3 pt-2 text-bsv2-charcoal placeholder:text-bsv2-charcoal/30 outline-none transition-colors text-base"
+              className={fieldClass}
             />
             <input
               type="text"
@@ -170,14 +173,14 @@ export default function BadkamerstijlContactForm({
               autoComplete="address-level2"
               value={contactForm.stad}
               onChange={handleContactChange}
-              className="w-full bg-transparent border-b border-bsv2-charcoal/15 focus:border-bsv2-teal pb-3 pt-2 text-bsv2-charcoal placeholder:text-bsv2-charcoal/30 outline-none transition-colors text-base"
+              className={fieldClass}
             />
             <select
               name="type"
               value={contactForm.type}
               onChange={handleContactChange}
               aria-label="Type renovatie"
-              className="w-full bg-transparent border-b border-bsv2-charcoal/15 focus:border-bsv2-teal pb-3 pt-2 text-bsv2-charcoal outline-none transition-colors text-base appearance-none cursor-pointer"
+              className={`${fieldClass} appearance-none cursor-pointer`}
             >
               <option value="">Type renovatie (optioneel)</option>
               {RENOVATION_TYPES.map((t) => (
@@ -190,7 +193,7 @@ export default function BadkamerstijlContactForm({
               placeholder="Vertel ons over je droombadkamer..."
               value={contactForm.bericht}
               onChange={handleContactChange}
-              className="w-full bg-transparent border-b border-bsv2-charcoal/15 focus:border-bsv2-teal pb-3 pt-2 text-bsv2-charcoal placeholder:text-bsv2-charcoal/30 outline-none transition-colors text-base resize-none"
+              className={`${fieldClass} resize-none`}
             />
             {contactStatus === 'error' && (
               <p className="text-red-500 text-sm">{contactError}</p>
@@ -198,7 +201,7 @@ export default function BadkamerstijlContactForm({
             <button
               type="submit"
               disabled={contactStatus === 'loading'}
-              className="inline-flex items-center gap-3 bg-bsv2-teal text-white font-medium px-10 py-4 rounded-full transition-all hover:bg-bsv2-charcoal text-sm tracking-wide disabled:opacity-50 disabled:cursor-not-allowed"
+              className="inline-flex items-center gap-3 bg-bs26-ink text-white font-medium px-10 py-4 rounded-full transition-all hover:bg-bs26-gold text-sm tracking-wide disabled:opacity-50 disabled:cursor-not-allowed"
             >
               {contactStatus === 'loading' ? 'Bezig met verzenden...' : 'Adviesgesprek aanvragen'}
               {contactStatus !== 'loading' && <ArrowRight className="w-4 h-4" />}

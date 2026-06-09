@@ -42,28 +42,21 @@ const pakketten = [
   {
     name: 'Basis',
     image: '/badkamerstijl/2200xxs(4).jpg',
-    price: 'vanaf € 5.000',
+    price: '€ 5.000 - € 12.000',
     desc: 'Nette renovatie met betrouwbaar middensegment sanitair.',
     specs: ['Compleet', 'Incl. montage', 'Vaste prijs'],
   },
   {
-    name: 'Standaard',
-    image: '/badkamerstijl/2200xxs(27).jpg',
-    price: '€ 12.000 - € 22.000',
-    desc: 'Designsanitair en grootformaat tegels voor een eigentijdse look.',
-    specs: ['Designsanitair', 'Grootformaat tegels', '3D-ontwerp'],
-  },
-  {
     name: 'Premium',
     image: '/badkamerstijl/2200xxs(43).jpg',
-    price: '€ 22.000 - € 35.000',
-    desc: 'Topmerken, vrijstaand bad en maatwerk meubels.',
-    specs: ['Topmerken', 'Vrijstaand bad', 'Maatwerk'],
+    price: '€ 12.000 - € 18.000',
+    desc: 'Designsanitair, grootformaat tegels, vrijstaand bad en maatwerk meubels.',
+    specs: ['Designsanitair', 'Grootformaat tegels', 'Vrijstaand bad'],
   },
   {
     name: 'Luxe',
     image: '/badkamerstijl/2200xxs(46).jpg',
-    price: 'vanaf € 35.000',
+    price: 'vanaf € 18.000',
     desc: 'Volledig op maat met natuursteen en exclusieve designmerken.',
     specs: ['Natuursteen', 'Volledig op maat', 'Designmerken'],
   },
@@ -413,7 +406,7 @@ export default function BadkamerstijlHome() {
               key={p.name}
               {...reveal}
               transition={{ ...reveal.transition, delay: (i % 2) * 0.08 }}
-              className="group bg-bs26-paper rounded-[18px] p-3 flex flex-col sm:flex-row gap-5 hover:shadow-[0_20px_50px_-25px_rgba(34,31,26,0.4)] transition-shadow duration-500"
+              className={`group bg-bs26-paper rounded-[18px] p-3 flex flex-col sm:flex-row gap-5 hover:shadow-[0_20px_50px_-25px_rgba(34,31,26,0.4)] transition-shadow duration-500 ${i === pakketten.length - 1 ? 'md:col-span-2' : ''}`}
             >
               <div className="sm:w-44 lg:w-52 shrink-0 aspect-[4/3] sm:aspect-auto relative overflow-hidden rounded-[12px]">
                 <Image

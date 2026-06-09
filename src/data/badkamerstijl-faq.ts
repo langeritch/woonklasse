@@ -7,7 +7,7 @@ export type Faq = { q: string; a: string };
 export const BADKAMERSTIJL_FAQS: Faq[] = [
   {
     q: 'Wat kost een complete badkamer renovatie?',
-    a: 'Dat hangt af van de grootte en de afwerking. Een nette renovatie start rond € 5.000, een gemiddelde badkamer op maat ligt tussen € 12.000 en € 22.000 en voor een luxe badkamer met natuursteen en designmerken reken je vanaf € 35.000. Je krijgt vooraf een vaste aanneemsom, dus geen verrassingen achteraf.',
+    a: 'Dat hangt af van de grootte en de afwerking. Een nette renovatie start rond € 5.000, een badkamer op maat ligt tussen € 12.000 en € 18.000 en voor een luxe badkamer met natuursteen en designmerken reken je vanaf € 18.000. Je krijgt vooraf een vaste aanneemsom, dus geen verrassingen achteraf.',
   },
   {
     q: 'Hoe lang duurt het om mijn badkamer te realiseren?',
