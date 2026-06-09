@@ -3,7 +3,7 @@
 import { motion } from 'framer-motion';
 import Link from 'next/link';
 import Image from 'next/image';
-import { Phone } from 'lucide-react';
+import { Phone, ArrowRight, ArrowUpRight } from 'lucide-react';
 import type { City } from '@/data/cities';
 import { CONTACT_BADKAMERSTIJL } from '@/data/contact';
 import BadkamerstijlFloatingNav from '@/components/BadkamerstijlFloatingNav';
@@ -194,8 +194,79 @@ export default function CityLandingPage({
         </div>
       </section>
 
+      {/* ═══════ 3B. SANINET OP LOCATIE (3D-ONTWERP BIJ JOU IN DE STAD) ═══════ */}
+      <section className="py-24 md:py-32 px-6 md:px-12 lg:px-20 max-w-[1500px] mx-auto text-center">
+        <FadeIn className="max-w-3xl mx-auto mb-14 md:mb-16">
+          <span className="bs26-eyebrow text-bs26-gold mb-5 block">Saninet op locatie in {city.name}</span>
+          <h2 className="font-display font-light text-[clamp(2.25rem,5vw,4.25rem)] leading-[1.05]">
+            We ontwerpen je badkamer <span className="italic">waar jij wilt</span>
+          </h2>
+          <p className="font-body text-bs26-grey text-[15px] md:text-base leading-relaxed mt-6">
+            Onze specialist komt naar jouw adres in {city.name}, meet de ruimte exact op en bouwt
+            samen met jou je nieuwe badkamer op in Saninet 3D. Van de eerste plattegrond tot een
+            realistisch beeld: je ziet vooraf precies wat je krijgt, helemaal naar wens.
+          </p>
+        </FadeIn>
+
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8">
+          {[
+            { img: '/badkamerstijl/saninet-plattegrond.jpg', caption: 'Exacte plattegrond', contain: true },
+            { img: '/badkamerstijl/saninet-3d.jpg', caption: 'Jouw badkamer in 3D', contain: true },
+            { img: '/badkamerstijl/2200xxs(30).jpg', caption: 'Het eindresultaat', contain: false },
+          ].map((card, i) => (
+            <motion.figure
+              key={card.caption}
+              {...reveal}
+              transition={{ ...reveal.transition, delay: i * 0.1 }}
+              className="m-0"
+            >
+              <div
+                className={`aspect-square rounded-[16px] overflow-hidden relative shadow-[0_18px_45px_-25px_rgba(26,29,31,0.45)] ${
+                  card.contain ? 'bg-white border border-bs26-charcoal/[0.06] p-4' : ''
+                }`}
+              >
+                <div className="relative w-full h-full">
+                  <Image
+                    src={card.img}
+                    alt={`${card.caption} van een badkamer in ${city.name} door Badkamerstijl`}
+                    fill
+                    className={card.contain ? 'object-contain' : 'object-cover'}
+                    sizes="(max-width: 768px) 100vw, 33vw"
+                  />
+                </div>
+              </div>
+              <figcaption className="bs26-eyebrow text-bs26-charcoal mt-4">{card.caption}</figcaption>
+            </motion.figure>
+          ))}
+        </div>
+
+        <FadeIn>
+          <p className="font-body text-bs26-grey text-[15px] md:text-base leading-relaxed max-w-2xl mx-auto mt-14 mb-9">
+            Geen gokwerk en geen verrassingen. Je weet vooraf hoe je badkamer eruitziet, wat erin
+            komt en wat het kost. Pas als het ontwerp helemaal naar wens is, gaan we bij je aan de
+            slag.
+          </p>
+          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <Link
+              href="/adviesgesprek"
+              className="inline-flex items-center justify-center gap-2 bg-bs26-ink text-white text-sm font-medium px-8 py-4 rounded-full hover:bg-bs26-gold transition-colors duration-300"
+            >
+              Plan je ontwerpsessie
+              <ArrowRight className="w-4 h-4" />
+            </Link>
+            <Link
+              href="/saninet"
+              className="inline-flex items-center justify-center gap-2 border border-bs26-charcoal/40 text-bs26-charcoal text-sm font-medium px-8 py-4 rounded-full hover:bg-bs26-ink hover:text-white hover:border-bs26-ink transition-colors duration-300"
+            >
+              Ontdek Saninet 3D
+              <ArrowUpRight className="w-4 h-4" />
+            </Link>
+          </div>
+        </FadeIn>
+      </section>
+
       {/* ═══════════════ 4. FOTOCOLLAGE (BESTAANDE GALERIJ) ═══════════════ */}
-      <section className="py-16 md:py-24 px-6 md:px-12 lg:px-20">
+      <section className="py-16 md:py-24 px-6 md:px-12 lg:px-20 bg-bs26-paper">
         <div className="max-w-[1400px] mx-auto space-y-4 md:space-y-6">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 md:gap-6">
             <FadeIn className="relative aspect-[4/5] lg:aspect-auto lg:h-full min-h-[440px] overflow-hidden rounded-[18px] bg-bs26-sand">
