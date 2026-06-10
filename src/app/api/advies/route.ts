@@ -51,11 +51,14 @@ async function resolveHost(hostname: string): Promise<string> {
   throw new Error(`DNS resolution failed for ${hostname}`);
 }
 
-const SMTP_CONFIGURED =
-  process.env.SMTP_HOST &&
-  process.env.SMTP_PORT &&
-  process.env.SMTP_USER &&
-  process.env.SMTP_PASS;
+const REQUIRED_SMTP_VARS = ['SMTP_HOST', 'SMTP_PORT', 'SMTP_USER', 'SMTP_PASS'] as const;
+
+/** Returns the names of any required SMTP env vars that are missing/empty. */
+function missingSmtpVars(): string[] {
+  return REQUIRED_SMTP_VARS.filter((k) => !process.env[k]);
+}
+
+const SMTP_CONFIGURED = missingSmtpVars().length === 0;
 
 function recipientFor(brand: 'woonklasse' | 'badkamerstijl'): string | undefined {
   if (brand === 'badkamerstijl') {
@@ -163,6 +166,7 @@ export async function POST(request: Request) {
     }
 
     // Email admin only - no customer confirmation per spec
+    let notificationSent = false;
     const transporter = await createTransporter();
     if (transporter) {
       const to = recipientFor(data.brand);
@@ -213,8 +217,24 @@ export async function POST(request: Request) {
         html,
         text: textLines,
       });
+      notificationSent = true;
     } else {
-      console.warn('[advies] SMTP niet geconfigureerd, e-mail niet verzonden.');
+      console.error(
+        `[advies] SMTP niet geconfigureerd, e-mail NIET verzonden. Ontbrekende env vars: ${missingSmtpVars().join(', ')}. Stel deze in op de Vercel-deploy.`,
+      );
+    }
+
+    // Geen valse "succes" als de notificatie niet verstuurd is, anders gaan
+    // leads stil verloren.
+    if (!notificationSent) {
+      return NextResponse.json(
+        {
+          success: false,
+          message:
+            'We konden je aanvraag nu niet verwerken. Bel ons of mail naar info@woonklasse.nl, dan pakken we het direct op.',
+        },
+        { status: 503 },
+      );
     }
 
     return NextResponse.json(
