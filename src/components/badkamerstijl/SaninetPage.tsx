@@ -3,6 +3,7 @@
 import { motion, MotionConfig } from 'framer-motion';
 import Link from 'next/link';
 import Image from 'next/image';
+import { useState, useEffect } from 'react';
 import { ArrowRight, ArrowUpRight } from 'lucide-react';
 import BadkamerstijlFloatingNav from '@/components/BadkamerstijlFloatingNav';
 import { useI18n } from '@/i18n/I18nProvider';
@@ -32,11 +33,44 @@ const stats = [
   { value: '100%', label: 'Naar wens. Jij bepaalt, wij ontwerpen het samen met je.' },
 ];
 
-const cards = [
+const eindresultaatSlides = [
+  '/badkamerstijl/eindresultaat-1.jpg',
+  '/badkamerstijl/eindresultaat-2.jpg',
+  '/badkamerstijl/eindresultaat-3.jpg',
+  '/badkamerstijl/eindresultaat-4.jpg',
+  '/badkamerstijl/eindresultaat-5.jpg',
+];
+
+type SaninetCard = { caption: string; contain: boolean; img?: string; slides?: string[] };
+
+const cards: SaninetCard[] = [
   { img: '/badkamerstijl/saninet-plattegrond.jpg', caption: 'Exacte plattegrond', contain: true },
   { img: '/badkamerstijl/saninet-3d.jpg', caption: 'Jouw badkamer in 3D', contain: true },
-  { img: '/badkamerstijl/2200xxs(30).jpg', caption: 'Het eindresultaat', contain: false },
+  { slides: eindresultaatSlides, caption: 'Het eindresultaat', contain: false },
 ];
+
+/* Crossfade-slideshow voor de 'Het eindresultaat' kaart */
+function ResultSlideshow({ images, alt }: { images: string[]; alt: string }) {
+  const [idx, setIdx] = useState(0);
+  useEffect(() => {
+    const id = setInterval(() => setIdx((i) => (i + 1) % images.length), 4000);
+    return () => clearInterval(id);
+  }, [images.length]);
+  return (
+    <>
+      {images.map((src, i) => (
+        <Image
+          key={src}
+          src={src}
+          alt={alt}
+          fill
+          sizes="(max-width: 768px) 100vw, 33vw"
+          className={`object-cover transition-opacity duration-[1200ms] ease-in-out ${i === idx ? 'opacity-100' : 'opacity-0'}`}
+        />
+      ))}
+    </>
+  );
+}
 
 const reveal = {
   initial: { opacity: 0, y: 28 },
@@ -214,7 +248,11 @@ export default function SaninetPage() {
             <motion.figure key={card.caption} {...reveal} transition={{ ...reveal.transition, delay: i * 0.1 }} className="m-0">
               <div className={`aspect-square rounded-[16px] overflow-hidden relative shadow-[0_18px_45px_-25px_rgba(34,31,26,0.4)] ${card.contain ? 'bg-white border border-bs26-charcoal/[0.06] p-4' : ''}`}>
                 <div className="relative w-full h-full">
-                  <Image src={card.img} alt={card.caption} fill className={card.contain ? 'object-contain' : 'object-cover'} sizes="(max-width: 768px) 100vw, 33vw" />
+                  {card.slides ? (
+                    <ResultSlideshow images={card.slides} alt={card.caption} />
+                  ) : (
+                    <Image src={card.img!} alt={card.caption} fill className={card.contain ? 'object-contain' : 'object-cover'} sizes="(max-width: 768px) 100vw, 33vw" />
+                  )}
                 </div>
               </div>
               <figcaption className="bs26-eyebrow text-bs26-charcoal mt-4">{t(card.caption)}</figcaption>
