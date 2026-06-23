@@ -3,7 +3,7 @@
 import { motion, MotionConfig } from 'framer-motion';
 import Link from 'next/link';
 import Image from 'next/image';
-import { useState, useEffect } from 'react';
+import ResultSlideshow, { eindresultaatSlides } from '@/components/badkamerstijl/ResultSlideshow';
 import { ArrowRight, ArrowUpRight } from 'lucide-react';
 import BadkamerstijlFloatingNav from '@/components/BadkamerstijlFloatingNav';
 import { useI18n } from '@/i18n/I18nProvider';
@@ -33,14 +33,6 @@ const stats = [
   { value: '100%', label: 'Naar wens. Jij bepaalt, wij ontwerpen het samen met je.' },
 ];
 
-const eindresultaatSlides = [
-  '/badkamerstijl/eindresultaat-1.jpg',
-  '/badkamerstijl/eindresultaat-2.jpg',
-  '/badkamerstijl/eindresultaat-3.jpg',
-  '/badkamerstijl/eindresultaat-4.jpg',
-  '/badkamerstijl/eindresultaat-5.jpg',
-];
-
 type SaninetCard = { caption: string; contain: boolean; img?: string; slides?: string[] };
 
 const cards: SaninetCard[] = [
@@ -48,29 +40,6 @@ const cards: SaninetCard[] = [
   { img: '/badkamerstijl/saninet-3d.jpg', caption: 'Jouw badkamer in 3D', contain: true },
   { slides: eindresultaatSlides, caption: 'Het eindresultaat', contain: false },
 ];
-
-/* Crossfade-slideshow voor de 'Het eindresultaat' kaart */
-function ResultSlideshow({ images, alt }: { images: string[]; alt: string }) {
-  const [idx, setIdx] = useState(0);
-  useEffect(() => {
-    const id = setInterval(() => setIdx((i) => (i + 1) % images.length), 4000);
-    return () => clearInterval(id);
-  }, [images.length]);
-  return (
-    <>
-      {images.map((src, i) => (
-        <Image
-          key={src}
-          src={src}
-          alt={alt}
-          fill
-          sizes="(max-width: 768px) 100vw, 33vw"
-          className={`object-cover transition-opacity duration-[1200ms] ease-in-out ${i === idx ? 'opacity-100' : 'opacity-0'}`}
-        />
-      ))}
-    </>
-  );
-}
 
 const reveal = {
   initial: { opacity: 0, y: 28 },

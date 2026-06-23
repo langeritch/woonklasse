@@ -7,6 +7,7 @@ import Image from 'next/image';
 import { ArrowRight, ArrowUpRight, Plus, Minus, Star, Check, Phone } from 'lucide-react';
 import BadkamerstijlFloatingNav from '@/components/BadkamerstijlFloatingNav';
 import HeroAdviesTool from '@/components/HeroAdviesTool';
+import ResultSlideshow, { eindresultaatSlides } from '@/components/badkamerstijl/ResultSlideshow';
 import { BADKAMERSTIJL_FAQS as faqs } from '@/data/badkamerstijl-faq';
 import { useI18n } from '@/i18n/I18nProvider';
 
@@ -36,6 +37,14 @@ const stijlen = [
   { name: 'Industrieel Chic', tag: 'Beton, staal en warme accenten', image: '/badkamerstijl/industrieel-chic.jpg', slug: 'industrieel' },
   { name: 'Warm Natuurlijk', tag: 'Hout, natuursteen en zacht licht', image: '/badkamerstijl/2200xxs(25).jpg', slug: 'warm-natuurlijk' },
   { name: 'Scandinavisch', tag: 'Licht, helder en functioneel', image: '/badkamerstijl/2200xxs(31).jpg', slug: 'scandinavisch' },
+];
+
+type SaninetCard = { caption: string; contain: boolean; img?: string; slides?: string[] };
+
+const saninetCards: SaninetCard[] = [
+  { img: '/badkamerstijl/saninet-plattegrond.jpg', caption: 'Exacte plattegrond', contain: true },
+  { img: '/badkamerstijl/saninet-3d.jpg', caption: 'Jouw badkamer in 3D', contain: true },
+  { slides: eindresultaatSlides, caption: 'Het eindresultaat', contain: false },
 ];
 
 const pakketten = [
@@ -288,11 +297,7 @@ export default function BadkamerstijlHome() {
         </motion.div>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8">
-          {[
-            { img: '/badkamerstijl/saninet-plattegrond.jpg', caption: 'Exacte plattegrond', contain: true },
-            { img: '/badkamerstijl/saninet-3d.jpg', caption: 'Jouw badkamer in 3D', contain: true },
-            { img: '/badkamerstijl/2200xxs(30).jpg', caption: 'Het eindresultaat', contain: false },
-          ].map((card, i) => (
+          {saninetCards.map((card, i) => (
             <motion.figure
               key={card.caption}
               {...reveal}
@@ -301,13 +306,17 @@ export default function BadkamerstijlHome() {
             >
               <div className={`aspect-square rounded-[16px] overflow-hidden relative shadow-[0_18px_45px_-25px_rgba(34,31,26,0.4)] ${card.contain ? 'bg-white border border-bs26-charcoal/[0.06] p-4' : ''}`}>
                 <div className="relative w-full h-full">
-                  <Image
-                    src={card.img}
-                    alt={card.caption}
-                    fill
-                    className={card.contain ? 'object-contain' : 'object-cover'}
-                    sizes="(max-width: 768px) 100vw, 33vw"
-                  />
+                  {card.slides ? (
+                    <ResultSlideshow images={card.slides} alt={card.caption} />
+                  ) : (
+                    <Image
+                      src={card.img!}
+                      alt={card.caption}
+                      fill
+                      className={card.contain ? 'object-contain' : 'object-cover'}
+                      sizes="(max-width: 768px) 100vw, 33vw"
+                    />
+                  )}
                 </div>
               </div>
               <figcaption className="bs26-eyebrow text-bs26-charcoal mt-4">{t(card.caption)}</figcaption>
