@@ -58,12 +58,14 @@ const contactSchema = z.object({
   brand: z.enum(['woonklasse', 'badkamerstijl']).default('woonklasse'),
 });
 
-const SMTP_CONFIGURED =
-  process.env.SMTP_HOST &&
-  process.env.SMTP_PORT &&
-  process.env.SMTP_USER &&
-  process.env.SMTP_PASS &&
-  process.env.CONTACT_EMAIL;
+const REQUIRED_SMTP_VARS = ['SMTP_HOST', 'SMTP_PORT', 'SMTP_USER', 'SMTP_PASS', 'CONTACT_EMAIL'] as const;
+
+/** Returns the names of any required SMTP env vars that are missing/empty. */
+function missingSmtpVars(): string[] {
+  return REQUIRED_SMTP_VARS.filter((k) => !process.env[k]);
+}
+
+const SMTP_CONFIGURED = missingSmtpVars().length === 0;
 
 /** Per-brand recipient routing. Falls back to CONTACT_EMAIL when a brand-specific
  *  variable is not set, so legacy/preview deployments keep working. */
@@ -159,10 +161,11 @@ export async function POST(request: Request) {
     const brandNaam = brand === 'badkamerstijl' ? 'Badkamerstijl' : 'Woonklasse';
     const fromEmail = process.env.SMTP_USER;
 
+    let notificationSent = false;
     const transporter = await createTransporter();
     if (transporter) {
       const notificationTo = recipientFor(brand);
-      // 1. Notificatie naar het bedrijf (HTML)
+      // 1. Notificatie naar het bedrijf (HTML) — dit is de kritische mail.
       await transporter.sendMail({
         from: `"${brandNaam} Website" <${fromEmail}>`,
         to: notificationTo,
@@ -190,6 +193,7 @@ export async function POST(request: Request) {
           .filter(Boolean)
           .join('\n'),
       });
+      notificationSent = true;
 
       // 2. Bevestiging naar de klant (niet-blokkerend)
       try {
@@ -221,7 +225,22 @@ export async function POST(request: Request) {
         console.warn('[contact] Bevestigingsmail naar klant mislukt:', e);
       }
     } else {
-      console.warn('[contact] SMTP niet geconfigureerd, e-mail niet verzonden. Stel SMTP_* env vars in.');
+      console.error(
+        `[contact] SMTP niet geconfigureerd, e-mail NIET verzonden. Ontbrekende env vars: ${missingSmtpVars().join(', ')}. Stel deze in op de Vercel-deploy.`,
+      );
+    }
+
+    // Als de bedrijfsnotificatie niet verzonden is, mag het formulier geen
+    // "succes" tonen, anders gaan leads stil verloren.
+    if (!notificationSent) {
+      return NextResponse.json(
+        {
+          success: false,
+          message:
+            'We konden je aanvraag nu niet verwerken. Bel ons of mail naar info@woonklasse.nl, dan pakken we het direct op.',
+        },
+        { status: 503 },
+      );
     }
 
     return NextResponse.json(
